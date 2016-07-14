@@ -29,4 +29,4 @@ glossaries_pdf: glossaries
 build: pdf glossaries bibliography_pdf
 
 clean:
-	rm -f $(TRASH_FILES) $(PDF)
+	sh clean.sh
