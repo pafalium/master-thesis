@@ -1,5 +1,6 @@
 # Web page for Generative Design
 TODO Write a welcoming message. Who am I? What do I want to do?
+
 TODO Write a description of the work and a little about its motivation.
 
 ## Deadline
