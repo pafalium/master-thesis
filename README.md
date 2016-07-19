@@ -21,5 +21,7 @@ TODO Describe how to build the page.
 - Get build process running to compile sources.
 - Get web server running to provide pages to the web browser.
 
-### Development
+### Development workflow
 TODO Describe how start the development workflow.
+
+TODO How do I plan to guide my writing process? (Github issues?; dissertation first, article last)
