@@ -21,3 +21,4 @@ cd ..
 cd appendix
 rm -f $FILES
 cd ..
+rm -rf _minted-dissertation
