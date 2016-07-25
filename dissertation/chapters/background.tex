@@ -49,7 +49,8 @@ To enable live programming Impromptu brings together four components: an audio s
 The first three components make up the runtime environment, responsible for producing the sound, while the last provides an user interface, where the musician writes programs and sends them to the runtime.
 
 %Describe live programming experience of impromptu.
-As he sends code, the musician builds the algorithm that produces the music incrementally.\footnote{The code sent to the runtime can define/redefine functions or variables, and schedule audio or functions to be played or run later.}
+As he sends code, the musician builds the algorithm that produces the music incrementally.%
+\footnote{The code sent to the runtime can define/redefine functions or variables, and schedule audio or functions to be played or run later.}
 To be able to keep producing sound for the audience he can program simple patterns, send them to the runtime and then change them as he programs more elements to compose the music.
 As he adds more elements he can start to make small changes to some of them which will be immediately audible.
 
@@ -62,14 +63,8 @@ Similarly, someone doing \gls{gd} will also benefit from having this immediacy i
 IPython\cite{PER-GRA:2007} is a notepad-like environment (Fig. \ref{fig:ipython:notebook}) directed towards providing better, more straightforward, scientific computing.
 
 As its name suggests, IPython's main programming language is Python.
-Nevertheless, other popular programming languages can be used in IPython, particularly those popular in the scientific community like R, or Julia.\footnote{More language kernels can be found in IPython's github page: https://github.com/ipython/ipython/wiki/IPython-kernels-for-other-languages}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.8\textwidth]{images/ipython_notebook}
-	\caption{An IPython notebook with rich text, mathematical notation, source code and results from executing such code.}
-	\label{fig:ipython:notebook}
-\end{figure}
+Nevertheless, other popular programming languages can be used in IPython, particularly those popular in the scientific community like R, or Julia.%
+\footnote{More language kernels can be found in IPython's github page: https://github.com/ipython/ipython/wiki/IPython-kernels-for-other-languages}
 
 One trend in its community, one that is supported by IPython notebooks, is to make results in publications more reproducible.
 Instead of publishing a PDF or making a blog post, authors write whole publications as IPython notebooks which then are shared and thus allow everyone to run their source code.
@@ -79,7 +74,15 @@ Having access to a working copy of the notebook, one can also experiment with it
 IPython was decomposed into execution kernels, a communication protocol, and several front-ends.
 As each type of component has a defined interface it is possible to implement new specialized components (a new front-end or a new execution kernel) that will integrate with those already implemented.
 
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\textwidth]{images/ipython_notebook}
+	\caption{An IPython notebook with rich text, mathematical notation, source code and results from executing such code.}
+	\label{fig:ipython:notebook}
+\end{figure}
+
 %Why is it important? I cannot imagine designers using it.
+As seen in Figure~\ref{fig:ipython:notebook}, IPython's notebooks can contain not only source code but also its results and rich text.
 The style of producing notebooks in IPython is one that mixes programming, writing and exploring.
 Interestingly, this style is also part of a designer's processes.
 Like a scientist, the designer also has to do exploration of ideas (design ideas in his case), reach conclusions (finished designs) and share his work with others (fellow designers, clients, friends, blog readers).
@@ -101,13 +104,13 @@ As shown in Fig. \ref{fig:proc:dev:env}, the \gls{pde} includes a text editor wi
 	\begin{minted}[linenos]{java}
 	//Hello mouse.
 	void setup() {
-	size(400, 400);
-	stroke(255);
-	background(192, 64, 0);
+		size(400, 400);
+		stroke(255);
+		background(192, 64, 0);
 	}
 
 	void draw() {
-	line(150, 25, mouseX, mouseY);
+		line(150, 25, mouseX, mouseY);
 	}
 	\end{minted}
 	\caption[A simple Processing sketch]{A simple Processing sketch}
@@ -137,7 +140,8 @@ The programmer can choose to have portions of the code following one type of con
 Being a domain-specific language for architecture, DesignScript provides functions for 3D modeling such as creating concrete 3D objects, like cubes and spheres, as well as abstract geometry, like planes and points, that used as scaffolding.
 
 DesignScript also supports lists of values and lets them be used in place of single parameters in calls to functions.
-This lets architects use lists more easily as they do not have to use loops to extract values and the function.\footnote{If only one of its parameters is receiving a list instead of a value, the function is called once with each value on the list.
+This lets architects use lists more easily as they do not have to use loops to extract values and the function.%
+\footnote{If only one of its parameters is receiving a list instead of a value, the function is called once with each value on the list.
 If more than one parameter is receiving a list, the function is called with the values combined by either a cross product or a zip of the lists.}
 
 Having modeling primitives and combining several programming paradigms allows the architect to draw from knowledge about architecture modeling while empowering him to express the processes in which those primitives are used.
