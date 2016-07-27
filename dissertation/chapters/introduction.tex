@@ -7,12 +7,97 @@
 %Goals
 %Thesis Outline
 
+\section{From Paper to Bits}
+Through the years, computers have been taking more ground in the field of architecture.
+In the beginning, they were only used for creating technical drawings using \gls{cad} software like AutoCAD.
+As opposed to drawing by hand, using computers to create these drawings allowed architects to make changes without having to create other copy of the drawing.
+Still, most of the finished work, like project documentation and scale models, was left out of the computer.
+
+As computers became powerful enough to display 3D graphics and 3D modeling started to appear, it became possible to model buildings in the computer and get a 3D preview of them.
+Having a 3D model of the building and being able to explore it, to see it from many angles, is much more intuitive and makes it easier to think about the building.
+What was only possible to do with a physical scale model or a good perspective drawing was now much easier to do.
+
+Up to this time, many of the documentation needed for a building could be created in the computer but there was a problem: the documentation was fractured into many separate pieces - drawings, 3D models, descriptive text, spreadsheets - each created in its own software.
+As the project evolves and changes need to be made, all these need to be manually changed and kept consistent.
+This will inevitably introduce errors and will be extremely hard to do in very complex projects.
+
+This can be solved by software that automates the process. Commonly known as \gls{bim} software.
+
+
+\section{Generative Design / Scripting}
+As was previously said, architects now have software tools that replaced most physical artifacts with digital ones.
+There is, however, still a problem: the architect can still find tasks that are mostly a repetitive process which is, again, prone to errors.
+For example, when modeling a building there are a lot of repetitive tasks that are not trivial to accomplish using the tools that a 3D modeling software provides.
+
+This is what led to the emergence of programming languages for 3D modeling software.%
+\footnote{These are often called scripting languages.}
+With a programming language, the architect is able to translate the concepts of his problem into a program that can still be run and produce the 3D model he needs in the \gls{cad}.
+On top of that, after writing the program the process of generating the model is much faster than the manual equivalent.
+
+Having a faster process for building 3D models means that the architect can explore more variations of a design when it is already modeled since it is no longer too expensive to remodel.
+He can now use the program, changing it, to explore a broader design space.
+This is what is called \gls{gd}.
+
+
+\section{Generative Design IDEs}
+To create \gls{gd} programs, the architect needs to use a programming language and an \gls{ide}.
+
+The programming language defines what is a program, how it works and gives the architect a conceptual model to think about programs.
+For example, it may define a program as a sequence of operations that need to be performed and it may also define primitive operations like creating a box or moving an object.
+
+The \gls{ide} provides tools - editors, compilers, debuggers, among others - that let the architect create programs.
+The most basic \gls{ide} may have a text editor, where the architect types a textual representation of the program, and an interpreter, that will interpret the program and perform the required operations.
+
+There can be a variety of \glspl{ide} where programs of a specific programming language can be made and each \gls{ide} may have tools to create programs in several programming languages.
+
+The programming language and the IDE that the architect uses greatly influences the type of programs that he can create.
+Some IDEs make it easy to create simple programs really fast but that will not be easy to grow, while others, although harder to use, allow for complex programs.
+
+In some cases, the programming language is inseparable from the IDE - like the case of Grasshopper 3D and Dynamo - while in other cases it does not meter which IDE is used.
+
+Visual IDEs and programming languages are used by most architects that are new to programming.
+However, these programming languages do not scale well, i.e. for bigger programs it becomes harder and harder to understand or modify them.
+
+It is important to remember that architects do not have the same programming skills as software developers.
+It is also true that architects usually have less programming experience and, therefore, often do not know how to structure their programs, leading to less scalability.
+
+
+\section{Disadvantages of Desktop Software}
+It is common practice in any creative field to carry a notebook or a sketchbook for the sudden moments of inspiration that appear through the day.
+This way people make sure that they do not forget any of their ideas.
+
+An aspect common to software tools that architects use is that they need to be installed.
+Like so, they are not readily available on every computer.
+If architects want to be able to work with their software tools, they have to carry the computer around.
+This is why laptop computers are used.
+They can run the same applications as desktop computers and they are also portable.
+People can carry them around and work anywhere.
+
+Carrying a computer solves the problem of having the tools of trade at hand but what happens when the architect needs to work with a team?
+There are cloud-based services that he can use to do it.
+He can use services like Skype\footnote{www.skype.com} when speaking with other people or presenting his work, and he use file sharing services to build \gls{cad} models collaboratively.
+Still, this is a rudimentary method.
+It does not allow more than one person to edit a file simultaneously, it does not have a system to track versions of files and it also only works on desktop-like computers.
+
+This is not a problem specific to architects, in fact, anyone working remotely faces this problem and it has already been solved in other fields that use \gls{cad}.
+There are already working cloud-based services that aim to enable this kind of collaboration in other fields.
+One example of such services is OnShape\footnote{www.onshape.org}, that addresses the problem for product design / engineering.
+To do this, OnShape has real-time collaboration, projects are stored in the cloud, has git-like version control, works both on desktop and on mobile.
+
+
+\section{Goals}
+In this thesis we propose that, with a cloud-based application, architects will be able to work on \gls{gd} projects even while they are outside of their workplace and thus allow them to have more artistic freedom.
 
 
 
 %Identify the problem clearly.
 %- There is a need for a widely available 3d modeling tool for architects?
 %- Current 3d modeling tools limit are limited to a computer?
+
+%Thesis
+%- A web application is the natural step to architecture software?
+%--- It centralizes the information on the Internet making it more accessible and affordable.
+%---
 
 %Motivation (Benefits of solving the problem?)
 %Goals (What we really want to achieve.)
