@@ -379,6 +379,126 @@ As Antimony uses \glspl{sdf} as its representation of solids, shapes are defined
 
 %##############################################################################
 %##############################################################################
+\section{Comparison}
+
+(app, desk/web/mobile, domain?, programming?, visual/text, primitives?, feedback?)\\
+(app-cloud, storage?, collaboration?)\\
+(app, ui-features/user-experience?)\\
+app, domain, visual/text, desk/web/mobile,\\
+app, storage, collaboration\\
+3d functionality/geometric modeling/CAD capabilities\\
+
+\begin{table}
+	\centering
+	\renewcommand{\arraystretch}{1.2}
+
+	\begin{tabulary}{\textwidth}{r|L|L|L|}
+									& {\bf Domain} 						& {\bf Programming} 															& {\bf Platform} \\
+		\hline\hline
+		Impromptu			& music, live coding			& textual(high+low level)													& desktop + local server					\\
+		LightTable		& general coding					& textual, many languages													& desktop													\\
+		IPython				& scientific computing		& textual, many languages													& web page + server(remote/local)	\\
+		OpenJSCAD			& 3D CAD									& textual																					& web page, command-line					\\
+		Processing		& visual arts							& textual																					& desktop													\\
+		DesignScript	& CAD, architecture				& textual + visual																& desktop													\\
+		Rosetta				& CAD, architecture				& textual, many languages													& desktop													\\
+		Clara.io			& 3D modeling, animation	& limited(primarily for plug-ins and automation)	& cloud(web page)									\\
+		OnShape				& 3D CAD									& textual(for custom model features)							& cloud(web page, mobile)					\\
+		Mobius				& 3D CAD									& block-based + visual														& web page												\\
+		RepoCad				& 2D CAD									& textual																					& web page/cloud									\\
+		Antimony			& 3D CAD									& visual(main) + textual(custom nodes and shapes)	& desktop													\\
+	\end{tabulary}
+	\label{table:general:comp}
+	\caption{General environment comparison}
+\end{table}
+
+\begin{table}
+	\centering
+	\renewcommand{\arraystretch}{1.2}
+
+	\begin{tabulary}{\textwidth}{r|L|L|L|}
+									& {\bf Storage} 						& {\bf Collaboration} 												& {\bf Coding features} \\
+		\hline\hline
+		Impromptu			& ---												& shared runtime															& sound changes; eval expression																						\\
+		LightTable		& ---												& ---																					& instarepl; documentation; code completion; (code document); (draft table) \\
+		IPython				& ---												& ---																					& code completion; different cell types																			\\
+		OpenJSCAD			& ---												& ---																					& autorun; user-defined sliders																							\\
+		Processing		& ---												& ---																					& syntax errors annotation;																									\\
+		DesignScript	& ---												& ---																					& library tab; result highlighting																					\\
+		Rosetta				& ---												& ---																					& user-defined sliders																											\\
+		Clara.io			& cloud, version controlled	& share scenes, scene realtime collaboration	& ---																																				\\
+		OnShape				& cloud, version controlled	& share documents, realtime collaboration			& --- ?																																			\\
+		Mobius				& ---												& ---																					& sliders on node inputs																										\\
+		RepoCad				& cloud, version controlled	& share scripts through library								& autorun																																		\\
+		Antimony			& ---												& ---																					& autorun; 3D view handles																									\\
+	\end{tabulary}
+	\label{table:features:comp}
+	\caption[Features / User experience comparison]{Features / User experience comparison. Collaboration on applications that do not support it is handled by users. }
+\end{table}
+
+Tables \ref{table:general:comp} and \ref{table:features:comp} allow us to compare these systems in terms of their domain, programming support, platform, storage, collaboration and coding features.
+
+As can be observed, not all environments support \gls{gd} programming.
+We want to look at cloud applications, programming environments and modeling/CAD environments.
+It was also important to look at traditional 3D modeling environments and programming environments for domains where design is also present.
+
+
+Although all environments have support for programming, the degree to which it was thought to be an alternative to the main activity is different.
+Programming can be used in two ways: to be the way the user solves his problem; or, to extend the environment with more tools for the user.
+Some of the analyzed environments support both ways while others only support one or the other.
+To solve: Impromptu, IPython, OpenJSCAD, Processing, DesignScript, Rosetta, Mobius, RepoCad
+To extend: OnShape, Clara.io
+To solve and extend: LightTable, Antimony
+
+For solutions that support programming, the amount of features that try to help with the task of programming varies significantly.
+It ranges from a syntax highlighted text editor, like in OpenJSCAD and Clara.io, to traceability between program and results, like in DesignScript, Mobius and Antimony.
+\\TABLE, TABLE, TABLE
+
+
+By looking at the tables, we can also see that some cloud applications take care of storage, namely, Clara.io and OnShape.
+Some of the cloud-applications offer storage with version control.
+Being part of the package, their users can benefit from it without having to perform installation and configuration.
+These applications provide a solution to the problem of unknown behavior when uncoordinated concurrent edits occur.
+
+Prototype cloud-applications -- Mobius and RepoCad -- do not include storage although this is a prominent feature in this type of application.
+They may be assuming that it is a feature that does not need to be proved useful, so there is no need to implement it in a prototype.
+
+There are alternatives to integrating cloud storage directly into the application.
+The application can produce files for download, let the user specify a cloud storage service where files should be stored or let the user specify a version controlled repository's remote interface for the same effect.
+
+There is no full-cloud application, that is where everything is in the cloud, that supports \gls{gd}.
+OpenJSCAD, though just a web page and not a cloud application, is the closest we have found to a solution that supports \gls{gd}.
+Even so, OpenJSCAD only supports text editing and running programs, leaving storage up to the user and not providing sufficient help for editing programs.
+
+
+Collaboration in programming is based on developing several parts of a code base cooperatively.
+To facilitate this cooperation, a version control system is used to keep track of all changes and integrate all of them into a single repository.
+Usually, if two programmers want to work on the same task, they have to work on the same copy of the code base which often leads to both having to work on the same computer.
+
+We can also see that collaboration is often not supported by the existing desktop solutions.
+Like so, collaboration support is limited communication tools.
+Programmers wanting to program cooperatively in real-time have to resort to other solutions for that effect or, in a more straightforward approach, work on the same computer.
+
+
+Looking only at cloud applications -- that is OpenJSCAD, Clara.io, OnShape, Mobius and RepoCad -- we can see that the only application that
+
+
+When it comes to supporting programming as a primary part of solving a problem, only OnShape and Clara.io do not do it.
+Nevertheless, OnShape's FeatureScript \gls{ide} seems a to match the current general purpose \glspl{ide} feature-wise.
+
+\noindent{\rule{\textwidth}{0.4pt}}
+
+There is a terrifying lack of visual programming environments in my study.
+Are they the most used environments in architecture?
+Why did I not include them?
+
+A section summarizing the relevant aspects of the applications described earlier.
+It can also hint what we think should be done in a GD+cloud environment.
+
+Common features: runtime error reporting,
+Other features: syntactical error annotation, autocomplete(word based, language aware, snippets/templates), repl, documentation tooltips(type checking, type inference, documentation comments), views over static structure,
+Editing paradigms: text, graph, frame, block
+
 \section{Problems to Address}
 
 
