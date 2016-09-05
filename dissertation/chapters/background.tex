@@ -29,20 +29,20 @@ Using Impromptu, live performance takes place as a musician programs algorithms 
 During his performance, he writes the program that produces the sounds and chooses the right moments to change it to move between different parts of the music.
 
 %What does it provide to support live-performance?
-To enable live programming Impromptu brings together four components: an audio synthesizer, a real-time scheduling engine, a Scheme interpreter and an \gls{ide}\cite{sorensen2005impromptu}.
+To enable live programming, Impromptu brings together four components, as stated in \cite{sorensen2005impromptu}: an audio synthesizer, a real-time scheduling engine, a Scheme interpreter and an \gls{ide}.
 The first three components make up the runtime environment, responsible for producing the sound, while the last provides an user interface, where the musician writes code and sends it to the runtime in much the same way as using a \gls{repl}.
 
 %Describe live programming experience of impromptu.
 As he sends code, the musician builds the algorithm that produces the music incrementally.%
 \footnote{The code sent to the runtime can define/redefine functions or variables, and schedule audio or functions to be played or run later.}
 To be able to keep producing sound for the audience he can program simple patterns, send them to the runtime and then change them as he programs more elements to compose the music.
-As he adds more elements he can start to make small changes to some of them which will be immediately audible.
+As he adds more elements, he can start to make small changes to some of them which will be immediately audible.
 
 The immediacy from program changes to audible ones also lets the musician experiment with new ideas.
 Similarly, someone doing \gls{gd} will also benefit from having this immediacy in his \gls{ide}.
 
 The separation of components referred earlier also allows several musicians to collaborate at the same time in a performance\cite{sorensen2005impromptu}.
-Each one using a computer connected to the same runtime environment, they can build different parts of the music or, more interestingly, make changes to parts of the other's work.
+With their computers connected to the same runtime environment, they can build different parts of the music or, more interestingly, make changes to parts of the other's work.
 This is also an interesting aspect to explore in architecture, where several architects can work on a \gls{gd} program at the same time, each one showing his ideas on how to evolve the design.
 
 There is, however, a major difference between composing music and architecture.
@@ -120,7 +120,17 @@ When an event is raised on an \emph{Object} both its \emph{Behaviors} and those 
 
 \subsection{IPython}
 \label{section:ipython:related}
-IPython\cite{PER-GRA:2007} is a notepad-like environment (Fig. \ref{fig:ipython:notebook}) directed towards providing better, more straightforward, scientific computing.
+IPython\cite{PER-GRA:2007} is a programming environment (Fig. \ref{fig:ipython:notebook}) directed towards providing better, more straightforward, scientific computing.
+
+%Why is it important? I cannot imagine designers using it.
+IPython can be used as a command shell by using its notebook \gls{ui}, the IPython notebook.
+As seen in Figure~\ref{fig:ipython:notebook}, IPython's notebooks can contain not only source code but also its results and rich text.
+The notebooks are displayed using an interactive web page.
+
+The style of producing notebooks in IPython is one that mixes programming, writing and exploring.
+Interestingly, this style is also part of a designer's processes.
+Like a scientist, the designer also has to do exploration of ideas (design ideas in his case), reach conclusions (finished designs) and share his work with others (fellow designers, clients, friends, blog readers).
+Unfortunately, although IPython notebooks are natural tools for exploration, they do not provide domain specific functionality for architecture.
 
 As its name suggests, IPython's main programming language is Python.
 Nevertheless, other popular programming languages can be used in IPython, particularly those popular in the scientific community like R, or Julia.%
@@ -132,7 +142,7 @@ Instead of publishing a PDF or making a blog post, authors write whole publicati
 Having access to a working copy of the notebook, one can also experiment with it to better understand it, form own conclusions, and find potential errors.
 
 %IPython architecture
-IPython was decomposed into execution kernels, a communication protocol, and several front-ends.
+To allow more flexibility between the core computing functionality and the \gls{ui}, IPython was decomposed into execution kernels, a communication protocol, and several front-ends.
 Execution kernels are responsible for running the code of notebooks and front-ends implement the \gls{ui}, as is the case of IPython's notebooks.
 The communication protocol defines how communication between execution kernels and front-ends is done.
 With this, it is possible to implement new execution kernels for running code from a programming language not yet implemented or an alternative front-end different from IPython notebooks.
@@ -145,13 +155,6 @@ Moreover, the communication protocol also allows execution kernels and front-end
 	\label{fig:ipython:notebook}
 \end{figure}
 
-%Why is it important? I cannot imagine designers using it.
-As seen in Figure~\ref{fig:ipython:notebook}, IPython's notebooks can contain not only source code but also its results and rich text.
-The style of producing notebooks in IPython is one that mixes programming, writing and exploring.
-Interestingly, this style is also part of a designer's processes.
-Like a scientist, the designer also has to do exploration of ideas (design ideas in his case), reach conclusions (finished designs) and share his work with others (fellow designers, clients, friends, blog readers).
-Unfortunately, although IPython notebooks are natural tools for exploration, they do not provide domain specific functionality for architecture.
-
 
 \subsection{OpenJSCAD}
 OpenJSCAD\cite{openjscad2015site} is a project aiming to implement OpenSCAD\cite{kintel2011openscad} using web technologies.
@@ -163,9 +166,9 @@ Similarly to the \gls{gd} approach, to actually model in OpenJSCAD the user has 
 
 Being an environment for modeling 3D printed objects, OpenJSCAD supports importing and exporting 3D models from/to STL and AMF files which are commonly used as 3D printing formats.
 
-OpenJSCAD provides two user interfaces, one command-line interface and one graphical user interface as a web page.%
+OpenJSCAD provides two user interfaces, one \acrfull{cli} and one \acrfull{gui}, the latter implemented as a web page.%
 \footnote{https://github.com/Spiritdude/OpenJSCAD.org}
-The first can be used for batch processing, while the second integrates an editor to edit a program and a 3D view for viewing the results of that program.
+Moreover, the first can be used for batch processing, while the second integrates an editor to edit a program and a 3D view for viewing the results of that program.
 This separation enables the use of OpenJSCAD for programming without requiring the programmer to install anything more than a web browser, which is almost always already installed.
 This is just a matter of convenience, since both interfaces perform the same work to generate the models and both can export them as files.
 
@@ -245,63 +248,59 @@ Having modeling primitives and combining several programming paradigms allows th
 
 %DesignScript editor(s)
 Editing DesignScript programs can be done either by writing or by creating a graph.
-The graph is a more natural representation of the dependencies between the variables of the program when the associative paradigm is being used; it can also be viewed as a data-flow graph.
+The graph representation is a more natural visualization of the dependencies between the variables of a program when the associative paradigm is being used.
+Function calls and variables are represented by nodes, drawn as boxes with slots, that can be connected by wires, which in turn represent data dependencies between nodes.
 The written representation of DesignScript is a sequence of statements that specify the relationship between a variable and other variables; defining functions, using the imperative paradigm and reassigning variables is also possible.
 
 DesignScript is used in several environments, all of which are desktop applications.
-These include a textual editor in Autodesk AutoCAD (Fig. \ref{fig:ds:autocad}), a dedicated graph editor called DesignScript Studio (Fig. \ref{fig:ds:dsstudio}) and later Dynamo (Fig. \ref{fig:ds:dynamo}).
+These include a textual editor in Autodesk AutoCAD (Fig. \ref{fig:ds:autocad}), a dedicated graph editor called DesignScript Studio (Fig. \ref{fig:ds:dsstudio}) and Dynamo (Fig. \ref{fig:ds:dynamo}), which integrates with Autodesk Revit.
 Both DesignScript Studio and Dynamo use graph based program editing.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{images/ds_autocad}
-	\caption{A DesignScript program being edited in a special text editor inside AutoCAD. This text editor provides auto-complete and a debugger.}
+	\caption[A DesignScript program being edited in a special text editor inside AutoCAD.]{A DesignScript program being edited in a special text editor inside AutoCAD. This text editor provides auto-complete and a debugger.}
 	\label{fig:ds:autocad}
 \end{figure}
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{images/ds_dsstudio}
-	\caption{A DesignScript program as a graph in DesignScript Studio. Each node can display a preview of its results. To the bottom left corner is a preview of the whole program results and a folded library tab. The library tab contains everything that can be used in the program.}
+	\caption[A DesignScript program as a graph in DesignScript Studio.]{A DesignScript program as a graph in DesignScript Studio. Each node can display a preview of its results. To the bottom left corner is a preview of the whole program results and a folded library tab. The library tab contains everything that can be used in the program.}
 	\label{fig:ds:dsstudio}
 \end{figure}
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{images/ds_dynamo}
-	\caption{Another DesignScript program as a graph in Dynamo. Like in DesignScript Studio, a preview of the result of the program is displayed. A difference is that there is only one preview ``canvas''; the preview from selected nodes is highlighted.}
+	\caption[Another DesignScript program as a graph in Dynamo. Like in DesignScript Studio, a preview of the result of the program is displayed.]{Another DesignScript program as a graph in Dynamo. Like in DesignScript Studio, a preview of the result of the program is displayed. A difference is that there is only one preview ``canvas''; the preview from selected nodes is highlighted.}
 	\label{fig:ds:dynamo}
 \end{figure}
 
 Debugging DesignScript programs depends on the environment being used.
-The textual environment allows to follow the execution of the program step-by-step while also supporting watches and breakpoints.
+The textual environment allows following the execution of the program step-by-step while also supporting watches and breakpoints.
 The graph-based environments allow highlighting and listing results of each node.
 Both the textual and the graph-based environments provide a preview of the execution of programs.
-
-%DesignScript history
-DesignScript was later used as the scripting language for code blocks in Dynamo\footnote{http://dynamoprimer.com/}, integrated with Autodesk Revit, where programs are edited as data-flow graphs.
-DesignScript was also integrated into Autodesk AutoCAD.
-A standalone node-based DesignScript editor was also made, it was called DesignScript Studio.
 
 
 \subsection{Rosetta}
 \label{section:rosetta:related}
-Rosetta\cite{de2012modern,lopes2011portable}, shown in Fig. \ref{fig:rosetta:ex}, is an environment for \gls{gd}.
+Rosetta\cite{de2012modern,lopes2011portable}, shown in Figure \ref{fig:rosetta:ex}, is an environment for \gls{gd}.
 
 Most CADs architects use allow them to make \gls{gd} programs.
-The problem with programming is that as each of these CADs has specific primitive operations, so, programs written for one CAD will only work in that CAD.
+The problem with programming is that, as each of these CADs has specific primitive operations, programs written for one CAD will only work in that CAD.
 A phenomenon called vendor lock-in.
 As an example, if one writes a program for AutoCAD, he cannot use it in Rhinoceros3D.
 If he really wants to use it in Rhinoceros3D, he has to rewrite it taking into account the differences between primitive operations of both \glspl{cad}.
 
 Rosetta's motivation is to allow architects to write portable \gls{gd} programs that generate equivalent models in any CADs they use.
 
-Rosetta does this by allowing the architect to choose the front-end programming language and the back-end where the primitive operations will be performed.%
+Rosetta does this by allowing the architect to choose the front-end programming language and the back-end where the primitive operations will be performed\cite{de2012modern}.%
 \footnote{Some front-ends supported by Rosetta are AutoLisp (one of AutoCAD's programming languages), Javascript, Racket and Python; some of the supported back-ends include CADs like Autodesk AutoCAD, Autodesk Revit, Sketchup, and Rhinoceros 3D and also graphics libraries like TikZ and OpenGL.}
 This way, the architect can experiment with \gls{gd} without having to switch \gls{cad} and he can also share programs with others using different \glspl{cad}.
 
 Rosetta also allows programs written in one programming language to use not only parts from programs written in the same language, but also from programs written in other languages.
-This eliminates the need to use the same programming language throughout a program and enables the use of programs written in any programming languages.
+This makes it possible for architects to share programs written in different programming languages and also allows them to choose the programming language that best fits each part of the program they are working on.
 
 \begin{figure}
 	\centering
@@ -312,70 +311,80 @@ This eliminates the need to use the same programming language throughout a progr
 
 
 \subsection{Clara.io}
-Clara.io is a web application for 3D modeling like Blender and 3ds Max.
-It is thought as a tool for 3D modeling people (3d artists, architects).
-The modeling process is mainly done using direct manipulation.
-Uses WebGL for 3d view and has integration with VRay cloud rendering.
-Its scenes are stored remotely, so it does not matter which computer is being used.
-Scenes can be edited by several people with real-time collaboration.
+Clara.io\footnote{https://clara.io/}\cite{houston2013clara} is a cloud application for 3D modeling and animation, similar to desktop software like Blender and 3ds Max.
+Being in this category, Clara.io is more indicated for artistic work as opposed to technical work.
+Nonetheless, it can be used in architecture projects to make architectural visualizations.
 
-It does have scripting support but it serves as an automation tool for the direct manipulation process.
-It is intended to be used as an \gls{api} for plug-in development.%
-\footnote{https://clara.io/learn/sdk/scripting}
+Using Clara.io closely resembles working with its desktop counterparts.
+Modeling is done by adding 3D entities to the scene's scenegraph and afterwards adding modifiers to them and/or directly manipulating them in 3D space(position, rotation, scaling, selection, grouping).
+
+Apart from having features close to other 3D modeling software, being a cloud application Clara.io also supports cloud storage of scenes, real-time collaboration and has integration with VRay cloud rendering.
+Furthermore, Clara.io only requires a web browser compatible with HTML5 and WebGL without any installation.
+Like so, its users are free to switch between computers without having to configure anything and without having to move their work.
+
+Clara.io's real-time collaboration lets users edit scenes simultaneously.
+It gives users an environment where they can work together on tasks that, due to the limitations of files, would have to be performed in isolation to avoid edit conflicts.
+For example, they can build a scene simultaneously, each one working on a part, but this time anyone sees the others changes immediately.
+
+When it comes to programming, Clara.io has support for scripting and allows the creation of plug-ins to extend its functionality.%
+\footnote{https://clara.io/learn/sdk}
+It is possible to use Clara.io's scripting to do \gls{gd}, however, if a user wishes to do so he needs to learn the scene's data model and how to use the scripting \gls{api} to manipulate it, which poses a considerable barrier when compared with existing \gls{gd} environments.
 
 
 \subsection{OnShape}
-OnShape\footnote{https://www.onshape.com/} is a cloud based \gls{cad} application.
-Unlike Clara.io, OnShape is aimed at product design and, as such, its users are familiar with 3D modeling software like SolidWorks and Autodesk Inventor.
+OnShape\footnote{https://www.onshape.com/} is a cloud based \gls{cad} application that can be accessed using either a web browser or its mobile app.
+As opposed to the systems we talked about earlier, OnShape is a \gls{cad} for mechanical modeling and, as such, its users are familiar with \glspl{cad} like SolidWorks and Autodesk Inventor.
+Being a mechanical modeling tool means that the focus is directed towards assembling individual objects instead of buildings, so the working scales are smaller and there is more information on how parts relate to each other.
 
-Like most cloud applications, it promotes collaboration on development teams where team members work remotely.
-In order to do this, OnShape makes it possible for multiple users to edit the same files.
-It has version control of project documents (drawings, 3d models, text documents) and supports real time collaboration.
-
-Supposedly, it can be accessed using web browsers and also mobile devices.
+OnShape has version control of project documents (drawings, 3d models, text documents) and supports real time collaboration.
+Like most cloud applications, OnShape promotes collaboration on development teams where team members work remotely.
+In order to do this, it allows users to work on the same copy of files as opposed to each working with his own copy, and therefore changes are synchronized automatically.
+As users can edit the same copy of a file at the same time, OnShape shows each user what the others are doing to enhance real time collaboration.
+It is also possible to create branches of the document when it is necessary to work on several options or to work on changes in isolation.
+Later, the changes made in a branch can be merged back into the main branch.
 
 \begin{description}
-	\item[collaboration] control access rights, simultaneously on the same branch of a document, or independently on different branches which can be merged later (some or all changes)
+	\item[collaboration] share document, control access rights, simultaneously on the same branch of a document, or independently on different branches which can be merged later (some or all changes)
 	\item[data management] everything is recorded, undo stacks per tab, document history (branch history)
 \end{description}
 
-OnShape also includes a dedicated programming language, FeatureScript, for defining features for its models.
-OnShape includes an \gls{ide} for FeatureScript but the language does not aim to replace OnShape's modeling approach based on a feature list.
+OnShape also includes a dedicated programming language, FeatureScript\footnote{https://www.onshape.com/featurescript}, for defining features for its models.
+OnShape includes an \gls{ide} for FeatureScript but the language does not aim to replace OnShape's modeling approach based on interactively manipulation the model's feature list.
 
 
 \subsection{Mobius}
-Prototype
-Parametric modeling? Block based programming + Visual programming? 3D modeling?
+Prototype\\
+Parametric modeling? Block based programming + Visual programming? 3D modeling?\\
+Refs: http://mobius.design-automation.net/papers
 
-Mobius combines block-based programming and visual programming as a way to make it more intuitive for architects to build programs.
+Mobius is a prototype web application that combines block-based programming and visual(data-flow) programming as a way to make it more intuitive for architects to build programs.
+
 In Mobius, programs are a combination of nodes in a data-flow graph that ultimately produces a 3D model.
-
-The user can implement custom nodes by literally building a program out of virtual building blocks.
-Each node is implemented as an imperative procedure.
+The architect can implement custom nodes by assembling an imperative procedure out of virtual building blocks, which can be loops, function calls and variable assignments.
 This way, Mobius tries to get the best of visual and textual programming languages.
 
-The block based approach has been used in pedagogical programming environments and seems to be most suitable for building procedural programs.
+The block based approach has been used in pedagogical programming environments and seems to be most suitable for building procedural programs.(Scratch...)
 
 
 \subsection{RepoCad}
-Prototype
+Prototype\\
 2D drawing? Integrated version control? Sharing library?
 Where is the juice???
 
 
 \subsection{Antimony}
-Refs: matt keeter thesis + blog
+Refs: matt keeter thesis(predecessor) + blog\\
 Handles UI? Design to fabrication pipeline? Visual programming? Distance field representation? Mac + Linux?
 
-Antimony is a solid modeling tool where the user uses a visual programming language to define the models.
-Like with other visual programming environments, programs come into existence by connecting nodes together.
-Antimony also displays handles in the 3D view that can be dragged with the mouse to change properties of some nodes of the program being edited.
+Antimony\footnote{https://github.com/mkeeter/antimony} is desktop application for solid modeling where models are described by data-flow programs.
+Programs are edited using a node-based representation like in visual programming environments.
+When editing a program, Antimony also displays handles in the 3D view that can be dragged with the mouse to change free node inputs.
 
 Antimony was implemented as a tool to be used from design to fabrication, so it can generate files for machining or 3D printing its models.
 
 It is possible to implement custom nodes by writing a Python program with custom directives.
 This program defines what are the inputs and outputs of the node and what is its \gls{ui} in the 3D view.
-As Antimony uses \glspl{sdf} as its representation of solids, shapes are defined by specifying a formula for the shape's \gls{sdf} and its bounds.
+As Antimony uses \glspl{sdf} as its representation of solids, shapes are defined by specifying a formula for the shape's \gls{sdf} and its domain bounds.
 
 %##############################################################################
 %##############################################################################
