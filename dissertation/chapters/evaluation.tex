@@ -21,11 +21,11 @@ The results of these programs can be seen in Figure \ref{fig:all:examples}.
   \label{fig:all:examples}
 \end{figure}
 
-As can be seen, the environment can produce interesting results.
+As can be seen, the environment can produce interesting results with varying degrees of complexity.
 
 The range of results possible with the environment is still limited by the primitives currently implemented.
 None of these examples make use of \gls{csg} operations like union, intersection and difference as these were not implemented by the environment.
-Nevertheless, it is clearly possible to add support for these without major effort since there are already JavaScript implementations of \gls{csg}.
+Nevertheless, it is clearly possible to add support for these without major effort since there are already JavaScript implementations of \gls{csg}, like the case of OpenJSCAD's.
 
 
 \section{Real Use}
@@ -59,27 +59,31 @@ Observations, observations, observations.
 All of them ran in the same computer.
 {\it Insert hardware specs.}
 
-The source code of each program used in the test is available at ABC(either here, appendix or github).
+The source code of each program used in the test is available at ABC (either here, appendix or github).
 
 
 \subsection{Export Performance}
-When time comes to pass on the building design to other people that use different tools, like mechanical, electric, plumbing services or even other architects, the architect must provide it in a format compatible with their tools.
+When time comes to pass on the building design to other people that use different tools -- like mechanical, electric, plumbing services or even other architects -- the architect must provide it in a format compatible with their tools.
 This has been covered in our solution by letting the program that generates the building model run in the \gls{cad} tool.
 
 Now we need to know how the execution time differs between the normal running process and the remote \gls{cad} running process.
-To measure the difference, we ran a somewhat complex program using both processes and measured the time each took complete.
+To measure the difference, we ran a program of some complexity using both processes and measured the time each took to complete.
 The graph in Figure \ref{fig:local:remote:timing} shows their timings and how they compare.
 
 \begin{figure}
   \centering
   \includegraphics[width=12cm]{./images/local_remote_timing}
   \caption{Running in web page compared to running in a \gls{cad}.}
-  \label{fig:run:timing:chart}
+  \label{fig:local:remote:timing}
 \end{figure}
 
 Observations, observations, observations.
 
 Conclusion: Develop in the environment because it's faster. Only ``convert'' when necessary. (as probably already stated)
+
+
+\subsection{Traceability Performance}
+{\it Let us see how keeping track of traceability information influences the time programs take to complete. Measure for programs of different complexity.}
 
 %Describe possible programming techniques using the IDE / our solution.
 %- Examples of use (made by me)
@@ -92,6 +96,7 @@ Conclusion: Develop in the environment because it's faster. Only ``convert'' whe
 %Performance:
 %- web page vs rosetta vs grasshopper/dynamo
 %- running in web page vs running in remote CAD service
+%- impact of traceability tracking
 %Geometry/primitives: our solution vs existing solutions
 
 %Usefulness of traceability?
