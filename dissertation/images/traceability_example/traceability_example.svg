@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1218"
+   height="1934"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="traceability_example.svg"
+   inkscape:export-filename="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\traceability_example\traceability_example.png"
+   inkscape:export-xdpi="103.45"
+   inkscape:export-ydpi="103.45">
+  <defs
+     id="defs4">
+    <marker
+       inkscape:stockid="Arrow2Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Lstart"
+       style="overflow:visible">
+      <path
+         id="path3799"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(1.1,0,0,1.1,1.1,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart"
+       style="overflow:visible">
+      <path
+         id="path3781"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.49497475"
+     inkscape:cx="575.4846"
+     inkscape:cy="972.12289"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:snap-bbox="true"
+     inkscape:snap-bbox-midpoints="true"
+     inkscape:bbox-nodes="true"
+     inkscape:window-width="2560"
+     inkscape:window-height="1378"
+     inkscape:window-x="-4"
+     inkscape:window-y="-4"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:snap-page="true" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(106.14285,832.42352)">
+    <image
+       y="-832.42352"
+       x="-106.14285"
+       id="image2993"
+       xlink:href="file:///E:/Users/Pedro-170/Documents/Rosetta/master-thesis/dissertation/images/traceability_example/code_to_results.PNG"
+       height="967"
+       width="1218"
+       inkscape:export-filename="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\traceability_example\traceability_example.png"
+       inkscape:export-xdpi="111.68562"
+       inkscape:export-ydpi="111.68562" />
+    <image
+       y="134.57648"
+       x="-106.14285"
+       id="image3004"
+       xlink:href="file:///E:/Users/Pedro-170/Documents/Rosetta/master-thesis/dissertation/images/traceability_example/results_to_code.PNG"
+       height="967"
+       width="1218"
+       inkscape:export-filename="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\traceability_example\traceability_example.png"
+       inkscape:export-xdpi="111.68562"
+       inkscape:export-ydpi="111.68562" />
+    <image
+       y="640.11566"
+       x="805.68298"
+       id="image7409"
+       xlink:href="file:///E:/Users/Pedro-170/Documents/Rosetta/master-thesis/dissertation/images/traceability_example/Cursor_arrow_Aero.png"
+       height="26.624666"
+       width="19.679102" />
+    <path
+       sodipodi:type="arc"
+       style="color:#000000;fill:none;stroke:#ff0000;stroke-width:4;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="path7412"
+       sodipodi:cx="1276.3278"
+       sodipodi:cy="-399.73209"
+       sodipodi:rx="34.850262"
+       sodipodi:ry="34.850262"
+       d="m 1311.178,-399.73209 a 34.850262,34.850262 0 1 1 -69.7005,0 34.850262,34.850262 0 1 1 69.7005,0 z"
+       transform="translate(-470.64486,1039.8478)" />
+    <path
+       sodipodi:type="arc"
+       style="color:#000000;fill:none;stroke:#ff0000;stroke-width:4;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="path7414"
+       sodipodi:cx="332.84528"
+       sodipodi:cy="-385.58997"
+       sodipodi:rx="105.56094"
+       sodipodi:ry="20.708128"
+       d="m 438.40622,-385.58997 a 105.56094,20.708128 0 1 1 -211.12189,0 105.56094,20.708128 0 1 1 211.12189,0 z"
+       transform="translate(-4.0406612,968.01016)" />
+    <image
+       y="-220.89433"
+       x="261.89148"
+       id="image7409-1"
+       xlink:href="file:///E:/Users/Pedro-170/Documents/Rosetta/master-thesis/dissertation/images/traceability_example/Cursor_arrow_Aero.png"
+       height="26.624666"
+       width="19.679102" />
+    <path
+       sodipodi:type="arc"
+       style="color:#000000;fill:none;stroke:#ff0000;stroke-width:4;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="path7412-7"
+       sodipodi:cx="1276.3278"
+       sodipodi:cy="-399.73209"
+       sodipodi:rx="34.850262"
+       sodipodi:ry="34.850262"
+       d="m 1311.178,-399.73209 a 34.850262,34.850262 0 1 1 -69.7005,0 34.850262,34.850262 0 1 1 69.7005,0 z"
+       transform="translate(-1004.5967,192.15012)" />
+    <path
+       sodipodi:type="arc"
+       style="color:#000000;fill:none;stroke:#ff0000;stroke-width:4;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="path7474"
+       sodipodi:cx="830.3454"
+       sodipodi:cy="669.00928"
+       sodipodi:rx="128.28937"
+       sodipodi:ry="101.52033"
+       d="m 958.63477,669.00928 a 128.28937,101.52033 0 1 1 -256.57874,0 128.28937,101.52033 0 1 1 256.57874,0 z"
+       transform="translate(0,-966.99998)" />
+  </g>
+</svg>

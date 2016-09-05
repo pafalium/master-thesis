@@ -5,15 +5,15 @@
 
 
 \section{Overview}
-In order to have a solution that allows architects to work on their \gls{gd} programs on any of their computers, there have to be two components, (1) a web page, that acts as the \gls{ui}, and (2) a remote service, that makes his programs available to any computer.
-
-To make running programs on \glspl{cad} possible, there is also a server that the architect can install on his computer.
-This server is responsible for letting the rest of system know about the \glspl{cad} software installed in a computer and for executing requested operations in them.
+Our solution is comprised of two main components, a web page, responsible for the \gls{ui} of the programming environment, and a remote CAD service, responsible for offering an \gls{api} for running programs in \glspl{cad} installed in user's computers to the rest of the system.
 
 Please note that it is only ever needed to install the server when the architect is finally ready to get the program's results on a \gls{cad}.
-Moreover, the server can be installed only in the computer that actually has the \gls{cad} installed while the rest only accesses the web page.
+Like so, the server can just be installed in the computer that actually has the \gls{cad} installed while the rest only accesses the web page.
+Once installed and started, the web page can start requesting operations to be executed in the available \glspl{cad}.
 
-Figure~\ref{fig:arch:overview} shows the relationships between these components.
+programming environment, cad export, program persistence(not implemented)
+
+Figure~\ref{fig:arch:overview} shows the relationships between these components. {\it arrows indicating interactions between them?}
 
 \begin{figure}
   \centering
@@ -42,23 +42,25 @@ For that purpose, it comprises a text editor for editing programs and a 3D view 
 A text editor and a 3D view by themselves do nothing more than display text and 3D objects.
 To make the \gls{ide} actually helpful several other parts had to be implemented.
 
-\subsection{Adjusting source code values}
+\subsection{Adjusting source code constants}
 When experimenting with a \gls{gd} program, architects find themselves repeatedly adjusting values of constants.
-This is usually done by erasing some characters of the constant and replacing them with higher or lower digits.
+This is usually done by retyping parts of the constant's text to higher or lower digits.
 
 Editing constants this way often leads to errors since it is easy to mistype some characters.
-One can increase the number by an order of magnitude if by mistake he inserts one character without removing another.
-When increasing a constant in steps, different hand movements are required when there is carry over.
+One can increase the constant by an order of magnitude if, by mistake, he inserts one character without removing another.
+When increasing a constant in steps, different hand movements are required when there is carry over, yet again increasing the likelihood of mistyping.
+These errors get amplified when the programming environment provides real time feedback and, like so, begins re-executing the program before the error is corrected leading to reduced \gls{ui} responsiveness.
 
 There are several ways we can extend the user interface to make this more user friendly.
 None of them rely on manually replacing digits.
-The follow list describes some of them:
+They have a simpler mapping to the user's intent.
+The following list describes some of them:
 
 \begin{description}
   \item[Virtual joystick] Clicking on a constant will display a virtual joystick close to the constant. When clicked and dragged, it changes the constant repeatedly over time, being faster or slower depending on how much the handle is moved from its center.
   \item[Click and drag] Clicking and dragging on a constant will change it according to how much the pointer moved from the starting position.
   \item[Sliders] Clicking on a constant will display a slider. Dragging the slider's handle will change the constant depending on how much the handle is moved from the center of the slider. The slider can have different scales, linear or non-linear, to map the center-handle distance to the amount of change for the constant.
-  \item[Keyboard shortcuts] Pressing key combinations while having a constant selected or the text editor's caret on it will increment or decrement it.
+  \item[Keyboard shortcuts] Pressing key combinations while having a constant selected, or the text editor's caret on it, will increment or decrement it.
 \end{description}
 
 We chose to implement the ``Click and drag'' method in our solution.
@@ -88,14 +90,14 @@ Before a program can be run, the programming language has to be defined.
 In our solution, we decided that it would be best to use JavaScript as it was thought for designers and also because of its current performance.
 
 However, there is a question: how do we get results from a program so we can display them?
-Our solution uses the values of the top-level expression statements of the program its results.
+Our solution uses the values of the top-level expression statements of the program as its results.
 
 There are other alternatives that could have been used.
 For example:
 \begin{description}
   \item[Special entry point] Like in OpenJSCAD, we could require that every program must define a function with a special name (e.g. ``main''). Upon being called, that function produces the result of the program.
   \item[Display function] Another way to get results from a program is giving access to an output function to the program. During its execution, the program then calls this function, maybe several times, to produce its output.
-  \item[Imperative primitives] A third way to get results is by adding a side-effect the 3D object producing functions (or primitives). Apart from creating the object, they also add it to the program's results. This is a special case of the previous item.
+  \item[Imperative primitives] A third way to get results is by adding a side-effect to the 3D object producing functions/primitives. Apart from creating the object, they also add it to the program's results. This is a special case of the previous item where all primitives are display functions.
 \end{description}
 
 \subsection{Handling traceability}
@@ -104,8 +106,8 @@ If the programming environment takes care of tracking the relation between the p
 
 There needs to be a way to give the architect quick access to the relation being tracked by the environment.
 To do this, our solution highlights certain parts of the program and  its results when the pointer is on either one.
-More specifically, when the pointer is over a part of the program, it highlights all the results that it produced.
-When the pointer is over a part of the results, it highlights the part of the program where it was created.
+More specifically, when the pointer is over a part of the program, it highlights all the results that it produced;
+when the pointer is over a part of the results, it highlights the part of the program where it was created.
 Figure~\ref{fig:trace:example} shows an example for both of this cases.
 
 \begin{figure}
@@ -116,13 +118,13 @@ Figure~\ref{fig:trace:example} shows an example for both of this cases.
 \end{figure}
 
 Currently our solution only tracks the results produced by calls to functions.
-This was a compromise (thought, not tested) since keeping track of traceability is an additional task that needs to be performed while running the program.
+This was a compromise (though, not tested) since keeping track of traceability is an additional task that needs to be performed while running the program.
 
 There are other ways for showing the relation between the program and its results.
 We will describe some of them next.
 \begin{description}
-  \item[Timetable] As described in {\it Learnable Programming}, making things visible makes them more real to the programmer. Timetables proposed as a way to visualize the control flow of programs. They act as a map of the program's execution. By seeing the control flow, it is easier to see what the program does and it is easier to point at interesting locations. Timetables provide better navigation inside a program's execution.
-  \item[Display data] Also described in {\it Learnable Programming}, displaying data would increase the amount of traceability the system provides. Apart from being able to see the control flow and the 3D results, seeing the other values (e.g. numbers, booleans) used throughout the program would give the programmer a more complete view of the execution.
+  \item[Timetable] As described in {\it Learnable Programming}\cite{victor2012learnable}, making things visible makes them more real to the programmer. Timetables proposed as a way to visualize the control flow of programs. They act as a map of the program's execution. By seeing the control flow, it is easier to see what the program does and it is easier to point at interesting locations. Timetables provide better navigation inside a program's execution.
+  \item[Display data] Also described in {\it Learnable Programming}\cite{victor2012learnable}, displaying data would increase the amount of traceability the system provides. Apart from being able to see the control flow and the 3D results, seeing the other values (e.g. numbers, booleans) used throughout the program would give the programmer a more complete view of the execution.
 \end{description}
 
 \subsection{Providing primitive/predefined bindings}
@@ -137,7 +139,7 @@ Afterwards, we also add some code to the beginning of the program that will decl
 \subsection{Running programs}
 One of the fundamental parts of the programming environment is that it runs programs.
 
-After having a program at hand, we have to instrument it so that we can collect its results in addition to traceability data.
+After having a program at hand, we have to instrument it so that we can collect its results in addition to traceability data, like the return values of function calls.
 
 To run a program, the \gls{ide} starts by getting the \gls{ast} of the program so it can analyze it to produce an instrumented version that will record all the information it needs.
 
