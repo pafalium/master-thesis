@@ -42,13 +42,14 @@ For that purpose, it comprises a text editor for editing programs and a 3D view 
 A text editor and a 3D view by themselves do nothing more than display text and 3D objects.
 To make the \gls{ide} actually helpful several other parts had to be implemented.
 
-\subsection{Adjusting source code constants}
-When experimenting with a \gls{gd} program, architects find themselves repeatedly adjusting values of constants.
-This is usually done by retyping parts of the constant's text to higher or lower digits.
+\subsection{Adjusting Literals}
+When a value, such as a number, is typed directly into a program's source code, it is called a literal value, or simply by literal.
+When experimenting with a \gls{gd} program, architects find themselves repeatedly adjusting literals that were hardcoded into the program.
+This is usually done by retyping parts of the literal's text to higher or lower digits.
 
-Editing constants this way often leads to errors since it is easy to mistype some characters.
-One can increase the constant by an order of magnitude if, by mistake, he inserts one character without removing another.
-When increasing a constant in steps, different hand movements are required when there is carry over, yet again increasing the likelihood of mistyping.
+Editing literals this way often leads to errors since it is easy to mistype some characters.
+One can increase their value by an order of magnitude if, by mistake, he inserts one character without removing another.
+When increasing them in steps, different hand movements are required when there is carry over, yet again increasing both the likelihood of mistyping and the time it takes to make the changes.
 These errors get amplified when the programming environment provides real time feedback and, like so, begins re-executing the program before the error is corrected leading to reduced \gls{ui} responsiveness.
 
 There are several ways we can extend the user interface to make this more user friendly.
@@ -57,10 +58,10 @@ They have a simpler mapping to the user's intent.
 The following list describes some of them:
 
 \begin{description}
-  \item[Virtual joystick] Clicking on a constant will display a virtual joystick close to the constant. When clicked and dragged, it changes the constant repeatedly over time, being faster or slower depending on how much the handle is moved from its center.
-  \item[Click and drag] Clicking and dragging on a constant will change it according to how much the pointer moved from the starting position.
-  \item[Sliders] Clicking on a constant will display a slider. Dragging the slider's handle will change the constant depending on how much the handle is moved from the center of the slider. The slider can have different scales, linear or non-linear, to map the center-handle distance to the amount of change for the constant.
-  \item[Keyboard shortcuts] Pressing key combinations while having a constant selected, or the text editor's caret on it, will increment or decrement it.
+  \item[Virtual joystick] Clicking on a literal will display a virtual joystick close to it. When clicked and dragged, it changes the value repeatedly over time, being faster or slower depending on how much the handle is moved from its center.
+  \item[Click and drag] Clicking and dragging on a literal will change it according to how much the pointer moved from the starting position.
+  \item[Sliders] Clicking on a literal will display a slider. Dragging the slider's handle will change the literal depending on how much the handle is moved from the center of the slider. The slider can have different scales, linear or non-linear, to map the center-handle distance to the amount of change for the literal.
+  \item[Keyboard shortcuts] Pressing key combinations while having a literal selected, or the text editor's caret on it, will increment or decrement it.
 \end{description}
 
 We chose to implement the ``Click and drag'' method in our solution.
@@ -69,21 +70,21 @@ We chose to implement the ``Click and drag'' method in our solution.
 To implement this behavior, we need to focus on the program editor.
 This is where the relevant information is.
 
-The behavior starts when the user presses a mouse button while the pointer is over a numerical constant.
-If it is indeed a numerical constant, we setup an event listener that will update the constant every time the pointer moves until the mouse button is released.
+The behavior starts when the user presses a mouse button while the pointer is over a numerical literal.
+If it is indeed a numerical literal, we setup an event listener that will update the literal every time the pointer moves until the mouse button is released.
 
 To check that the pointer is over a numerical node, we use the pointer position and the \gls{ast} of the current program with location data.
-Since the program will change during the behavior, we keep the path taken through the \gls{ast} to the numerical constant.
-We also keep the starting pointer position as a reference for calculating the new constant value when the mouse is moved.
+Since the program will change during the behavior, we keep the path taken through the \gls{ast} to the numerical literal.
+We also keep the starting pointer position as a reference for calculating the new literal value when the mouse is moved.
 
-We update the constant by changing the portion of the source text that it refers to to the text representing the new value.
-The new value has the same number of fractional digits as the original constant.
-To get the new value, we first extract the number of fractional digits and an integer containing the constant's digits and sign (ignoring the decimal point) from the constant's source text.
+We update the literal by changing the portion of the source text that it refers to to the text representing the new value.
+The new value has the same number of fractional digits as the original literal.
+To get the new value, we first extract the number of fractional digits and an integer containing the literal's digits and sign (ignoring the decimal point) from the literal's source text.
 Afterwards, we add the horizontal distance between the starting point and the current pointer position to the number.
 Finally, we convert it back to text and re-add the decimal point.
 
 \subsubsection{Use case}
-To hint that a constant is adjustable, the pointer changes to ``$\Leftrightarrow$''.
+To hint that a literal is adjustable, the pointer changes to ``$\Leftrightarrow$''.
 
 \subsection{Getting results / What is a program?}
 Before a program can be run, the programming language has to be defined.
