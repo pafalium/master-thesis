@@ -11,8 +11,8 @@ The goal of our work was to bring \gls{gd} to the web browser so it can be used 
 To do this, we implemented a set of primitives that produce several 3D concepts to be used as building blocks for modeling.
 
 Now comes the time to test the environment's ability to be used for \gls{gd}, more specifically to produce diverse 3D models.
-In order to evaluate this aspect, we developed several programs that reproduce examples that were previously done in other \gls{gd} environments.
-The results of these programs can be seen in Figure \ref{fig:all:examples}.
+In order to evaluate this, we developed several programs that reproduce examples that were previously done in other \gls{gd} environments.
+The results of these programs are shown in Figure \ref{fig:all:examples}.
 
 \begin{figure}
   \centering
@@ -21,10 +21,9 @@ The results of these programs can be seen in Figure \ref{fig:all:examples}.
   \label{fig:all:examples}
 \end{figure}
 
-As can be seen, the environment can produce interesting results with varying degrees of complexity.
-
-The range of results possible with the environment is still limited by the primitives currently implemented.
-None of these examples make use of \gls{csg} operations like union, intersection and difference as these were not implemented by the environment.
+As shown, the environment can produce interesting results with varying degrees of complexity.
+The range of results is still limited by the primitives currently implemented.
+None of these examples make use of \gls{csg} operations like union, intersection and difference as these were not implemented.
 Nevertheless, it is clearly possible to add support for these without major effort since there are already JavaScript implementations of \gls{csg}, like the case of OpenJSCAD's.
 
 
@@ -42,8 +41,9 @@ Running performance is a prevalent part of programming in \gls{gd} since it dict
 After a program as become too complex, hence too slow, it can no longer be tested as a whole.
 So, it needs to be split into smaller parts that are still fast enough to be explored interactively.
 
-To see how our web-based \gls{gd} environment compares to the existing environments, we have implemented a program in each environment that produces the same model and measured the time each took to complete.
-The times of each can be see in Figure \ref{fig:run:timing:chart}.
+To see how the performance of our web-based \gls{gd} environment compares to the existing environments, we compared the time each takes to generate identical models.
+First, we implemented different versions of the program in each of the environments and, then, measured the time each took to complete.
+The times can be seen in Figure \ref{fig:run:timing:chart}.
 
 We compared our environment with Rosetta (using the OpenGL backend), OpenJSCAD and Rhino+Grasshopper.
 
@@ -64,9 +64,9 @@ The source code of each program used in the test is available at ABC (either her
 
 \subsection{Export Performance}
 When time comes to pass on the building design to other people that use different tools -- like mechanical, electric, plumbing services or even other architects -- the architect must provide it in a format compatible with their tools.
-This has been covered in our solution by letting the program that generates the building model run in the \gls{cad} tool.
+This has been covered in our solution by letting the program that generates the building model run in a \gls{cad} tool.
 
-Now we need to know how the execution time differs between the normal running process and the remote \gls{cad} running process.
+The next step was to know how the execution time differs between the normal running process and the remote \gls{cad} running process.
 To measure the difference, we ran a program of some complexity using both processes and measured the time each took to complete.
 The graph in Figure \ref{fig:local:remote:timing} shows their timings and how they compare.
 

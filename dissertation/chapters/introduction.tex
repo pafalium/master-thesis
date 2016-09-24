@@ -19,41 +19,41 @@ As opposed to drawing by hand, using computers to create these drawings allowed 
 %Still, most of the finished work, like project documentation and scale models, was left out of the computer.
 
 As computers became powerful enough to display 3D graphics and 3D modeling started to appear, it became possible to model buildings in the computer and get interactive 3D previews of them.
-Having a 3D model of the building and being able to explore it -- to see it from many angles -- is much more intuitive and makes it easier to think about the building.
-What was only possible to do with a physical scale model or a perspective drawing was now faster and more affordable.
+Having a 3D model of the building and being able to explore it -- to see it from many angles -- is much more intuitive and easier for the architect to think about the building.
+What was only possible to do with a physical model or a perspective drawing was now faster and more affordable.
 
 
 \section{Scripting}
 \gls{cad} software allows the creation of visualizations and documentation for architectural projects.
 %There is, however, still a problem: the architect can still find tasks that are mostly a repetitive process which is, again, prone to errors.
-However, when modeling a building there are a lot of time consuming repetitive tasks that are not trivial to accomplish using the tools that a 3D modeling software provides, such as placing windows/doors in all walls.
+However, modeling a building requires several time consuming and repetitive tasks that are not trivial to accomplish using the functionalities that a 3D modeling software provides, such as placing windows/doors in all walls.
 
 This is one of the reasons that led to the emergence of programming languages for 3D modeling software.%
 \footnote{These are often called scripting languages.}
-With a programming language, the architect is able to describe what he wants the computer to do in a way that it understands -- a program -- and, therefore, let it do the modeling tasks for him.
-On top of that, after writing the program, the process of generating the model is much faster than the manual equivalent.
+By using programming, the architect is able to describe in a program what he wants to model and, let the computer do the modeling task for him.
+On top of that, after writing the program, the process of generating and applying changes to the model is much faster than the manual equivalent.
 The architect gets to do more in less time.
 
 Some examples of programming languages being used in \gls{cad} software are AutoLisp and Visual Basic for AutoCAD, GDL in ArchiCAD, Python and Grasshopper in Rhinoceros 3D and Dynamo in Revit.
 
 
 \section{Generative Design}
-Having a faster process for building 3D models means that the architect can explore more variations of a design when it is already modeled, since it is no longer too expensive to remodel.
+Having a faster and more flexible process for building 3D models allows the architect to explore more variations of a design, since it is no longer too expensive and time consuming to remodel.
 He can use the program to explore a broader design space by changing both parameters and algorithm.
-These changes allow him to create many different variations of the generated buildings.
+These changes allow him to create many different variations of the generated models.
 
 Designing by using programming to generate parts of the design is what is called \gls{gd}.
 
-Furthermore, as stated in \cite{leitao2014pushing}, using \gls{gd} as a new stage of the design process makes for simpler handling of changes coming from uncertain design intents and emergent requirements(as problem understanding improves or as needs change).
+Furthermore, as stated in \cite{leitao2014pushing}, using \gls{gd} as a new stage of the design process promotes a simpler handling of changes coming from uncertain design intents and emergent requirements (as problem understanding improves or as needs change).
 
-%(variations from Rita Fernandes?)
+%{\bf (variations from Rita Fernandes?)}
 
 
 \section{Generative Design IDEs}
-To create \gls{gd} programs, the architect needs to use a programming language, its runtime environment (like the \gls{cad} where programs will take effect) and an \gls{ide}.
+To create \gls{gd} programs, the architect needs to use a programming language, its runtime environment (like the \gls{cad} where the models are generated) and an \gls{ide}.
 
-The programming language defines what is a program, how it works and gives the architect a conceptual model to think about programs.
-For example, it may define a program as a sequence of operations that need to be performed and it may also define primitive operations like creating a box or moving an object.
+The programming language defines what is a program, that is, what concepts can be part of it and how they can be combined to perform tasks that can be understood and executed by a computer.
+For example, it may define a program as a sequence of operations that need to be performed and define which primitive operations exist, like creating a box or moving an object.
 
 The \gls{ide} provides tools -- editors, compilers, debuggers, among others -- that let the architect create programs.
 The most basic \gls{ide} may have a text editor, where the architect types a textual representation of the program, and an interpreter, that will interpret the program and perform the required operations.
@@ -64,7 +64,7 @@ The first is often supported by a visual editing environment while the second is
 Moreover, most \glspl{ide} are aimed at the creation of programs in one specific programming language, like it is the case of Grasshopper 3D\footnote{http://www.grasshopper3d.com/} and Dynamo\footnote{http://dynamobim.com/}.
 There are, however, some \glspl{ide} that can be used to create programs in several programming languages, such as Rosetta\cite{de2012modern} that supports languages like Racket, Python and AutoLisp.
 
-When it comes to helping architects to create programs, visual programming \glspl{ide} have tools for showing all the nodes/functions that can be added and for showing the relationship between code and results.
+In order to help architects with the creation of \gls{gd} programs, visual programming \glspl{ide} provide tools that are capable of showing all the nodes/functionalities that can be added and the relationship between the code being developed and the results.
 They are, therefore, more popular among novices since they do not require as much training to be used when compared to textual programming \glspl{ide}.
 However, as stated in \cite{leitao2012programming}, visual programming languages do not scale well when used in big \gls{gd} projects when compared to textual programming languages.
 Textual programming languages have mechanisms that make complexity more manageable so programs can stay smaller.
@@ -76,11 +76,11 @@ Some work on this has been done in Rosetta, as shown in \cite{de2012modern}, whe
 It is common practice in any creative field to carry a notebook or a sketchbook for the sudden moments of inspiration that appear through the day.
 This way people make sure that they do not forget any of their ideas.
 
-An aspect common to software tools that architects use is that they need to be installed.
-Like so, they are not readily available on every computer.
-If architects want to be able to work with their software tools, they have to carry the computer around.
-This is why laptop computers are used.
-They can run the same applications as desktop computers and they are also portable.
+A common features of the tools typically used by architects is that they need to be installed.
+Like so, these are not readily available on every computer.
+As a result, if architects want to be able to work with their software tools, they have to always bring the computer with them.
+This is one of the main reasons why laptop computers are used.
+They combine the ability to run the same applications as desktop computers with transportability.
 People can carry them around and work anywhere.
 
 Carrying a computer solves the problem of having the tools of trade at hand, but what happens when the architect needs to work with a team?
@@ -88,12 +88,12 @@ There are cloud-based services that he can use to do it.
 He can use services like Skype\footnote{https://www.skype.com} when speaking with other people or presenting his work, and he can use file sharing services to build \gls{cad} models collaboratively.
 %(architecture file-sharing examples?)
 Still, this is a rudimentary method.
-It does not allow more than one person to edit a file simultaneously, it does not have a system to track versions of files and it also only works on desktop-like computers.%
+It does not allow more than one person to edit a file simultaneously, it does not have a system to track versions of files and it only works on desktop-like computers.%
 \footnote{That run Microsoft Windows, Mac OS or a *nix distribution.}
 
 This is not a problem specific to architects, in fact, anyone working remotely faces this problem and there are solutions that address it in some fields that also use \gls{cad}.
 There are already working cloud-based services that aim to enable this kind of collaboration in these fields.
-One example of such services is OnShape\footnote{https://www.onshape.org}, that addresses the problem for product design / engineering.
+One example of such services is OnShape\footnote{https://www.onshape.org}, that addresses the problem for Product Design/Engineering.
 To do this, OnShape has real-time collaboration, projects are stored in the cloud, has git-like version control and works both on any computer with a web browser and on mobile devices.
 %(more cloud apps + standalone web pages + web apps)
 

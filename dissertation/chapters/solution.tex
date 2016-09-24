@@ -26,11 +26,10 @@ In the rest of this chapter, we describe the details of each of these components
 
 
 \section{Web page}
-The web page is main contact point between the architect and our solution.
+The web page is the main contact point between the architect and our solution.
 Using it, he will be able to work on \gls{gd} programs, share them with colleagues and ultimately deliver results.
-
 It acts as the \gls{ide} and like so implements the features that were discussed earlier.
-For that purpose, it comprises a text editor for editing programs and a 3D view for displaying results of that program, as seen in Figure~\ref{fig:page:view}.
+For that purpose, it comprises a text editor for editing programs and a 3D view for displaying the results, as seen in Figure~\ref{fig:page:view}.
 
 \begin{figure}
   \centering
@@ -52,8 +51,7 @@ One can increase their value by an order of magnitude if, by mistake, he inserts
 When increasing them in steps, different hand movements are required when there is carry over, yet again increasing both the likelihood of mistyping and the time it takes to make the changes.
 These errors get amplified when the programming environment provides real time feedback and, like so, begins re-executing the program before the error is corrected leading to reduced \gls{ui} responsiveness.
 
-There are several ways we can extend the user interface to make this more user friendly.
-None of them rely on manually replacing digits.
+There are several ways we can extend the user interface to make this more user friendly, and none of them rely on manually replacing digits.
 They have a simpler mapping to the user's intent.
 The following list describes some of them:
 
@@ -67,8 +65,7 @@ The following list describes some of them:
 We chose to implement the ``Click and drag'' method in our solution.
 
 \subsubsection{Implementation}
-To implement this behavior, we need to focus on the program editor.
-This is where the relevant information is.
+To implement this behavior, we need to focus on the program editor, as this is where the relevant information is.
 
 The behavior starts when the user presses a mouse button while the pointer is over a numerical literal.
 If it is indeed a numerical literal, we setup an event listener that will update the literal every time the pointer moves until the mouse button is released.
@@ -83,8 +80,8 @@ To get the new value, we first extract the number of fractional digits and an in
 Afterwards, we add the horizontal distance between the starting point and the current pointer position to the number.
 Finally, we convert it back to text and re-add the decimal point.
 
-\subsubsection{Use case}
-To hint that a literal is adjustable, the pointer changes to ``$\Leftrightarrow$''.
+%\subsubsection{Use case}
+%To hint that a literal is adjustable, the pointer changes to ``$\Leftrightarrow$''.
 
 \subsection{Getting results / What is a program?}
 Before a program can be run, the programming language has to be defined.
@@ -119,7 +116,7 @@ Figure~\ref{fig:trace:example} shows an example for both of this cases.
 \end{figure}
 
 Currently our solution only tracks the results produced by calls to functions.
-This was a compromise (though, not tested) since keeping track of traceability is an additional task that needs to be performed while running the program.
+This was a compromise {\bf (though, not tested)} since keeping track of traceability is an additional task that needs to be performed while running the program.
 
 There are other ways for showing the relation between the program and its results.
 We will describe some of them next.
@@ -172,10 +169,18 @@ It expects to receive HTTP requests for adding shapes to the currently selected 
 It also receive requests for specifying what \glspl{cad} should the shapes be added.
 
 Instead of implementing the connection and communication with the \glspl{cad} installed in the computer ourselves, we used Rosetta as an intermediate.
-This way, we only had to concern ourselves with correcting the semantic differences between Rosetta's \gls{api} and the ``remote CAD service'''s \gls{api}.
+This way, we only had to concern ourselves with correcting the semantic differences between Rosetta's \gls{api} and the remote CAD service's \gls{api}.
 
 Because of the cross domain restrictions imposed by web browsers for \gls{ajax} requests, we chose to temporarily host the web page that contains the \gls{ide} in this server.
 It is a quick and dirty way to test the communication between the page and the ``remote CAD service''.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=1.0\textwidth]{./images/remote_cad_example}
+  \caption[An example of use of the remote CAD service.]{An example of use of the remote CAD service. The results of the program have been passed to the CAD.}
+  \label{fig:remote:cad:example}
+\end{figure}
+
 
 %Design principles / Guiding ideas
 %- Ideas based on observations from related work?

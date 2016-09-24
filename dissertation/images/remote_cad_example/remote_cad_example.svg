@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="545.96295"
+   height="242.44301"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="remote_cad_example.svg"
+   inkscape:export-filename="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\remote_cad_example\remote_cad_example.png"
+   inkscape:export-xdpi="299.94678"
+   inkscape:export-ydpi="299.94678">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.6562"
+     inkscape:cx="219.41982"
+     inkscape:cy="87.738668"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:snap-global="true"
+     inkscape:object-nodes="true"
+     inkscape:snap-object-midpoints="false"
+     inkscape:snap-midpoints="true"
+     inkscape:object-paths="true"
+     inkscape:snap-smooth-nodes="true"
+     inkscape:window-width="2560"
+     inkscape:window-height="1378"
+     inkscape:window-x="-4"
+     inkscape:window-y="-4"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     units="cm" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-97.452141,-154.31159)">
+    <image
+       sodipodi:absref="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\remote_cad_example\autocad.png"
+       xlink:href="autocad.png"
+       width="257.8288"
+       height="241.97676"
+       id="image2993"
+       x="97.452141"
+       y="154.77794" />
+    <image
+       sodipodi:absref="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\remote_cad_example\page.png"
+       xlink:href="page.png"
+       width="288.13416"
+       height="242.44298"
+       id="image3004"
+       x="355.28091"
+       y="154.31169" />
+    <image
+       sodipodi:absref="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\remote_cad_example\sketchup.png"
+       xlink:href="sketchup.png"
+       width="257.12943"
+       height="242.20987"
+       id="image3015"
+       x="97.452141"
+       y="275.76636" />
+    <rect
+       style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:4;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect3024"
+       width="289.46762"
+       height="127.59155"
+       x="65.813309"
+       y="396.7547" />
+  </g>
+</svg>
