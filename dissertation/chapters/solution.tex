@@ -5,31 +5,27 @@
 
 
 \section{Overview}
-Our solution is comprised of two main components, a web page, responsible for the \gls{ui} of the programming environment, and a remote CAD service, responsible for offering an \gls{api} for running programs in \glspl{cad} installed in user's computers to the rest of the system.
+We set out to create an IDE for GD programming that is available from a web page.
 
-Please note that it is only ever needed to install the server when the architect is finally ready to get the program's results on a \gls{cad}.
-Like so, the server can just be installed in the computer that actually has the \gls{cad} installed while the rest only accesses the web page.
-Once installed and started, the web page can start requesting operations to be executed in the available \glspl{cad}.
+There are four related tasks that the environment needs to support in order to be useful for the architect:
+it needs to run programs; it needs to display their results; it needs to make it easy to see the traceability relationship between program and results; and it needs to export results to \glspl{cad}.
 
-programming environment, cad export, program persistence(not implemented)
+To accomplish this, there are two separate components: (1) the web page, where the \gls{ui} for creating programs is; and (2) the remote CAD service, that offers an \gls{api} for running programs in \glspl{cad}.
+The first three tasks can be handled by the web page alone since there is no need to interact with the \glspl{cad} running in the user's computer.
+The forth task requires both the web page and the remote CAD service.
 
-Figure~\ref{fig:arch:overview} shows the relationships between these components. {\it arrows indicating interactions between them?}
+In the rest of the chapter we describe these two components and how each of the tasks is implemented.
 
-\begin{figure}
-  \centering
-  \includegraphics[width=12cm]{./images/architecture_overview}
-  \caption{An overview of the solution's architecture.}
-  \label{fig:arch:overview}
-\end{figure}
-
-In the rest of this chapter, we describe the details of each of these components, how they interact with each other and the problems faced when implementing them.
+We start by looking at the web page.
 
 
 \section{Web page}
-The web page is the main contact point between the architect and our solution.
-Using it, he will be able to work on \gls{gd} programs, share them with colleagues and ultimately deliver results.
-It acts as the \gls{ide} and like so implements the features that were discussed earlier.
-For that purpose, it comprises a text editor for editing programs and a 3D view for displaying the results, as seen in Figure~\ref{fig:page:view}.
+To handle the tasks of running programs, supporting traceability and displaying results, the web page has the layout shown in Figure \ref{fig:page:view}.
+Taking up most of the screen space are a text editor and a 3D view that allow the architect to edit a program and view results alongside it.
+On top of these two are controls for running programs and for traceability data collection.
+To the left is the interface for running programs in \glspl{cad} and a list of the currently available programs.
+
+%{\bf(describe high-level view of the inner workings of the page)}
 
 \begin{figure}
   \centering
@@ -38,33 +34,34 @@ For that purpose, it comprises a text editor for editing programs and a 3D view 
   \label{fig:page:view}
 \end{figure}
 
-A text editor and a 3D view by themselves do nothing more than display text and 3D objects.
-To make the \gls{ide} actually helpful several other parts had to be implemented.
 
-\subsection{Adjusting Literals}
+\subsection{Handling Traceability}
+Traceability can be achieved by giving feedback to the programmer when he interacts with the program or the results.
+The environment implements some mechanisms that allow it to give this feedback.
+
+One of the ways the environment does this is by letting the programmer adjust literals more intuitively.
+Afterwards, the environment reruns the program to show the effect of the adjustments.
+It can also rerun the program whenever there is a change like when a new new statement is added to a function or when an expression is changed or a new function is written.
+
+The other way the environment provides traceability to the user is by showing it directly.
+When the user points at a function call in the source code, the environment immediately highlights the shapes that it produced in the 3D view.
+
+
+\subsubsection{Adjusting Literals}
+\paragraph{Rationale for automating literal adjustment}
 When a value, such as a number, is typed directly into a program's source code, it is called a literal value, or simply by literal.
 When experimenting with a \gls{gd} program, architects find themselves repeatedly adjusting literals that were hardcoded into the program.
-This is usually done by retyping parts of the literal's text to higher or lower digits.
+This is usually done by retyping parts of the literal's text with higher or lower digits.
 
 Editing literals this way often leads to errors since it is easy to mistype some characters.
 One can increase their value by an order of magnitude if, by mistake, he inserts one character without removing another.
 When increasing them in steps, different hand movements are required when there is carry over, yet again increasing both the likelihood of mistyping and the time it takes to make the changes.
-These errors get amplified when the programming environment provides real time feedback and, like so, begins re-executing the program before the error is corrected leading to reduced \gls{ui} responsiveness.
+These errors get amplified when the programming environment provides real time feedback and, like so, begins rerunning the program before the error is corrected, leading to reduced \gls{ui} responsiveness.
 
-There are several ways we can extend the user interface to make this more user friendly, and none of them rely on manually replacing digits.
-They have a simpler mapping to the user's intent.
-The following list describes some of them:
+To make this interaction more user friendly and less prone to errors, we decided to simplify the task.
+Instead of retyping the literal, the user can just ``Click and drag'' on the literal to change its value.
 
-\begin{description}
-  \item[Virtual joystick] Clicking on a literal will display a virtual joystick close to it. When clicked and dragged, it changes the value repeatedly over time, being faster or slower depending on how much the handle is moved from its center.
-  \item[Click and drag] Clicking and dragging on a literal will change it according to how much the pointer moved from the starting position.
-  \item[Sliders] Clicking on a literal will display a slider. Dragging the slider's handle will change the literal depending on how much the handle is moved from the center of the slider. The slider can have different scales, linear or non-linear, to map the center-handle distance to the amount of change for the literal.
-  \item[Keyboard shortcuts] Pressing key combinations while having a literal selected, or the text editor's caret on it, will increment or decrement it.
-\end{description}
-
-We chose to implement the ``Click and drag'' method in our solution.
-
-\subsubsection{Implementation}
+\paragraph{Implementation}
 To implement this behavior, we need to focus on the program editor, as this is where the relevant information is.
 
 The behavior starts when the user presses a mouse button while the pointer is over a numerical literal.
@@ -80,27 +77,23 @@ To get the new value, we first extract the number of fractional digits and an in
 Afterwards, we add the horizontal distance between the starting point and the current pointer position to the number.
 Finally, we convert it back to text and re-add the decimal point.
 
-%\subsubsection{Use case}
-%To hint that a literal is adjustable, the pointer changes to ``$\Leftrightarrow$''.
+\paragraph{Alternative ways of adjusting literals}
+There are several ways we can extend the user interface to make this more user friendly, and none of them rely on manually replacing digits.
+They have a simpler mapping to the user's intent.
+The following list describes some of them:
 
-\subsection{Getting results / What is a program?}
-Before a program can be run, the programming language has to be defined.
-In our solution, we decided that it would be best to use JavaScript as it was thought for designers and also because of its current performance.
+\begin{itemize}
+  \item {\bf Virtual joystick} Clicking on a literal will display a virtual joystick close to it. When clicked and dragged, it changes the value repeatedly over time, being faster or slower depending on how much the handle is moved from its center.
+  \item {\bf Click and drag} Clicking and dragging on a literal will change it according to how much the pointer moved from the starting position.
+  \item {\bf Sliders} Clicking on a literal will display a slider. Dragging the slider's handle will change the literal depending on how much the handle is moved from the center of the slider. The slider can have different scales, linear or non-linear, to map the center-handle distance to the amount of change for the literal.
+  \item {\bf Keyboard shortcuts} Pressing key combinations while having a literal selected, or the text editor's caret on it, will increment or decrement it.
+\end{itemize}
 
-However, there is a question: how do we get results from a program so we can display them?
-Our solution uses the values of the top-level expression statements of the program as its results.
 
-There are other alternatives that could have been used.
-For example:
-\begin{description}
-  \item[Special entry point] Like in OpenJSCAD, we could require that every program must define a function with a special name (e.g. ``main''). Upon being called, that function produces the result of the program.
-  \item[Display function] Another way to get results from a program is giving access to an output function to the program. During its execution, the program then calls this function, maybe several times, to produce its output.
-  \item[Imperative primitives] A third way to get results is by adding a side-effect to the 3D object producing functions/primitives. Apart from creating the object, they also add it to the program's results. This is a special case of the previous item where all primitives are display functions.
-\end{description}
-
-\subsection{Handling traceability}
-As was said previously, letting the architect see the connection between the program and its results lets him go a long way towards understanding the program.
-If the programming environment takes care of tracking the relation between the program and the results, the architect only needs to ask for the relation instead of having to track it by himself, freeing his mind to think about the problem.
+\subsubsection{Program-Results Relationship}
+Reducing the time between making a change and seeing its effect is one way to provide traceability.
+However, traceability can also be actively shown by the environment.
+If the programming environment takes care of tracking the relation between the program and results, the architect only needs to ask for the relation instead of having to track it by himself, freeing his mind to think about the problem.
 
 There needs to be a way to give the architect quick access to the relation being tracked by the environment.
 To do this, our solution highlights certain parts of the program and  its results when the pointer is on either one.
@@ -116,68 +109,172 @@ Figure~\ref{fig:trace:example} shows an example for both of this cases.
 \end{figure}
 
 Currently our solution only tracks the results produced by calls to functions.
-This was a compromise {\bf (though, not tested)} since keeping track of traceability is an additional task that needs to be performed while running the program.
+This was a compromise to balance performance since keeping track of traceability is an additional task that needs to be performed while running the program.
 
+\paragraph{Alternative ways of showing traceability}
 There are other ways for showing the relation between the program and its results.
 We will describe some of them next.
-\begin{description}
-  \item[Timetable] As described in {\it Learnable Programming}\cite{victor2012learnable}, making things visible makes them more real to the programmer. Timetables proposed as a way to visualize the control flow of programs. They act as a map of the program's execution. By seeing the control flow, it is easier to see what the program does and it is easier to point at interesting locations. Timetables provide better navigation inside a program's execution.
-  \item[Display data] Also described in {\it Learnable Programming}\cite{victor2012learnable}, displaying data would increase the amount of traceability the system provides. Apart from being able to see the control flow and the 3D results, seeing the other values (e.g. numbers, booleans) used throughout the program would give the programmer a more complete view of the execution.
-\end{description}
-
-\subsection{Providing primitive/predefined bindings}
-\label{sub:provide:predefs}
-Any program needs to anchor itself in some functionality already provided by its host environment.
-It is this functionality that enables the program to do interesting work.
-
-But how does our solution do this for programs written by architects?
-We do this by defining all predefined functionality in a JavaScript module and then providing it to the function that represents the program as a parameter.
-Afterwards, we also add some code to the beginning of the program that will declare each primitive and extract the corresponding functionality from that parameter.
-
-\subsection{Running programs}
-One of the fundamental parts of the programming environment is that it runs programs.
-
-After having a program at hand, we have to instrument it so that we can collect its results in addition to traceability data, like the return values of function calls.
-
-To run a program, the \gls{ide} starts by getting the \gls{ast} of the program so it can analyze it to produce an instrumented version that will record all the information it needs.
-
-We have to keep a mapping between the nodes that comprise the \gls{ast} and the information that is going to be recorded.
-
-The instrumentation does two things:
 \begin{itemize}
-  \item All call expressions are replaced with an \gls{iife} that performs the call, records its result and returns it to keep the semantics of the program.
-  \item All expressions in the program's top-level are replaced with a call to a function that records their result.
+  \item {\bf Timetable} As described in {\bf Learnable Programming}\cite{victor2012learnable}, making things visible makes them more real to the programmer. Timetables proposed as a way to visualize the control flow of programs. They act as a map of the program's execution. By seeing the control flow, it is easier to see what the program does and it is easier to point at interesting locations. Timetables provide better navigation inside a program's execution.
+  \item {\bf Display data} Also described in {\bf Learnable Programming}\cite{victor2012learnable}, displaying data would increase the amount of traceability the system provides. Apart from being able to see the control flow and the 3D results, seeing the other values (e.g. numbers, booleans) used throughout the program would give the programmer a more complete view of the execution.
 \end{itemize}
 
-After this step a new function is created whose body is the instrumented program.
-The predefined functions are provided as parameters to this new function.
 
-Finally, the newly created function is called and, afterwards, the recorded information is made available to the rest of the \gls{ide}.
+\subsection{Running Programs}
+One of the fundamental parts of the programming environment is that it runs programs.
+To run programs, the environment needs to know what programming language is being used and what primitive operations the program has access to.
+After knowing these, the environment must have a process to run the program and collect results so they can be displayed later.
 
 
-\section{Remote CAD Service}
-As previously said, there is also a ``remote CAD service'' as part of the solution.
-This service is responsible for enabling programs to take effect on the \glspl{cad} that architects have installed on their computers.
-This way, they can share their work with team member that use software that expect files from traditional \glspl{cad}.
+\subsubsection{Program Structure}
+Before a program can be run, the programming language has to be defined.
+In our solution, we decided that it would be best to use JavaScript as it was thought for designers and also because of its current performance in modern web browsers.
+%{\bf(a source would help)}
 
-To make this possible, the service requires that the architect run a software in the computer he wants his program to take effect.
-This software connects to the ``remote CAD service'' and waits for requests to make shapes in the \glspl{cad} installed in the computer.
+However, there is a question: how do we get results from a program so we can display them?
+Our solution uses the values of the top-level expression statements of the program as its results.
+
+Listing \ref{lst:program:example} gives an example of what a program looks like in our environment.
+
+\begin{listing}
+\begin{minted}[linenos,frame=lines]{js}
+function abacus(height, side) {
+  return box.byXYZ(side, side, height);
+}
+
+function echinus(height, side, neckSide) {
+  return coneFrustum.byRadiusesHeight(neckSide, side, height);
+}
+
+function shaft(height, side, neckSide) {
+  return coneFrustum.byRadiusesHeight(side, neckSide, height);
+}
+
+function column(height, side, neckSide) {
+  return [
+    translate(abacus(height*0.05, side)).byZ(height*0.95),
+    translate(echinus(height*0.05, side, neckSide)).byZ(height*0.90),
+    shaft(height*0.90, side, neckSide)
+  ];
+}
+
+column(6.00, 0.8, 0.7);
+\end{minted}
+\caption{An example of a program written our environment.}
+\label{lst:program:example}
+\end{listing}
+
+
+\paragraph{Alternatives for getting results}
+There are other alternatives that could have been used.
+For example:
+\begin{itemize}
+  \item {\bf Special entry point} Like in OpenJSCAD, we could require that every program must define a function with a special name (e.g. ``main''). The environment then calls this function and uses its results as the results of the program.
+  \item {\bf Display function} Another way to get results from a program is giving access to an output function to the program. During its execution, the program then calls this function, maybe several times, to produce its output.
+  \item {\bf Imperative primitives} A third way to get results is by adding a side-effect to the 3D object producing functions/primitives. Apart from creating the object, they also add it to the program's results. This is similar to having a display function as all primitives become specialized display functions.
+\end{itemize}
+
+
+%\subsubsection{Providing primitives / Runtime library / Primitive Library}
+%\label{sub:provide:predefs}
+%{\bf(what is the purpose of this subsubsection? I already talk about providing primitives in the next subsubsection...)}\\
+%Any program needs to based upon functionality already provided by its host environment.
+%It is this functionality that enables the program to produce results.
+%
+%But how does our solution do this for programs written by architects?
+%We do this by defining all predefined functionality in a JavaScript module and then providing it to the function that represents the program as a parameter.
+%Afterwards, we also add some code to the beginning of the program that will declare each primitive and extract the corresponding functionality from that parameter.
+
+
+\subsubsection{Running process}
+When the environment runs a program, it needs to do two things: (1) collect the results of the program; and (2) collect traceability data.
+It does these two by instrumenting the program with additional calls to special functions that record the desired information.
+
+To be able to perform the instrumentation, the environment parses the program using Esprima, a JavaScript parser\footnote{https://github.com/jquery/esprima}, to get its \gls{ast}.\footnote{The \gls{ast} conforms to a community standard. It can be found at https://github.com/estree/estree .}
+
+Afterwards, the \gls{ast} is transformed by (1) adding a recording call to all top-level expression statements, and (2) adding a recording call to all function call expressions.
+Figure \ref{fig:instrument:example} exemplifies the transformation.
+
+To let the recording functions know top-level expression or function call is producing a result, we also provide them identifiers for those expressions.
+
+After this step the environment creates a new function with the instrumented program as its body.
+The primitives and recording functions are provided as parameters to this new function.
+
+Finally, the newly created function is called and, afterwards, the recorded information is made available to the rest of the system.
+
+\begin{figure}
+  \centering
+\begin{minipage}[t]{0.45\linewidth}
+  \center{Before}
+  \begin{minted}[frame=lines]{js}
+let s = sphere.byRadius(5);
+s;
+
+
+
+
+  \end{minted}
+\end{minipage}
+\hspace{0.05\linewidth}
+\begin{minipage}[t]{0.45\linewidth}
+  \center{After}
+  \begin{minted}[frame=lines]{js}
+let s = recordCallResult(
+   sphere.byRadius(5),
+   /*function call ID*/);
+recordTopLevelResult(
+   s,
+   /*top-level expression ID*/);
+  \end{minted}
+\end{minipage}
+  %\includegraphics[width=1.0\textwidth]{./images/program_instrumentation}
+  \caption{A program before and after the transformation.}
+  \label{fig:instrument:example}
+\end{figure}
+
+
+%\subsection{Displaying Results}
+%{\bf(interesting stuff about displaying results)}\\
+
+
+\section{Remote CAD Service / Exporting to CAD?}
+The last task that the environment needs to support --- exporing to \glspl{cad} --- requires it to communicate with \glspl{cad} that are installed in the architect's computer.
+Unfortunately, web pages are not allowed to communicate with other applications running in the computer.
+
+To overcome this restriction we have implemented an application that the architect must install and run in his computer.
+This application serves as a bridge between \gls{cad} installed in the computer and the environment running in the web page.
+After being started, the application detects what \glspl{cad} are installed in the computer and connects to the {\bf``environment directory''?} so it can be discovered by the web page.
+
+When the architect needs to export a program to his \gls{cad}, the web page connects to the application in his computer through the {\bf``environment directory''?} and starts to send requests to it for adding shapes to the \gls{cad}.
+
+Figure \ref{fig:remote:cad:example} shows an example of use of this functionality.
+The architect has created a program using web page environment.
+After selecting AutoCAD and SketchUp as export destinations, he starts the export process and some time later the model resulting from running the program is available in both \glspl{cad}.
+
+Please note that it is only ever needed to install the application when the architect is finally ready to get the program's results on a \gls{cad}.
+Furthermore, the application only needs to be installed in the computer that actually has the \gls{cad} installed while the rest only accesses the web page.
+
 
 \subsection{Implementation}
-We implemented the software as a small Racket server.
+We implemented the application as a small Racket server.
 It expects to receive HTTP requests for adding shapes to the currently selected \glspl{cad}.
-It also receive requests for specifying what \glspl{cad} should the shapes be added.
+It also expects requests for specifying what \glspl{cad} should the shapes be added to and for deleting all shapes they may have.
+%{\bf(appendix has remote CAD service API?)}
 
-Instead of implementing the connection and communication with the \glspl{cad} installed in the computer ourselves, we used Rosetta as an intermediate.
-This way, we only had to concern ourselves with correcting the semantic differences between Rosetta's \gls{api} and the remote CAD service's \gls{api}.
+Apart from the connection application and web page, there also needs to be a connection between the application and \glspl{cad}.
+Different \glspl{cad} have different \glspl{api} so the application needs to know how to interact with each one.
 
-Because of the cross domain restrictions imposed by web browsers for \gls{ajax} requests, we chose to temporarily host the web page that contains the \gls{ide} in this server.
-It is a quick and dirty way to test the communication between the page and the ``remote CAD service''.
+Instead of implementing the connection with \glspl{cad} installed in the computer, the application uses Rosetta as an intermediate.
+This way, it only has to correct the semantic differences between Rosetta's \gls{api} and the remote CAD service's \gls{api}.
+
+We chose to temporarily host the web page containing the \gls{ide} in the application.
+Using this setup it is easier to test the communication between the page and the application.
+This setup also avoids dealing with cross-origin restrictions imposed by web browsers for \gls{ajax} requests.
 
 \begin{figure}
   \centering
   \includegraphics[width=1.0\textwidth]{./images/remote_cad_example}
-  \caption[An example of use of the remote CAD service.]{An example of use of the remote CAD service. The results of the program have been passed to the CAD.}
+  \caption[An example of use of the remote CAD service.]{An example of use of the remote CAD service. The results of the program have been passed to both AutoCAD and SketchUp.}
   \label{fig:remote:cad:example}
 \end{figure}
 
