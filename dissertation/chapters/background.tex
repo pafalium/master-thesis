@@ -14,7 +14,7 @@ For each of the application that will be described, we have to state clearly its
 	\item Is it a programming environment? If so, what is its target audience?
 \end{itemize}
 
-{\bf(Criteria for what makes a related work.)}
+%{\bf(Criteria for what makes a related work.)}
 
 %##############################################################################
 %##############################################################################
@@ -68,7 +68,6 @@ More specifically, it uses nw.js\footnote{http://nwjs.io} as its runtime allowin
 LightTable is written in ClojureScript\cite{10.1109/MIC.2011.148}, a subset of Clojure that compiles to Javascript.
 
 Although not related to \gls{gd}, LightTable as proposed some interesting features and concepts for \glspl{ide}.
-
 %Why is LightTable relevant?
 One of these is the use of the drafting table as metaphor.%
 \footnote{http://www.chris-granger.com/2012/04/12/light-table-a-new-ide-concept/}
@@ -117,7 +116,7 @@ If a function is called more than once then it will be more useful to show the d
 \end{figure}
 
 Finally, the way LightTable is structured is also relevant as it makes possible to modify its behavior at runtime.
-The main design pattern used in LightTable is the \gls{bot} pattern.
+The main design pattern used in LightTable is the \gls{bot} pattern.%{\bf(, similar to the Component Entity System (CES) pattern used in videogames)}
 As described by one of its developers,\footnote{http://www.chris-granger.com/2013/01/24/the-ide-as-data/ at Nov/2015.} LightTable can be described as a set of \emph{Objects}, each having a set of \emph{Behaviors} and being tagged with a set of \emph{Tags}.
 The \emph{Behaviors} describe how an \emph{Object} reacts when events are raised on it. \emph{Tags} are groups of \emph{Behaviors}.
 When an event is raised on an \emph{Object} both its \emph{Behaviors} and those from its \emph{Tags} are notified.
@@ -535,18 +534,18 @@ Table \ref{table:features:comp} presents a non-exhaustive list of features provi
 
 Some environments have been implemented as desktop applications while others have been implemented as web pages, as shown in Table \ref{table:cloud:comp}.
 Implementing an application as a web page has the advantage of becoming accessible to any computer connected to the Internet without requiring users to install it.
-However, {\bf performance penalty? privacy concerns?}
+%However, {\bf performance penalty? privacy concerns?}
 
 In Table \ref{table:cloud:comp} we can also see that all web page applications except Mobius support remote storage directly.
 By supporting remote storage directly, it becomes easier to use the application regardless of the computer being used.
 Without this, users have to use either a physical storage device or a separate remote storage system.
 
-Collaboration is only directly supported in Impromptu, Clara.io and OnShape which allow for real-time collaboration which enables their users to work on the same artifact simultaneously --- i.e. Impromptu's runtime, a Clara.io scene or a OnShape model.
+Collaboration is only directly supported in Impromptu, Clara.io and OnShape which allow for real-time collaboration enabling their users to work on the same artifact simultaneously --- i.e. Impromptu's runtime, a Clara.io scene or a OnShape model.
 For the rest of the environments, collaboration is the user's responsibility.
 
 
 \section{Problems to address}
-{\bf(review text)}\\
+%{\bf(review text)}\\
 In this chapter, we have presented environments that support activities related to programming, modeling and \gls{gd}.
 
 The environments supporting \gls{gd} directly --- namely Rosetta, DesignScript, OpenJSCAD, Mobius and, to some extent, Processing and Antimony --- follow either visual editing, which is easier to learn and use, or textual editing, which, although less intuitive, supports languages with mechanisms to keep the complexity down in bigger problems.
