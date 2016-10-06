@@ -55,7 +55,8 @@ The times can be seen in Figure~\ref{fig:run:timing:chart}.
 Times are the average of three runs.
 
 As can be seen, the relationship between running times varies from program to program, although the web page is consistently faster than Rosetta connected to AutoCAD.
-More specifically, Rosetta's running times for both the Mobius and Ines Wall programs are around 40x the running times on the web page and around 500x for the Sheung-Wan Hotel program.
+More specifically, Rosetta's running times for both the Mobius and Ines Wall programs are around 40x the running times on the web page.
+% and around 500x for the Sheung-Wan Hotel program.
 
 With this in mind, we can say that our solution can provide better feedback than Rosetta.
 
@@ -96,6 +97,28 @@ All these steps take time, specially the ones where data is in transit between a
 \end{figure}
 
 
+\subsection{Export vs Rosetta}
+Due to the fact that our solution uses Rosetta as an intermediate to export to \glspl{cad}, it is interesting to assess how export times compare to running directly in Rosetta.
+
+To measure the difference, we selected two programs and measured the time taken to export and to run in Rosetta.
+The two systems use different programming languages, therefore, each program had two versions, one for our solution and one for Rosetta.
+Figure~\ref{fig:export:vs:rosetta} shows the running times for each system, grouped by program.
+
+Looking at the graph, we see that export times are $\approx$4.1x the times of running directly in Rosetta for Mobius Truss and that export times are $\approx$4.3x the times of running directly in Rosetta for Ines Wall.
+
+As with the export time evaluation, the increase in running times comes from the overhead in communication between the web page and the remote CAD service.
+Moreover, although during export programs are first run in the web page and Rosetta's role is reduced to make them happen in the CAD, results are still sent one by one to the remote CAD service meaning that a lot of time is spent transmitting data.
+
+Unlike with the export time evaluation, this comparison lets us discern the time of transmitting data from the time taken by Rosetta to apply operations.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=12cm]{./images/export_vs_rosetta_chart}
+  \caption{Exporting from the web page compared with running directly in Rosetta.}
+  \label{fig:export:vs:rosetta}
+\end{figure}
+
+
 \subsection{Traceability Performance}
 Collecting traceability data requires that additional work must be done when a program is being executed.
 The additional work will inevitably increase the time it takes to finish executing the program.
@@ -118,26 +141,7 @@ However, the impact is worth taking when the user wants to get a better understa
 \end{figure}
 
 
-\subsection{Export vs Rosetta}
-Due to the fact that our solution uses Rosetta as an intermediate to export to \glspl{cad}, it is interesting to assess how export times compare to running directly in Rosetta.
 
-To measure the difference, we selected two programs and measured the time taken to export and to run in Rosetta.
-The two systems use different programming languages, therefore, each program had two versions, one for our solution and one for Rosetta.
-Figure~\ref{fig:export:vs:rosetta} shows the running times for each system, grouped by program.
-
-Looking at the graph, we see that export times are $\approx$4.1x the times of running directly in Rosetta for Mobius Truss and that export times are $\approx$4.3x the times of running directly in Rosetta for Ines Wall.
-
-As with the export time evaluation, the increase in running times comes from the overhead in communication between the web page and the remote CAD service.
-Moreover, although during export programs are first run in the web page and Rosetta's role is reduced to make them happen in the CAD, results are still sent one by one to the remote CAD service meaning that a lot of time is spent transmitting data.
-
-Unlike with the export time evaluation, this comparison lets us discern the time of transmitting data from the time taken by Rosetta to apply operations.
-
-\begin{figure}
-  \centering
-  \includegraphics[width=12cm]{./images/export_vs_rosetta_chart}
-  \caption{Exporting from the web page compared with running directly in Rosetta.}
-  \label{fig:export:vs:rosetta}
-\end{figure}
 
 %Describe possible programming techniques using the IDE / our solution.
 %- Examples of use (made by me)
