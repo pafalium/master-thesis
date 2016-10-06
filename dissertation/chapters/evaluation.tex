@@ -12,7 +12,7 @@ To do this, we implemented a set of primitives that produce several 3D concepts 
 
 Now comes the time to test the environment's ability to be used for \gls{gd}, more specifically to produce diverse 3D models.
 In order to evaluate this, we developed several programs that reproduce examples that were previously done in other \gls{gd} environments.
-The results of these programs are shown in Figure \ref{fig:all:examples}.
+The results of these programs are shown in Figure~\ref{fig:all:examples}.
 
 \begin{figure}
   \centering
@@ -41,7 +41,7 @@ All tests were performed on a computer with an Intel Core i7-3630QM CPU, 16GB DD
 
 The web page and the remote CAD service were hosted at the same computer.
 
-The source code of each program used in the tests can be found in Appendix \ref{appendix:test:source:code}. %{\bf(either here, appendix or github)}
+The source code of each program used in the tests can be found in Appendix~\ref{appendix:test:source:code}. %{\bf(either here, appendix or github)}
 
 
 \subsection{Running Performance}
@@ -51,7 +51,7 @@ So, it needs to be split into smaller parts that are still fast enough to be exp
 
 To see how the performance of our web-based \gls{gd} environment compares to the existing environments, we compared the time each takes to generate identical models.
 First, we implemented a version of the program using each environment's programming language and, then, measured the time each took to complete.
-The times can be seen in Figure \ref{fig:run:timing:chart}.
+The times can be seen in Figure~\ref{fig:run:timing:chart}.
 Times are the average of three runs.
 
 As can be seen, the relationship between running times varies from program to program, although the web page is consistently faster than Rosetta connected to AutoCAD.
@@ -75,10 +75,10 @@ This has been covered in our solution by letting the program that generates the 
 
 The next step was to evaluate how the execution time differs between the normal running process and the remote \gls{cad} running process.
 To measure the difference, we ran two example programs using both processes and measured the time each took to complete.
-The chart in Figure \ref{fig:local:remote:timing} shows the running times of two programs for each process.
+The chart in Figure~\ref{fig:local:remote:timing} shows the running times of two programs for each process.
 Times are the average of three runs.
 
-As seen in the chart, comparing export times to normal running times, export times are around 200x the normal running times for Mobius Truss, and 150x the normal running times for Ines Wall.
+As seen in the chart, comparing export times to normal running times, export times are around 200x the normal running times for Mobius Truss, and 170x the normal running times for Ines Wall.
 
 Given the difference of two orders of magnitude, it is highly preferable to get feedback using the web page instead of using the export process.
 The export process should be reserved to actually export to \gls{cad}.
@@ -102,7 +102,7 @@ The additional work will inevitably increase the time it takes to finish executi
 This can make the environment less capable of giving feedback, therefore having a negative impact in its the usage experience.
 
 To measure the impact that traceability data collection has on program running time, we have selected a small set of programs, ran them with data collection and without it, and measured the time each took to execute.
-The chart in Figure \ref{fig:traceability:timing} shows a comparison of their times, grouped by program.
+The chart in Figure~\ref{fig:traceability:timing} shows a comparison of their times, grouped by program.
 Times are the average of six runs.
 
 We can observe that running with traceability impacts the running time, increasing it by 20--30\%.
@@ -123,7 +123,7 @@ Due to the fact that our solution uses Rosetta as an intermediate to export to \
 
 To measure the difference, we selected two programs and measured the time taken to export and to run in Rosetta.
 The two systems use different programming languages, therefore, each program had two versions, one for our solution and one for Rosetta.
-Figure \ref{fig:export:vs:rosetta} shows the running times for each system, grouped by program.
+Figure~\ref{fig:export:vs:rosetta} shows the running times for each system, grouped by program.
 
 Looking at the graph, we see that export times are $\approx$4.1x the times of running directly in Rosetta for Mobius Truss and that export times are $\approx$4.3x the times of running directly in Rosetta for Ines Wall.
 
