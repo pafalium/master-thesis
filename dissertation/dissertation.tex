@@ -55,6 +55,7 @@
 \thispagestyle{empty}
 \input{variables.tex}
 
+\addcontentsline{toc}{chapter}{Titlepage}
 \include{cover}
 \NewPage
 
@@ -62,16 +63,23 @@
 
 \if\includeAcknowledgments 1
 \input{acknowledgments/acknowledgments.tex}
+\addcontentsline{toc}{chapter}{Acknowledgements}
 \NewPage
 \fi
 
+\phantomsection
 \include{abstract/abstract-en}
+\addcontentsline{toc}{chapter}{Abstract}
 \NewPage
+
+\phantomsection
 \include{abstract/abstract-pt}
+\addcontentsline{toc}{chapter}{Resumo}
 \NewPage
 
 % Table of contents
 \tableofcontents
+\addcontentsline{toc}{chapter}{\contentsname}
 % A new page is necessary only if table of contents has an odd number of pages
 \NewPage
 
@@ -90,13 +98,17 @@
 % List of acronyms
 \printglossary[type=\acronymtype]
 
+\NewPage
+
 \pagenumbering{arabic}% Arabic page numbers (and reset to 1)
 
 \input{chapters/main.tex}
 
+\clearpage
+\phantomsection
 \bibliographystyle{ieeetr}
-\addcontentsline{toc}{chapter}{Bibliography}
 \bibliography{bibliography/dissertation}
+\addcontentsline{toc}{chapter}{Bibliography}
 
 % Appendix
 \appendix
