@@ -23,17 +23,38 @@ It is composed of two components:
 (1) a web page, used by the architect to create programs;
 and (2) a desktop application that, when run, allows the web page to export results of programs to \gls{cad} applications.
 To help programming, the web page runs programs when they change, allows literals to be adjusted by clicking and dragging, and highlights the relationship between program and results in both directions.
+To allow for adjusting literals and highlighting the relationship between program and results, the environment analyzes the program's structure to know where literals are and to instrument it for collection of both results and traceability data.
 
-After implementing the solution, we evaluated it in several ways.
+This allows architects to create programs incrementally.
+Instead of having to go through the edit-compile-run cycle to see the results of the changes they made, they make the changes and see the effects immediately.
+Afterwards, if they have any doubt on how a certain part of the results come to be, they can use the traceability mechanisms, pointing at that part, to see the part of the program that created them.
+
+After implementing the solution, we evaluated it in several different ways.
 In Chapter~\ref{chapter:evaluation}, we presented some examples of programs that were created using the solution.
 Additionally, we tested the solution's performance by measuring program running times and export times on the web page and comparing them to running times on Rosetta.
 Taking those measurements into consideration, we concluded that running programs in the web page is faster than running in Rosetta.
-However, exporting from the web page is slower than running in Rosetta.
+In fact, we were surprised by the difference of at least an order of magnitude, which shows that \gls{cad} applications are indeed too slow to be used in \gls{gd} exploration.
+Regarding export times, we saw that exporting from the web page is slower than running in Rosetta.
+This was to be expected since, although we run the program in the web page, we have to wait for network communications.
+Nonetheless, the ability to export to \gls{cad} applications remains a great advantage for architects when they need to deliver their designs.
 We also measured the effect that keeping track of traceability data has on program running times.
-As a result, we concluded that collecting traceability data makes programs around 30\% slower.
+As a result, we concluded that collecting traceability data makes programs around 20-30\% slower, which is a great achievement considering that every function call is being recorded.
+Moreover, when we take into account the benefit that showing the program-result relationship brings to the architect and the \gls{gd} program creation process, the slowdown it brings is well worth it.
 
-In conclusion, with our solution architects are able to explore \gls{gd} using any of their computers, without being required to install the programming environment.
-Programs are not tied to a particular environment or \gls{cad} application, since it is possible to export their results to \gls{cad} when needed.
+In conclusion, with our solution, architects are able to explore \gls{gd} using any of their computers, without being required to install the programming environment and avoiding the installation and use of heavy-weight \gls{cad} applications, which become slow for \gls{gd} exploration.
+By avoiding the complexity of \gls{cad} applications, our solution has been able to have much better performance than other \gls{gd} \glspl{ide} and, therefore, have faster feedback.
+In addition, since it is possible to export program results to \gls{cad} when needed, our solution does not tie programs to a particular \gls{cad} application.
+By doing all of this, our solution fulfills the goals that were proposed, namely, being \textit{accessible} from any computer, providing an \textit{interactive} programming environment for exploring \gls{gd}, and \textit{integrating} easily with \gls{cad} applications that architects use and, therefore, into their workflow.
+
+Due to the achieved performance, we are convinced that web browsers can be seen as serious candidates for the next generations of design tools.
+We are also convinced that architects need tools dedicated to \gls{gd} that avoid the complexity of current \gls{cad} applications to enhance the interactivity of the environment.
+
+Hopefully, it is an example of the direction \gls{gd} \glspl{ide} should take in the future.
+
+The source code for the \gls{gd} \gls{ide} web environment, along with the source code of the example program, is available on GitHub at \url{https://github.com/pafalium/gd-web-env}.
+It requires a modern web browser, like Google Chrome or Mozilla Firefox, to run the web page, requires Racket version 6.4 or above to run the remote CAD service application, and requires node.js version 5.10.1 or above to be compiled.
+It has been tested both on Google Chrome and Mozilla Firefox, running on Windows 7.
+Nonetheless, since these web browsers and Racket are also available for Mac OS, Linux and other versions of Windows, the web environment and the remote CAD service application is also available for these Operating Systems.
 
 
 \section{Future Work}
@@ -48,7 +69,7 @@ The following paragraphs describe some of these and speculate on possible soluti
 The environment does syntax highlighting, runs programs on change, has traceability, and helps adjusting literals, but it does not include help to find the available primitives and how to use them.
 This can be improved by providing extensive documentation on the primitive library.
 However, this is not extensible to functions and variables that the user introduces in his program.
-We can improve this by analyzing the current state of programs and using the resulting information to provide code completion.
+Alternatively, we can improve this by analyzing the current state of programs and using the resulting information to provide code completion.
 
 \paragraph{Illustrated Programming}
 There could also be other ways of implementing traceability that would also enable users to document their programs.
@@ -59,11 +80,11 @@ We can also follow Rosetta's lead and start supporting more than one programming
 This would also attract people from the communities around the added languages.
 
 \paragraph{Error reporting and debugging}
-The environment currently does not support any form of error reporting or debugging, meaning that there is no feedback when the program fails during its execution.
-Right now, the user must use the web browser's developer tools to be able to debug his program.
-This exposes him to the implementation details of the environment which can be confusing and distract him from his program.
-One possibility to solve this problem is to try to show incomplete results up to the point where the program reached the error.
-On top of this, the environment can show and highlight the parameters of the call that produced the error in the 3D view and also highlight the corresponding call expression in the source code.
+Debugging is currently dependent on the web browser developer tools, which might be too complex for architects that do not have professional programming experience.
+This suggests that a dedicated debugging tool, targeted to the intended users, would significantly improve the debugging experience.
+
+One possible functionality for this debugging tool would be to try to show incomplete results up to the point where the program reached an error.
+On top of this, the tool could show and highlight the parameters of the call that produced the error in the 3D view and also highlight the corresponding call expression in the source code.
 
 \paragraph{Timetable traceability}
 We can also improve the environment's traceability.
@@ -75,7 +96,7 @@ It is nonetheless a good challenge.
 There are also some improvements that can be made to the way the user visualizes the results.
 Currently, the 3D view only lets the user navigate the 3D space as if moving around a turntable.
 It would be good to give him other ways of navigating, like flying or walking through the model.
-Furthermore, it would also be important to let him define predefined views so he could quickly switch between them to get a better grasp of results.
+Furthermore, it would also be important to let him define different viewpoints that he could quickly switch between to get a better grasp of the results.
 
 \paragraph{Improve code navigation}
 Depending on the size of a project, it may be easier or harder to find a particular function or variable definition.
@@ -85,7 +106,9 @@ Other alternative would be the goto definition functionality present in most sof
 
 \paragraph{Adjustment of literals}
 An extension to helping adjust literals could also be done.
-We could implement something like the handles in the 3D view supported by Antimony.
+Instead of just allowing the architect to change the parameters of his programs by adjusting literals in source code, we could provide something like the 3D view handles from Antimony.
+Like so, when the environment detected the definition of positions or vectors from literals, it would display distinct handles in the 3D view that the architect could interact with and, consequently, change the respective definitions in the source code.
+This would make the adjustment of parameters representing 3D values more intuitive, helping the architect understand more clearly the purpose of those parameters.
 
 \paragraph{Primitives}
 Further work must also be done to implement common primitives in architecture, such as, \gls{csg} operators, control-point based surfaces and lines, or sweep and loft operators, to name a few.
@@ -94,17 +117,18 @@ Further work must also be done to implement common primitives in architecture, s
 Finally, one task currently lacking to be used is user testing.
 By doing it, we can start steering the environment development according to the needs and difficulties of the users and, therefore, make sure the environment remains both useful and easy to use.
 
+
 \subsection{Cloud-related Improvements}
 Apart from opportunities in the programming environment, there are also some opportunities for improvement in areas that require communication between components.
 As before, the following paragraphs describe some of these and speculate on possible solutions.
 
 \paragraph{Security}
-Other area that needs to be improved is security.
+One area that needs to be improved is security.
 Some of the pertinent points where it must be in place are the communications with remote CAD services, that must be private, authenticated and authorized, and the program running process, that must be sandboxed to stop them from changing the environment's web page for malicious purposes.
 
 \paragraph{Persistence and collaboration}
 We presented persistence and collaboration as advantages of cloud applications, however, we did not implement them in our solution.
-It would be interesting to implement these features in the future.
+It would be interesting to investigate these features in the future.
 Moreover, it would also be of interest to integrate the solution with cloud version control services like GitHub or cloud storage services like Google Drive (as happened to IPython notebooks with the coLaboratory\footnote{http://colaboratory.jupyter.org/welcome/ (last accessed on 10/10/2016)} and Jupyter Drive\footnote{https://github.com/jupyter/jupyter-drive (last accessed on 10/10/2016)} projects).
 
 \paragraph{Export performance}
@@ -113,7 +137,7 @@ Instead of using HTTP requests to communicate with the application running in th
 Alternatively, the environment could send the entirety of the results on a single HTTP request, therefore, decreasing the time spent waiting for data traversing the network.
 Another option would be to run the user's program in the application instead of the web page.
 
-
+{\bf(what about WebRTC?)}
 
 %Intro/related+solution+evaluation descr+solutions details
 
