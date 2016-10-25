@@ -1,0 +1,652 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1036.0399"
+   height="428.78094"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="adjust_sequence.svg">
+  <defs
+     id="defs4">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath2998">
+      <rect
+         style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:6;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="rect3000"
+         width="963.57141"
+         height="305"
+         x="78.571426"
+         y="626.64789" />
+    </clipPath>
+    <mask
+       maskUnits="userSpaceOnUse"
+       id="mask3094">
+      <g
+         id="g3096">
+        <rect
+           y="424.27585"
+           x="233.93425"
+           height="1040"
+           width="1310"
+           id="rect3098"
+           style="color:#000000;fill:none;stroke:none;stroke-width:6;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+        <rect
+           y="803.86469"
+           x="380.82751"
+           height="328.29919"
+           width="984.89868"
+           id="rect3100"
+           style="color:#000000;fill:#ffffff;stroke:none;stroke-width:6;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      </g>
+    </mask>
+    <mask
+       maskUnits="userSpaceOnUse"
+       id="mask3102">
+      <g
+         transform="translate(-78.791916,-82.832489)"
+         id="g3104">
+        <rect
+           y="424.27585"
+           x="233.93425"
+           height="1040"
+           width="1310"
+           id="rect3106"
+           style="color:#000000;fill:none;stroke:none;stroke-width:6;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+        <rect
+           y="803.86469"
+           x="380.82751"
+           height="328.29919"
+           width="984.89868"
+           id="rect3108"
+           style="color:#000000;fill:#ffffff;stroke:none;stroke-width:6;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      </g>
+    </mask>
+    <mask
+       maskUnits="userSpaceOnUse"
+       id="mask3110">
+      <g
+         transform="translate(-218.69804,-166.67517)"
+         id="g3112">
+        <rect
+           y="424.27585"
+           x="233.93425"
+           height="1040"
+           width="1310"
+           id="rect3114"
+           style="color:#000000;fill:none;stroke:none;stroke-width:6;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+        <rect
+           y="803.86469"
+           x="380.82751"
+           height="328.29919"
+           width="984.89868"
+           id="rect3116"
+           style="color:#000000;fill:#ffffff;stroke:none;stroke-width:6;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      </g>
+    </mask>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3211">
+      <rect
+         style="color:#000000;fill:#000000;stroke:none;stroke-width:6;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="rect3213"
+         width="60.609154"
+         height="58.588848"
+         x="459.61942"
+         y="198.78328" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3233">
+      <rect
+         style="color:#000000;fill:#000000;stroke:none;stroke-width:6;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="rect3235"
+         width="60.609154"
+         height="58.588848"
+         x="285.87317"
+         y="135.14368" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3233-1">
+      <rect
+         style="color:#000000;fill:#000000;stroke:none;stroke-width:6;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="rect3235-7"
+         width="60.609154"
+         height="58.588848"
+         x="285.87317"
+         y="135.14368" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3233-15">
+      <rect
+         style="color:#000000;fill:#000000;stroke:none;stroke-width:6;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="rect3235-2"
+         width="60.609154"
+         height="58.588848"
+         x="285.87317"
+         y="135.14368" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3211-6">
+      <rect
+         style="color:#000000;fill:#000000;stroke:none;stroke-width:6;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="rect3213-1"
+         width="60.609154"
+         height="58.588848"
+         x="459.61942"
+         y="198.78328" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3211-2">
+      <rect
+         style="color:#000000;fill:#000000;stroke:none;stroke-width:6;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="rect3213-3"
+         width="60.609154"
+         height="58.588848"
+         x="459.61942"
+         y="198.78328" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3211-4">
+      <rect
+         style="color:#000000;fill:#000000;stroke:none;stroke-width:6;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="rect3213-31"
+         width="60.609154"
+         height="58.588848"
+         x="459.61942"
+         y="198.78328" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3211-3">
+      <rect
+         style="color:#000000;fill:#000000;stroke:none;stroke-width:6;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="rect3213-4"
+         width="60.609154"
+         height="58.588848"
+         x="459.61942"
+         y="198.78328" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3211-1">
+      <rect
+         style="color:#000000;fill:#000000;stroke:none;stroke-width:6;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="rect3213-38"
+         width="60.609154"
+         height="58.588848"
+         x="459.61942"
+         y="198.78328" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3211-42">
+      <rect
+         style="color:#000000;fill:#000000;stroke:none;stroke-width:6;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="rect3213-7"
+         width="60.609154"
+         height="58.588848"
+         x="459.61942"
+         y="198.78328" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3211-9">
+      <rect
+         style="color:#000000;fill:#000000;stroke:none;stroke-width:6;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="rect3213-319"
+         width="60.609154"
+         height="58.588848"
+         x="459.61942"
+         y="198.78328" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3211-65">
+      <rect
+         style="color:#000000;fill:#000000;stroke:none;stroke-width:6;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="rect3213-0"
+         width="60.609154"
+         height="58.588848"
+         x="459.61942"
+         y="198.78328" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3244">
+      <rect
+         style="color:#000000;fill:#ffffff;stroke:none;stroke-width:6.46767521;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="rect3246"
+         width="345.34662"
+         height="345.34662"
+         x="-535.53046"
+         y="142.54602" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3248">
+      <rect
+         style="color:#000000;fill:#ffffff;stroke:none;stroke-width:6.46767521;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="rect3250"
+         width="345.34662"
+         height="345.34662"
+         x="-535.53046"
+         y="142.54602" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3252">
+      <rect
+         style="color:#000000;fill:#ffffff;stroke:none;stroke-width:6.46767521;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="rect3254"
+         width="345.34662"
+         height="345.34662"
+         x="784.70575"
+         y="597.78455" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3211-42-6">
+      <rect
+         style="color:#000000;fill:#000000;stroke:none;stroke-width:6;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="rect3213-7-8"
+         width="60.609154"
+         height="58.588848"
+         x="459.61942"
+         y="198.78328" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3211-42-7">
+      <rect
+         style="color:#000000;fill:#000000;stroke:none;stroke-width:6;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="rect3213-7-6"
+         width="60.609154"
+         height="58.588848"
+         x="459.61942"
+         y="198.78328" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3211-42-8">
+      <rect
+         style="color:#000000;fill:#000000;stroke:none;stroke-width:6;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="rect3213-7-9"
+         width="60.609154"
+         height="58.588848"
+         x="459.61942"
+         y="198.78328" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3064">
+      <rect
+         y="1951.0649"
+         x="-1204.2601"
+         height="83.434319"
+         width="345.34662"
+         id="rect3066"
+         style="color:#000000;fill:#ffffff;stroke:none;stroke-width:5.50070238;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3068">
+      <rect
+         y="1951.0649"
+         x="-1204.2601"
+         height="83.434319"
+         width="345.34662"
+         id="rect3070"
+         style="color:#000000;fill:#ffffff;stroke:none;stroke-width:5.50070238;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3072">
+      <rect
+         y="1951.0649"
+         x="-1204.2601"
+         height="83.434319"
+         width="345.34662"
+         id="rect3074"
+         style="color:#000000;fill:#ffffff;stroke:none;stroke-width:5.50070238;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3211-17">
+      <rect
+         style="color:#000000;fill:#000000;stroke:none;stroke-width:6;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="rect3213-40"
+         width="60.609154"
+         height="58.588848"
+         x="459.61942"
+         y="198.78328" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3211-17-2">
+      <rect
+         style="color:#000000;fill:#000000;stroke:none;stroke-width:6;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="rect3213-40-4"
+         width="60.609154"
+         height="58.588848"
+         x="459.61942"
+         y="198.78328" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3211-17-5">
+      <rect
+         style="color:#000000;fill:#000000;stroke:none;stroke-width:6;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="rect3213-40-1"
+         width="60.609154"
+         height="58.588848"
+         x="459.61942"
+         y="198.78328" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.99055024"
+     inkscape:cx="793.47499"
+     inkscape:cy="266.55129"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:snap-bbox="false"
+     inkscape:bbox-nodes="true"
+     inkscape:object-nodes="true"
+     inkscape:window-width="2560"
+     inkscape:window-height="1378"
+     inkscape:window-x="-4"
+     inkscape:window-y="-4"
+     inkscape:window-maximized="1"
+     inkscape:snap-global="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     units="cm" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(1190.8771,-434.82645)">
+    <image
+       sodipodi:absref="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\literal_adjustment\start.PNG"
+       xlink:href="start.PNG"
+       y="257.60068"
+       x="15.236215"
+       id="image3010"
+       height="1040"
+       width="1310"
+       mask="url(#mask3110)"
+       transform="translate(-85.357896,-382.84741)" />
+    <image
+       sodipodi:absref="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\literal_adjustment\middle.PNG"
+       xlink:href="middle.PNG"
+       y="341.44336"
+       x="155.14233"
+       id="image3021"
+       height="1040"
+       width="1310"
+       mask="url(#mask3102)"
+       transform="translate(-225.26402,-138.3909)" />
+    <image
+       mask="none"
+       width="1813.0559"
+       height="1439.3727"
+       id="image3010-9-2"
+       x="-1669.801"
+       y="1370.8424"
+       xlink:href="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\literal_adjustment\start.PNG"
+       clip-path="url(#clipPath3072)"
+       inkscape:export-filename="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\literal_adjustment\start_crop.png"
+       inkscape:export-xdpi="156.36"
+       inkscape:export-ydpi="156.36"
+       transform="translate(13.383057,-1516.2389)" />
+    <image
+       mask="none"
+       width="1813.0559"
+       height="1439.3727"
+       id="image3021-4-7"
+       x="-1669.801"
+       y="1370.8424"
+       xlink:href="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\literal_adjustment\middle.PNG"
+       clip-path="url(#clipPath3068)"
+       inkscape:export-filename="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\literal_adjustment\middle_crop.png"
+       inkscape:export-xdpi="156.36"
+       inkscape:export-ydpi="156.36"
+       transform="translate(358.72967,-1516.2389)" />
+    <image
+       sodipodi:absref="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\literal_adjustment\end.PNG"
+       xlink:href="end.PNG"
+       y="424.27585"
+       x="233.93425"
+       id="image3032"
+       height="1040"
+       width="1310"
+       style="stroke:#ffffff"
+       mask="url(#mask3094)"
+       transform="translate(-304.05594,107.07581)" />
+    <image
+       sodipodi:absref="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\literal_adjustment\download__windows_7_cursor_by_pandaflyingovertokyo-d6qoxld.png"
+       xlink:href="download__windows_7_cursor_by_pandaflyingovertokyo-d6qoxld.png"
+       y="495.5296"
+       x="1125.3837"
+       id="image3126"
+       height="550"
+       width="1109" />
+    <image
+       sodipodi:absref="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\literal_adjustment\download__windows_7_cursor_by_pandaflyingovertokyo-d6qoxld.png"
+       xlink:href="download__windows_7_cursor_by_pandaflyingovertokyo-d6qoxld.png"
+       y="155.10822"
+       x="38.459545"
+       id="image3126-8"
+       height="550"
+       width="1109"
+       clip-path="url(#clipPath3211)"
+       transform="matrix(0.64,0,0,0.64,185.24248,51.130417)" />
+    <rect
+       style="color:#000000;fill:#000000;stroke:none;stroke-width:6;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect3162-4"
+       width="60.609154"
+       height="58.588848"
+       x="184.85791"
+       y="29.077654" />
+    <image
+       sodipodi:absref="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\literal_adjustment\download__windows_7_cursor_by_pandaflyingovertokyo-d6qoxld.png"
+       xlink:href="download__windows_7_cursor_by_pandaflyingovertokyo-d6qoxld.png"
+       y="87.666504"
+       x="245.46707"
+       id="image3126-5"
+       height="550"
+       width="1109"
+       clip-path="url(#clipPath3233)"
+       transform="matrix(0.64,0,0,0.64,360.8063,102.12919)" />
+    <image
+       sodipodi:absref="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\literal_adjustment\download__windows_7_cursor_by_pandaflyingovertokyo-d6qoxld.png"
+       xlink:href="download__windows_7_cursor_by_pandaflyingovertokyo-d6qoxld.png"
+       y="155.10822"
+       x="38.459545"
+       id="image3126-8-7"
+       height="550"
+       width="1109"
+       clip-path="url(#clipPath3211-42)"
+       transform="matrix(0.64,0,0,0.64,136.44865,184.60673)" />
+    <image
+       sodipodi:absref="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\literal_adjustment\download__windows_7_cursor_by_pandaflyingovertokyo-d6qoxld.png"
+       xlink:href="download__windows_7_cursor_by_pandaflyingovertokyo-d6qoxld.png"
+       y="155.10822"
+       x="38.459545"
+       id="image3126-8-8"
+       height="550"
+       width="1109"
+       clip-path="url(#clipPath3211-9)"
+       transform="matrix(0.64,0,0,0.64,196.09151,508.53531)" />
+    <image
+       sodipodi:absref="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\literal_adjustment\download__windows_7_cursor_by_pandaflyingovertokyo-d6qoxld.png"
+       xlink:href="download__windows_7_cursor_by_pandaflyingovertokyo-d6qoxld.png"
+       y="155.10822"
+       x="38.459545"
+       id="image3126-8-2"
+       height="550"
+       width="1109"
+       clip-path="url(#clipPath3211-65)"
+       transform="matrix(0.64,0,0,0.64,300.77641,836.26991)" />
+    <path
+       sodipodi:type="arc"
+       style="color:#000000;fill:none;stroke:#ff0000;stroke-width:6.0999999;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="path4213"
+       sodipodi:cx="454.56863"
+       sodipodi:cy="329.09296"
+       sodipodi:rx="36.36549"
+       sodipodi:ry="36.36549"
+       d="m 490.93412,329.09296 c 0,20.0841 -16.28138,36.36549 -36.36549,36.36549 -20.0841,0 -36.36549,-16.28139 -36.36549,-36.36549 0,-20.08411 16.28139,-36.36549 36.36549,-36.36549 20.08411,0 36.36549,16.28138 36.36549,36.36549 z"
+       transform="translate(-4.0406102,2.0203051)" />
+    <path
+       sodipodi:type="arc"
+       style="color:#000000;fill:none;stroke:#ff0000;stroke-width:6.0999999;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="path4213-8"
+       sodipodi:cx="454.56863"
+       sodipodi:cy="329.09296"
+       sodipodi:rx="36.36549"
+       sodipodi:ry="36.36549"
+       d="m 490.93412,329.09296 c 0,20.0841 -16.28138,36.36549 -36.36549,36.36549 -20.0841,0 -36.36549,-16.28139 -36.36549,-36.36549 0,-20.08411 16.28139,-36.36549 36.36549,-36.36549 20.08411,0 36.36549,16.28138 36.36549,36.36549 z"
+       transform="translate(58.588859,324.25897)" />
+    <path
+       sodipodi:type="arc"
+       style="color:#000000;fill:none;stroke:#ff0000;stroke-width:6.0999999;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="path4213-6"
+       sodipodi:cx="454.56863"
+       sodipodi:cy="329.09296"
+       sodipodi:rx="36.36549"
+       sodipodi:ry="36.36549"
+       d="m 490.93412,329.09296 c 0,20.0841 -16.28138,36.36549 -36.36549,36.36549 -20.0841,0 -36.36549,-16.28139 -36.36549,-36.36549 0,-20.08411 16.28139,-36.36549 36.36549,-36.36549 20.08411,0 36.36549,16.28138 36.36549,36.36549 z"
+       transform="translate(162.63457,655.58901)" />
+    <image
+       transform="translate(-1975.5828,-79.524235)"
+       mask="none"
+       width="1310"
+       height="1040"
+       id="image3010-9"
+       x="15.236215"
+       y="257.60068"
+       xlink:href="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\literal_adjustment\start.PNG"
+       clip-path="url(#clipPath3252)"
+       inkscape:export-filename="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\literal_adjustment\start_crop.png"
+       inkscape:export-xdpi="156.36"
+       inkscape:export-ydpi="156.36" />
+    <image
+       mask="none"
+       width="1310"
+       height="1040"
+       id="image3021-4"
+       x="-1305"
+       y="-197.63782"
+       xlink:href="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\literal_adjustment\middle.PNG"
+       clip-path="url(#clipPath3248)"
+       transform="translate(-310,375.71429)"
+       inkscape:export-filename="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\literal_adjustment\middle_crop.png"
+       inkscape:export-xdpi="156.36"
+       inkscape:export-ydpi="156.36" />
+    <image
+       mask="none"
+       style="stroke:#ffffff"
+       width="1310"
+       height="1040"
+       id="image3032-1"
+       x="-1305"
+       y="-197.63782"
+       xlink:href="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\literal_adjustment\end.PNG"
+       clip-path="url(#clipPath3244)"
+       transform="translate(35.346619,375.71429)"
+       inkscape:export-filename="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\literal_adjustment\end_crop.png"
+       inkscape:export-xdpi="156.36"
+       inkscape:export-ydpi="156.36" />
+    <image
+       mask="none"
+       style="fill:#ffffff;stroke:none"
+       width="1813.0559"
+       height="1439.3727"
+       id="image3032-1-6"
+       x="-1669.801"
+       y="1370.8424"
+       xlink:href="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\literal_adjustment\end.PNG"
+       clip-path="url(#clipPath3064)"
+       inkscape:export-filename="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\literal_adjustment\end_crop.png"
+       inkscape:export-xdpi="156.36"
+       inkscape:export-ydpi="156.36"
+       transform="translate(704.07629,-1516.2389)" />
+    <image
+       y="155.10822"
+       x="38.459545"
+       id="image3126-8-9"
+       height="550"
+       width="1109"
+       clip-path="url(#clipPath3211-17)"
+       transform="matrix(0.98915804,0,0,0.98915804,-1420.0251,259.19058)"
+       xlink:href="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\literal_adjustment\download__windows_7_cursor_by_pandaflyingovertokyo-d6qoxld.png"
+       sodipodi:absref="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\literal_adjustment\download__windows_7_cursor_by_pandaflyingovertokyo-d6qoxld.png"
+       inkscape:export-filename="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\literal_adjustment\start_crop.png"
+       inkscape:export-xdpi="156.36"
+       inkscape:export-ydpi="156.36" />
+    <image
+       y="155.10822"
+       x="38.459545"
+       id="image3126-8-9-5"
+       height="550"
+       width="1109"
+       clip-path="url(#clipPath3211-17-2)"
+       transform="matrix(0.98915804,0,0,0.98915804,-1040.4888,258.41549)"
+       xlink:href="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\literal_adjustment\download__windows_7_cursor_by_pandaflyingovertokyo-d6qoxld.png"
+       sodipodi:absref="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\literal_adjustment\download__windows_7_cursor_by_pandaflyingovertokyo-d6qoxld.png"
+       inkscape:export-filename="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\literal_adjustment\middle_crop.png"
+       inkscape:export-xdpi="156"
+       inkscape:export-ydpi="156" />
+    <image
+       y="155.10822"
+       x="38.459545"
+       id="image3126-8-9-7"
+       height="550"
+       width="1109"
+       clip-path="url(#clipPath3211-17-5)"
+       transform="matrix(0.98915804,0,0,0.98915804,-672.00668,259.42503)"
+       xlink:href="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\literal_adjustment\download__windows_7_cursor_by_pandaflyingovertokyo-d6qoxld.png"
+       sodipodi:absref="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\literal_adjustment\download__windows_7_cursor_by_pandaflyingovertokyo-d6qoxld.png"
+       inkscape:export-filename="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\literal_adjustment\end_crop.png"
+       inkscape:export-xdpi="156"
+       inkscape:export-ydpi="156" />
+  </g>
+</svg>
