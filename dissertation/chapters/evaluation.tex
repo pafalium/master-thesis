@@ -79,6 +79,14 @@ The web page and the remote CAD service were hosted at the same computer.
 
 The source code of each program used in the tests can be found in Appendix~\ref{appendix:test:source:code}. %{\bf(either here, appendix or github)}
 
+\begin{figure}
+  \centering
+  \includegraphics[width=12cm]{./images/run_export_rosetta_times}
+  \caption{Comparison of running times for the web, the export process and Rosetta.}
+  \label{fig:run:export:rosetta:chart}
+\end{figure}
+
+
 
 \subsection{Running Performance}
 Running performance is a prevalent part of programming in \gls{gd} since it dictates the complexity of the programs that can be explored interactively.
@@ -87,7 +95,7 @@ So, it needs to be split into smaller parts that are still fast enough to be exp
 
 To see how the performance of our web-based \gls{gd} environment compares to the existing environments, we compared the time each takes to generate identical models.
 First, we implemented a version of the program using each environment's programming language and, then, measured the time each took to complete.
-The times can be seen in Figure~\ref{fig:run:timing:chart}.
+The times can be seen in Figure~\ref{fig:run:export:rosetta:chart}.
 Times are the average of three runs.
 
 As can be seen, the relationship between running times varies from program to program, although the web page is consistently faster than Rosetta connected to AutoCAD.
@@ -98,13 +106,6 @@ With this in mind, we can say that our solution can provide better feedback than
 
 %We compared our environment with Rosetta (using the OpenGL backend), OpenJSCAD and Rhino+Grasshopper.
 
-\begin{figure}
-  \centering
-  \includegraphics[width=12cm]{./images/run_timing_chart}
-  \caption{Running times for completing the generation of the test model.}
-  \label{fig:run:timing:chart}
-\end{figure}
-
 
 \subsection{Export Performance}
 When time comes to pass on the building design to other people that use different tools --- like mechanical, electric, plumbing services or even other architects --- the architect must provide it in a format compatible with their tools.
@@ -112,7 +113,7 @@ This has been covered in our solution by letting the program that generates the 
 
 The next step was to evaluate how the execution time differs between the normal running process and the remote \gls{cad} running process.
 To measure the difference, we ran two example programs using both processes and measured the time each took to complete.
-The chart in Figure~\ref{fig:local:remote:timing} shows the running times of two programs for each process.
+The chart in Figure~\ref{fig:run:export:rosetta:chart} shows the running times of two programs for each process.
 Times are the average of three runs.
 
 As seen in the chart, comparing export times to normal running times, export times are around 200x the normal running times for Mobius Truss, and 170x the normal running times for Ines Wall.
@@ -125,20 +126,13 @@ The difference comes from the amount of overhead needed for communication betwee
 For each primitive call a program does, data has to be converted, sent over an HTTP connection to the remote CAD service, passed to Rosetta to perform the primitive in the \gls{cad}, and finally the result must be sent back to the web page.
 All these steps take time, specially the ones where data is in transit between applications.
 
-\begin{figure}
-  \centering
-  \includegraphics[width=12cm]{./images/local_remote_timing}
-  \caption{Running in the web page compared to exporting to a \gls{cad}.}
-  \label{fig:local:remote:timing}
-\end{figure}
-
 
 \subsection{Export vs Rosetta}
 Due to the fact that our solution uses Rosetta as an intermediate to export to \glspl{cad}, it is interesting to assess how export times compare to running directly in Rosetta.
 
 To measure the difference, we selected two programs and measured the time taken to export and to run in Rosetta.
 The two systems use different programming languages, therefore, each program had two versions, one for our solution and one for Rosetta.
-Figure~\ref{fig:export:vs:rosetta} shows the running times for each system, grouped by program.
+Figure~\ref{fig:run:export:rosetta:chart} shows the running times for each system, grouped by program.
 
 Looking at the graph, we see that export times are $\approx$4.1x the times of running directly in Rosetta for Mobius Truss and that export times are $\approx$4.3x the times of running directly in Rosetta for Ines Wall.
 
@@ -146,13 +140,6 @@ As with the export time evaluation, the increase in running times comes from the
 Moreover, although during export programs are first run in the web page and Rosetta's role is reduced to make them happen in the CAD, results are still sent one by one to the remote CAD service meaning that a lot of time is spent transmitting data.
 
 Unlike with the export time evaluation, this comparison lets us distinguish the time of transmitting data from the time taken by Rosetta to apply operations.
-
-\begin{figure}
-  \centering
-  \includegraphics[width=12cm]{./images/export_vs_rosetta_chart}
-  \caption{Exporting from the web page compared with running directly in Rosetta.}
-  \label{fig:export:vs:rosetta}
-\end{figure}
 
 
 \subsection{Traceability Performance}
