@@ -19,28 +19,27 @@ As opposed to drawing by hand, using computers to create these drawings allowed 
 %Still, most of the finished work, like project documentation and scale models, was left out of the computer.
 
 As computers became powerful enough to display 3D graphics, and 3D modeling started to appear, it became possible to model buildings in the computer and get interactive 3D previews of them.
-Having a 3D model of the building and being able to explore it -- to see it from many angles -- is much more intuitive and easier for the architect to think about the building.
+Having a 3D model of the building and being able to explore it -- to see it from many angles -- makes it much more intuitive and easier for the architect to think about the building.
 What was only possible to do with a physical model or a perspective drawing, was now faster and more affordable.
 
 \gls{cad} software allows the creation of visualizations and documentation for architectural projects.
 %There is, however, still a problem: the architect can still find tasks that are mostly a repetitive process which is, again, prone to errors.
-However, modeling a building requires several time consuming and repetitive tasks that are not trivial to accomplish using the functionalities that a 3D modeling software provides, such as placing windows/doors in all walls.
+However, modeling a building still requires several time consuming and repetitive tasks that are not trivial to accomplish using the functionalities that a 3D modeling software provides.
 
 
 \section{Scripting}
-The recognition of this problem has led to the emergence of programming languages for 3D modeling software.%
-\footnote{These are often called scripting languages.}
+The recognition of this problem has led to the emergence of programming for 3D modeling software.%
+\footnote{Also called scripting.}
 By using programming, the architect is able to describe in a program what he wants to model and let the computer do the modeling task for him.
 On top of that, after writing the program, the process of generating and applying changes to the model is much faster than the manual equivalent.
-The architect gets to do more in less time.
+As a result, the architect gets to do more in less time.
 
 Some examples of programming languages being used in \gls{cad} software are AutoLisp and Visual Basic for AutoCAD, GDL in ArchiCAD, Python and Grasshopper in Rhinoceros 3D, and Dynamo in Revit.
 
 
 \section{Generative Design}
-Having a faster and more flexible process for building 3D models allows the architect to explore more variations of a design, since it is no longer too expensive and time consuming to remodel.
-He can use the program to explore a broader design space.
-At first, he can change some of the parameters, but if he wants, he can also change the algorithm.
+Having a faster and more flexible process for building 3D models allows the architect to explore more variations of a design, i.e., to explore a broader design space, since it is no longer too expensive and time consuming to remodel.
+At first, he can just change some of the parameters, but if he wants, he can also change the algorithm.
 By making these changes, he can create many different variations of the generated models.
 
 Designing by using programming to generate parts of the design is what is called \gls{gd}.
@@ -60,25 +59,34 @@ For example, it may define a program as a sequence of operations that need to be
 
 The \gls{ide} provides tools -- editors, compilers, debuggers, among others -- that let the architect create programs.
 The most basic \gls{ide} may have a text editor, where the architect types a textual representation of the program, and an interpreter, that will interpret the program and perform the required operations.
+Examples of \gls{gd} \glspl{ide} include Grasshopper 3D\footnote{http://www.grasshopper3d.com/ (last accessed on 10/10/2016)} for Rhinoceros 3D\footnote{https://www.rhino3d.com/ (last accessed on 10/10/2016)}, Rosetta\cite{de2012modern} and Dynamo\footnote{http://dynamobim.com/ (last accessed on 10/10/2016)} for Revit\footnote{http://www.autodesk.com/products/revit-family/overview (last accessed on 10/10/2016)}.
 
+In the case of \gls{gd} \glspl{ide}, there are specific requirements that need to be fulfilled to make them useful for exploration of \gls{gd}, since they have to support the architect while he creates programs and explores design possibilities.
+First of all, the environment has to be able to display geometric results, otherwise, the architect will not be able to see anything.
+Secondly, the architect needs to be able to see the effects from changes to the parameters of his programs or even from changes in any part of the program.
+This will require the environment to be fast to run programs, generate results, and display them to give the architect this immediate feedback.
+Apart from this, the environment also needs to make it easy for the architect to build his program and correct the bugs that might appear.
+It may do so by showing him the available functions or by highlighting results from a given part of a program.
+
+Other way the \gls{ide} can help the architect building programs is by supporting a programming paradigm that fits better the usual way of thinking of the architect.
 Most \gls{gd} \glspl{ide} use either data-flow programming or procedural programming.
 The first is often supported by a visual editing environment, while the second is often supported by a textual editing environment.
 %{\bf (ref?)}
-Moreover, most \glspl{ide} are aimed at the creation of programs in one specific programming language, like it is the case of Grasshopper 3D\footnote{http://www.grasshopper3d.com/ (last accessed on 10/10/2016)} and Dynamo\footnote{http://dynamobim.com/ (last accessed on 10/10/2016)}.
-There are, however, some \glspl{ide} that can be used to create programs in several programming languages, such as Rosetta\cite{de2012modern}, that supports languages like Racket, Python and AutoLisp.
+Moreover, most \glspl{ide} are aimed at the creation of programs in one specific programming language, like it is the case of Grasshopper 3D and Dynamo.
+There are, however, some \glspl{ide} that can be used to create programs in several programming languages, such as Rosetta, that supports languages like Racket, Python and AutoLisp.
 
 In order to help architects with the creation of \gls{gd} programs, visual programming \glspl{ide} provide tools that are capable of showing all the nodes/functions that can be added, and the relationship between the code being developed and the results.
 They are, therefore, more popular among novices, since they do not require as much training to be used when compared to textual programming \glspl{ide}.
-However, as stated in \cite{leitao2012programming}, visual programming languages do not scale well when used in big \gls{gd} projects when compared to textual programming languages.
-Textual programming languages have mechanisms that make complexity more manageable, so programs can stay smaller.
+However, as stated in \cite{leitao2012programming}, visual programming languages do not scale well for big \gls{gd} projects when compared to textual programming languages.
+Textual programming languages have abstraction mechanisms that make complexity more manageable, so programs can stay smaller.
 Still, textual programming \glspl{ide} lack ways to show the connection between program and results that visual programming \glspl{ide} have.
-Some work on this has been done in Rosetta, as shown in \cite{de2012modern}, where it is possible to see which objects each part of the program generated, and which parts of the program were responsible for creating an object.
+Some work has been done in Rosetta to solve this problem, as shown in \cite{Leitao2014illustrated}, where it is possible to see which objects each part of the program generated, and which parts of the program were responsible for creating an object.
 
-In spite of this, up until now \gls{gd} \glspl{ide} have been primarily desktop applications.
+Up until now \gls{gd} \glspl{ide} have been primarily desktop applications.
 The next section shows how this affects the architect.
 
 
-\section{Disadvantages of Desktop Software}
+\section{Disadvantages of Current CAD applications}
 It is common practice in any creative field to carry a notebook or a sketchbook for the sudden moments of inspiration that appear through the day.
 This way, people make sure that they do not forget any of their ideas.
 
@@ -88,26 +96,61 @@ As a result, if architects want to be able to work with their software tools, th
 This is one of the main reasons why laptop computers are used.
 They combine the ability to run the same applications as desktop computers with transportability.
 People can carry them around and work anywhere.
+Nonetheless, this does not free them from needing to install their \gls{cad} applications in every computer they want to use to do \gls{gd}.
 
-Carrying a computer solves the problem of having the tools of trade at hand, but what happens when the architect needs to work with a team?
-There are cloud-based services that he can use to do it.
-He can use services like Skype\footnote{https://www.skype.com (last accessed on 10/10/2016)} when speaking with other people or presenting his work, and he can use file sharing services to build \gls{cad} models collaboratively.
+Moreover, due to the amount of memory and processing resources required by current \gls{cad} applications, the computers needed to run them have to be on the same level of hardware as the workstations used by architects.
+And this is just the minimum required for using the \gls{cad} applications normally.
+When the architect wants to explore \gls{gd}, his programs will be generating enormous amounts of elements.
+This will put a lot of pressure in the \gls{cad} applications, which will in turn become slower and slower.
+In order to do \gls{gd}, the architect needs to have an interactive environment where he can get feedback from his program as fast as possible.
+If the \gls{cad} application takes too long to generate the results, then the \gls{gd} environment will not be able to give this feedback.
+%He will have to use a more powerful computer, which dictates that he must return to his workstation computer.
+%Even so, the \gls{cad} application may not be able to harness all the potential of the computer.
+
+This problem often reveals itself when working with Rosetta.
+For example, when working on a building design like the one shown in Figure~\ref{fig:carmo:render}, the times for generating the model get high when a \gls{cad} backend like AutoCAD is used, as seen in Figure~\ref{fig:carmo:times}.
+By looking at the it, apart from the OpenGL viewer, when a \gls{cad} backend is used, the architect will have to wait several seconds before he sees the updated results of his program.
+Thus, the immediate feedback is lost.
+
+Furthermore, even if he has a laptop powerful enough to support a \gls{gd} \gls{ide}, the problem of collaboration is still present when the architect needs to work with a team.
+Although \gls{cad} applications allow for remote collaboration on their documents with technologies like AutoCAD 360\footnote{http://www.autodesk.com/products/autocad-360/overview (last accessed on 10/10/2016)} or A360\footnote{http://www.autodesk.com/products/a360/overview (last accessed on 10/10/2016)}, the same is not true for \gls{gd} \glspl{ide}.
+There are cloud-based services that he can use to create \gls{gd} collaboratively.
+He can use services like Skype\footnote{https://www.skype.com (last accessed on 10/10/2016)} when speaking with other people or presenting his work, and he can use file sharing services, like Dropbox\footnote{https://www.dropbox.com/ (last accessed on 10/10/2016)}, to build \gls{gd} programs collaboratively.
 %(architecture file-sharing examples?)
 Still, this is a rudimentary method.
-It does not allow more than one person to edit a file simultaneously, it does not have a system to track versions of files, and it only works on desktop-like computers.%
+It does not allow him to edit a file simultaneously with his teammates, it does not have a system to track versions of files, and it only works on desktop-like computers.%
 \footnote{That run Microsoft Windows, Mac OS or a *nix distribution.}
 
 This is not a problem specific to architects.
 In fact, anyone working remotely faces this problem and there are solutions that address it in some fields that also use \gls{cad}.
-There are already working cloud-based services that aim to enable this kind of collaboration in these fields.
 One example of such services is OnShape\footnote{https://www.onshape.org (last accessed on 10/10/2016)}, that addresses the problem for Product Design/Engineering.
 To do this, OnShape has real-time collaboration, projects are stored in the cloud, has version control, and works both in a web browser and on mobile devices.
+This way, the work of its users becomes accessible from anywhere it is accessible, that is any computer or mobile device with an Internet connection.
 
-What remains to be done is making this functionality available to architects.
+The trend towards migrating desktop applications to web applications stretches further than \gls{cad} applications.
+Common office productivity tools like Microsoft Word, Excel and PowerPoint from Microsoft Office have also seen the appearance of their web application counterparts when Microsoft Office 365 appeared.
+What remains to be done is making this functionality available to architects and \gls{gd} and that is the problem we want to address.
 In the next section we describe the goals of this thesis.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\textwidth]{images/carmo_render}
+	\caption{Rendering of a building design made using \gls{gd}.}
+	\label{fig:carmo:render}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\textwidth]{images/carmo_rosetta_times}
+	\caption{Generation times for different \gls{cad} applications using Rosetta.}
+	\label{fig:carmo:times}
+\end{figure}
 
 
 \section{Goals}
+A \gls{gd} \gls{ide} needs to have more \textit{accessibility}, not requiring any installation and being available in any computer, and needs to be more \textit{interactive}, letting architects explore \gls{gd} easily, giving them feedback and showing them the relationship between program and results.
+Moreover, it needs to \textit{integrate} easily with the \gls{cad} applications the architect already uses, so he can still integrate his \gls{gd} experiments into his normal workflow.
+
 This thesis aims at increasing the architects' productivity when working on \gls{gd} projects by giving them a programming environment in the web specifically for \gls{gd}.
 This required implementing a web page that harnesses the performance and graphical capabilities available in modern web browsers, and implementing a companion application for allowing models to be exported to traditional \gls{cad} applications.
 
