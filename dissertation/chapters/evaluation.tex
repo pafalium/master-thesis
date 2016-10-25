@@ -123,7 +123,7 @@ The export process should be reserved to actually export to \gls{cad}.
 
 One may need some clarification on how this difference appears.
 The difference comes from the amount of overhead needed for communication between the web page and the remote CAD service and between Rosetta and the \gls{cad}.
-For each primitive call a program does, data has to be converted, sent over an HTTP connection to the remote CAD service, passed to Rosetta to perform the primitive in the \gls{cad}, and finally the result must be sent back to the web page.
+For each primitive call a program does, data has to be converted, sent over an HTTP connection to the remote CAD service, passed to Rosetta, then to the \gls{cad} application to perform the primitive, and finally the result must be sent back to the web page.
 All these steps take time, specially the ones where data is in transit between applications.
 
 
@@ -145,7 +145,7 @@ Unlike with the export time evaluation, this comparison lets us distinguish the 
 \subsection{Traceability Performance}
 Collecting traceability data requires that additional work must be done when a program is being executed.
 The additional work will inevitably increase the time it takes to finish executing the program.
-This can make the environment less capable of giving feedback, therefore having a negative impact in its the usage experience.
+This can make the environment less capable of giving immediate feedback, therefore having a negative impact in its the usage experience.
 
 To measure the impact that traceability data collection has on program running time, we have selected a small set of programs, ran them with data collection and without it, and measured the time each took to execute.
 The chart in Figure~\ref{fig:traceability:timing} shows a comparison of their times, grouped by program.
