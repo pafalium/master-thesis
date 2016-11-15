@@ -502,9 +502,9 @@ The web page and the remote CAD service were hosted at the same computer.
 
 
 \subsection{Running Performance}
-Running performance is a prevalent part of programming in \gls{gd} since it dictates the complexity of the programs that can be explored interactively.
-After a program as become too complex, hence too slow, it can no longer be tested as a whole.
-So, it needs to be split into smaller parts that are still fast enough to be explored interactively.
+Our solution should provide immediate feedback to architects, therefore letting them easily understand the correlation between the program inputs and outputs\cite{Leitao2014illustrated}.
+Apart from making it easy to change program inputs, it needs to run programs and show results as fast as possible.
+It is important to compare the performance of our solution to the performance of other systems that can also provide immediate feedback.
 
 To see how the performance of our web-based \gls{gd} environment compares to the existing environments, we compared the time each takes to generate identical models.
 First, we implemented a version of the program using each environment's programming language and, then, measured the time each took to complete.
@@ -535,24 +535,26 @@ Given the difference of two orders of magnitude, it is highly preferable to get 
 The export process should be reserved to actually export to \gls{cad}.
 
 One may need some clarification on how this difference appears.
-The difference comes from the amount of overhead needed for communication between the web page and the remote CAD service and between Rosetta and the \gls{cad}.
 For each primitive call a program does, data has to be converted, sent over an HTTP connection to the remote CAD service, passed to Rosetta, then to the \gls{cad} application to perform the primitive, and finally the result must be sent back to the web page.
-All these steps take time, specially the ones where data is in transit between applications.
+The difference comes from the time needed for \gls{cad} applications to execute operations and from the time spent on communication between applications.
+As shown in \cite{Leitao2014illustrated}, \gls{cad} applications are not well suited for \gls{gd} since they were designed to support human interaction and, therefore, are not ready for the amount of operations produced by \gls{gd} programs.
 
 
 \subsection{Export vs Rosetta}
-Due to the fact that our solution uses Rosetta as an intermediate to export to \glspl{cad}, it is interesting to assess how export times compare to running directly in Rosetta.
+As shown in Chapter~\ref{chapter:solution}, Rosetta plays an important part in the process used by our environment to send results to \gls{cad} applications.
+Rosetta acts as an interface to communicate with \gls{cad} applications, while remote CAD service makes that interface available to the web page as a web service.
+Due to the fact that our solution uses Rosetta as an intermediate to export to \glspl{cad}, it is interesting to assess how much time the process adds to running a program that produces the same results using just Rosetta.
 
-To measure the difference, we selected two programs and measured the time taken to export and to run in Rosetta.
+To measure the difference, we selected two programs and measured the time each took to export and to run in Rosetta.
 The two systems use different programming languages, therefore, each program had two versions, one for our solution and one for Rosetta.
 Figure~\ref{fig:run:export:rosetta:chart} shows the running times for each system, grouped by program.
 
 Looking at the graph, we see that export times are $\approx$4.1x the times of running directly in Rosetta for Mobius Truss and that export times are $\approx$4.3x the times of running directly in Rosetta for Ines Wall.
 
 As with the export time evaluation, the increase in running times comes from the overhead in communication between the web page and the remote CAD service.
-Moreover, although during export programs are first run in the web page and Rosetta's role is reduced to make them happen in the CAD, results are still sent one by one to the remote CAD service meaning that a lot of time is spent transmitting data.
+Moreover, although during export programs are first run in the web page and Rosetta's role is reduced to make them happen in the \gls{cad}, results are still sent one by one to the remote CAD service meaning that a lot of time is spent transmitting data.
 
-Unlike with the export time evaluation, this comparison lets us distinguish the time of transmitting data from the time taken by Rosetta to apply operations.
+Unlike with the export time evaluation, this comparison lets us distinguish the time of transmitting data from the time taken by Rosetta and the \gls{cad} application to apply operations.
 
 
 \subsection{Traceability Performance}

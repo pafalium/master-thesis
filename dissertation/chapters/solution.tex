@@ -5,14 +5,18 @@
 
 
 \section{Overview}
-We set out to create an IDE for GD programming that is available from a web page.
+We set out to create an \gls{ide} for \gls{gd} programming that is available from a web page.
 
 There are five related tasks that the environment needs to support in order to be useful for the architect:
-it needs to let the architect develop programs; it needs to run programs; it needs to display their results; it needs to make it easy to see the traceability relationship between program and results; and it needs to export results to \gls{cad} applications.
+(1) it needs to let the architect develop programs;
+(2) it needs to run programs;
+(3) it needs to display their results;
+(4) it needs to make it easy to understand the program;
+and (5) it needs to export results to \gls{cad} applications.
 
-To accomplish this, there are two separate components, as seen in Figure~\ref{fig:archi:sol}: (1) the web page, where the \gls{ui} for creating programs is; and (2) the remote CAD service, that offers an \gls{api} for running programs in \gls{cad} applications.
-The first three tasks can be handled by the web page alone since there is no need to interact with the \gls{cad} applications running in the user's computer.
-The forth task requires both the web page and the remote CAD service.
+To accomplish these tasks, there are two separate components, as seen in Figure~\ref{fig:archi:sol}: (1) the web page, where the \gls{ui} for creating programs is; and (2) the remote CAD service, that offers an \gls{api} for running programs in \gls{cad} applications.
+The first four tasks can be handled by the web page alone since there is no need to interact with \gls{cad} applications running in the user's computer.
+The fifth task requires both the web page and the remote CAD service.
 As also seen in Figure~\ref{fig:archi:sol}, apart from using the web page programming environment \gls{ui}, the architect also needs to install the remote CAD application when he wants to export results to \gls{cad} applications.
 
 In the rest of the chapter, we describe these two components and how each of the tasks is implemented.
@@ -28,7 +32,7 @@ We start by looking at the web page.
 
 
 \section{Web page}
-To handle the tasks of letting the architect develop programs, running programs, supporting traceability and displaying results, the web page has the layout shown in Figure~\ref{fig:page:view}.
+To handle the tasks of letting the architect develop programs, running programs, supporting program understanding and displaying results, the web page has the layout shown in Figure~\ref{fig:page:view}.
 Taking up most of the screen space are a text editor and a 3D view that allow the architect to edit a program and view results alongside it.
 On top of these two are controls for running programs and for traceability data collection.
 To the left is the interface for running programs in \gls{cad} applications and a list of the currently available programs.
@@ -45,20 +49,22 @@ To help with the implementation, we have used the THREE.js library\footnote{http
 \end{figure}
 
 
-\subsection{Handling Traceability}
-Traceability can be achieved by giving feedback to the programmer when he interacts with the program or the results.
-The environment implements some mechanisms that allow it to give this feedback.
-
-One of the ways the environment does this is by letting the programmer adjust literals more intuitively.
-Afterwards, the environment reruns the program to show the effect of the adjustments.
-It can also rerun the program whenever there is a change, like when a new statement is added to a function, an expression is changed, or when a new function is written.
-
-The other way the environment provides traceability to the user is by showing it directly.
-When the user points at a function call in the source code, the environment immediately highlights the shapes that it produced in the 3D view.
+\subsection{Understanding Programs}
+In \gls{gd}, the architect interacts with the program that creates the model instead of creating the model directly in a \gls{cad} application.
+This allows him to automate tasks that normally take too much time and, therefore, also allows him to explore a design space with much more repetition.
+However, since he is not directly interacting with the model, he needs to understand the relationship between program and results in order to know how to change the program to get the model he wants.
 
 
-\subsubsection{Adjusting Literals}
-\paragraph{Rationale for automating literal adjustment}
+\subsubsection{Immediate Feedback}
+\label{sec:immediate:feedback}
+One of the ways to understand the program is to understand the relationship between its inputs and outputs, that is understanding how each input affects the output model.
+To do this, the architect needs to change the inputs, run the program, see the output, and repeat until he understands the relationship.
+This is a tedious process that will bore must architects.
+The environment can help by making this process more immediate.
+It must provide quick ways of changing inputs and it must rerun the program when inputs change so the architect can see the effects of his changes immediately.
+This immediacy lets the architect understand the relationship quickly which means he can start to explore the design sooner.
+
+\paragraph{Adjusting literals}
 When a value, such as a number, is typed directly into a program's source code, it is called a literal value, or simply a literal.
 When experimenting with a \gls{gd} program, architects find themselves repeatedly adjusting literals that were hardcoded into the program.
 This is usually done by retyping parts of the literal's text and then re-running the program again to see the effect.
@@ -134,10 +140,15 @@ Finally, we convert it back to text and re-add the decimal point.
 \end{figure}
 
 
-\subsubsection{Program-Results Relationship}
-Reducing the time between making a change and seeing its effect is one way to provide traceability.
-However, traceability can also be actively shown by the environment.
-If the programming environment takes care of tracking the relation between the program and results, the architect only needs to ask for the relation instead of having to track it by himself, freeing his mind to think about the problem.
+\subsubsection{Traceability}
+\label{sec:traceability}
+Reducing the time between making a change and seeing its effect is one way to help the architect to understand a program.
+
+Another way to understand the program is to understand the relationship between parts of the program and parts of the results.
+This helps the architect build an understanding of the program from parts to the whole, helps him identify causes of errors, and also helps him identify parts that need to be changed to accomodate new design requirements.
+This is especially true when he is dealing with programs that generate complex models, where it is much harder to simply look at them and infer the relationship mentally.
+
+If the programming environment takes care of tracking the relation between program and results, the architect only needs to ask for the relation instead of having to track it by himself, freeing his mind to think about the problem.
 
 There needs to be a way to give the architect quick access to the relation being tracked by the environment.
 This is done by showing him a graphical representation that emphasizes the relation.
@@ -147,7 +158,7 @@ There are several ways that the environment can use to graphically show the rela
 We will describe some of them next:
 
 \begin{itemize}
-  \item {\bf Highlighting expressions and results} Every object that is part of the results of a program has been created by one expression of the program.
+  \item {\bf Highlighting expressions and results} Every object that is part of the results of a program has been created by one expression of that program.
   On the other side, every expression of the program may have created one or more objects part of the results.
   The environment can make this relationships visible by changing the appearance of expressions and results when the user points either at an expression or at an object.
 
@@ -178,12 +189,12 @@ Moreover, it can achieve better performance.
 The implementation requires three things:
 (1) collecting traceability data while running a program;
 (2) detecting that the user is pointing at either an object from the results or an expression of the program;
-and (3) highlighting both pointed object and the corresponding creator expression, or both the pointed expression and the corresponding created results, as exemplified in Figure~\ref{fig:trace:example}.
+and (3) highlighting both the pointed object and the corresponding creator expression, or both the pointed expression and the corresponding created results, as exemplified in Figure~\ref{fig:trace:example}.
 
 To get the traceability data it needs to show the program-results relationship, the environment instruments the program.
 We will go into more detail on this matter in Subsection~\ref{sec:run:progs}.
 
-In regard to detecting what the user is pointing at, we follow to approaches depending on the pointer being over the program or over the 3D view.
+In regard to detecting what the user is pointing at, we follow two approaches depending on the pointer being over the program or over the 3D view.
 When the pointer is over the program, we use the \gls{ast} of the program annotated with source code locations and the pointer position to find the deepest expression that has recorded traceability data.
 When the pointer is over the 3D view, we use ray-casting to detect which of the result objects is below the pointer and closest to the camera.
 
@@ -287,16 +298,18 @@ Finally, Listing~\ref{lst:program:example} gives an example of what a program lo
 
 \begin{listing}
 \begin{minted}[linenos,frame=lines]{js}
+const xyz = point.byXYZ;
+
 function abacus(height, side) {
-  return box.byXYZ(side, side, height);
+  return box.byBottomWidthHeightZ(xyz(0,0,0), [side, side], height);
 }
 
 function echinus(height, side, neckSide) {
-  return coneFrustum.byRadiusesHeight(neckSide, side, height);
+  return coneFrustum.byBottomTopRadiusesHeight(xyz(0,0,0), neckSide/2, side/2, height);
 }
 
 function shaft(height, side, neckSide) {
-  return coneFrustum.byRadiusesHeight(side, neckSide, height);
+  return coneFrustum.byBottomTopRadiusesHeight(xyz(0,0,0), side/2, neckSide/2, height);
 }
 
 function column(height, side, neckSide) {
@@ -328,6 +341,7 @@ column(6.00, 0.8, 0.7);
 \subsubsection{Running process}
 When the environment runs a program, it needs to do two things: (1) collect the results of the program; and (2) collect traceability data.
 It does these two by instrumenting the program with additional calls to special functions that record the desired information.
+As stated in \ref{sec:traceability}, the collection of traceability data is optional since it adds a significant overhead to program execution, which may be undesired when programs start to take too much time to run.
 
 To be able to perform the instrumentation, the environment parses the program using Esprima, a JavaScript parser,\footnote{https://github.com/jquery/esprima (last accessed on 10/10/2016)} to get its \gls{ast}.%
 \footnote{The \gls{ast} conforms to a community standard. It can be found at https://github.com/estree/estree (last accessed on 10/10/2016).}
@@ -335,7 +349,7 @@ To be able to perform the instrumentation, the environment parses the program us
 Afterwards, the \gls{ast} is transformed by: (1) adding a recording call to all top-level expression statements; and (2) adding a recording call to all function call expressions.
 Figure~\ref{fig:instrument:example} exemplifies the transformation.
 
-To let the recording functions know top-level expression or function call is producing a result, we also provide them identifiers for those expressions.
+To let the recording functions know what top-level expression or function call is producing a result, we also provide them with identifiers for those expressions.
 
 After this step, the environment creates a new function with the instrumented program as its body.
 The primitives and recording functions are provided as parameters to this new function.
@@ -349,10 +363,6 @@ Finally, the newly created function is called and, afterwards, the recorded info
   \begin{minted}[frame=lines]{js}
 let s = sphere.byRadius(5);
 s;
-
-
-
-
   \end{minted}
 \end{minipage}
 \hspace{0.05\linewidth}
@@ -389,6 +399,8 @@ This application serves as a bridge between \gls{cad} applications installed in 
 After being started, the application detects which \glspl{cad} are installed in the computer and connects to the ``environment directory'' so it can be discovered by the web page.
 When the architect needs to export a program to his \gls{cad} application, the web page connects to the application in his computer through the ``environment directory'' and starts to send requests to it, in order to create shapes in the \gls{cad} application.
 The architecture for this part of the solution is illustrated in Figure~\ref{fig:remote:cad:archi}.
+As long as these components can communicate with each other, the system can work.
+In the extreme, each can be running in a distinct computer, as long as all computers are connected to the same network.
 
 Figure~\ref{fig:remote:cad:example} shows an example of this functionality.
 The architect has created a program using the web page environment.
@@ -410,7 +422,9 @@ Different \glspl{cad} have different \glspl{api} so the application needs to kno
 Instead of implementing the connection with \gls{cad} applications installed in the computer, the application uses Rosetta as an intermediate.
 This way, it only has to cover the semantic differences between Rosetta's \gls{api} and the remote CAD service's \gls{api}.
 
-We chose to temporarily host the web page containing the \gls{ide} in the application.
+In reality, when he wants to export to \gls{cad}, it is likely that the architect is using the web environment in the same computer where he has the \gls{cad} application installed.
+Like so, the web page, the remote CAD application and the \gls{cad} applications run in the same computer.
+With this in mind, we chose to temporarily host the web page containing the \gls{ide} in the remote CAD application's server.
 Using this setup, it is easier to test the communication between the page and the application.
 This setup also avoids dealing with cross-origin restrictions imposed by web browsers for \gls{ajax} requests.
 
@@ -424,7 +438,7 @@ This setup also avoids dealing with cross-origin restrictions imposed by web bro
 
 \begin{figure}
   \centering
-  \includegraphics[width=1.0\textwidth]{./images/remote_cad_example}
+  \includegraphics[width=1.0\textwidth]{./images/remote_cad_example/remote_cad_example}
   \caption[An example of the remote CAD service.]{An example of the remote CAD service. The results of the program have been passed to both AutoCAD and SketchUp.}
   \label{fig:remote:cad:example}
 \end{figure}
