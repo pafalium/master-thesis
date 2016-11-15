@@ -95,6 +95,39 @@
          x="316.73343"
          y="59.221859" />
     </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3071">
+      <rect
+         style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="rect3073"
+         width="503.26736"
+         height="760.1994"
+         x="-815.61572"
+         y="94.240402" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3075">
+      <rect
+         style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="rect3077"
+         width="503.26736"
+         height="760.1994"
+         x="-815.61572"
+         y="94.24041" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3049">
+      <rect
+         y="773.2077"
+         x="1622.7228"
+         height="760.1994"
+         width="503.26736"
+         id="rect3051"
+         style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+    </clipPath>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -103,9 +136,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.5108611"
-     inkscape:cx="1022.9192"
-     inkscape:cy="955.26284"
+     inkscape:zoom="1.0217222"
+     inkscape:cx="2388.6686"
+     inkscape:cy="342.61504"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -116,10 +149,11 @@
      fit-margin-right="0"
      fit-margin-bottom="0"
      inkscape:window-width="2560"
-     inkscape:window-height="1418"
+     inkscape:window-height="1378"
      inkscape:window-x="-4"
      inkscape:window-y="-4"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="1"
+     inkscape:snap-global="true" />
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -207,5 +241,38 @@
        id="image3136"
        x="-298.8248"
        y="-58.302963" />
+    <image
+       y="-27.398588"
+       x="-1432.1127"
+       id="image3022"
+       xlink:href="file:///E:/Users/Pedro-170/Documents/Rosetta/master-thesis/dissertation/images/all_examples/column.PNG"
+       height="894"
+       width="1132"
+       clip-path="url(#clipPath3071)"
+       transform="translate(1935.0711,678.9673)"
+       inkscape:export-filename="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\all_examples\column_crop.png"
+       inkscape:export-xdpi="107.3"
+       inkscape:export-ydpi="107.3" />
+    <image
+       y="-27.398588"
+       x="-1432.1127"
+       id="image3011"
+       xlink:href="file:///E:/Users/Pedro-170/Documents/Rosetta/master-thesis/dissertation/images/all_examples/coneSphere.PNG"
+       height="894"
+       width="1132"
+       clip-path="url(#clipPath3075)"
+       transform="translate(2438.3385,678.96729)"
+       inkscape:export-filename="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\all_examples\coneSphere_crop.png"
+       inkscape:export-xdpi="107.3"
+       inkscape:export-ydpi="107.3" />
+    <image
+       y="645.97186"
+       x="1022.5773"
+       id="image3017"
+       xlink:href="file:///E:/Users/Pedro-170/Documents/Rosetta/master-thesis/dissertation/images/all_examples/ortho_cones.PNG"
+       height="901.13763"
+       width="1115.1578"
+       clip-path="url(#clipPath3049)"
+       transform="translate(503.26736,-2.7856445e-6)" />
   </g>
 </svg>
