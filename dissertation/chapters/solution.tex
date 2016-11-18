@@ -145,7 +145,7 @@ Finally, we convert it back to text and re-add the decimal point.
 Reducing the time between making a change and seeing its effect is one way to help the architect to understand a program.
 
 Another way to understand the program is to understand the relationship between parts of the program and parts of the results.
-This helps the architect build an understanding of the program from parts to the whole, helps him identify causes of errors, and also helps him identify parts that need to be changed to accomodate new design requirements.
+This helps the architect build an understanding of the program from parts to the whole, helps him identify causes of errors, and also helps him identify parts that need to be changed to accommodate new design requirements.
 This is especially true when he is dealing with programs that generate complex models, where it is much harder to simply look at them and infer the relationship mentally.
 
 If the programming environment takes care of tracking the relation between program and results, the architect only needs to ask for the relation instead of having to track it by himself, freeing his mind to think about the problem.
@@ -244,10 +244,10 @@ It can either use an existing language and make slight adaptations or create a n
 
 Still, creating a new programming language is not realistic since it would require a great implementation effort to get a working version.
 Moreover, since we want programs to run as fast as possible to be able to give architects immediate feedback, further effort would be needed to make it perform fast.
-This suggests that we should use a programming language that already exists.
 
 Another thing in favor of existing programming languages is that they have had time to gather communities that can help the architect when he does not know how to do something or when he is having trouble correcting a bug.
 A new programming language would have a severely limited community.
+This suggests that we should use a programming language that already exists.
 
 Having decided that we should use an existing programming language, we now need to choose one.
 Architects do not usually have professional programming experience and, like so, they need a programming language that is not too complicated to learn and use.
@@ -258,7 +258,6 @@ JavaScript is also a possibility since has been thought with (web) designers in 
 
 Programming languages have to be translated into the host's language, JavaScript in case of web browsers.
 Using JavaScript as the environment's language would spare us from a translation step as it is already the target language.
-
 This lead us to choose JavaScript as the programming language supported by the environment.
 
 After having a programming language, there still needs to be a concrete \gls{api} that supports the creation of \gls{gd} programs.
@@ -385,7 +384,6 @@ recordTopLevelResult(
    /*top-level expression ID*/);
   \end{minted}
 \end{minipage}
-  %\includegraphics[width=1.0\textwidth]{./images/program_instrumentation}
   \caption{A program before and after the transformation.}
   \label{fig:instrument:example}
 \end{figure}

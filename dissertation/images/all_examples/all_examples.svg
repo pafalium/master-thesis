@@ -137,8 +137,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.0217222"
-     inkscape:cx="2388.6686"
-     inkscape:cy="342.61504"
+     inkscape:cx="1468.6534"
+     inkscape:cy="258.44343"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -162,7 +162,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -194,6 +194,9 @@
     <image
        sodipodi:absref="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\all_examples\edificio_carmo.PNG"
        xlink:href="edificio_carmo.PNG"
+       inkscape:export-ydpi="107.3"
+       inkscape:export-xdpi="107.3"
+       inkscape:export-filename="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\all_examples\edificio_carmo_crop.PNG"
        transform="translate(300.72678,709.08655)"
        clip-path="url(#clipPath3157)"
        width="1130"
@@ -273,6 +276,9 @@
        height="901.13763"
        width="1115.1578"
        clip-path="url(#clipPath3049)"
-       transform="translate(503.26736,-2.7856445e-6)" />
+       transform="translate(503.26736,-2.7856445e-6)"
+       inkscape:export-filename="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\all_examples\ortho_cones_crop.png"
+       inkscape:export-xdpi="107.3"
+       inkscape:export-ydpi="107.3" />
   </g>
 </svg>

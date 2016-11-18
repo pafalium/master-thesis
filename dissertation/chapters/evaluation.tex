@@ -176,7 +176,7 @@ It is then used in {\tt arcTruss} in conjuntion with {\tt spatialTruss} to actua
 \end{figure}
 
 It is common that planar space frames are required to follow a surface.
-Unfortunatly, {\tt spatialTruss} requires not only points that lie on the surface but also points that are either below or above it to be able to create the trusses's quadrangular pyramids.
+Unfortunately, {\tt spatialTruss} requires not only points that lie on the surface but also points that are either below or above it to be able to create the trusses's quadrangular pyramids.
 {\tt insertPyramidApexCurves} is an helper function that creates a set of joint coordinates ready for {\tt spatialTruss} from a grid of points by adding pyramid apexes for each quad defined by by the grid.
 {\tt spatialTrussInsertApex} combines {\tt insertPyramidApexCurves} and {\tt spatialTruss} into one easy to use function.
 
