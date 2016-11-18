@@ -37,7 +37,7 @@ Taking up most of the screen space are a text editor and a 3D view that allow th
 On top of these two are controls for running programs and for traceability data collection.
 To the left is the interface for running programs in \gls{cad} applications and a list of the currently available programs.
 
-To help with the implementation, we have used the THREE.js library\footnote{https://threejs.org/ (last accessed on 10/10/2016)}, to interact with WebGL, and the Ace Editor library\footnote{https://ace.c9.io (last accessed on 10/10/2016)}, to provide a syntax highlighted text editor.
+To help with the implementation, we have used the THREE.js library\footnote{\url{https://threejs.org/} (last accessed on 10/10/2016)}, to interact with WebGL, and the Ace Editor library\footnote{\url{https://ace.c9.io} (last accessed on 10/10/2016)}, to provide a syntax highlighted text editor.
 
 %{\bf(describe high-level view of the inner workings of the page)}
 
@@ -351,8 +351,8 @@ When the environment runs a program, it needs to do two things: (1) collect the 
 It does these two by instrumenting the program with additional calls to special functions that record the desired information.
 As stated in \ref{sec:traceability}, the collection of traceability data is optional since it adds a significant overhead to program execution, which may be undesired when programs start to take too much time to run.
 
-To be able to perform the instrumentation, the environment parses the program using Esprima, a JavaScript parser,\footnote{https://github.com/jquery/esprima (last accessed on 10/10/2016)} to get its \gls{ast}.%
-\footnote{The \gls{ast} conforms to a community standard. It can be found at https://github.com/estree/estree (last accessed on 10/10/2016).}
+To be able to perform the instrumentation, the environment parses the program using Esprima, a JavaScript parser,\footnote{\url{https://github.com/jquery/esprima} (last accessed on 10/10/2016)} to get its \gls{ast}.%
+\footnote{The \gls{ast} conforms to a community standard. It can be found at \url{https://github.com/estree/estree} (last accessed on 10/10/2016).}
 
 Afterwards, the \gls{ast} is transformed by: (1) adding a recording call to all top-level expression statements; and (2) adding a recording call to all function call expressions.
 Figure~\ref{fig:instrument:example} exemplifies the transformation.
