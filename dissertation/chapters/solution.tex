@@ -261,7 +261,15 @@ Using JavaScript as the environment's language would spare us from a translation
 
 This lead us to choose JavaScript as the programming language supported by the environment.
 
-However, there is still a question: when the environment runs a program, how does it get results from the program so it can display them afterwards?
+After having a programming language, there still needs to be a concrete \gls{api} that supports the creation of \gls{gd} programs.
+There are things that are essential to support, like the creation of geometry such as coordinates, lines, surfaces and solids.
+Without the \gls{api} supporting it, the architect would need to implement these concepts even before tackling his design problem.
+Furthermore, there are things that must not be done, like having side-effects.
+If the \gls{api} includes operations that produce side-effects apart from creating new values, such as mutating arguments or changing global variables, the architect will have a harder time reasoning about the outcomes of programs.
+These two things are essential to having a \gls{api} that supports \gls{gd}.
+The \gls{api} provided by the environment adheres to these restrictions.
+
+Still tied to the programming language and the \gls{api} provided to programs is how the environment gets the results from programs in order to be able to display them to the architect.
 
 \paragraph{Alternatives for getting results}
 We considered various alternatives for collecting the results of programs.
@@ -383,8 +391,48 @@ recordTopLevelResult(
 \end{figure}
 
 
-%\subsection{Displaying Results}
-%{\bf(interesting stuff about displaying results)}\\
+\subsubsection{Displaying Results}
+After running the program, the environment needs to display a rendering of the results to the architect.
+Displaying results is deeply tied to what programs can produce since their results must be converted to a representation that can be rendered.
+The \gls{api} used by those programs is what determines which results can be produced.
+The environment uses THREE.js for 3D rendering.
+By using THREE.js, the implementation effort is reduced since, on top of implementing rendering, THREE.js also implements several geometric primitives useful for GD and implements ray-casting.
+However, since the environment provides a functional \gls{api} and THREE.js's API is imperative, it needs to cover the differences between these two \glspl{api}.
+
+The main difference between them lies in how they support reuse.
+THREE.js's \gls{api} makes it difficult to reuse objects since it only allows objects to have one parent.
+If the programmer wants to reuse one object, he has to clone it.
+The environment's \gls{api}, on the other hand, does not impose this rule.
+To cover the difference, we use two steps:
+(1) we run the program using the functional \gls{api}, creating intermediary results;
+and (2) we convert those results to objects from THREE.js's \gls{api}, cloning them when necessary.
+Figure~\ref{fig:display:results} shows the overall process from having a program to displaying its results, while Figure~\ref{fig:results:vs:three} shows an example of the transformation that occurs between intermediary results and THREE.js objects.
+
+After having results converted to THREE.js objects, the environment issues their rendering repeatably as the architect interacts with the 3D view.
+
+The environment also keeps record of the correspondence between intermediary results and THREE.js objects.
+Together with the correspondence between program nodes and intermediary results, this information is used to enable support for showing traceability.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=1.0\textwidth]{./images/display_results/display_results}
+  \caption{The process used to display results.}
+  \label{fig:display:results}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=1.0\textwidth]{./images/display_results/results}
+    \caption{Program results}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=1.0\textwidth]{./images/display_results/three}
+    \caption{THREE objects}
+  \end{subfigure}
+  \caption{Comparison of program results structure and THREE.js scenegraph.}
+  \label{fig:results:vs:three}
+\end{figure}
 
 
 \section{Remote CAD Service / Exporting to CAD}
