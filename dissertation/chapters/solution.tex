@@ -37,7 +37,7 @@ Taking up most of the screen space are a text editor and a 3D view that allow th
 On top of these two are controls for running programs and for traceability data collection.
 To the left is the interface for running programs in \gls{cad} applications and a list of the currently available programs.
 
-To help with the implementation, we have used the THREE.js library\footnote{\url{https://threejs.org/} (last accessed on 10/10/2016)}, to interact with WebGL, and the Ace Editor library\footnote{\url{https://ace.c9.io} (last accessed on 10/10/2016)}, to provide a syntax highlighted text editor.
+To help with the implementation, we have used the THREE.js library\footnote{\url{https://threejs.org/} (last accessed on 10/10/2016)}, to interact with WebGL\cite{marrin2011webgl}, and the Ace Editor library\footnote{\url{https://ace.c9.io} (last accessed on 10/10/2016)}, to provide a syntax highlighted text editor.
 
 %{\bf(describe high-level view of the inner workings of the page)}
 
@@ -236,7 +236,7 @@ After knowing these, the environment must have a process to run the program and 
 
 
 \subsubsection{Programming Language}
-Everyone can write, or even draw a diagram of, what they want the computer to do.
+Everyone can write a text or draw a diagram of what they want the computer to do.
 However, if they do not use a concrete and unambiguous language that can be translated automatically by the computer, it will not be possible to get the computer to do what they want.
 
 The environment has to use a programming language that fits the architect's needs.
@@ -249,14 +249,15 @@ Another thing in favor of existing programming languages is that they have had t
 A new programming language would have a severely limited community.
 This suggests that we should use a programming language that already exists.
 
-Having decided that we should use an existing programming language, we now need to choose one.
-Architects do not usually have professional programming experience and, like so, they need a programming language that is not too complicated to learn and use.
-Languages like Python, Racket and Processing are some examples that fit this description.
-In fact, these programming languages are commonly used to teach programming{\bf(refs?)}.
-We could also use DesignScript since it was made for architecture design\cite{aish2012designscript}.
-JavaScript is also a possibility since has been thought with (web) designers in mind{\bf(ref?)}.
+Architects' experience with programming can vary, however, we can assume that there are more novices than experts.
+Like so, the environment needs to have a programming language is easy to learn and use.
+We can consider programming languages that are commonly regarded as good introductory languages such as Python, Racket, and Processing.
+Additionally, we can also consider DesignScript, since it was made specifically with design programming in mind, and also JavaScript, since it is readily available in web browsers and was originally made for web designers.
 
-Programming languages have to be translated into the host's language, JavaScript in case of web browsers.
+Programming languages have to be translated into the host's language.
+For example, to run programs on a typical computer processor, they need to be translated into the {\tt x86} instruction set; to run programs on a virtual machine like the JVM, they need to be translated to its bytecode.
+The same is true to run programs on a web browser.
+In their case, instead of translating programs into an instruction set or a bytecode, they need to be translated into JavaScript.
 Using JavaScript as the environment's language would spare us from a translation step as it is already the target language.
 This lead us to choose JavaScript as the programming language supported by the environment.
 

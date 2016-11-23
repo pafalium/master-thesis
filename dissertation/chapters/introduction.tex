@@ -14,9 +14,10 @@
 %(2d + 3d + analysis + visualization)
 
 Through the years, computers have been taking more ground in the field of architecture.
-In the beginning, they were only used for creating technical drawings using drafting/\gls{cad} software like AutoCAD.
+It began with the appearance of Sketchpad\cite{Sutherland:1964:SPM:800265.810742} in the 60s that showed that computer could be used to create drawings interactively.
+After the appearance of desktop computers, drafting software like AutoCAD popularized \gls{cad} in architecture.
 As opposed to drawing by hand, using computers to create these drawings allowed architects to make changes without having to create another copy of the drawing, therefore saving them much time.
-%Still, most of the finished work, like project documentation and scale models, was left out of the computer.
+Still, computers were only used for creating technical drawings, leaving most of the thinking about 3D space outside of the computer.
 
 As computers became powerful enough to display 3D graphics, and 3D modeling started to appear, it became possible to model buildings in the computer and get interactive 3D previews of them.
 Having a 3D model of the building and being able to explore it -- to see it from many angles -- makes it much more intuitive and easier for the architect to think about the building.
@@ -30,7 +31,7 @@ However, modeling a building still requires several time consuming and repetitiv
 \section{Scripting}
 The recognition of this problem has led to the emergence of programming for 3D modeling software.%
 \footnote{Also called scripting.}
-By using programming, the architect is able to describe in a program what he wants to model and let the computer do the modeling task for him.
+By using programming, the architect is able to describe what he wants to model in a program and let the computer do the modeling task for him.
 On top of that, after writing the program, the process of generating and applying changes to the model is much faster than the manual equivalent.
 As a result, the architect gets to do more in less time.
 
@@ -41,14 +42,14 @@ Some examples of programming languages being used in \gls{cad} software are Auto
 Having a faster and more flexible process for building 3D models allows the architect to explore more variations of a design, i.e., to explore a broader design space, since it is no longer too expensive and time consuming to remodel.
 At first, he can just change some of the parameters, but if he wants, he can also change the algorithm.
 By making these changes, he can create many different variations of the generated models.
-
 Designing by using programming to generate parts of the design is what is called \gls{gd}.
+\gls{gd} allows computers to be used as a new medium for artistic expression\cite{Maeda:2001:DN:559503} that can be used by architects, as shown in \cite{terzidis2003expressive}.
 
-Furthermore, as stated in \cite{leitao2014pushing}, using \gls{gd} as a new stage of the design process promotes a simpler handling of changes coming from uncertain design intents and emergent requirements (as problem understanding improves or as needs change).
+Furthermore, as stated in \cite{leitao2014pushing}, using \gls{gd} as a new stage of the design process promotes a simpler handling of changes coming from uncertain design intents and emergent requirements as the understanding of the problem improves or as project needs change.
 
 %{\bf (variations from Rita Fernandes?)}
 
-However, in order to create the programs that will generate the architect's designs, the architect needs to have a programming environment that lets him write the programs and see the results.
+However, in order to create the programs that generate the architect's designs, the architect needs to have a programming environment that lets him write the programs and see the results.
 
 
 \section{IDEs for Generative Design}
@@ -58,17 +59,17 @@ The programming language defines what is a program, that is, what concepts can b
 For example, it may define a program as a sequence of operations that need to be performed, and define which primitive operations exist, like creating a box or moving an object.
 
 The \gls{ide} provides tools -- editors, compilers, debuggers, among others -- that let the architect create programs.
-The most basic \gls{ide} may have a text editor, where the architect types a textual representation of the program, and an interpreter, that will interpret the program and perform the required operations.
-Examples of \gls{gd} \glspl{ide} include Grasshopper 3D\footnote{\url{http://www.grasshopper3d.com/} (last accessed on 10/10/2016)} for Rhinoceros 3D\footnote{\url{https://www.rhino3d.com/} (last accessed on 10/10/2016)}, Rosetta\cite{de2012modern} and Dynamo\footnote{\url{http://dynamobim.com/} (last accessed on 10/10/2016)} for Revit\footnote{\url{http://www.autodesk.com/products/revit-family/overview} (last accessed on 10/10/2016)}.
+The most basic \gls{ide} may have a text editor, where the architect types a textual representation of the program, and an interpreter, that interprets the program and performs the required operations.
+Examples of \gls{gd} \glspl{ide} include Grasshopper 3D\footnote{\url{http://www.grasshopper3d.com/} (last accessed on 10/10/2016)} for Rhinoceros 3D\footnote{\url{https://www.rhino3d.com/} (last accessed on 10/10/2016)}, Dynamo\footnote{\url{http://dynamobim.com/} (last accessed on 10/10/2016)} for Revit\footnote{\url{http://www.autodesk.com/products/revit-family/overview} (last accessed on 10/10/2016)}, and Rosetta\cite{de2012modern}.
 
 In the case of \gls{gd} \glspl{ide}, there are specific requirements that need to be fulfilled to make them useful for exploration of \gls{gd}, since they have to support the architect while he creates programs and explores design possibilities.
-First of all, the environment has to be able to display geometric results, otherwise, the architect will not be able to see anything.
+First of all, the environment has to be able to display geometric results, otherwise, the architect will not be able to see what his programs generate.
 Secondly, the architect needs to be able to see the effects from changes to the parameters of his programs or even from changes in any part of the program.
 This will require the environment to be fast to run programs, generate results, and display them to give the architect this immediate feedback.
 Apart from this, the environment also needs to make it easy for the architect to build his program and correct the bugs that might appear.
 It may do so by showing him the available functions or by highlighting results from a given part of a program.
 
-Other way the \gls{ide} can help the architect building programs is by supporting a programming paradigm that fits better the usual way of thinking of the architect.
+Other way the \gls{ide} can help the architect building programs is by supporting a programming paradigm that fits better his usual way of thinking.
 Most \gls{gd} \glspl{ide} use either data-flow programming or procedural programming.
 The first is often supported by a visual editing environment, while the second is often supported by a textual editing environment.
 %{\bf (ref?)}
@@ -91,7 +92,7 @@ It is common practice in any creative field to carry a notebook or a sketchbook 
 This way, people make sure that they do not forget any of their ideas.
 
 A common feature of the tools typically used by architects is that they need to be installed.
-Like so, these are not readily available on every computer.
+Like so, these tools are not readily available on every computer.
 As a result, if architects want to be able to work with their software tools, they have to always bring the computer with them.
 This is one of the main reasons why laptop computers are used.
 They combine the ability to run the same applications as desktop computers with transportability.
@@ -121,16 +122,15 @@ Still, this is a rudimentary method.
 It does not allow him to edit a file simultaneously with his teammates, it does not have a system to track versions of files, and it only works on desktop-like computers.%
 \footnote{That run Microsoft Windows, Mac OS or a *nix distribution.}
 
-This is not a problem specific to architects.
-In fact, anyone working remotely faces this problem and there are solutions that address it in some fields that also use \gls{cad}.
-One example of such services is OnShape\footnote{\url{https://www.onshape.org} (last accessed on 10/10/2016)}, that addresses the problem for Product Design/Engineering.
-To do this, OnShape has real-time collaboration, projects are stored in the cloud, has version control, and works both in a web browser and on mobile devices.
-This way, the work of its users becomes accessible from anywhere it is accessible, that is any computer or mobile device with an Internet connection.
+The web as seen a big increase in popularity which has become even stronger by the standardization of both existing and new web technologies such as HTML5\cite{hickson2011html5} and WebGL\cite{marrin2011webgl} that allow web applications accessed using web browsers to achieve user experiences on par with desktop applications.
+This has led to the creation of many web application counterparts of common desktop applications.
+For example, common office productivity tools like Microsoft Word, Excel and PowerPoint have also seen the appearance of their web application counterparts when Microsoft Office 365 appeared.
+Furthermore, complete \gls{cad} web applications have also appeared.
+One example is OnShape\footnote{\url{https://www.onshape.org} (last accessed on 10/10/2016)}, a \gls{cad} for Product Design/Engineering completely accessible from the web browser.
+In addiction to providing the common functionality of a \gls{cad}, it also enhances collaboration by keeping every document accessible from the web, keeping tracking of all versions of documents, and by allowing people to work simultaneously in the same document.
 
-The trend towards migrating desktop applications to web applications stretches further than \gls{cad} applications.
-Common office productivity tools like Microsoft Word, Excel and PowerPoint from Microsoft Office have also seen the appearance of their web application counterparts when Microsoft Office 365 appeared.
+Working with a web application that supports collaboration makes collaboration for its users trivial.
 What remains to be done is making this functionality available to architects and \gls{gd} and that is the problem we want to address.
-In the next section we describe the goals of this thesis.
 
 \begin{figure}
 	\centering

@@ -58,7 +58,7 @@ Extempore also includes a second programming language for programming \glspl{dsp
 
 \subsection{LightTable}
 \label{lighttable:related}
-LightTable\cite{lighttable2015site} is a code editor for the Clojure programming language\cite{hickey2008clojure} and is an example of a desktop application that uses web technologies.
+LightTable\footnote{\url{http://lighttable.com/} (last accessed 10/10/2016)} is a code editor for the Clojure programming language\cite{hickey2008clojure} and is an example of a desktop application that uses web technologies.
 More specifically, it uses nw.js\footnote{\url{http://nwjs.io} (last accessed on 10/10/2016)} as its runtime, allowing it to use the html layout engine for its user interface, to use Javascript as its programming language, and to use node.js\cite{tilkov2010node} modules.
 LightTable is written in ClojureScript\cite{10.1109/MIC.2011.148}, a subset of Clojure that compiles to Javascript.
 
@@ -159,7 +159,7 @@ In the context of Jupyter, IPython is now only concerned with providing an inter
 
 
 \subsection{OpenJSCAD}
-OpenJSCAD\cite{openjscad2015site} is a project aiming to implement OpenSCAD\cite{kintel2011openscad} using web technologies.
+OpenJSCAD\footnote{\url{http://openjscad.org/} (last accessed 10/10/2016)} is a project aiming to implement OpenSCAD\footnote{\url{http://www.openscad.org/} (last accessed 10/10/2016)} using web technologies.
 Instead of using OpenSCAD's language, OpenJSCAD uses JavaScript as its language.
 Most of OpenSCAD functionality is implemented in OpenJSCAD.
 Like OpenSCAD, it focuses on creating 3D models for 3D printing.
@@ -168,7 +168,7 @@ Similarly to the \gls{gd} approach, to actually model in OpenJSCAD, the user has
 
 Being an environment for modeling 3D printed objects, OpenJSCAD supports importing and exporting 3D models from/to STL and AMF files which are commonly used as 3D printing formats.
 
-OpenJSCAD provides two user interfaces, one \acrfull{cli} and one \acrfull{gui}, the latter implemented as a web page.%
+OpenJSCAD provides two user interfaces, one \acrfull{cli} and one \acrfull{gui}, the latter implemented as a web page (Figure~\ref{fig:openjscad:page}).%
 \footnote{\url{https://github.com/Spiritdude/OpenJSCAD.org} (last accessed on 10/10/2016)}
 Moreover, the first can be used for batch processing, while the second integrates an editor to edit a program and a 3D view for viewing the corresponding results.
 This separation enables the use of OpenJSCAD for programming, without requiring the programmer to install anything more than a web browser, which is almost always already installed.
@@ -185,6 +185,12 @@ A problem that can arise while writing and testing JSCAD programs is that there 
 This problem is even more relevant when most of the operations have multiple optional parameters and there are parameters that replace other parameters.
 Currently, the only help available is OpenJSCAD's documentation (a tour on its functionality), the online community around OpenJSCAD and, since Javascript is its language, web browsers' Javascript developer tools.
 
+\begin{figure}
+	\centering
+	\includegraphics[width=1.0\textwidth]{./images/openjscad_page}
+	\caption{OpenJSCAD web page.}
+	\label{fig:openjscad:page}
+\end{figure}
 
 \subsection{Processing}
 \label{section:processing:related}
@@ -235,7 +241,7 @@ These include Processing.py\footnote{\url{http://py.processing.org/} (last acces
 DesignScript\cite{aish2012designscript} is a programming language that was designed to suit the needs of architecture related design.
 
 %DesignScript programming paradigms
-DesignScript uses concepts from multiple programming paradigms like object-oriented, functional, and associative programming.
+DesignScript uses concepts from multiple programming paradigms like object-oriented, functional, and associative programming\cite{aish2012designscript}.
 Entities have properties that can be either data or functions, like in object-oriented languages; functions' most important role is to take some input and produce some output without producing side-effects, like in functional languages; and dependencies among variables are retained, like in associative languages.
 
 It supports both imperative (following instructions step-by-step) and associative (propagating changes in a dependency graph) control flows.
@@ -323,7 +329,7 @@ Using Clara.io closely resembles working with its desktop counterparts.
 Modeling is done by adding 3D entities to the scene's scenegraph and afterwards adding modifiers to them and/or directly manipulating them in 3D space(position, rotation, scaling, selection, grouping).
 
 Apart from having features close to other 3D modeling software, being a cloud application Clara.io also supports cloud storage of scenes, real-time collaboration, and has integration with VRay cloud rendering.
-Furthermore, Clara.io only requires a web browser compatible with HTML5 and WebGL, without any installation.
+Furthermore, Clara.io only requires a web browser compatible with HTML5\cite{hickson2011html5} and WebGL\cite{marrin2011webgl}, without any installation.
 Like so, its users are free to switch between computers without having to configure anything and without having to move their work.
 
 Clara.io's real-time collaboration lets users edit scenes simultaneously.
@@ -439,7 +445,7 @@ As Antimony uses \glspl{sdf} as its representation of solids, shapes are defined
 		{\bf Environment} & {\bf Editing Paradigm} 		& {\bf Programming Paradigm}\\
 		\midrule
 		Impromptu			& text											& imperative								\\
-		LightTable		& ++text										& functional 								\\
+		LightTable		& ++text										& functional / imperative		\\
 		IPython				& ++text										& imperative 								\\
 		OpenJSCAD			& text											& imperative 								\\
 		Processing		& text											& imperative								\\
@@ -508,24 +514,22 @@ As Antimony uses \glspl{sdf} as its representation of solids, shapes are defined
 	\label{table:features:comp}
 \end{table}
 
-Not all environments are directly related to \gls{gd}. We looked at this diverse set of environments to get the broader picture of domain-specific programming environments, 3d modeling/\gls{cad} applications, and some of their cloud counterparts.
+Not all of the presented environments are directly related to \gls{gd}.
+We looked at this diverse set of environments to get the broader picture of domain-specific programming environments, 3D modeling/\gls{cad} applications, and some of their cloud counterparts.
 
 In terms of application domain, the environments presented in this chapter cover a variety of fields that use programming for automating tasks.
 Table~\ref{table:general:comp} shows a comparison of the application domain of each of them, as well as the purpose that programming takes in them.
 
-Programming has a major role in most of the presented environments as seen in Table~\ref{table:general:comp}, with the exception of Clara.io and OnShape, where it is only used to extend the functionality available in the main \gls{ui}.
+Programming has a major role for users in most of the presented environments as seen in Table~\ref{table:general:comp}, with the exception of Clara.io and OnShape, where it is only used to extend the functionality available in the main \gls{ui}.
 
-The editing paradigms used in environments has been based on text editing, node graph editing, a combination of text and node graph editing, or a combination of node graph and block-based editing.
+The editing paradigms used in environments has been based on text editing, node graph editing, a combination of these two, or a combination of node graph and block-based editing.
 The type of editing paradigm each environment supports is shown in Table~\ref{table:edit:prog:paradigms}.
-Environments with textual editing provide different levels of ``editing power'', starting with basic text editing with syntax highlighting (``text'' in Table~\ref{table:edit:prog:paradigms}) and adding features like code completion, showing documentation, helping navigation, and expression evaluation (``++text'' in Table~\ref{table:edit:prog:paradigms}).
+Environments with textual editing provide different levels of {\it ``editing power''}, starting with basic text editing with syntax highlighting ({\it ``text''} in Table~\ref{table:edit:prog:paradigms}) and adding features like code completion, showing documentation, helping navigation, and expression evaluation ({\it ``++text''} in Table~\ref{table:edit:prog:paradigms}).
 
 Table~\ref{table:edit:prog:paradigms} also shows the programming paradigms supported by each environment's language.
-They include imperative, functional, and associative / data-flow programming.
-Visual environments use associative / data-flow languages, while textual environments use imperative languages.
-
-Table~\ref{table:features:comp} presents a non-exhaustive list of features provided by each environment.
-%The \gls{repl} is a common feature among these environments
-%{\bf(comments on the varying coverage of features)}
+They include imperative, functional, and associative / data-flow programming.%
+\footnote{Associative and data-flow programming are similar. The difference is that associative programs build a dependency graph during their execution, propagating changes as needed, while data-flow programs have a static dependency graph and the data just flows from data sources to the connected nodes.}
+Visual environments use associative and data-flow programming languages, while textual environments use imperative and functional programming languages.
 
 Some environments have been implemented as desktop applications, while others have been implemented as web pages, as shown in Table~\ref{table:cloud:comp}.
 Implementing an application as a web page has the advantage of becoming accessible to any computer connected to the Internet, without requiring users to install it.
@@ -537,6 +541,10 @@ Without this, users have to use either a physical storage device or a separate r
 
 Collaboration is only directly supported in Impromptu, Clara.io and OnShape, which allow for real-time collaboration, thus enabling their users to work on the same artifact simultaneously --- i.e. Impromptu's runtime, a Clara.io scene or a OnShape model.
 For the rest of the environments, collaboration is the user's responsibility.
+
+Table~\ref{table:features:comp} presents a non-exhaustive list of features provided by each environment.
+%The \gls{repl} is a common feature among these environments
+%{\bf(comments on the varying coverage of features)}
 
 
 \section{Problems to address}
