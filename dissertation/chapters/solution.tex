@@ -11,7 +11,7 @@ There are five related tasks that the environment needs to support in order to b
 (1) it needs to let the architect develop programs;
 (2) it needs to run programs;
 (3) it needs to display their results;
-(4) it needs to make it easy to understand the program;
+(4) it needs to make it easy to understand programs;
 and (5) it needs to export results to \gls{cad} applications.
 
 To accomplish these tasks, there are two separate components, as seen in Figure~\ref{fig:archi:sol}: (1) the web page, where the \gls{ui} for creating programs is; and (2) the remote CAD service, that offers an \gls{api} for running programs in \gls{cad} applications.
@@ -32,12 +32,14 @@ We start by looking at the web page.
 
 
 \section{Web page}
-To handle the tasks of letting the architect develop programs, running programs, supporting program understanding and displaying results, the web page has the layout shown in Figure~\ref{fig:page:view}.
-Taking up most of the screen space are a text editor and a 3D view that allow the architect to edit a program and view results alongside it.
-On top of these two are controls for running programs and for traceability data collection.
-To the left is the interface for running programs in \gls{cad} applications and a list of the currently available programs.
+To handle the tasks of letting the architect develop programs, running programs, supporting program understanding, and displaying results, the web page has the layout shown in Figure~\ref{fig:page:view}.
+Taking up most of the screen space are a text editor and a 3D view that allow the architect to edit a program and view its results.
+On top of the text editor and the 3D view are controls for the running process, including whether to run automatically and whether to collect data to display traceability.
+To the left are hidden panels for actions like selecting a program and exporting to \gls{cad} applications.
+{\bf(pictures of panels)}
 
 To help with the implementation, we have used the THREE.js library\footnote{\url{https://threejs.org/} (last accessed on 10/10/2016)}, to interact with WebGL\cite{marrin2011webgl}, and the Ace Editor library\footnote{\url{https://ace.c9.io} (last accessed on 10/10/2016)}, to provide a syntax highlighted text editor.
+{\bf(React, escodegen, esprima, estraverse, redux)}
 
 %{\bf(describe high-level view of the inner workings of the page)}
 
@@ -50,14 +52,15 @@ To help with the implementation, we have used the THREE.js library\footnote{\url
 
 
 \subsection{Understanding Programs}
-In \gls{gd}, the architect interacts with the program that creates the model instead of creating the model directly in a \gls{cad} application.
+In \gls{gd}, the architect interacts with the program that creates the model instead of creating it directly in a \gls{cad} application.
 This allows him to automate tasks that normally take too much time and, therefore, also allows him to explore a design space with much more repetition.
 However, since he is not directly interacting with the model, he needs to understand the relationship between program and results in order to know how to change the program to get the model he wants.
+Our environment enables him to do this by providing immediate feedback to changes and by showing traceability.
 
 
 \subsubsection{Immediate Feedback}
 \label{sec:immediate:feedback}
-One of the ways to understand the program is to understand the relationship between its inputs and outputs, that is understanding how each input affects the output model.
+One of the ways to understand the program is to understand the relationship between its inputs and outputs, that is, understanding how each input affects the output model.
 To do this, the architect needs to change the inputs, run the program, see the output, and repeat until he understands the relationship.
 This is a tedious process that will bore must architects.
 The environment can help by making this process more immediate.
@@ -67,21 +70,21 @@ This immediacy lets the architect understand the relationship quickly which mean
 \paragraph{Adjusting literals}
 When a value, such as a number, is typed directly into a program's source code, it is called a literal value, or simply a literal.
 When experimenting with a \gls{gd} program, architects find themselves repeatedly adjusting literals that were hardcoded into the program.
-This is usually done by retyping parts of the literal's text and then re-running the program again to see the effect.
+This is usually done by retyping parts of the literal's text and then re-running the program to see the effect.
 Unfortunately, this is annoying and, worse, it makes it difficult to fine-tune the literal.
 One possible way to improving this behavior is to automatically re-run the program on every change.
-This has the advantage of allowing immediate feedback to changes in literals, but it also has problems, namely, when the user mistypes characters.
+This has the advantage of allowing immediate feedback to changes in literals.
 
-Editing literals this way often leads to errors, since it is easy to mistype characters.
-The user can increase the literal's value by an order of magnitude if, by mistake, he inserts one character without removing another.
-Furthermore, when increasing the literal in steps, different hand movements are required when the increment has carry over, yet again increasing both the likelihood of mistyping and the time it takes to make the changes.
+However, editing literals this way often leads to errors, since it is easy to mistype characters.
+The architect can increase the literal's value by an order of magnitude if, by mistake, he inserts one character without removing another.
+Furthermore, when increasing the literal in steps, different hand movements are required when the increment results in a carry over, yet again increasing both the likelihood of mistyping and the time it takes to make the changes.
 These errors get amplified when the programming environment provides real time feedback and, like so, begins rerunning the program before the error is corrected, leading to annoyance and to reduced \gls{ui} responsiveness.
 
 To make this interaction more user friendly and less prone to errors, we decided to simplify the task.
 Instead of retyping the literal, it would be easier to perform a simpler task, like moving the mouse or pressing a specific key on the keyboard.
 
 \paragraph{Alternative ways of adjusting literals}
-There are several ways we can extend the user interface to make this more user friendly, and none of them rely on manually replacing digits.
+There are several ways we can extend the user interface to make adjusting literals more user friendly that do not involve manually replacing digits.
 They have a simpler mapping to the user's intent.
 The following list describes some of them:
 
@@ -89,29 +92,29 @@ The following list describes some of them:
   \item {\bf Virtual joystick} Clicking on a literal will display a virtual joystick close to it. When clicked and dragged, it changes the value repeatedly over time, being faster or slower depending on how much the handle is moved from its center.
   \item {\bf Click and drag} Clicking and dragging on a literal will change it according to how much the pointer moved from the starting position.
   \item {\bf Sliders} Clicking on a literal will display a slider. Dragging the slider's handle will change the literal depending on how much the handle is moved from the center of the slider. The slider can have different scales, linear or non-linear, to map the center-handle distance to the amount of change for the literal.
-  \item {\bf Keyboard shortcuts} Pressing key combinations while having a literal selected, or the text editor's caret on it, will increment or decrement it.
+  \item {\bf Keyboard shortcuts} Pressing key combinations while having a literal selected, or the text editor's caret on it, will increment or decrement the literal.
 \end{itemize}
 
 Each of the above has its advantages and disadvantages.
-The {\it Virtual joystick} and the {\it Sliders}, for example, have the advantage that they are visible to the user and, like so, are easier for the user to see and understand.
-However, by being visible, they can also block parts of the program that the user may want to see.
+The {\it Virtual joystick} and the {\it Sliders}, for example, have the advantage that they are visible to the user and, like so, are easier for him to see and understand.
+However, by being visible, they can also block parts of the program that he may want to see.
 The {\it Keyboard shortcuts} have the advantage that they do not introduce any visual clutter into the program editor, are more precise, and that they are accessible without getting the hands out of the keyboard.
-However, they do require the user to learn their key combinations which is sometimes avoided by new users.
+However, they do require the user to learn their key combinations, which is often avoided by new users.
 Lastly, the {\it Click and drag} also has the advantage of not introducing visual clutter into the editor.
 Moreover, as with {\it Virtual joystick} and {\it Sliders}, since the interaction is made using the mouse, it is more intuitive for new users.
-However, less visual clutter means that the user may not realize that it is possible to adjust the literal when it indeed possible.
+However, less visual clutter means that the user may not realize that it is possible to adjust the literal.
 
-Taking the advantages and disadvantages of each alternative into account, we decided to implement the {\it Click and drag} way of adjusting literals since it made a good comprise between being use to use for new users and introducing visual clutter to the editor.
+Taking the advantages and disadvantages of each alternative into account, we decided to implement the {\it Click and drag} way of adjusting literals since it is a good comprise between being easy to use for new users and introducing visual clutter to the editor.
 %Instead of retyping the literal, the user can just ``Click and drag'' on the literal to change its value.
 Figure~\ref{fig:lit:adjust} shows an example of its usage.
 
 \paragraph{Implementation}
 To implement this behavior, we need to focus on the program editor, as this is where the relevant information is.
 
-The behavior starts when the user presses a mouse button while the pointer is over a numerical literal.
-If it is indeed a numerical literal, we setup an event listener that will update the literal every time the pointer moves until the mouse button is released.
+The behavior starts when the user presses a mouse button while the pointer is over the text editor.
+If it is indeed hovering a numerical literal, we setup an event listener that will update the literal every time the pointer moves until the mouse button is released.
 
-To check that the pointer is over a numerical node, we use the pointer position and the \gls{ast} of the current program with location data.
+To check that the pointer is over a numerical node, we use the pointer position and the \gls{ast} of the current program.
 Since the program will change during the behavior, we keep the path taken through the \gls{ast} to the numerical literal.
 We also keep the starting pointer position as a reference for calculating the new literal value when the mouse is moved.
 
@@ -146,7 +149,7 @@ Reducing the time between making a change and seeing its effect is one way to he
 
 Another way to understand the program is to understand the relationship between parts of the program and parts of the results.
 This helps the architect build an understanding of the program from parts to the whole, helps him identify causes of errors, and also helps him identify parts that need to be changed to accommodate new design requirements.
-This is especially true when he is dealing with programs that generate complex models, where it is much harder to simply look at them and infer the relationship mentally.
+This is especially true when he is dealing with programs that generate complex models, where it is much harder to simply look at the program and results and mentally infer the relationship.
 
 If the programming environment takes care of tracking the relation between program and results, the architect only needs to ask for the relation instead of having to track it by himself, freeing his mind to think about the problem.
 
@@ -159,7 +162,7 @@ We will describe some of them next:
 
 \begin{itemize}
   \item {\bf Highlighting expressions and results} Every object that is part of the results of a program has been created by one expression of that program.
-  On the other side, every expression of the program may have created one or more objects part of the results.
+  On the other hand, every expression of the program may have created one or more objects part of the results.
   The environment can make this relationships visible by changing the appearance of expressions and results when the user points either at an expression or at an object.
 
   \item {\bf Timetable} As described in Learnable Programming\cite{victor2012learnable}, making things visible makes them more real to the programmer.
@@ -186,25 +189,25 @@ Nonetheless, by taking into account that both {\it Timetable} and {\it Display d
 Moreover, it can achieve better performance.
 
 \paragraph{Implementation}
-The implementation requires three things:
+The implementation of traceability by highlighting expressions and results requires three things:
 (1) collecting traceability data while running a program;
 (2) detecting that the user is pointing at either an object from the results or an expression of the program;
-and (3) highlighting both the pointed object and the corresponding creator expression, or both the pointed expression and the corresponding created results, as exemplified in Figure~\ref{fig:trace:example}.
+and (3) highlighting both the pointed object and the corresponding creator expression, or, in the opposite direction, both the pointed expression and the corresponding created results, as exemplified in Figure~\ref{fig:trace:example}.
 
 To get the traceability data it needs to show the program-results relationship, the environment instruments the program.
 We will go into more detail on this matter in Subsection~\ref{sec:run:progs}.
 
 In regard to detecting what the user is pointing at, we follow two approaches depending on the pointer being over the program or over the 3D view.
-When the pointer is over the program, we use the \gls{ast} of the program annotated with source code locations and the pointer position to find the deepest expression that has recorded traceability data.
+When the pointer is over the program, we use the program's \gls{ast} annotated with source code locations and the pointer position to find the deepest expression that has recorded traceability data.
 When the pointer is over the 3D view, we use ray-casting to detect which of the result objects is below the pointer and closest to the camera.
 
 After detecting that something is being pointed at, the environment needs to highlight it and the corresponding part in the program editor or the 3D view.
 To do that, it first uses the traceability data to find the corresponding created objects for an expression, or the first expression that created the pointed object.
 Afterwards, it highlights both.
 It highlights expressions by changing the program editor's background behind them to a different color.
-To highlight 3D objects, it changes their material to a transparent and emissive one, and overlays them on top of the remaining results.
+To highlight 3D objects, it changes their material to a transparent and emissive one, and overlays them on top of the remaining objects.
 
-When working on a larger design, the user may find that his program is running too slowly that he has to wait to see the effects of his changes.
+When working on a larger design, the user may find that his program is running so slowly that he has to wait to see the effects of his changes.
 Collecting traceability is in part responsible for the slowdown.
 Like so, we also made traceability data collection optional to the user.
 This way, he can decide to turn it off when he wants his program to run faster.
@@ -231,8 +234,8 @@ This way, he can decide to turn it off when he wants his program to run faster.
 \subsection{Running Programs}
 \label{sec:run:progs}
 One of the fundamental parts of the programming environment is that it runs programs.
-To run programs, the environment needs to know which programming language is being used and which primitive operations the program has access to.
-After knowing these, the environment must have a process to run the program and collect results so they can be displayed later.
+To run programs, the environment needs to know which programming language is being used and to implement primitive operations the program has access to.
+After knowing these, the environment must have a process to run the program and collect results to display them later.
 
 
 \subsubsection{Programming Language}
@@ -240,18 +243,18 @@ Everyone can write a text or draw a diagram of what they want the computer to do
 However, if they do not use a concrete and unambiguous language that can be translated automatically by the computer, it will not be possible to get the computer to do what they want.
 
 The environment has to use a programming language that fits the architect's needs.
-It can either use an existing language and make slight adaptations or create a new one specially for their needs.
+It can either be an existing language with slight adaptations or a new one specially tailored for their needs.
 
 Still, creating a new programming language is not realistic since it would require a great implementation effort to get a working version.
 Moreover, since we want programs to run as fast as possible to be able to give architects immediate feedback, further effort would be needed to make it perform fast.
 
-Another thing in favor of existing programming languages is that they have had time to gather communities that can help the architect when he does not know how to do something or when he is having trouble correcting a bug.
+Furthermore, existing programming languages have had time to gather communities that can help the architect when he does not know how to do something or when he is having trouble correcting a bug.
 A new programming language would have a severely limited community.
 This suggests that we should use a programming language that already exists.
 
 Architects' experience with programming can vary, however, we can assume that there are more novices than experts.
 Like so, the environment needs to have a programming language is easy to learn and use.
-We can consider programming languages that are commonly regarded as good introductory languages such as Python, Racket, and Processing.
+We can consider programming languages that are commonly regarded as good introductory languages such as Python, Racket, and Processing as possible candidates.
 Additionally, we can also consider DesignScript, since it was made specifically with design programming in mind, and also JavaScript, since it is readily available in web browsers and was originally made for web designers.
 
 Programming languages have to be translated into the host's language.
@@ -278,7 +281,7 @@ They are described in the following list:
   \item {\bf Special entry point} Like in OpenJSCAD, we could require that every program must define a function with a special name (e.g. ``main'').
   The environment would then call this function and use its return value as the results of the program.
 
-  \item {\bf Display function} Another way to get results from a program would be giving access to an output function to the program.
+  \item {\bf Display function} Another way to get results from a program would be giving it access to an output function to the program.
   During its execution, the program would call this function, maybe several times, to produce its output.
 
   \item {\bf Imperative primitives} A third way to get results would be to add a side-effect to all the 3D object producing functions/primitives.
@@ -289,7 +292,7 @@ They are described in the following list:
 \end{itemize}
 
 Each of this alternatives encourages a slightly different programming approach.
-The {\it Imperative primitives} and {\it Display function} alternatives encourage an imperative programming approach, since the programmer must give instruction to create objects or display them.
+The {\it Imperative primitives} and {\it Display function} alternatives encourage an imperative programming approach, since the programmer must give instructions to create objects or display them.
 The {\it Special entry point} and {\it Top-level expressions} alternatives, on the other hand, encourage a functional programming approach since the programmer must specify what objects constitute the results.
 
 We wanted the environment to encourage users to follow a functional programming approach.
@@ -348,7 +351,7 @@ column(6.00, 0.8, 0.7);
 
 \subsubsection{Running process}
 When the environment runs a program, it needs to do two things: (1) collect the results of the program; and (2) collect traceability data.
-It does these two by instrumenting the program with additional calls to special functions that record the desired information.
+It does these two by instrumenting the program with additional calls to special functions that record the desired information, then running the program, and afterwards collecting the results from the instrumentation.
 As stated in \ref{sec:traceability}, the collection of traceability data is optional since it adds a significant overhead to program execution, which may be undesired when programs start to take too much time to run.
 
 To be able to perform the instrumentation, the environment parses the program using Esprima, a JavaScript parser,\footnote{\url{https://github.com/jquery/esprima} (last accessed on 10/10/2016)} to get its \gls{ast}.%
@@ -356,7 +359,6 @@ To be able to perform the instrumentation, the environment parses the program us
 
 Afterwards, the \gls{ast} is transformed by: (1) adding a recording call to all top-level expression statements; and (2) adding a recording call to all function call expressions.
 Figure~\ref{fig:instrument:example} exemplifies the transformation.
-
 To let the recording functions know what top-level expression or function call is producing a result, we also provide them with identifiers for those expressions.
 
 After this step, the environment creates a new function with the instrumented program as its body.
@@ -399,7 +401,7 @@ By using THREE.js, the implementation effort is reduced since, on top of impleme
 However, since the environment provides a functional \gls{api} and THREE.js's API is imperative, it needs to cover the differences between these two \glspl{api}.
 
 The main difference between them lies in how they support reuse.
-THREE.js's \gls{api} makes it difficult to reuse objects since it only allows objects to have one parent.
+THREE.js's \gls{api} makes it difficult to reuse objects since it only allows scenegraph objects to have one parent.
 If the programmer wants to reuse one object, he has to clone it.
 The environment's \gls{api}, on the other hand, does not impose this rule.
 To cover the difference, we use two steps:
@@ -427,7 +429,7 @@ Together with the correspondence between program nodes and intermediary results,
   \end{subfigure}
   \begin{subfigure}[b]{0.45\textwidth}
     \includegraphics[width=1.0\textwidth]{./images/display_results/three}
-    \caption{THREE objects}
+    \caption{THREE scenegraph}
   \end{subfigure}
   \caption{Comparison of program results structure and THREE.js scenegraph.}
   \label{fig:results:vs:three}
@@ -437,11 +439,11 @@ Together with the correspondence between program nodes and intermediary results,
 \section{Remote CAD Service / Exporting to CAD}
 The last task that the environment needs to support is exporting to \gls{cad} applications.
 
-As opposed to the other tasks, exporting to a \gls{cad} application requires the environment to communicate with it.
+As opposed to the other tasks, exporting to a \gls{cad} application requires the environment to communicate with other appications.
 To do so, the environment must locate the \gls{cad} application and connect to it.
 In addition, there must be a well-defined interface of operations that can be performed in the \gls{cad}, which need to cover the operations that can be performed in the web page, as well as operations for managing the \gls{cad}'s document.
 
-To make this possible, we have implemented an application that the architect must install and run in his computer.
+To make communication possible, we have implemented an application that the architect must install and run in his computer.
 This application serves as a bridge between \gls{cad} applications installed in the computer and the environment running in the web page.
 After being started, the application detects which \glspl{cad} are installed in the computer and connects to the ``environment directory'' so it can be discovered by the web page.
 When the architect needs to export a program to his \gls{cad} application, the web page connects to the application in his computer through the ``environment directory'' and starts to send requests to it, in order to create shapes in the \gls{cad} application.
@@ -449,7 +451,7 @@ The architecture for this part of the solution is illustrated in Figure~\ref{fig
 As long as these components can communicate with each other, the system can work.
 In the extreme, each can be running in a distinct computer, as long as all computers are connected to the same network.
 
-Figure~\ref{fig:remote:cad:example} shows an example of this functionality.
+Figure~\ref{fig:remote:cad:example} shows an example of the export to \gls{cad} functionality in action.
 The architect has created a program using the web page environment.
 After selecting AutoCAD and SketchUp as export destinations, he starts the export process and, some time later, the model resulting from running the program is available in both \gls{cad} applications.
 
@@ -458,18 +460,18 @@ Furthermore, the application only needs to be installed in the computer that act
 
 
 \subsection{Implementation}
-We implemented the application as a small Racket server.
-It expects to receive HTTP requests for adding shapes to the currently selected \gls{cad} applications.
-It also expects requests for specifying what \gls{cad} applications should the shapes be added to and for deleting all shapes they may have.
+We implemented the remote CAD application as a small Racket server.
+It expects to receive HTTP requests for operations like adding shapes to the currently selected \gls{cad} applications or deleting all shapes they may have.
+It also expects requests for specifying what \gls{cad} applications are selected.
 %{\bf(appendix has remote CAD service API?)}
 
-Apart from the connection application and web page, there also needs to be a connection between the application and the \gls{cad} applications.
+Apart from the connection between the remote CAD application and the web page, there also needs to be a connection between the remote CAD application and the \gls{cad} applications.
 Different \glspl{cad} have different \glspl{api} so the application needs to know how to interact with each one.
 
-Instead of implementing the connection with \gls{cad} applications installed in the computer, the application uses Rosetta as an intermediate.
+Instead of implementing the connection with \gls{cad} applications itself, the application uses Rosetta as an intermediate.
 This way, it only has to cover the semantic differences between Rosetta's \gls{api} and the remote CAD service's \gls{api}.
 
-In reality, when he wants to export to \gls{cad}, it is likely that the architect is using the web environment in the same computer where he has the \gls{cad} application installed.
+In reality, when the architect wants to export to \gls{cad}, it is likely that he is using the web environment in the same computer where he has the \gls{cad} application installed.
 Like so, the web page, the remote CAD application and the \gls{cad} applications run in the same computer.
 With this in mind, we chose to temporarily host the web page containing the \gls{ide} in the remote CAD application's server.
 Using this setup, it is easier to test the communication between the page and the application.

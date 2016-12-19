@@ -14,11 +14,11 @@
    height="242.44301"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.4 r9939"
+   inkscape:version="0.91 r13725"
    sodipodi:docname="remote_cad_example.svg"
    inkscape:export-filename="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\remote_cad_example\remote_cad_example.png"
-   inkscape:export-xdpi="299.94678"
-   inkscape:export-ydpi="299.94678">
+   inkscape:export-xdpi="299.89093"
+   inkscape:export-ydpi="299.89093">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -28,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.6562"
-     inkscape:cx="219.41982"
-     inkscape:cy="87.738668"
+     inkscape:zoom="1.1711103"
+     inkscape:cx="318.22666"
+     inkscape:cy="109.44076"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -40,8 +40,8 @@
      inkscape:snap-midpoints="true"
      inkscape:object-paths="true"
      inkscape:snap-smooth-nodes="true"
-     inkscape:window-width="2560"
-     inkscape:window-height="1378"
+     inkscape:window-width="1920"
+     inkscape:window-height="1018"
      inkscape:window-x="-4"
      inkscape:window-y="-4"
      inkscape:window-maximized="1"
@@ -66,10 +66,12 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-97.452141,-154.31159)">
+     transform="translate(-97.452141,-154.31169)">
     <image
        sodipodi:absref="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\remote_cad_example\autocad.png"
        xlink:href="autocad.png"
+       inkscape:export-ydpi="300"
+       inkscape:export-xdpi="300"
        width="257.8288"
        height="241.97676"
        id="image2993"
@@ -78,6 +80,8 @@
     <image
        sodipodi:absref="E:\Users\Pedro-170\Documents\Rosetta\master-thesis\dissertation\images\remote_cad_example\page.png"
        xlink:href="page.png"
+       inkscape:export-ydpi="300"
+       inkscape:export-xdpi="300"
        width="288.13416"
        height="242.44298"
        id="image3004"
@@ -92,7 +96,7 @@
        x="97.452141"
        y="275.76636" />
     <rect
-       style="color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:4;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:4;marker:none;enable-background:accumulate"
        id="rect3024"
        width="289.46762"
        height="127.59155"

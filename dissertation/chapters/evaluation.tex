@@ -4,7 +4,7 @@
 \label{chapter:evaluation}
 The goal of our work was to bring \gls{gd} to the web browser so it can be used anywhere easily.
 In this chapter, we assess how our solution accomplishes this goal.
-We start by looking at some examples that were implemented in the environment in Section~\ref{sec:eval:gd:capable}.
+We start by looking at examples that were implemented in the environment in Section~\ref{sec:eval:gd:capable}.
 Afterwards, we measure the environment's performance and compare it to other environments in Section~\ref{sec:eval:performance}.
 
 
@@ -12,7 +12,7 @@ Afterwards, we measure the environment's performance and compare it to other env
 \label{sec:eval:gd:capable}
 A programming environment needs to allow for the creation of a wide variety of programs.
 Now comes the time to test the environment's ability to be used for \gls{gd}, more specifically to produce diverse 3D models.
-To show this variety, we will present several examples that make use of some of the primitives that were implemented in the prototype and also some programming techniques that they use.
+To show this variety, we will present several examples that make use of some primitives that were implemented and also some programming techniques that they use.
 
 %(illustrate main results of the implementation?)\\
 %(show that environment is able to produce GD models?)\\
@@ -21,7 +21,7 @@ To show this variety, we will present several examples that make use of some of 
 
 \subsection{Example: Atomium}
 The Atomium in Brussels was built between 1956 and 1958 for Expo 58.
-It consists of nine metallic spheres connected by sixteen tubes to form its shape, mimicking the arrangement of an iron crystal structure.
+It consists of nine metallic spheres connected by sixteen tubes forming its shape, mimicking the arrangement of an iron crystal structure.
 
 To create it in the environment, we can start by deciding which primitives to use for the elements of the Atomium, that is the metallic spheres and the tubes.
 The spheres can be created using the {\tt sphere} primitive.
@@ -34,7 +34,7 @@ function atomiumSpheres(cs, r) {
 
 The tubes can be created using the {\tt cylinder} primitive.
 They are placed at the edges of the cube defined by the outside spheres and also at the lines connecting them to the inside sphere.
-Sequence generation and manipulation functions -- like {\tt zip}, {\tt rotateLeft}, {\tt repeatTimes}, and {\tt concat} -- are used to create all cylinder center pairs.
+Sequence generation and manipulation functions -- like {\tt zip}, {\tt rotateLeft}, {\tt repeatTimes}, and {\tt concat} -- are used to create all pairs of points describing cylinder base centers.
 
 \begin{minted}{js}
 function atomiumTube(p1, p2, r) {
@@ -75,7 +75,7 @@ function atomiumFrame(sphereR, frameW, tubeR) {
 }
 \end{minted}
 
-After creating the structure, we rotate it aligning its $z$ axis with an axis passing through $(0,0,0)$ and $(1,1,1)$.
+After creating the structure, we rotate it, aligning its $z$ axis with an axis passing through $(0,0,0)$ and $(1,1,1)$.
 Figure~\ref{fig:ex:atomium} shows the resulting model.
 
 \begin{minted}{js}
@@ -165,8 +165,8 @@ function arcTruss(p, apexR, baseR, phi, psi0, psi1, e, n) {
 \end{minted}
 
 The {\tt arcCs} function creates a given number of points in an arc.
-Function {\tt arcTrussCs} then uses this function to the three arcs that include all the coordinates of joints of the truss.
-It is then used in {\tt arcTruss} in conjuntion with {\tt spatialTruss} to actually create the space frame (Figure~\ref{fig:arc:truss}).
+Function {\tt arcTrussCs} then uses this function create to the three arcs that include all the coordinates of joints of the truss.
+It is then used in {\tt arcTruss} in conjuntion with {\tt spatialTruss} to actually create the arched space frame (Figure~\ref{fig:arc:truss}).
 
 \begin{figure}
   \centering
@@ -176,8 +176,8 @@ It is then used in {\tt arcTruss} in conjuntion with {\tt spatialTruss} to actua
 \end{figure}
 
 It is common that planar space frames are required to follow a surface.
-Unfortunately, {\tt spatialTruss} requires not only points that lie on the surface but also points that are either below or above it to be able to create the trusses's quadrangular pyramids.
-{\tt insertPyramidApexCurves} is an helper function that creates a set of joint coordinates ready for {\tt spatialTruss} from a grid of points by adding pyramid apexes for each quad defined by by the grid.
+Unfortunately, {\tt spatialTruss} requires not only points that lie on the surface but also points that are either above or below it to create the trusses's quadrangular pyramids.
+{\tt insertPyramidApexCurves} is an helper function that takes a grid of points lying on a surface and creates a set of joint coordinates ready for use in {\tt spatialTruss} by adding pyramid apexes for each quad defined by the grid.
 {\tt spatialTrussInsertApex} combines {\tt insertPyramidApexCurves} and {\tt spatialTruss} into one easy to use function.
 
 \begin{minted}{js}
@@ -270,7 +270,8 @@ function moebiusTruss(r, u1, u2, m,
 
 
 \subsection{Example: Randomness}
-Computer programs allow highly repetitive designs to be generated quickly, however, architects may want to introduce some variation to make designs look more natural.
+Computer programs allow highly repetitive designs to be generated quickly.
+However, architects may want to introduce some variation to make designs look more natural.
 They can do this by introducing randomness into parts of their designs.
 The environment supports this by providing functions that generate random numbers.
 
@@ -311,7 +312,7 @@ function city(p) {
 \end{minipage}
 
 The function {\tt building} uses {\tt random.real} to decide whether to create a cylinder or a box.
-Calling {\tt city} with a point creates a grid of boxes and cylinders where approximately one third are cylinders, as seen in next. %Figure~\ref{fig:box:cyl:city}.
+Calling {\tt city} with a point creates a grid of boxes and cylinders where approximately one third are cylinders. %Figure~\ref{fig:box:cyl:city}.
 
 %\begin{figure}
 %  \centering
@@ -345,7 +346,7 @@ function building(p) {
 
 The examples from Figure~\ref{fig:ex:nolan}, \ref{fig:ex:ines:wall} and \ref{fig:ex:sheung:wan} also make use of random numbers.
 The first example uses them to vary the rotation of the square elements of the facade.
-The second uses them to decide which areas should have more or less holes and to determine the displacement of bricks from the face of the wall.
+The second uses random numbers to decide which areas should have more or less holes and to determine the displacement of bricks from the face of the wall.
 Lastly, the third uses random numbers to determine thicknesses of blocks, to determine where to subdivide them, to decide whether to further subdivide or not, and to decide which blocks from the smooth part (the lower part) should look like the ones from the rough part (the upper part).
 
 \begin{figure}
@@ -356,14 +357,14 @@ Lastly, the third uses random numbers to determine thicknesses of blocks, to det
     \label{fig:ex:nolan}
   \end{subfigure}
   \begin{subfigure}[b]{0.3\linewidth}
-    \includegraphics[width=1.0\linewidth]{./images/all_examples/sheung_wan_hotel_crop}
-    \caption{Sheung-Wan Hotel}
-    \label{fig:ex:sheung:wan}
-  \end{subfigure}
-  \begin{subfigure}[b]{0.3\linewidth}
     \includegraphics[width=1.0\linewidth]{./images/all_examples/ines_wall_crop}
     \caption{Ines Wall}
     \label{fig:ex:ines:wall}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.3\linewidth}
+    \includegraphics[width=1.0\linewidth]{./images/all_examples/sheung_wan_hotel_crop}
+    \caption{Sheung-Wan Hotel}
+    \label{fig:ex:sheung:wan}
   \end{subfigure}
   \caption{Results of programs using randomness.}
   \label{fig:rand:progs}
@@ -374,11 +375,10 @@ Lastly, the third uses random numbers to determine thicknesses of blocks, to det
 Higher-order functions are functions that receive functions as parameters and/or return functions as their result.
 One benefit that comes from higher-order functions is allowing their behavior to change without requiring them to be modified.
 
-Coming back to the example of creating a simplistic city.
-The implementation that was presented earlier was limited in terms of the creation of buildings.
-It requires the {\tt building} function to be modified in order to allow the city to have different kinds of buildings.
-It would be preferable to turn {\tt city} into an higher-order function receiving the functions responsible for creating the buildings.
-The modified function is the following:
+Coming back to the example of creating a simplistic city, the implementation that was presented earlier was limited in terms of the creation of buildings.
+It required the {\tt building} function to be modified in order to allow the city to have different kinds of buildings.
+It would be preferable to turn {\tt city} into an higher-order function receiving functions responsible for creating different kinds of buildings.
+One possible higher-order version of {\tt city} can be as follows:
 
 \begin{minted}{js}
 function city(p, buildingFns) {
@@ -388,9 +388,9 @@ function city(p, buildingFns) {
 }
 \end{minted}
 
-With this modification, it becomes possible to creating variations of the city by simply choosing a different set of buildings.
+With this modification, it becomes possible to create variations of the city by simply using a different set of building creation functions.
 Like so, we can extract the two buildings from {\tt building} into separate functions.
-In addition, we can also implement other types of buildings, like the one from {\tt coneBuilding}.
+In addition, we can also implement other types of buildings, like the one that {\tt coneBuilding} creates.
 
 \begin{minted}{js}
 function cylBuilding(p) {
@@ -412,7 +412,7 @@ function coneBuilding(p) {
 }
 \end{minted}
 
-Now we can call {\tt city} with these buildings, as seen in Figure~\ref{fig:cyl:box:cone:city}.
+Now we can call {\tt city} with these building creation functions, as seen in Figure~\ref{fig:cyl:box:cone:city}.
 
 \begin{figure}
 \begin{minipage}{0.5\textwidth}
@@ -430,12 +430,13 @@ Now we can call {\tt city} with these buildings, as seen in Figure~\ref{fig:cyl:
 
 
 \subsection{Completeness}
-Apart from the previous examples, some additional programs made using the environment.
+Apart from the previous examples, some additional programs were made using the environment.
 Figure~\ref{fig:all:examples} shows their results.
 As shown, the environment can produce interesting results with varying degrees of complexity.
-The range of results is still limited by the primitives currently implemented.
+
+Still, the range of results is limited by the primitives currently implemented.
 For example, none of these programs make use of \gls{csg} operations like union, intersection and difference as they are not implemented.
-Nevertheless, it is possible to add support for them since there are already JavaScript implementations of \gls{csg}, like the case of OpenJSCAD's.
+Nevertheless, it is possible to add support for them since there are JavaScript libraries that already implement \gls{csg}, like the case of OpenJSCAD's.
 The goal of the prototype is only to assess that today's web browsers are able to support a \gls{gd} programming environment.
 Like so, it does not need to have all operations that an architect might need.
 That would also be unrealistic given the limited time frame of a master's thesis.
@@ -481,8 +482,6 @@ That would also be unrealistic given the limited time frame of a master's thesis
 
 \section{Performance}
 \label{sec:eval:performance}
-There are several areas where performance plays an important part when using the environment.
-
 To evaluate our solution's performance, we have tested several situations: (1) we compared program running times in the web page with running times of the same programs in Rosetta; (2) we compared program running times with export times; (3) we compared how traceability data collection affects program running times; and (4) we compared export times with times from running programs directly in Rosetta.
 
 \paragraph{Setup}
@@ -529,7 +528,7 @@ To measure the difference, we ran two example programs using both processes and 
 The chart in Figure~\ref{fig:run:export:rosetta:chart} shows the running times of two programs for each process.
 Times are the average of three runs.
 
-As seen in the chart, comparing export times to normal running times, export times are around 200x the normal running times for Mobius Truss, and 170x the normal running times for Ines Wall.
+As seen in the chart, comparing export times (export AutoCAD) to normal running times (web page), export times are around 200x the normal running times for Mobius Truss, and 170x the normal running times for Ines Wall.
 
 Given the difference of two orders of magnitude, it is highly preferable to get feedback using the web page instead of using the export process.
 The export process should be reserved to actually export to \gls{cad}.
@@ -547,7 +546,7 @@ Due to the fact that our solution uses Rosetta as an intermediate to export to \
 
 To measure the difference, we selected two programs and measured the time each took to export and to run in Rosetta.
 The two systems use different programming languages, therefore, each program had two versions, one for our solution and one for Rosetta.
-Figure~\ref{fig:run:export:rosetta:chart} shows the running times for each system, grouped by program.
+Figure~\ref{fig:run:export:rosetta:chart} shows the running times for each system (export AutoCAD and Rosetta AutoCAD), grouped by program.
 
 Looking at the graph, we see that export times are $\approx$4.1x the times of running directly in Rosetta for Mobius Truss and that export times are $\approx$4.3x the times of running directly in Rosetta for Ines Wall.
 

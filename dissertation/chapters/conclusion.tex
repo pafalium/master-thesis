@@ -13,12 +13,12 @@ Web applications have the advantage of being platform-independent, requiring onl
 
 Architects need both 3D modeling and programming capabilities to have an environment where they can do \gls{gd}.
 To have a better idea of the features necessary for such environment, Chapter~\ref{chapter:background} explored programming environments for various domains, including \gls{gd}, and also 3D modeling applications.
-These included desktop applications like Processing, a programming environment for the visual arts, and Rosetta, a programming environment giving architects program portability for both programming language and \gls{cad} software, and also included web applications like IPython, a programming environment for scientific computing with a web page \gls{ui}, and OpenJSCAD, an online programming environment for solid modeling.
+These included desktop applications like Processing, a programming environment for the visual arts, and Rosetta, a programming environment giving architects program portability for both programming language and \gls{cad} software, and also included web applications like IPython, a programming environment for scientific computing with a web page based \gls{ui}, and OpenJSCAD, an online programming environment for solid modeling.
 
 We compared these applications first by application domain and by the purpose they give to programming.
 Afterwards, we also compared them according to editing and programming paradigm, persistence and collaboration support and code editing features.
 
-Following the presentation and comparison of the environments, we described our solution in Chapter~\ref{chapter:solution}.
+Following the presentation and comparison of those environments, we described our solution in Chapter~\ref{chapter:solution}.
 It is composed of two components:
 (1) a web page, used by the architect to create programs;
 and (2) a desktop application that, when run, allows the web page to export results of programs to \gls{cad} applications.
@@ -29,7 +29,7 @@ This allows architects to create programs incrementally.
 Instead of having to go through the edit-compile-run cycle to see the results of the changes they made, they make the changes and see the effects immediately.
 Afterwards, if they have any doubt on how a certain part of the results come to be, they can use the traceability mechanisms, pointing at that part, to see the part of the program that created them.
 
-After implementing the solution, we evaluated it in several different ways.
+After implementing the solution, we evaluated it in different ways.
 In Chapter~\ref{chapter:evaluation}, we presented some examples of programs that were created using the solution.
 Additionally, we tested the solution's performance by measuring program running times and export times on the web page and comparing them to running times on Rosetta.
 Taking those measurements into consideration, we concluded that running programs in the web page is faster than running in Rosetta.
@@ -54,7 +54,7 @@ Hopefully, it is an example of the direction \gls{gd} \glspl{ide} should take in
 The source code for the \gls{gd} \gls{ide} web environment, along with the source code of the example program, is available on GitHub at \url{https://github.com/pafalium/gd-web-env}.
 It requires a modern web browser, like Google Chrome or Mozilla Firefox, to run the web page, requires Racket version 6.4 or above to run the remote CAD service application, and requires node.js version 5.10.1 or above to be compiled.
 It has been tested both on Google Chrome and Mozilla Firefox, running on Windows 7.
-Nonetheless, since these web browsers and Racket are also available for Mac OS, Linux and other versions of Windows, the web environment and the remote CAD service application is also available for these Operating Systems.
+Nonetheless, since these web browsers and Racket are also available for Mac OS, Linux and other versions of Windows, the web environment and the remote CAD service application are also available for these Operating Systems.
 
 
 \section{Future Work}
@@ -90,7 +90,7 @@ On top of this, the tool could show and highlight the parameters of the call tha
 We can also improve the environment's traceability.
 One way it can be done is by implementing the timetables presented in Learnable Programming\cite{victor2012learnable}.
 This would worsen the performance of the running process if implemented naively.
-It is nonetheless a good challenge.
+It would nonetheless help architects understand how their programs ran.
 
 \paragraph{Camera controls}
 There are also some improvements that can be made to the way the user visualizes the results.
@@ -134,10 +134,9 @@ Moreover, it would also be of interest to integrate the solution with cloud vers
 \paragraph{Export performance}
 The performance of the export process can also be improved.
 Instead of using HTTP requests to communicate with the application running in the user's computer, a WebSockets connection\cite{rfc6455} could be used to avoid the overhead of HTTP.
-Alternatively, the environment could send the entirety of the results on a single HTTP request, therefore, decreasing the time spent waiting for data traversing the network.
+Alternatively, the environment could send the entirety of the results on a single HTTP request, therefore, decreasing the time spent waiting for data traversing the network and receiving a response.
 Another option would be to run the user's program in the application instead of the web page.
 
-{\bf(what about WebRTC?)}
 
 %Intro/related+solution+evaluation descr+solutions details
 
