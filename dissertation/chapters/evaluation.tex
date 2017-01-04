@@ -10,7 +10,7 @@ Afterwards, we measure the environment's performance and compare it to other env
 
 \section{GD capability / Usage examples}
 \label{sec:eval:gd:capable}
-A programming environment needs to allow for the creation of a wide variety of programs.
+A programming environment needs to allow the creation of a wide variety of programs.
 Now comes the time to test the environment's ability to be used for \gls{gd}, more specifically to produce diverse 3D models.
 To show this variety, we will present several examples that make use of some primitives that were implemented and also some programming techniques that they use.
 
@@ -20,8 +20,15 @@ To show this variety, we will present several examples that make use of some pri
 
 
 \subsection{Example: Atomium}
-The Atomium in Brussels was built between 1956 and 1958 for Expo 58.
+The Atomium, in Brussels, was built between 1956 and 1958 for Expo 58 (Figure~\ref{fig:atomium:photo}).
 It consists of nine metallic spheres connected by sixteen tubes forming its shape, mimicking the arrangement of an iron crystal structure.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.5\linewidth]{./images/atomium_photo}
+  \caption[The Atomium in Brussels]{The Atomium, Heysel, Belgium. Photo by Mike Cattel (\url{https://www.flickr.com/photos/mikecattell/4042147060}).}
+  \label{fig:atomium:photo}
+\end{figure}
 
 To create it in the environment, we can start by deciding which primitives to use for the elements of the Atomium, that is the metallic spheres and the tubes.
 The spheres can be created using the {\tt sphere} primitive.
@@ -98,7 +105,7 @@ Trusses are a common element in architecture that can adapt to different surface
 Trusses often consist of straight members connected together at their extremities, or joints.
 They can be planar, meaning that their members all lie on the same plane, or spatial, where members are distributed in three dimensional space.
 Spatial trusses can be represented by the mesh formed by their members.
-The following program implements spatial trusses with the same topology of a planar space frame:
+The following program implements spatial trusses with the same topology of the truss from Figure~\ref{fig:spatial:truss}:
 
 \begin{minted}{js}
 function trussKnots(pts, radius) {
@@ -135,6 +142,13 @@ function spatialTruss(curves, knotRadius, barRadius) {
   ];
 }
 \end{minted}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.7\linewidth]{./images/space_frame_photo}
+  \caption[A spatial truss supporting a glass roof.]{A spatial truss supporting a glass roof. Photo by ume-y (\url{https://www.flickr.com/photos/ume-y/311887698}).}
+  \label{fig:spatial:truss}
+\end{figure}
 
 The {\tt spatialTruss} function creates a space frame for any set of joint coordinates.
 Like so, if we wanted to produce a truss following an arc, we could define it with the following functions:
@@ -275,8 +289,8 @@ However, architects may want to introduce some variation to make designs look mo
 They can do this by introducing randomness into parts of their designs.
 The environment supports this by providing functions that generate random numbers.
 
-Randomness can be used to randomize the control-flow of a program or other discrete aspects of the program.
-Suppose that we want to create a simplistic city where approximately one third of buildings are cylindrical and two thirds are cubic.
+Randomness can be used to randomize the control-flow and other discrete aspects of the program.
+Suppose that we want to create a simplistic city where approximately one third of buildings are cylindrical while the rest are cubic.
 Consider the program:
 
 \noindent
@@ -347,7 +361,7 @@ function building(p) {
 The examples from Figure~\ref{fig:ex:nolan}, \ref{fig:ex:ines:wall} and \ref{fig:ex:sheung:wan} also make use of random numbers.
 The first example uses them to vary the rotation of the square elements of the facade.
 The second uses random numbers to decide which areas should have more or less holes and to determine the displacement of bricks from the face of the wall.
-Lastly, the third uses random numbers to determine thicknesses of blocks, to determine where to subdivide them, to decide whether to further subdivide or not, and to decide which blocks from the smooth part (the lower part) should look like the ones from the rough part (the upper part).
+Lastly, the third uses random numbers to determine thicknesses of blocks and where to subdivide them, to decide whether to continue subdividing, and to decide which blocks from the smooth part (the lower part) should look like the blocks from the rough part (the upper part).
 
 \begin{figure}
   \centering
@@ -390,7 +404,7 @@ function city(p, buildingFns) {
 
 With this modification, it becomes possible to create variations of the city by simply using a different set of building creation functions.
 Like so, we can extract the two buildings from {\tt building} into separate functions.
-In addition, we can also implement other types of buildings, like the one that {\tt coneBuilding} creates.
+In addition, we can also implement other kinds of buildings, like the cone shaped buildings created by {\tt coneBuilding}.
 
 \begin{minted}{js}
 function cylBuilding(p) {
@@ -436,11 +450,9 @@ As shown, the environment can produce interesting results with varying degrees o
 
 Still, the range of results is limited by the primitives currently implemented.
 For example, none of these programs make use of \gls{csg} operations like union, intersection and difference as they are not implemented.
-Nevertheless, it is possible to add support for them since there are JavaScript libraries that already implement \gls{csg}, like the case of OpenJSCAD's.
-The goal of the prototype is only to assess that today's web browsers are able to support a \gls{gd} programming environment.
-Like so, it does not need to have all operations that an architect might need.
-That would also be unrealistic given the limited time frame of a master's thesis.
-
+Nonetheless, these examples prove that it is possible to do \gls{gd} in the web.
+In addition, it is possible to add support for them since there are JavaScript libraries that already implement \gls{csg}, like the case of OpenJSCAD's.
+However, due to deadlines, implementing more operations should be addressed in future work.
 
 \begin{figure}
   \centering
@@ -482,7 +494,19 @@ That would also be unrealistic given the limited time frame of a master's thesis
 
 \section{Performance}
 \label{sec:eval:performance}
-To evaluate our solution's performance, we have tested several situations: (1) we compared program running times in the web page with running times of the same programs in Rosetta; (2) we compared program running times with export times; (3) we compared how traceability data collection affects program running times; and (4) we compared export times with times from running programs directly in Rosetta.
+We evaluated our solution's performance from different perspectives:
+(1) how running performance in the web page compares with other \gls{gd} environments;
+(2) how running performance compares to export performance;
+(3) how traceability data collection affects running performance;
+(4) how export performance compares with running in Rosetta.
+
+To make this evaluation possible, we measured times of several situations:
+(1) running in the web page, with traceability enabled;
+(2) running in the web page, with traceability disabled;
+(3) exporting from the web page to AutoCAD;
+(4) running in Rosetta connected to AutoCAD.
+
+The next sections present the evaluation from the previous perspectives.
 
 \paragraph{Setup}
 All tests were performed on a computer with an Intel Core i7-3630QM CPU, 16GB DDR3 RAM and an AMD Radeon HD 7970M GPU.
@@ -494,10 +518,9 @@ The web page and the remote CAD service were hosted at the same computer.
 \begin{figure}
   \centering
   \includegraphics[width=12cm]{./images/run_export_rosetta_times}
-  \caption{Comparison of running times for the web, the export process and Rosetta.}
+  \caption{Comparison of running times for the web, Rosetta and the export process.}
   \label{fig:run:export:rosetta:chart}
 \end{figure}
-
 
 
 \subsection{Running Performance}
@@ -531,7 +554,7 @@ Times are the average of three runs.
 As seen in the chart, comparing export times (export AutoCAD) to normal running times (web page), export times are around 200x the normal running times for Mobius Truss, and 170x the normal running times for Ines Wall.
 
 Given the difference of two orders of magnitude, it is highly preferable to get feedback using the web page instead of using the export process.
-The export process should be reserved to actually export to \gls{cad}.
+The export process should be reserved to when the architect is satisfied with the obtained solution.
 
 One may need some clarification on how this difference appears.
 For each primitive call a program does, data has to be converted, sent over an HTTP connection to the remote CAD service, passed to Rosetta, then to the \gls{cad} application to perform the primitive, and finally the result must be sent back to the web page.

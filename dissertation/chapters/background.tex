@@ -6,7 +6,7 @@ In order to develop a programming environment for \gls{gd} that works in the clo
 
 Not all presented solutions are used exclusively for \gls{gd}.
 \gls{gd} encompasses both 3D modeling and programming, so it makes sense to not only look at systems that explore both aspects, but also systems that explore just one of them.
-Furthermore, the presented solutions include both desktop-based and cloud-based applications to allow for an understanding of what is currently possible in the cloud and how it compares to what is available on the desktop.
+Furthermore, the presented solutions include both desktop-based and cloud-based applications to allow the understanding of what is currently possible in the cloud and how it compares to what is available on the desktop.
 
 %{\bf(Criteria for what makes a related work.)}
 
@@ -295,12 +295,15 @@ Unfortunately, as each of these applications has specific primitive operations, 
 A phenomenon called vendor lock-in.
 As an example, if the architect writes a program for AutoCAD, he cannot use it in Rhinoceros3D and, as a result, if he really wants to use it in Rhinoceros3D, he has to rewrite the program taking into account the differences between primitive operations of both \gls{cad} applications.
 
-Rosetta's motivation is to allow architects to write portable \gls{gd} programs that generate equivalent models in any of their \gls{cad} applications.
-Rosetta allows architects to choose the front-end programming language and the back-end where the primitive operations will be performed\cite{de2012modern}.%
+Rosetta aims to overcome the vendor lock-in phenomenon by allowing architects to write portable \gls{gd} programs that generate equivalent models in any \gls{cad} application.
+It lets architects choose both the front-end programming language and the back-end application, where the primitive operations will be performed\cite{de2012modern}.%
 \footnote{Some front-ends supported by Rosetta are AutoLisp (one of AutoCAD's programming languages), Javascript, Racket and Python; some of the supported back-ends include \glspl{cad} like Autodesk AutoCAD, Autodesk Revit, Sketchup, and Rhinoceros 3D and also graphics libraries like TikZ and OpenGL.}
-With this, architects can experiment with \gls{gd} without having to switch \gls{cad}, and they can also share programs with others using different \gls{cad} applications.
 
-Additionally, Rosetta also allows programs written in one programming language to use functionality defined not only in programs written in the same language, but also in programs written in other languages.
+With this, architects can start to use different \gls{cad} applications for different purposes.
+For example, they can use a faster but less functional \gls{cad} during exploration, and switch to a slower \gls{cad} when they need more information or when ready to move on to a later design phase.
+Additionally, without vendor lock-in, architects also become free to share programs with others using different \gls{cad} applications.
+
+Adding to the support of several programming languages, Rosetta also allows programs written in one programming language to use functionality defined not only in programs written in the same language, but also in programs written in other languages.
 This makes it possible for architects to share programs written in different programming languages, and it also allows them to choose the programming language that best fits each part of the program they are working on.
 
 \begin{figure}
@@ -316,16 +319,18 @@ Clara.io\footnote{\url{https://clara.io/} (last accessed on 10/10/2016)}\cite{ho
 Being in this category, Clara.io is more suitable for artistic work as opposed to technical work.
 Nonetheless, it can be used in architecture projects to make architectural visualizations.
 
-Using Clara.io closely resembles working with its desktop counterparts.
+Using Clara.io closely resembles working with Blender and 3ds Max.
 Modeling is done by adding 3D entities to the scene's scenegraph and afterwards adding modifiers to them and/or directly manipulating them in 3D space(position, rotation, scaling, selection, grouping).
 
 Apart from having features close to other 3D modeling software, as a cloud application, Clara.io also supports cloud storage of scenes, real-time collaboration, and integrates with VRay cloud rendering.
 Furthermore, Clara.io only requires a web browser compatible with HTML5\cite{hickson2011html5} and WebGL\cite{marrin2011webgl}, without any installation.
 Like so, its users are free to switch between computers without having to configure anything and without having to move their work.
 
-Clara.io's real-time collaboration lets users edit scenes simultaneously.
-It gives users an environment where they can work together on tasks that, due to the limitations of files, would have to be performed in isolation to avoid edit conflicts.
-For example, they can build a scene simultaneously, each one working on a part, but this time anyone sees the others changes immediately.
+Other aspect of Clara.io is its collaboration support.
+Due to the limitations of the files, users normally have to take turns at changing the scene to avoid edit conflicts.
+This makes the process of editing the scene much slower since most changes do not produce conflicts as they involve different parts of the scene and, therefore, could be made simultaneously.
+Clara.io's real-time collaboration lets users do just simultaneous edition.
+Moreover, it also has the benefit of each user always seeing the most up to date version of the scene.
 
 When it comes to programming, Clara.io has support for scripting and allows the creation of plug-ins to extend its functionality.%
 \footnote{\url{https://clara.io/learn/sdk} (last accessed on 10/10/2016)}
@@ -334,7 +339,7 @@ It is possible to use Clara.io's scripting to do \gls{gd}, however, if a user wi
 
 \subsection{OnShape}
 OnShape\footnote{\url{https://www.onshape.com/} (last accessed on 10/10/2016)} is a cloud based \gls{cad} application that can be accessed using either a web browser or its mobile app.
-As opposed to the systems we talked about earlier, OnShape is a \gls{cad} tool for mechanical modeling and, as such, its users are familiar with \gls{cad} applications like SolidWorks\footnote{\url{http://www.solidworks.com/} (last accessed on 17/12/2016)} and Autodesk Inventor\footnote{\url{http://www.autodesk.com/products/inventor/overview} (last accessed on 17/12/2016)}.
+As opposed to the previous systems, OnShape is a \gls{cad} tool for mechanical modeling and, as such, its users are familiar with \gls{cad} applications like SolidWorks\footnote{\url{http://www.solidworks.com/} (last accessed on 17/12/2016)} and Autodesk Inventor\footnote{\url{http://www.autodesk.com/products/inventor/overview} (last accessed on 17/12/2016)}.
 Being a mechanical modeling tool means that the focus is directed towards assembling individual objects instead of buildings, so the working scales are smaller and there is more information on how parts relate to each other.
 
 OnShape has version control of project documents (drawings, 3d models, text documents) and supports real time collaboration.
@@ -513,7 +518,7 @@ Table~\ref{table:general:comp} shows a comparison of the application domain of e
 
 Programming has a major role for users in most of the presented environments as seen in Table~\ref{table:general:comp}, with the exception of Clara.io and OnShape, where it is only used to extend the functionality available in the main \gls{ui}.
 
-The editing paradigms used in environments has been based on text editing, node graph editing, a combination of these two, or a combination of node graph and block-based editing.
+The editing paradigms used in environments have been based on text editing, node graph editing, a combination of these two, or a combination of node graph and block-based editing.
 The type of editing paradigm each environment supports is shown in Table~\ref{table:edit:prog:paradigms}.
 Environments with textual editing provide different levels of {\it ``editing power''}, starting with basic text editing with syntax highlighting ({\it ``text''} in Table~\ref{table:edit:prog:paradigms}) and adding features like code completion, showing documentation, helping navigation, and expression evaluation ({\it ``++text''} in Table~\ref{table:edit:prog:paradigms}).
 

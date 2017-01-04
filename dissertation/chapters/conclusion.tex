@@ -5,9 +5,8 @@
 The current trend in architecture practice revolves around using programming as a way to automate repetitive tasks and to explore new design possibilities.
 These activities are often put under the umbrella of \acrfull{gd}.
 
-Tools used to do this in architecture are limited to desktop applications.
-However, applications used by architects to model their projects cannot be limited to desktop applications.
-Architects use several computers throughout the day.
+Tools used to support this design approach in architecture are limited to desktop applications.
+However, applications used by architects to model their projects should not be limited to desktop applications since architects use several computers throughout the day.
 Moreover, with teams becoming more dispersed geographically, the need arises for using a distributed solution in which team members can still collaborate.
 Web applications have the advantage of being platform-independent, requiring only a web browser to be used.
 
@@ -15,14 +14,14 @@ Architects need both 3D modeling and programming capabilities to have an environ
 To have a better idea of the features necessary for such environment, Chapter~\ref{chapter:background} explored programming environments for various domains, including \gls{gd}, and also 3D modeling applications.
 These included desktop applications like Processing, a programming environment for the visual arts, and Rosetta, a programming environment giving architects program portability for both programming language and \gls{cad} software, and also included web applications like IPython, a programming environment for scientific computing with a web page based \gls{ui}, and OpenJSCAD, an online programming environment for solid modeling.
 
-We compared these applications first by application domain and by the purpose they give to programming.
-Afterwards, we also compared them according to editing and programming paradigm, persistence and collaboration support and code editing features.
+Firstly, we compared these applications according to their application domain and the purpose they give to programming.
+Afterwards, we also compared them according to the editing and the programming paradigm, the persistence and the collaboration support and code editing features.
 
 Following the presentation and comparison of those environments, we described our solution in Chapter~\ref{chapter:solution}.
 It is composed of two components:
 (1) a web page, used by the architect to create programs;
-and (2) a desktop application that, when run, allows the web page to export results of programs to \gls{cad} applications.
-To help programming, the web page runs programs when they change, allows literals to be adjusted by clicking and dragging, and highlights the relationship between program and results in both directions.
+and (2) a desktop application that, when run, allows the web page to export results of those programs to \gls{cad} applications.
+To help the programming task, the web page runs programs when they change, allows literals to be adjusted by clicking and dragging, and highlights the relationship between program and results in both directions.
 To allow for adjusting literals and highlighting the relationship between program and results, the environment analyzes the program's structure to know where literals are and to instrument it for collection of both results and traceability data.
 
 This allows architects to create programs incrementally.
@@ -31,12 +30,12 @@ Afterwards, if they have any doubt on how a certain part of the results come to 
 
 After implementing the solution, we evaluated it in different ways.
 In Chapter~\ref{chapter:evaluation}, we presented some examples of programs that were created using the solution.
-Additionally, we tested the solution's performance by measuring program running times and export times on the web page and comparing them to running times on Rosetta.
+Additionally, we tested the solution's performance by measuring the program running and export times on the web page and comparing them to running times on Rosetta.
 Taking those measurements into consideration, we concluded that running programs in the web page is faster than running in Rosetta.
 In fact, we were surprised by the difference of at least an order of magnitude, which shows that \gls{cad} applications are indeed too slow to be used in \gls{gd} exploration.
 Regarding export times, we saw that exporting from the web page is slower than running in Rosetta.
 This was to be expected since, although we run the program in the web page, we have to wait for network communications.
-Nonetheless, the ability to export to \gls{cad} applications remains a great advantage for architects when they need to deliver their designs.
+Nonetheless, the ability to export to \gls{cad} applications remains a great advantage for architects since they only need to do it once, when they reached a final solution.
 We also measured the effect that keeping track of traceability data has on program running times.
 As a result, we concluded that collecting traceability data makes programs around 20-30\% slower, which is a great achievement considering that every function call is being recorded.
 Moreover, when we take into account the benefit that showing the program-result relationship brings to the architect and the \gls{gd} program creation process, the slowdown it brings is well worth it.
@@ -102,7 +101,7 @@ Furthermore, it would also be important to let him define different viewpoints t
 Depending on the size of a project, it may be easier or harder to find a particular function or variable definition.
 If \gls{gd} projects get big enough, it will be advantageous to support navigation.
 Navigation support can take inspiration from LightTable's code document and namespace view.
-Other alternative would be the goto definition functionality present in most software development \glspl{ide}.
+Other alternative would be the ``go to definition'' functionality present in most software development \glspl{ide}.
 
 \paragraph{Adjustment of literals}
 An extension to helping adjust literals could also be done.

@@ -14,16 +14,16 @@
 %(2d + 3d + analysis + visualization)
 
 Through the years, computers have been taking more ground in the field of architecture.
-It began with the appearance of Sketchpad\cite{Sutherland:1964:SPM:800265.810742} in the 60s that showed that computer could be used to create drawings interactively.
+It began with the appearance of Sketchpad\cite{Sutherland:1964:SPM:800265.810742} in the 60s that showed that computers could be used to create drawings interactively.
 After the appearance of desktop computers, drafting software like AutoCAD popularized \gls{cad} in architecture.
-As opposed to drawing by hand, using computers to create these drawings allowed architects to make changes without having to redraw the drawing, therefore saving them much time.
+As opposed to drawing by hand, using computers to create these drawings allowed architects to make changes without having to redraw the drawings, therefore saving them much time.
 Still, computers were only used for creating technical drawings, leaving most of the thinking about 3D space outside of the computer.
 
 As computers became powerful enough to display 3D graphics, and 3D modeling started to appear, it became possible to model buildings in the computer and preview them in interactive 3D views.
 Having a 3D model of the building and being able to explore it -- to see it from many angles -- makes it easier and much more intuitive for the architect to think about the building.
 What was only possible to do with a physical model or a perspective drawing, was now faster and more affordable.
 
-\gls{cad} software allows the creation of visualizations and documentation for architectural projects.
+This has allowed \gls{cad} software to be used to create visualizations and documentation for architectural projects.
 %There is, however, still a problem: the architect can still find tasks that are mostly a repetitive process which is, again, prone to errors.
 However, modeling a building still requires several time-consuming and repetitive tasks that are not trivial to accomplish using the functionalities provided by a 3D modeling software.
 
@@ -65,11 +65,11 @@ Examples of \gls{gd} \glspl{ide} include Grasshopper 3D\footnote{\url{http://www
 
 In the case of \gls{gd} \glspl{ide}, there are specific requirements that need to be fulfilled to make them useful for exploration of \gls{gd}, since these \glspl{ide} have to support the architect while he creates programs and explores design possibilities.
 First of all, they have to be able to display geometric results, otherwise, the architect will not be able to see what his programs generate.
-Secondly, the architect needs to be able to see the effects from changes to parameters of his programs or even from changes in any part of the program.
-This will require the environment to run programs fast, generate results, and display them to give the architect this immediate feedback.
+Secondly, the architect needs to be able to see the effects from changes to parameters or to any part of the program.
+This will require the environment to run programs fast, generate results, and display them to give the architect, thus giving immediate feedback.
 Apart from this, the environment also needs to make it easy for the architect to build his program and correct the bugs that might appear.
 It may do so by showing him the available functions or by highlighting results from a given part of a program.
-Other way the \gls{ide} can help the architect building programs is by supporting a programming paradigm that fits better his usual way of thinking.
+Finally, the \gls{ide} needs to support a programming paradigm that is easy for the architect to understand.
 
 Most \gls{gd} \glspl{ide} use either data-flow programming or procedural programming.
 The first is often supported by a visual editing environment, while the second is often supported by a textual editing environment.
@@ -78,11 +78,11 @@ Moreover, most \glspl{ide} are aimed at the creation of programs in one specific
 There are, however, some \glspl{ide} that can be used to create programs in several programming languages, such as Rosetta, that supports languages like Racket\cite{flatt2016racket}, Python\cite{rossum2003python} and AutoLisp.
 
 In order to help architects with the creation of \gls{gd} programs, visual programming \glspl{ide} provide tools that are capable of showing all the nodes/functions that can be added, and of showing the relationship between nodes and their results.
-They are, therefore, more popular among novices, since they do not require as much training to be used when compared to textual programming \glspl{ide}.
+They are, therefore, more popular among novices since they do not require as much training to be used when compared with textual programming \glspl{ide}.
 However, as stated in \cite{leitao2012programming}, visual programming languages do not scale well for big \gls{gd} projects when compared to textual programming languages.
 Textual programming languages have abstraction mechanisms that make complexity more manageable, so programs can stay smaller.
 Still, textual programming \glspl{ide} lack ways to show the connection between program and results that visual programming \glspl{ide} have.
-Some work has been done in Rosetta to solve this problem, as shown in \cite{Leitao2014illustrated}, where it is possible to see which objects each part of the program generated, and which parts of the program were responsible for creating an object.
+Some work has been done in Rosetta to solve this problem, as shown in \cite{Leitao2014illustrated}, where it is possible to see which objects each part of the program has generated and which parts of the program were responsible for generating each object.
 
 Up until now \gls{gd} \glspl{ide} have been desktop applications.
 The next section shows how this affects the architect.
@@ -124,7 +124,7 @@ Still, this is a rudimentary method.
 It does not allow him to edit a file simultaneously with his teammates, it does not have a system to track versions of files, and it only works on desktop-like computers.%
 \footnote{That run Microsoft Windows, Mac OS or a *nix distribution.}
 
-The web as seen a big increase in popularity which has become even stronger by the standardization of both new and existing web technologies such as HTML5\cite{hickson2011html5} and WebGL\cite{marrin2011webgl} that allow web applications, accessed using web browsers, to achieve user experiences on par with desktop applications.
+The web has seen a big increase in popularity which has become even stronger by the standardization of both new and existing web technologies such as HTML5\cite{hickson2011html5} and WebGL\cite{marrin2011webgl} that allow web applications, accessed using web browsers, to achieve user experiences on par with desktop applications.
 This has led to the creation of many web application counterparts of common desktop applications.
 For example, common office productivity tools like Microsoft Word, Excel and PowerPoint have also seen the appearance of their web application counterparts when Microsoft Office 365 appeared.
 Furthermore, complete \gls{cad} web applications have also appeared.
@@ -150,11 +150,11 @@ What remains to be done is making this functionality available to architects and
 
 
 \section{Goals}
-A \gls{gd} \gls{ide} needs to have more \textit{accessibility}, not requiring any installation and being available in any computer, and needs to be more \textit{interactive}, letting architects explore \gls{gd} easily, giving them feedback and showing them the relationship between program and results.
-Moreover, it needs to \textit{integrate} easily with the \gls{cad} applications architects already use, so they can still integrate their \gls{gd} experiments into their normal workflow.
+A \gls{gd} \gls{ide} needs to have more \textbf{accessibility}, not requiring any installation and being available in any computer, and needs to be more \textbf{interactive}, letting architects explore \gls{gd} easily, giving them feedback and showing them the relationship between program and results.
+Moreover, it needs to \textbf{integrate} easily with the \gls{cad} applications already used by architects, so they can still integrate their \gls{gd} experiments into their normal workflow.
 
 This thesis aims at increasing architects' productivity when working on \gls{gd} projects by giving them a programming environment in the web specifically for \gls{gd}.
-This requires implementing a web page that harnesses the performance and graphical capabilities available in modern web browsers, and implementing a companion application for allowing models to be exported to traditional \gls{cad} applications.
+This requires the implementation of a web page that harnesses the performance and graphical capabilities available in modern web browsers, and the implementation of a companion application for allowing models to be exported to traditional \gls{cad} applications.
 In this way, architects can write their \gls{gd} programs and visualize the results without being chained to a particular computer, and can easily integrate results into their normal workflow by using the companion application.
 
 
