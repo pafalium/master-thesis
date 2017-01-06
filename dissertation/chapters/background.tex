@@ -58,7 +58,7 @@ LightTable is written in ClojureScript\cite{10.1109/MIC.2011.148}, a subset of C
 
 Although not related to \gls{gd}, LightTable has proposed some interesting features and concepts for \glspl{ide}.
 %Why is LightTable relevant?
-One of these is the use of the drafting table as metaphor.%
+One of these is the use of the drafting table as a metaphor.%
 \footnote{\url{http://www.chris-granger.com/2012/04/12/light-table-a-new-ide-concept/} (last accessed on 10/10/2016)}
 The metaphor comes from looking at the way work is done in other fields of engineering, where engineers spread all materials relevant to their work over large tables, from tools to reference information.
 Instead of displaying the contents of entire files, LightTable divides the code into meaningful units and displays them as small editors spread over the table's surface.
@@ -88,14 +88,15 @@ Figure~\ref{fig:lt:clojure:table} shows an experiment where these two are used.
 \end{figure}
 
 %LightTable "variable substitution"
-Another interesting feature of LightTable is its ability to show data flow in a function call.
+Another interesting feature of LightTable is its ability to show data-flow in a function call.
 Since the main purpose of a function is to transform its input data into its output data, it helps to see what happens to the data on each step of the function.
 To achieve this, LightTable overlays variable values and return values, respectively, on each variable occurrence and expression of the function.
 Figure~\ref{fig:lt:val:overlay} shows an example of such functionality.
-This functionality is part of LightTable's \emph{instarepl}, which constantly evaluates its contents, showing results and data flow.
+This functionality is part of LightTable's \emph{instarepl}, which constantly evaluates its contents, showing results and data-flow.
 
-This last feature has the problem of not being capable of showing the data-flow for more than one run of a part of the code.
-If a function is called more than once, then it will be more useful to show the data-flow of all the calls.
+This last feature runs into a problem when a function is called more than once.
+While it should display the data-flow of all calls, it only has space for one, since there is only one function definition.
+Moreover, this problem extends to any part of the code that runs more than once.
 
 \begin{figure}
 	\centering
@@ -188,13 +189,12 @@ Currently, the only help available is OpenJSCAD's documentation (a tour on its f
 \label{section:processing:related}
 Processing\cite{reas2007processing} is a programming language and a development environment aimed at ``promoting software literacy in the visual arts and visual literacy within technology''.%
 \footnote{Quoting \url{https://www.processing.org}, 9/Nov/2015.}
-It is a desktop application.
 
 Processing enables everyone to write programs that both draw to the screen and react to input from the user, like moving the mouse or pressing a key on the keyboard.
 It makes this possible by implementing most of the functionality that is commonly required, like initializing the drawing surface, so the programmer only has to implement the functionality specific to the result he wants to achieve.
 The code in Listing~\ref{lst:simple:processing}, for instance, is what is needed to setup a drawing canvas, its background color, and continuously draw a line from the mouse position to a point on the canvas.
 
-To use Processing's programming language, one needs to use its \gls{ide}, the \acrfull{pde}.
+To use the Processing programming language, one needs to use a desktop application, the \acrfull{pde}, which serves as Processing's \gls{ide}.
 As shown in Figure~\ref{fig:proc:dev:env}, the \gls{pde} can run Processing programs and includes a text editor with syntax highlighting and a text output display.
 
 \begin{listing}
@@ -210,7 +210,7 @@ void draw() {
    line(150, 25, mouseX, mouseY);
 }
 \end{minted}
-	\caption[A simple Processing sketch]{A simple Processing sketch}
+	\caption{A simple Processing sketch.}
 	\label{lst:simple:processing}
 \end{listing}
 
@@ -281,8 +281,8 @@ Both DesignScript Studio and Dynamo use graph based program editing.
 \end{figure}
 
 Debugging DesignScript programs depends on the environment being used.
-The textual environment allows following the execution of the program step-by-step, while also supporting watches and breakpoints.
-The graph-based environments allow highlighting and listing results of each node.
+The textual environment allows the user to follow the execution of the program step-by-step, while also allowing him to set watches and breakpoints.
+The graph-based environments allow the user to see the relationship between program and results by highlighting results of each node, and can also show him a list of the results of each node.
 Both the textual and the graph-based environments provide a preview of program results.
 
 
@@ -300,7 +300,7 @@ It lets architects choose both the front-end programming language and the back-e
 \footnote{Some front-ends supported by Rosetta are AutoLisp (one of AutoCAD's programming languages), Javascript, Racket and Python; some of the supported back-ends include \glspl{cad} like Autodesk AutoCAD, Autodesk Revit, Sketchup, and Rhinoceros 3D and also graphics libraries like TikZ and OpenGL.}
 
 With this, architects can start to use different \gls{cad} applications for different purposes.
-For example, they can use a faster but less functional \gls{cad} during exploration, and switch to a slower \gls{cad} when they need more information or when ready to move on to a later design phase.
+For example, they can use a faster but less functional \gls{cad} application during exploration, and switch to a slower one when they need more information or when ready to move on to a later design phase.
 Additionally, without vendor lock-in, architects also become free to share programs with others using different \gls{cad} applications.
 
 Adding to the support of several programming languages, Rosetta also allows programs written in one programming language to use functionality defined not only in programs written in the same language, but also in programs written in other languages.
@@ -339,10 +339,10 @@ It is possible to use Clara.io's scripting to do \gls{gd}, however, if a user wi
 
 \subsection{OnShape}
 OnShape\footnote{\url{https://www.onshape.com/} (last accessed on 10/10/2016)} is a cloud based \gls{cad} application that can be accessed using either a web browser or its mobile app.
-As opposed to the previous systems, OnShape is a \gls{cad} tool for mechanical modeling and, as such, its users are familiar with \gls{cad} applications like SolidWorks\footnote{\url{http://www.solidworks.com/} (last accessed on 17/12/2016)} and Autodesk Inventor\footnote{\url{http://www.autodesk.com/products/inventor/overview} (last accessed on 17/12/2016)}.
+As opposed to the previous systems, OnShape is a \gls{cad} application for mechanical modeling and, as such, its users are familiar with \gls{cad} applications like SolidWorks\footnote{\url{http://www.solidworks.com/} (last accessed on 17/12/2016)} and Autodesk Inventor\footnote{\url{http://www.autodesk.com/products/inventor/overview} (last accessed on 17/12/2016)}.
 Being a mechanical modeling tool means that the focus is directed towards assembling individual objects instead of buildings, so the working scales are smaller and there is more information on how parts relate to each other.
 
-OnShape has version control of project documents (drawings, 3d models, text documents) and supports real time collaboration.
+OnShape has version control of project documents (drawings, 3D models, text documents) and supports real time collaboration.
 Like most cloud applications, OnShape promotes collaboration on development teams where team members work remotely.
 In order to do this, it allows users to work on the same copy of files, as opposed to each working with his own copy, and therefore changes are synchronized automatically.
 As users can edit the same copy of a file at the same time, OnShape shows each user what the others are doing to enhance real time collaboration.
@@ -404,7 +404,13 @@ As Antimony uses \glspl{sdf} as its representation of solids, shapes are defined
 %##############################################################################
 %##############################################################################
 \section{Comparison}
+Not all of the presented environments are directly related to \gls{gd}.
+We looked at this diverse set of environments to get the broader picture of domain-specific programming environments, 3D modeling/\gls{cad} applications, and some of their cloud counterparts.
 
+In terms of application domain, the environments presented in this chapter cover a variety of fields that use programming for automating tasks.
+Table~\ref{table:general:comp} shows a comparison of the application domain of each of them, as well as the purpose that programming takes in them.
+
+Programming has a major role for users in most of the presented environments as seen in Table~\ref{table:general:comp}, with the exception of Clara.io and OnShape, where it is only used to extend the functionality available in the main \gls{ui}.
 
 \begin{table}
 	\centering
@@ -432,6 +438,15 @@ As Antimony uses \glspl{sdf} as its representation of solids, shapes are defined
 	\label{table:general:comp}
 \end{table}
 
+The editing paradigms used in environments have been based on text editing, node graph editing, a combination of these two, or a combination of node graph and block-based editing.
+The type of editing paradigm each environment supports is shown in Table~\ref{table:edit:prog:paradigms}.
+Environments with textual editing provide different levels of {\it ``editing power''}, starting with basic text editing with syntax highlighting ({\it ``text''} in Table~\ref{table:edit:prog:paradigms}) and adding features like code completion, showing documentation, helping navigation, and expression evaluation ({\it ``++text''} in Table~\ref{table:edit:prog:paradigms}).
+
+Table~\ref{table:edit:prog:paradigms} also shows the programming paradigms supported by each environment's language.
+They include imperative, functional, and associative / data-flow programming.%
+\footnote{Associative and data-flow programming are similar. The difference is that associative programs build a dependency graph during their execution, propagating changes as needed, while data-flow programs have a static dependency graph and the data just flows from data sources to the connected nodes.}
+Visual environments use associative and data-flow programming languages, while textual environments use imperative and functional programming languages.
+
 \begin{table}
 	\centering
 	\renewcommand{\arraystretch}{1.2}
@@ -457,6 +472,17 @@ As Antimony uses \glspl{sdf} as its representation of solids, shapes are defined
 	\caption[Comparison of paradigms used for programming.]{Comparison of paradigms used for programming. The "++" symbol means that the environment has supplemental features to the basic editing paradigm. The "+" symbol between paradigms means that the environment supports a combination of those.}
 	\label{table:edit:prog:paradigms}
 \end{table}
+
+Some environments have been implemented as desktop applications, while others have been implemented as web pages, as shown in Table~\ref{table:cloud:comp}.
+Implementing an application as a web page has the advantage of becoming accessible to any computer connected to the Internet, without requiring users to install it.
+%However, {\bf performance penalty? privacy concerns?}
+
+In Table~\ref{table:cloud:comp} we can also see that all web page applications, except Mobius, support remote storage directly.
+By supporting remote storage directly, it becomes easier to use the application regardless of the computer being used.
+Without this, users have to use either a physical storage device or a separate remote storage system.
+
+Collaboration is only directly supported in Impromptu, Clara.io and OnShape, which allow for real-time collaboration, thus enabling their users to work on the same artifact simultaneously --- i.e. Impromptu's runtime, a Clara.io scene or a OnShape model.
+For the rest of the environments, collaboration is the user's responsibility.
 
 \begin{table}
 	\centering
@@ -484,6 +510,10 @@ As Antimony uses \glspl{sdf} as its representation of solids, shapes are defined
 	\label{table:cloud:comp}
 \end{table}
 
+Table~\ref{table:features:comp} presents a non-exhaustive list of features provided by each environment.
+%The \gls{repl} is a common feature among these environments
+%{\bf(comments on the varying coverage of features)}
+
 \begin{table}
 	\centering
 	\renewcommand{\arraystretch}{1.2}
@@ -510,40 +540,8 @@ As Antimony uses \glspl{sdf} as its representation of solids, shapes are defined
 	\label{table:features:comp}
 \end{table}
 
-Not all of the presented environments are directly related to \gls{gd}.
-We looked at this diverse set of environments to get the broader picture of domain-specific programming environments, 3D modeling/\gls{cad} applications, and some of their cloud counterparts.
 
-In terms of application domain, the environments presented in this chapter cover a variety of fields that use programming for automating tasks.
-Table~\ref{table:general:comp} shows a comparison of the application domain of each of them, as well as the purpose that programming takes in them.
-
-Programming has a major role for users in most of the presented environments as seen in Table~\ref{table:general:comp}, with the exception of Clara.io and OnShape, where it is only used to extend the functionality available in the main \gls{ui}.
-
-The editing paradigms used in environments have been based on text editing, node graph editing, a combination of these two, or a combination of node graph and block-based editing.
-The type of editing paradigm each environment supports is shown in Table~\ref{table:edit:prog:paradigms}.
-Environments with textual editing provide different levels of {\it ``editing power''}, starting with basic text editing with syntax highlighting ({\it ``text''} in Table~\ref{table:edit:prog:paradigms}) and adding features like code completion, showing documentation, helping navigation, and expression evaluation ({\it ``++text''} in Table~\ref{table:edit:prog:paradigms}).
-
-Table~\ref{table:edit:prog:paradigms} also shows the programming paradigms supported by each environment's language.
-They include imperative, functional, and associative / data-flow programming.%
-\footnote{Associative and data-flow programming are similar. The difference is that associative programs build a dependency graph during their execution, propagating changes as needed, while data-flow programs have a static dependency graph and the data just flows from data sources to the connected nodes.}
-Visual environments use associative and data-flow programming languages, while textual environments use imperative and functional programming languages.
-
-Some environments have been implemented as desktop applications, while others have been implemented as web pages, as shown in Table~\ref{table:cloud:comp}.
-Implementing an application as a web page has the advantage of becoming accessible to any computer connected to the Internet, without requiring users to install it.
-%However, {\bf performance penalty? privacy concerns?}
-
-In Table~\ref{table:cloud:comp} we can also see that all web page applications, except Mobius, support remote storage directly.
-By supporting remote storage directly, it becomes easier to use the application regardless of the computer being used.
-Without this, users have to use either a physical storage device or a separate remote storage system.
-
-Collaboration is only directly supported in Impromptu, Clara.io and OnShape, which allow for real-time collaboration, thus enabling their users to work on the same artifact simultaneously --- i.e. Impromptu's runtime, a Clara.io scene or a OnShape model.
-For the rest of the environments, collaboration is the user's responsibility.
-
-Table~\ref{table:features:comp} presents a non-exhaustive list of features provided by each environment.
-%The \gls{repl} is a common feature among these environments
-%{\bf(comments on the varying coverage of features)}
-
-
-\section{Problems to address}
+\section{Problems to Address}
 %{\bf(review text)}\\
 In this chapter, we have presented environments that support activities related to programming, modeling and \gls{gd}.
 

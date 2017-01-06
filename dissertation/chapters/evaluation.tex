@@ -8,11 +8,11 @@ We start by looking at examples that were implemented in the environment in Sect
 Afterwards, we measure the environment's performance and compare it to other environments in Section~\ref{sec:eval:performance}.
 
 
-\section{GD capability / Usage examples}
+\section{GD Capability / Usage Examples}
 \label{sec:eval:gd:capable}
 A programming environment needs to allow the creation of a wide variety of programs.
-Now comes the time to test the environment's ability to be used for \gls{gd}, more specifically to produce diverse 3D models.
-To show this variety, we will present several examples that make use of some primitives that were implemented and also some programming techniques that they use.
+We need to test its ability to be used for \gls{gd}, or, more specifically, to produce diverse 3D models.
+To show this variety, we present several examples that make use of some primitives that were implemented and also some programming techniques that they use.
 
 %(illustrate main results of the implementation?)\\
 %(show that environment is able to produce GD models?)\\
@@ -26,7 +26,7 @@ It consists of nine metallic spheres connected by sixteen tubes forming its shap
 \begin{figure}
   \centering
   \includegraphics[width=0.5\linewidth]{./images/atomium_photo}
-  \caption[The Atomium in Brussels]{The Atomium, Heysel, Belgium. Photo by Mike Cattel (\url{https://www.flickr.com/photos/mikecattell/4042147060}).}
+  \caption[The Atomium in Brussels.]{The Atomium, Heysel, Belgium. Photo by Mike Cattel (\url{https://www.flickr.com/photos/mikecattell/4042147060}).}
   \label{fig:atomium:photo}
 \end{figure}
 
@@ -95,7 +95,7 @@ function atomium(sphereR, frameW, tubeR) {
 \begin{figure}
   \centering
   \includegraphics[width=0.5\linewidth]{./images/detail_examples/atomium_2_crop}
-  \caption{Atomium}
+  \caption{Atomium.}
   \label{fig:ex:atomium}
 \end{figure}
 
@@ -357,6 +357,7 @@ function building(p) {
   \includegraphics[width=1.0\linewidth]{./images/detail_examples/box_cyl_city_random_crop}
 \end{minipage}
 \end{minipage}
+\\
 
 The examples from Figure~\ref{fig:ex:nolan}, \ref{fig:ex:ines:wall} and \ref{fig:ex:sheung:wan} also make use of random numbers.
 The first example uses them to vary the rotation of the square elements of the facade.
@@ -432,7 +433,8 @@ Now we can call {\tt city} with these building creation functions, as seen in Fi
 \begin{minipage}{0.5\textwidth}
 \begin{minted}{js}
   city(xyz(0, 0, 0),
-    [cylBuilding, boxBuilding, coneBuilding]);
+    [cylBuilding, boxBuilding,
+      coneBuilding]);
 \end{minted}
 \end{minipage}%
 \begin{minipage}{0.5\textwidth}
@@ -544,7 +546,7 @@ With this in mind, we can say that our solution can provide better feedback than
 
 \subsection{Export Performance}
 When time comes to pass on the building design to other people that use different tools --- like mechanical, electric, plumbing services or even other architects --- the architect must provide it in a format compatible with their tools.
-This has been covered in our solution by letting the program that generates the building model run in a \gls{cad} tool.
+This has been covered in our solution by letting the program that generates the building model run in a \gls{cad} application.
 
 The next step was to evaluate how the execution time differs between the normal running process and the remote \gls{cad} running process.
 To measure the difference, we ran two example programs using both processes and measured the time each took to complete.
@@ -574,7 +576,7 @@ Figure~\ref{fig:run:export:rosetta:chart} shows the running times for each syste
 Looking at the graph, we see that export times are $\approx$4.1x the times of running directly in Rosetta for Mobius Truss and that export times are $\approx$4.3x the times of running directly in Rosetta for Ines Wall.
 
 As with the export time evaluation, the increase in running times comes from the overhead in communication between the web page and the remote CAD service.
-Moreover, although during export programs are first run in the web page and Rosetta's role is reduced to make them happen in the \gls{cad}, results are still sent one by one to the remote CAD service meaning that a lot of time is spent transmitting data.
+Moreover, although during export programs are first run in the web page and Rosetta's role is reduced to make them happen in the \gls{cad} application, results are still sent one by one to the remote CAD service meaning that a lot of time is spent transmitting data.
 
 Unlike with the export time evaluation, this comparison lets us distinguish the time of transmitting data from the time taken by Rosetta and the \gls{cad} application to apply operations.
 

@@ -6,8 +6,8 @@
 
 \section{Overview}
 We set out to create an \gls{ide} for \gls{gd} programming that is available from a web page.
-
-There are five related tasks that the environment needs to support in order to be useful for the architect it needs to:
+To do that, we identified several tasks that the environment needs to support in order to be useful for the architect.
+It needs to:
 (1) let the architect develop programs;
 (2) run programs;
 (3) display their results;
@@ -20,8 +20,8 @@ The fifth task requires both the web page and the remote CAD service.
 As also seen in Figure~\ref{fig:archi:sol}, apart from using the web page programming environment \gls{ui}, the architect also needs to install the remote CAD application when he wants to export results to \gls{cad} applications.
 
 In the rest of the chapter, we describe these two components and how each of the tasks is implemented.
-
-We start by looking at the web page.
+Section~\ref{sec:sol:page} describes the web page and its tasks.
+Section~\ref{sec:sol:remote} describe the remote CAD service and the export process.
 
 \begin{figure}
   \centering
@@ -32,6 +32,7 @@ We start by looking at the web page.
 
 
 \section{Web page}
+\label{sec:sol:page}
 To handle the tasks of letting the architect develop programs, running programs, supporting program understanding, and displaying results, the web page has the layout shown in Figure~\ref{fig:page:view}.
 Taking up most of the screen space are a text editor and a 3D view that allow the architect to edit a program and view its results.
 On top of the text editor and the 3D view are controls for the running process, including whether to run automatically and whether to collect data to display traceability.
@@ -105,7 +106,7 @@ Lastly, the {\it Click and drag} also has the advantage of not introducing visua
 Moreover, as with {\it Virtual joystick} and {\it Sliders}, since the interaction is made using the mouse, it is more intuitive for new users.
 However, less visual clutter means that the user may not realize that it is possible to adjust the literal.
 
-Taking the advantages and disadvantages of each alternative into account, we decided to implement the {\it Click and drag} way of adjusting literals since it is a good comprise between being easy to use for new users and not introducing visual clutter to the editor.
+Taking the advantages and disadvantages of each alternative into account, we decided to implement the {\it Click and drag} way of adjusting literals since it is a good compromise between being easy to use for new users and not introducing visual clutter to the editor.
 %Instead of retyping the literal, the user can just ``Click and drag'' on the literal to change its value.
 Figure~\ref{fig:lit:adjust} shows an example of its usage.
 
@@ -149,7 +150,7 @@ Finally, we convert it back to text and re-add the decimal point.
 Reducing the time between making a change and seeing its effect is one way to help the architect to understand a program.
 
 Another way to understand the program is to understand the relationship between parts of the program and parts of the results.
-This helps the architect build an understanding of the program from parts to the whole, and identify both causes of errors and parts that need to be changed to accommodate new design requirements.
+This helps the architect build an understanding of the program from the parts to the whole, and identify both causes of errors and parts that need to be changed to accommodate new design requirements.
 This is especially true when he is dealing with programs that generate complex models, where it is much harder to simply look at the program and results and mentally infer the relationship.
 
 If the programming environment takes care of tracking the relation between program and results, the architect only needs to ask for the relation instead of having to track it by himself, freeing his mind to think about the problem.
@@ -257,7 +258,7 @@ This suggests that we should use a programming language that already exists.
 Architects' experience with programming can vary, however, we can assume that there are more novices than experts.
 Like so, the environment needs to have a programming language is easy to learn and use.
 We can consider programming languages that are commonly regarded as good introductory languages such as Python, Racket, and Processing as possible candidates.
-Additionally, we can also consider DesignScript, since it was made specifically with design programming in mind, and also JavaScript, since it is readily available in web browsers and was originally made for web designers.
+Additionally, we can also consider DesignScript, since it was made specifically with computational design in mind\cite{aish2013designscript}, and also JavaScript, since it is readily available in web browsers and was originally made for web designers.
 
 Programming languages have to be translated into the host's language.
 For example, to run programs on a typical computer processor, they need to be translated into the {\tt x86} instruction set; to run programs on a virtual machine like the JVM, they need to be translated to its bytecode.
@@ -352,7 +353,7 @@ column(6.00, 0.8, 0.7);
 %Afterwards, we also add some code to the beginning of the program that will declare each primitive and extract the corresponding functionality from that parameter.
 
 
-\subsubsection{Running process}
+\subsubsection{Running Process}
 When the environment runs a program, it needs to do two things: (1) collect the results of the program; and (2) collect traceability data.
 It does these two by instrumenting the program with additional calls to special functions that record the desired information, then running the program, and afterwards collecting the results from the instrumentation.
 As stated in \ref{sec:traceability}, the collection of traceability data is optional since it adds a significant overhead to program execution, which may be undesired when programs start to take too much time to run.
@@ -404,8 +405,8 @@ After running the program, the environment needs to display a rendering of the r
 Displaying results is deeply tied to what programs can produce since their results must be converted to a representation that can be rendered.
 The \gls{api} used by those programs is what determines which results can be produced.
 The environment uses THREE.js for 3D rendering.
-By using THREE.js, the implementation effort is reduced since, on top of implementing rendering, THREE.js also implements several geometric primitives useful for GD and implements ray-casting.
-However, since the environment provides a functional \gls{api} and THREE.js's API is imperative, it needs to cover the differences between these two \glspl{api}.
+By using THREE.js, the implementation effort is reduced since, on top of implementing rendering, THREE.js also implements several geometric primitives useful for \gls{gd} and implements ray-casting.
+However, since the environment provides a functional \gls{api} and THREE.js's \gls{api} is imperative, it needs to cover the differences between these two \glspl{api}.
 
 The main difference between them lies in how they support reuse.
 THREE.js's \gls{api} makes it difficult to reuse objects since it only allows scenegraph objects to have one parent.
@@ -444,9 +445,10 @@ Together with the correspondence between program nodes and intermediary results,
 
 
 \section{Remote CAD Service / Exporting to CAD}
+\label{sec:sol:remote}
 The last task that the environment needs to support is exporting to \gls{cad} applications.
 
-As opposed to the other tasks, exporting to a \gls{cad} application requires the environment to communicate with other appications.
+As opposed to the other tasks, exporting to a \gls{cad} application requires the environment to communicate with other applications.
 To do so, the environment must locate the \gls{cad} application and connect to it.
 In addition, there must be a well-defined interface of operations that can be performed in the \gls{cad}, which needs to cover the operations that can be performed in the web page, as well as operations for managing the \gls{cad}'s document.
 
@@ -458,7 +460,7 @@ The architecture for this part of the solution is illustrated in Figure~\ref{fig
 As long as these components can communicate with each other, the system can work.
 In the extreme, each can be running in a distinct computer, as long as all computers are connected to the same network.
 
-Figure~\ref{fig:remote:cad:example} shows an example of the export to \gls{cad} functionality in action.
+Figure~\ref{fig:remote:cad:example} shows an example of the export to \gls{cad} functionality.
 The architect has created a program using the web page environment.
 After selecting AutoCAD and SketchUp as export destinations, he starts the export process and, afterwards, the model resulting from running the program is available in both \gls{cad} applications.
 

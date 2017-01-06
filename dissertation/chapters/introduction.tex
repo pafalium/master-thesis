@@ -23,7 +23,7 @@ As computers became powerful enough to display 3D graphics, and 3D modeling star
 Having a 3D model of the building and being able to explore it -- to see it from many angles -- makes it easier and much more intuitive for the architect to think about the building.
 What was only possible to do with a physical model or a perspective drawing, was now faster and more affordable.
 
-This has allowed \gls{cad} software to be used to create visualizations and documentation for architectural projects.
+This has allowed \gls{cad} applications to be used to create visualizations and documentation for architectural projects.
 %There is, however, still a problem: the architect can still find tasks that are mostly a repetitive process which is, again, prone to errors.
 However, modeling a building still requires several time-consuming and repetitive tasks that are not trivial to accomplish using the functionalities provided by a 3D modeling software.
 
@@ -35,7 +35,7 @@ By programming, the architect is able to describe what he wants to model in a pr
 On top of that, after writing the program, the process of generating and applying changes to the model is much faster than the manual equivalent.
 As a result, the architect gets to do more in less time.
 
-Some examples of programming languages being used in \gls{cad} software are AutoLisp and Visual Basic for AutoCAD, GDL\cite{watson2009gdl} in ArchiCAD, Python and Grasshopper in Rhinoceros 3D, and Dynamo in Revit.
+Some examples of programming languages being used in \gls{cad} applications are AutoLisp and Visual Basic for AutoCAD, GDL\cite{watson2009gdl} in ArchiCAD, Python and Grasshopper in Rhinoceros 3D, and Dynamo in Revit.
 
 
 
@@ -46,15 +46,15 @@ By making these changes, he can create a large amount of variations of the gener
 Designing by using programming to generate parts of the design is what is called \gls{gd}.
 \gls{gd} allows computers to be used as a new medium for artistic expression\cite{Maeda:2001:DN:559503} that can be used by architects, as shown in \cite{terzidis2003expressive}.
 
-Furthermore, as stated in \cite{leitao2014pushing}, using \gls{gd} as a new stage of the design process promotes a simpler handling of changes coming from uncertain design intents and emergent requirements, as the understanding of the problem improves or as project needs change, since changes need only to be made to programs instead of 3D models.
-
-%{\bf (variations from Rita Fernandes?)}
-
-However, in order to create the programs that generate the architect's designs, the architect needs to have a programming environment that lets him write them and see their results.
+Furthermore, as stated in \cite{leitao2014pushing}, using \gls{gd} as a new stage of the design process promotes a simpler handling of changes coming from uncertain design intents and emergent requirements, as the understanding of the problem improves or as the project's needs change.
+By using \gls{gd}, changes only need to be made to programs instead of 3D models.
+Programs are unambiguous parameterized representations of designs, which only need small changes to parameters or functions to express changes in designs.
+In contrast, if 3D models are used, expressing changes in designs requires changing many more parts of those 3D models.
+However, in order to create the programs that generate the architect's designs, the architect needs to have a programming environment, or \gls{ide}, that lets him write them and see their results.
 
 
 \section{IDEs for Generative Design}
-To create \gls{gd} programs, the architect needs to use a programming language, its runtime environment (like the \gls{cad} where the models are generated), and an \gls{ide}.
+To create \gls{gd} programs, the architect needs to use a programming language, its runtime environment (like the \gls{cad} application where the models are generated), and an \gls{ide}.
 
 The programming language defines what is a program, that is, what concepts can be part of a program and how they can be combined to perform tasks that can be understood and executed by a computer.
 For example, it may define a program as a sequence of operations that need to be performed, and define which primitive operations exist, like creating a box or moving an object.
@@ -66,7 +66,7 @@ Examples of \gls{gd} \glspl{ide} include Grasshopper 3D\footnote{\url{http://www
 In the case of \gls{gd} \glspl{ide}, there are specific requirements that need to be fulfilled to make them useful for exploration of \gls{gd}, since these \glspl{ide} have to support the architect while he creates programs and explores design possibilities.
 First of all, they have to be able to display geometric results, otherwise, the architect will not be able to see what his programs generate.
 Secondly, the architect needs to be able to see the effects from changes to parameters or to any part of the program.
-This will require the environment to run programs fast, generate results, and display them to give the architect, thus giving immediate feedback.
+This will require the environment to run programs fast, generate results, and display them to the architect, thus giving him immediate feedback.
 Apart from this, the environment also needs to make it easy for the architect to build his program and correct the bugs that might appear.
 It may do so by showing him the available functions or by highlighting results from a given part of a program.
 Finally, the \gls{ide} needs to support a programming paradigm that is easy for the architect to understand.
@@ -77,7 +77,7 @@ The first is often supported by a visual editing environment, while the second i
 Moreover, most \glspl{ide} are aimed at the creation of programs in one specific programming language, like it is the case of Grasshopper 3D and Dynamo.
 There are, however, some \glspl{ide} that can be used to create programs in several programming languages, such as Rosetta, that supports languages like Racket\cite{flatt2016racket}, Python\cite{rossum2003python} and AutoLisp.
 
-In order to help architects with the creation of \gls{gd} programs, visual programming \glspl{ide} provide tools that are capable of showing all the nodes/functions that can be added, and of showing the relationship between nodes and their results.
+In order to help architects with the creation of \gls{gd} programs, visual programming \glspl{ide} provide tools that are capable of showing all the nodes/functions that can be added, and showing the relationship between nodes and their results.
 They are, therefore, more popular among novices since they do not require as much training to be used when compared with textual programming \glspl{ide}.
 However, as stated in \cite{leitao2012programming}, visual programming languages do not scale well for big \gls{gd} projects when compared to textual programming languages.
 Textual programming languages have abstraction mechanisms that make complexity more manageable, so programs can stay smaller.
@@ -88,7 +88,7 @@ Up until now \gls{gd} \glspl{ide} have been desktop applications.
 The next section shows how this affects the architect.
 
 
-\section{Disadvantages of Current CAD applications}
+\section{Disadvantages of Current CAD Applications}
 It is common practice in any creative field to carry a notebook or a sketchbook for the sudden moments of inspiration that appear through the day.
 This way, people make sure that they do not forget any of their ideas.
 
@@ -128,8 +128,8 @@ The web has seen a big increase in popularity which has become even stronger by 
 This has led to the creation of many web application counterparts of common desktop applications.
 For example, common office productivity tools like Microsoft Word, Excel and PowerPoint have also seen the appearance of their web application counterparts when Microsoft Office 365 appeared.
 Furthermore, complete \gls{cad} web applications have also appeared.
-One example is OnShape\footnote{\url{https://www.onshape.org} (last accessed on 10/10/2016)}, a \gls{cad} for Product Design/Engineering completely accessible from the web browser.
-In addiction to providing the common functionality of a \gls{cad}, it also enhances collaboration by keeping every document accessible from the web, keeping track of all versions of documents, and by allowing people to work simultaneously on the same documents.
+One example is OnShape\footnote{\url{https://www.onshape.org} (last accessed on 10/10/2016)}, a \gls{cad} application for Product Design/Engineering completely accessible from the web browser.
+In addiction to providing the common functionality of a \gls{cad} application, it also enhances collaboration by keeping every document accessible from the web, keeping track of all versions of documents, and by allowing people to work simultaneously on the same documents.
 This support for collaboration makes it easy for users to collaborate effectively.
 
 What remains to be done is making this functionality available to architects and \gls{gd}, and that is the problem we want to address.
