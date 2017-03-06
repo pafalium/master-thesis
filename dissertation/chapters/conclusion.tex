@@ -30,14 +30,14 @@ Afterwards, if they have any doubt on how a certain part of the results come to 
 
 After implementing the solution, we evaluated it in different ways.
 In Chapter~\ref{chapter:evaluation}, we presented some examples of programs that were created using the solution.
-Additionally, we tested the solution's performance by measuring the program running and export times on the web page and comparing them to running times on Rosetta.
-Taking those measurements into consideration, we concluded that running programs in the web page is faster than running in Rosetta.
-In fact, we were surprised by the difference of at least an order of magnitude, which shows that \gls{cad} applications are indeed too slow to be used in \gls{gd} exploration.
+Additionally, we tested the solution's performance by measuring the program running and export times on the web page and comparing them to running times on Rosetta, OpenJSCAD and Grasshopper.
+Taking those measurements into consideration, we concluded that running programs in the web page is faster than running these \glspl{ide}.
+In fact, we were surprised by the difference of at least an order of magnitude from Rosetta and Grasshopper, which shows that \gls{cad} applications are indeed too slow to be used in \gls{gd} exploration.
 Regarding export times, we saw that exporting from the web page is slower than running in Rosetta.
 This was to be expected since, although we run the program in the web page, we have to wait for network communications.
 Nonetheless, the ability to export to \gls{cad} applications remains a great advantage for architects since they only need to do it once, when they reached a final solution.
 We also measured the effect that keeping track of traceability data has on program running times.
-As a result, we concluded that collecting traceability data makes programs around 20-30\% slower, which is a great achievement considering that every function call is being recorded.
+As a result, we concluded that collecting traceability data makes programs around 10--50\% slower, which is a great achievement considering that every function call is being recorded.
 Moreover, when we take into account the benefit that showing the program-result relationship brings to the architect and the \gls{gd} program creation process, the slowdown it brings is well worth it.
 
 In conclusion, with our solution, architects are able to explore \gls{gd} using any of their computers, without being required to install the programming environment and avoiding the installation and use of heavy-weight \gls{cad} applications, which become slow for \gls{gd} exploration.

@@ -484,7 +484,6 @@ However, due to deadlines, implementing more operations should be addressed in f
     \label{fig:ex:ortho:cones}
   \end{subfigure}
 
-  %\includegraphics[width=12cm]{./images/all_examples}
   \caption{Renderings of results of the implemented example programs.}
   \label{fig:all:examples}
 \end{figure}
@@ -518,7 +517,7 @@ All tests were performed on Microsoft Surface Pro 4 with 4GB of RAM.
 The web page and the remote CAD service were hosted at the same computer.
 
 Times are the average of two runs.
-As Racket and JavaScript runtime environments include \gls{jit} compilation, we perform three warm-up runs for all \glspl{ide} before we actually start measuring running times.
+As Racket and JavaScript's runtime environments include \gls{jit} compilation, we perform three warm-up runs for all \glspl{ide} before we actually start measuring running times.
 This way, they have the opportunity to perform optimization steps, thus, potentially improving running times.
 
 %The source code of each program used in the tests can be found in Appendix~\ref{appendix:test:source:code}. %{\bf(either here, appendix or github)}
@@ -537,8 +536,8 @@ Apart from making it easy to change program inputs, it needs to run programs and
 It is important to compare the performance of our solution to the performance of other systems that can also provide immediate feedback.
 
 To see how the performance of our web-based \gls{gd} environment compares to the existing environments, we compared the time each takes to generate identical models.
-First, we implemented a version of the program using each environment's programming language and, then, measured the time each took to complete.
-The times can be seen in Figure~\ref{fig:run:export:rosetta:chart}.
+First, we implemented a version of each program using each environment's programming language and, then, measured the time each took to complete.
+These times are shown in the chart on Figure~\ref{fig:run:export:rosetta:chart}.
 As can be seen, the relationship between running times varies from program to program, although the web page is consistently faster than Rosetta (connected to AutoCAD), OpenJSCAD and Grasshopper.
 More specifically, Rosetta's running times range from being around seven times to eleven hundred times the running times of the web page (``web-GD-IDE (w/o trace)'').
 In case of OpenJSCAD, its running times range from being around two times to two hundred times the running times of the web page.
@@ -546,15 +545,14 @@ Finally, Grasshopper's running times range from being two times to thirty times 
 
 With this in mind, we can say that our solution can provide better feedback than the other \glspl{ide}.
 
-%We compared our environment with Rosetta (using the OpenGL backend), OpenJSCAD and Rhino+Grasshopper.
-
 
 \subsection{Export Performance}
-When time comes to pass on the building design to other people that use different tools --- like mechanical, electric, plumbing services or even other architects --- the architect must provide it in a format compatible with their tools.
-This has been covered in our solution by letting the program that generates the building model run in a \gls{cad} application.
+\label{sec:eval:export}
+When time comes to pass on the building design to other people using different tools --- like mechanical, electric, plumbing services or even other architects --- the architect must provide the design in a format compatible with their tools.
+This has been covered in our solution by letting the program generating the design run in a \gls{cad} application.
 
 The next step was to evaluate how the execution time differs between the normal running process and the remote \gls{cad} running process.
-To measure the difference, we also ran the previous programs using the web page's export process and measure the time each took to complete.
+To measure the difference, we ran the previous programs using the web page's export process and measured the time each took to complete.
 These times are also shown in Figure~\ref{fig:run:export:rosetta:chart}.
 As seen in the chart, comparing export times (``web-GD-IDE + AutoCAD'') to normal running times (``web-GD-IDE (w/o trace)''), export times range from being around twelve times to eighteen hundred times the normal running times.
 
@@ -562,13 +560,13 @@ Given that the difference can grow to three orders of magnitude, it is highly pr
 The export process should be reserved to when the architect is satisfied with the obtained solution.
 
 One may need some clarification on how this difference appears.
-For each primitive call a program does, data has to be converted, sent over an HTTP connection to the remote CAD service, passed to Rosetta, then to the \gls{cad} application to perform the primitive, and finally the result must be sent back to the web page.
-The difference comes from the time needed for \gls{cad} applications to execute operations and from the time spent on communication between applications.
+For each primitive call a program does, data has to be converted, sent over an HTTP connection to the remote CAD service, passed to Rosetta, then to the \gls{cad} application to actually perform the primitive, and finally a result identifier must be sent back to the web page.
+The difference comes from the time needed for the \gls{cad} application to perform primitives and from the time spent on communication between applications.
 As shown in \cite{Leitao2014illustrated}, \gls{cad} applications are not well suited for \gls{gd} since they were designed to support human interaction and, therefore, are not ready for the amount of operations produced by \gls{gd} programs.
 
 
 \subsection{Export vs Rosetta}
-As shown in Chapter~\ref{chapter:solution}, Rosetta plays an important part in the process used by our environment to send results to \gls{cad} applications.
+As shown in Chapter~\ref{chapter:solution}, Rosetta plays an important part in the process that our environment uses to send results to \gls{cad} applications.
 Rosetta acts as an interface to communicate with \gls{cad} applications, while remote CAD service makes that interface available to the web page as a web service.
 Due to the fact that our solution uses Rosetta as an intermediate to export to \glspl{cad}, it is interesting to assess how much time the process adds to running a program that produces the same results using just Rosetta.
 
@@ -576,8 +574,8 @@ The two systems use different programming languages, therefore, each program had
 Figure~\ref{fig:run:export:rosetta:chart} shows the running times for each system (``web-GD-IDE + AutoCAD'' and ``Rosetta + AutoCAD''), grouped by program.
 Looking at the graph, we see that export times range from $\approx$1x to $\approx$24x the times of running directly in Rosetta.
 
-As with the export time evaluation, the increase in running times comes from the overhead in communication between the web page and the remote CAD service.
-Moreover, although during export programs are first run in the web page and Rosetta's role is reduced to make them happen in the \gls{cad} application, results are still sent one by one to the remote CAD service meaning that a lot of time is spent transmitting data.
+As with the export time evaluation in Subsection~\ref{sec:eval:export}, the increase in running times comes from the overhead in communication between the web page and the remote CAD service.
+Moreover, although during export programs are run in the web page and Rosetta's role is reduced to make them happen in the \gls{cad} application, results are still sent one by one to the remote CAD service, meaning that a lot of time is spent transmitting data.
 
 Unlike with the export time evaluation, this comparison lets us distinguish the time of transmitting data from the time taken by Rosetta and the \gls{cad} application to apply operations.
 
@@ -587,13 +585,13 @@ Collecting traceability data requires that additional work must be done when a p
 The additional work will inevitably increase the time it takes to finish executing the program.
 This can make the environment less capable of giving immediate feedback, therefore having a negative impact in its the usage experience.
 
-To measure the impact that traceability data collection has on program running time, we have selected a small set of programs, ran them with data collection and without it, and measured the time each took to execute.
-The chart in Figure~\ref{fig:traceability:timing} shows a comparison of their times, grouped by program.
+To measure the impact that traceability data collection has on program running time, we have selected a small set of programs, ran them with and without data collection, and measured the time each took to execute.
+The chart in Figure~\ref{fig:traceability:timing} shows a comparison of their times.
 
-We can observe that running with traceability impacts the running time, increasing it by 10--50\%, with the exception of the ``column'' and ``coneShpere'' programs.
+We can observe that running with traceability impacts the running time, increasing it by 10--50\%.
 The impact is indeed significant.
 Like so, traceability data collection may need to be disabled to increase feedback when running complex programs.
-However, the impact is worth taking when the user wants to get a better understanding of the program.
+However, the impact is worth taking when the user wants to get a better understanding of programs.
 
 \begin{figure}
   \centering
