@@ -107,7 +107,7 @@ Moreover, this problem extends to any part of the code that runs more than once.
 
 Finally, the way LightTable is structured is also relevant as it makes possible to modify its behavior at runtime.
 The main design pattern used in LightTable is the \gls{bot} pattern. %{\bf(, similar to the Component Entity System (CES) pattern used in videogames)}
-As described by one of its developers,\footnote{\url{http://www.chris-granger.com/2013/01/24/the-ide-as-data/} (last accessed on 01/11/2015)} LightTable can be described as a set of \emph{Objects}, each having a set of \emph{Behaviors} and being tagged with a set of \emph{Tags}.
+As illustrated by one of its developers,\footnote{\url{http://www.chris-granger.com/2013/01/24/the-ide-as-data/} (last accessed on 01/11/2015)} LightTable can be described as a set of \emph{Objects}, each having a set of \emph{Behaviors} and being tagged with a set of \emph{Tags}.
 The \emph{Behaviors} describe how an \emph{Object} reacts when events are raised on it, and \emph{Tags} are groups of \emph{Behaviors}.
 When an event is raised on an \emph{Object} both its \emph{Behaviors} and those from its \emph{Tags} are notified.
 
@@ -246,8 +246,6 @@ DesignScript also supports lists of values and lets them be used in place of sin
 This lets architects use lists more easily, as they do not have to use loops to extract values and pass them to functions.%
 \footnote{If only one of its parameters is receiving a list instead of a value, the function is called once with each value on the list.
 If more than one parameter is receiving a list, the function is called with the values combined by either a cross product or a zip of the lists.}
-
-Furthermore, having modeling primitives and combining several programming paradigms allows the architect to draw from his knowledge about architecture modeling, while empowering him to express the processes in which those primitives are used.
 
 %DesignScript editor(s)
 Editing DesignScript programs can be done either by writing statements or by creating a graph.
@@ -481,7 +479,7 @@ In Table~\ref{table:cloud:comp} we can also see that all web page applications, 
 By supporting remote storage directly, it becomes easier to use the application regardless of the computer being used.
 Without this, users have to use either a physical storage device or a separate remote storage system.
 
-Collaboration is only directly supported in Impromptu, Clara.io and OnShape, which allow for real-time collaboration, thus enabling their users to work on the same artifact simultaneously --- i.e. Impromptu's runtime, a Clara.io scene or a OnShape model.
+Collaboration is only directly supported in Impromptu, Clara.io and OnShape, which allow for real-time collaboration, thus enabling their users to work on the same artifact simultaneously --- i.e. an Impromptu runtime environment, a Clara.io scene or an OnShape model.
 For the rest of the environments, collaboration is the user's responsibility.
 
 \begin{table}
