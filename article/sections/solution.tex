@@ -6,7 +6,7 @@
 
 
 \subsection{Overview}
-We set out to create an IDE for GD programming that is available from a web page.
+We set out to create, Luna Moth, an \gls{ide} for \gls{gd} programming that is available from a web page.
 
 There are four related tasks that the environment needs to support in order to be useful for the architect:
 it needs to run programs; it needs to display their results; it needs to make it easy to see the traceability relationship between program and results; and it needs to export results to \gls{cad} applications.
@@ -38,13 +38,13 @@ To the left is the interface for running programs in \gls{cad} applications and 
 
 \subsubsection{Handling Traceability}
 Traceability can be achieved by giving feedback to the programmer when he interacts with the program or the results.
-The environment implements some mechanisms that allow it to give this feedback.
+Luna Moth implements some mechanisms that allow it to give this feedback.
 
-One of the ways the environment does this is by letting the programmer adjust literals more intuitively.
+One of the ways it does this is by letting the programmer adjust literals more intuitively.
 Afterwards, the environment reruns the program to show the effect of the adjustments.
 It can also rerun the program whenever there is a change, like when a new statement is added to a function, an expression is changed, or when a new function is written.
 
-The other way the environment provides traceability to the user is by showing it directly.
+The other way Luna Moth provides traceability to the user is by showing it directly.
 When the user points at a function call in the source code, the environment immediately highlights the shapes that it produced in the 3D view.
 
 
@@ -93,11 +93,11 @@ Instead of retyping the literal, the user can just ``Click and drag'' on the lit
 
 \paragraph{Program-Results Relationship}
 Reducing the time between making a change and seeing its effect is one way to provide traceability.
-However, traceability can also be actively shown by the environment.
+However, traceability can also be actively shown.
 If the programming environment takes care of tracking the relation between the program and results, the architect only needs to ask for the relation instead of having to track it by himself, freeing his mind to think about the problem.
 
 There needs to be a way to give the architect quick access to the relation being tracked by the environment.
-To do this, our solution highlights certain parts of the program and  its results when the pointer is on either one.
+To do this, Luna Moth highlights certain parts of the program and  its results when the pointer is on either one.
 More specifically, when the pointer is over a part of the program, it highlights all the results that it produced;
 when the pointer is over a part of the results, it highlights the part of the program where it was created.
 Figure~\ref{fig:trace:example} shows an example for both of this cases.
@@ -120,7 +120,7 @@ Figure~\ref{fig:trace:example} shows an example for both of this cases.
   \label{fig:trace:example}
 \end{figure}
 
-Currently our solution only tracks the results produced by calls to functions.
+Currently Luna Moth only tracks the results produced by calls to functions.
 This was a compromise to balance performance, since keeping track of traceability is an additional task that needs to be performed while running the program.
 
 %\textit{Alternative ways of showing traceability}
@@ -144,7 +144,7 @@ In our solution, we decided that it would be best to use JavaScript, as it was t
 %{\bf(a source would help)}
 
 However, there is a question: how do we get results from a program so we can display them?
-Our solution uses the values of the top-level expression statements of the program as its results.
+Luna Moth uses the values of the top-level expression statements of the program as its results.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -249,13 +249,13 @@ recordTopLevelResult(
 
 
 \subsection{Remote CAD Service / Exporting to CAD}
-The last task that the environment needs to support --- exporting to \gls{cad} --- requires it to communicate with \gls{cad} applications that are installed in the architect's computer.
+The last task that Luna Moth needs to support --- exporting to \gls{cad} --- requires it to communicate with \gls{cad} applications that are installed in the architect's computer.
 Unfortunately, web pages are not allowed to communicate with applications running in the computer displaying them.
 
 To overcome this restriction, we have implemented an application that the architect must install and run in his computer.
 This application serves as a bridge between \gls{cad} applications installed in the computer and the environment running in the web page.
 After being started, the application detects which \glspl{cad} are installed in the computer and connects to the ``environment directory'' so it can be discovered by the web page.
-When the architect needs to export a program to his \gls{cad}, the web page connects to the application in his computer through the ``environment directory'' and starts to send requests to it, in order to create shapes in the \gls{cad}.
+When the architect needs to export a program to his \gls{cad}, the web page connects to the application in his computer through an ``environment directory'' and starts to send requests to it, in order to create shapes in the \gls{cad}.
 
 Figure~\ref{fig:remote:cad:example} shows an example of this functionality.
 The architect has created a program using the web page environment.
@@ -283,7 +283,7 @@ After selecting AutoCAD and SketchUp as export destinations, he starts the expor
 
 \begin{figure}
   \centering
-  \includegraphics[width=1.0\linewidth]{./\figurePath/remote_cad_example}
+  \includegraphics[width=1.0\linewidth]{./\figurePath/remote_cad_example/remote_cad_example}
   \caption[An example of the remote CAD service.]{An example of the remote CAD service. The results of the program have been passed to both AutoCAD and SketchUp.}
   \label{fig:remote:cad:example}
 \end{figure}

@@ -20,19 +20,19 @@ To have a better idea of the features necessary for such environment, Section~\r
 We compared these applications first by application domain and by the purpose they give to programming.
 Afterwards, we also compared them according to editing and programming paradigm, persistence and collaboration support and code editing features.
 
-Following the presentation and comparison of the environments, we described our solution in Section~\ref{sec:solution}.
-It is composed of two components:
+Following the presentation and comparison of the environments, we described our solution, Luna Moth, in Section~\ref{sec:solution}.
+Luna Moth is composed of two components:
 (1) a web page, used by the architect to create programs;
 and (2) a desktop application that, when run, allows the web page to export results of programs to \gls{cad} applications.
 To help programming, the web page runs programs when they change, allows literals to be adjusted by clicking and dragging, and highlights the relationship between program and results in both directions.
 
-After implementing the solution, we evaluated it in several ways.
+After implementing Luna Moth, we evaluated it in several ways.
 In Section~\ref{sec:evaluation}, we presented some examples of programs that were created using the solution.
 Additionally, we tested the solution's performance by measuring program running times and export times on the web page and comparing them to running times on Rosetta.
-Taking those measurements into consideration, we concluded that running programs in the web page is faster than running in Rosetta.
+Taking those measurements into consideration, we concluded that running programs in the web page is at least as fast as other \gls{gd} \glspl{ide}.
 However, exporting from the web page is slower than running in Rosetta.
 We also measured the effect that keeping track of traceability data has on program running times.
-As a result, we concluded that collecting traceability data makes programs around 30\% slower.
+As a result, we concluded that collecting traceability data makes programs around 10-50\% slower.
 
 %In conclusion, with our solution architects are able to explore \gls{gd} using any of their computers, without being required to install the programming environment.
 %Programs are not tied to a particular environment or \gls{cad} application, since it is possible to export their results to \gls{cad} when needed.

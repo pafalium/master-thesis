@@ -87,15 +87,15 @@ Figure~\ref{fig:lt:draft:table} shows an example of this metaphor, which has som
 
 \begin{figure}
   \centering
-  \includegraphics[width=1.0\linewidth]{./\figurePath/lt_game_example__inv}
+  \includegraphics[width=1.0\linewidth]{./\figurePath/lt_game_example}
   \caption[LightTable's drafting table showing a game.]{LightTable's drafting table. A game is being run inside it while some of its code is displayed in separate editors.}
   \label{fig:lt:draft:table}
 \end{figure}
 
 %LightTable "function navigation"
 Other feature deals with making navigation in Clojure code bases easier.
-In Clojure, functions are defined inside namespaces and all Clojure definitions (functions, variables, macros) are stored in text files.
-Navigating among definitions and the current namespace structure should not get in the way of editing code.
+In Clojure, functions are defined inside namespaces and all Clojure definitions (like functions, variables, macros) are stored in text files.
+Navigating among definitions and the namespace structure should not get in the way of editing code.
 To make editing easier, LightTable provides a \emph{namespace browser} that allows to find functions and a \emph{code document} where functions can be added for editing, without moving them out of their namespace or displaying entire files where they are defined.
 %Figure~\ref{fig:lt:clojure:table} shows an experiment where these two are used.
 
@@ -132,12 +132,12 @@ If a function is called more than once, then it will be more useful to show the 
 
 \subsubsection{IPython}
 \label{section:ipython:related}
-IPython\cite{PER-GRA:2007} is a programming environment (Figure~\ref{fig:ipython:notebook}) directed towards providing better, more straightforward, scientific computing.
+IPython\cite{PER-GRA:2007} is a programming environment directed towards providing better, more straightforward, scientific computing.
 
 %Why is it important? I cannot imagine designers using it.
 IPython can be used as a command shell by using its notebook \gls{ui}, the IPython notebook.
 As seen in Figure~\ref{fig:ipython:notebook}, IPython's notebooks can contain not only source code but also results and rich text.
-The notebooks are displayed using an interactive web page.
+These notebooks are displayed using an interactive web page.
 
 The style of producing notebooks in IPython is one that mixes programming, writing and exploring.
 Interestingly, this style is also part of a designer's processes.
@@ -173,10 +173,8 @@ Moreover, the communication protocol also allows execution kernels and front-end
 
 \subsubsection{OpenJSCAD}
 OpenJSCAD\cite{openjscad2015site} is a project aiming to implement OpenSCAD\cite{kintel2011openscad} using web technologies.
-Instead of using OpenSCAD's language, OpenJSCAD uses JavaScript as its language.
-Most of OpenSCAD functionality is implemented in OpenJSCAD.
+OpenJSCAD supports most of OpenSCAD's functionality.
 Like OpenSCAD, it focuses on creating 3D models for 3D printing.
-
 Similarly to the \gls{gd} approach, to actually model in OpenJSCAD, the user has to write a program in either JavaScript or OpenSCAD's language.
 
 %Being an environment for modeling 3D printed objects, OpenJSCAD supports importing and exporting 3D models from/to STL and AMF files which are commonly used as 3D printing formats.
@@ -360,11 +358,11 @@ It is possible to use Clara.io's scripting to do \gls{gd}, however, if a user wi
 
 
 \subsubsection{OnShape}
-OnShape\footnote{https://www.onshape.com/ (last accessed on 10/10/2016)} is a cloud based \gls{cad} application that can be accessed using either a web browser or its mobile app.
+OnShape\footnote{https://www.onshape.com/ (last accessed on 10/10/2016)} is a cloud-based \gls{cad} application that can be accessed using either a web browser or its mobile app.
 As opposed to the systems we talked about earlier, OnShape is a \gls{cad} for mechanical modeling and, as such, its users are familiar with \glspl{cad} like SolidWorks and Autodesk Inventor.
 %Being a mechanical modeling tool means that the focus is directed towards assembling individual objects instead of buildings, so the working scales are smaller and there is more information on how parts relate to each other.
 
-OnShape has version control of project documents (drawings, 3d models, text documents) and supports real time collaboration.
+OnShape has version control of project documents (drawings, 3D models, text documents) and supports real time collaboration.
 Like most cloud applications, OnShape promotes collaboration on development teams where team members work remotely.
 In order to do this, it allows users to work on the same copy of files, as opposed to each working with his own copy, and therefore changes are synchronized automatically.
 As users can edit the same copy of a file at the same time, OnShape shows each user what the others are doing to enhance real time collaboration.
@@ -565,11 +563,11 @@ As Antimony uses \glspl{sdf} as its representation of solids, shapes are defined
 %	\label{table:features:comp}
 %\end{table*}
 
-Not all environments are directly related to \gls{gd}. We looked at this diverse set of environments to get the broader picture of domain-specific programming environments, 3d modeling/\gls{cad} applications, and some of their cloud counterparts.
+Not all environments are directly related to \gls{gd}. We looked at this diverse set of environments to get the broader picture of domain-specific programming environments, 3D modeling/\gls{cad} applications, and some of their cloud counterparts.
 
 In terms of application domain, the environments presented in this section cover a variety of fields that use programming for automating tasks.
 %Table~\ref{table:general:comp} shows a comparison of the application domain of each of them, as well as the purpose that programming takes in them.
-Programming has a major role in most of the presented environments with the exception of Clara.io\cite{houston2013clara} and OnShape, where it is only used to extend the functionality available in the main \gls{ui}.
+Programming has a major role for the user in most of the presented environments with the exception of Clara.io\cite{houston2013clara} and OnShape, where it is only used to extend the functionality available in the main \gls{ui}.
 % as seen in Table~\ref{table:general:comp},
 
 The editing paradigms used in environments has been based on text editing, node graph editing, a combination of text and node graph editing, or a combination of node graph and block-based editing.
