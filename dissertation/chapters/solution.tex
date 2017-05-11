@@ -5,87 +5,87 @@
 
 
 \section{Overview}
-We set out to create an \gls{ide} for \gls{gd} programming that is available from a web page.
-To do that, we identified several tasks that the environment needs to support in order to be useful for the architect.
+We set out to create an \gls{ide} for \gls{gd} programming that is available from a web application.
+To do that, we identified several tasks that the programming environment needs to support in order to be useful for the architect.
 It needs to:
 (1) let the architect develop programs;
 (2) run programs;
 (3) display their results;
 (4) make it easy to understand programs;
-and (5) export results to \gls{cad} applications.
+and (5) export results to the most used commercial \gls{cad} applications.
 
-To accomplish these tasks, there are two separate components, as seen in Figure~\ref{fig:archi:sol}: (1) the web page, where the \gls{ui} for creating programs is; and (2) the remote CAD service, that offers an \gls{api} for running programs in \gls{cad} applications.
-The first four tasks can be handled by the web page alone since there is no need to interact with \gls{cad} applications running in the user's computer.
-The fifth task requires both the web page and the remote CAD service.
-As also seen in Figure~\ref{fig:archi:sol}, apart from using the web page programming environment \gls{ui}, the architect also needs to install the remote CAD application when he wants to export results to \gls{cad} applications.
+To accomplish these tasks, there are two separate components, as seen in Figure~\ref{fig:archi:sol}: (1) the web application that support the \gls{ui} for creating programs; and (2) the remote CAD service, that offers an \gls{api} for running programs in \gls{cad} applications.
+The first four tasks described above can be handled by the web application alone since there is no need to interact with \gls{cad} applications running in the user's computer.
+The fifth task requires both the web application and the remote CAD service.
+As also seen in Figure~\ref{fig:archi:sol}, apart from using the web application programming environment \gls{ui}, the architect also needs to install the remote CAD application if and when he wants to export results to \gls{cad} applications.
 
-In the rest of the chapter, we describe these two components and how each of the tasks is implemented.
-Section~\ref{sec:sol:page} describes the web page and its tasks.
+We made a test implementation of this architecture which we will call Luna Moth from here on.
+
+In the rest of the chapter, we describe these two components and how each of the tasks is implemented in Luna Moth.
+Section~\ref{sec:sol:page} describes the web application and its tasks.
 Section~\ref{sec:sol:remote} describe the remote CAD service and the export process.
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.8\textwidth]{./images/architecture_overview/architecture_overview}
+  \includegraphics[width=1.0\textwidth]{./images/architecture_overview/architecture_overview}
   \caption{Architecture of the solution.}
   \label{fig:archi:sol}
 \end{figure}
 
 
-\section{Web page}
+\section{Web Application}
 \label{sec:sol:page}
-To handle the tasks of letting the architect develop programs, running programs, supporting program understanding, and displaying results, the web page has the layout shown in Figure~\ref{fig:page:view}.
-Taking up most of the screen space are a text editor and a 3D view that allow the architect to edit a program and view its results.
-On top of the text editor and the 3D view are controls for the running process, including whether to run automatically and whether to collect data to display traceability.
-On the left are hidden panels for actions like selecting a program and exporting to \gls{cad} applications.
+To handle the tasks of letting the architect develop programs, running programs, supporting program understanding, and displaying results, the web application's \gls{ui} has the layout shown in Figure~\ref{fig:page:view}.
+Taking up most of the screen space are a text editor (C) and a 3D view (D) that allow the architect to edit a program and view its results.
+On top of the text editor and the 3D view are controls for the running process (B), including whether to run automatically and whether to collect data to display traceability.
+On the left are hidden panels for actions like selecting a program and exporting to \gls{cad} applications (A).
 %{\bf(pictures of panels)}
 
-To help with the implementation, we have used the THREE.js library\footnote{\url{https://threejs.org/} (last accessed on 10/10/2016)} to interact with WebGL\cite{marrin2011webgl} and the Ace Editor library\footnote{\url{https://ace.c9.io} (last accessed on 10/10/2016)}, to provide a syntax highlighted text editor.
+To help with the implementation, we have used the THREE.js library\footnote{\url{https://threejs.org/} (last accessed on 10/10/2016)} to interact with WebGL\cite{marrin2011webgl} and the Ace Editor library,\footnote{\url{https://ace.c9.io} (last accessed on 10/10/2016)} to provide a syntax highlighted text editor.
 %{\bf(React, escodegen, esprima, estraverse, redux)}
 
 %{\bf(describe high-level view of the inner workings of the page)}
 
 \begin{figure}
   \centering
-  \includegraphics[width=12cm]{./images/webpage_view}
-  \caption{An example view of the web page.}
+  \includegraphics[width=1.0\textwidth]{./images/webpage_view/webpage_view}
+  \caption{An example view of the web application's \gls{ui}.}
   \label{fig:page:view}
 \end{figure}
 
 
-\subsection{Understanding Programs}
+\subsection{Program Comprehension}
 In \gls{gd}, the architect interacts with the program that creates the model instead of creating it directly in a \gls{cad} application.
 This allows him to automate tasks that normally take too much time and, therefore, also allows him to explore a design space with much more complexity.
-However, since he is not directly interacting with the model, he needs to understand the relationship between program and results in order to know how to change the program to get the model he wants.
+However, since he is not directly interacting with the model, he needs to understand the relationship between the program and its results in order to know how to change the program to get the model he wants.
+The process of understanding the program and how it relates to its results is called program comprehension\cite{rugaber1995program}.
 Our environment enables him to do this by providing immediate feedback to changes and by showing traceability.
 
 
 \subsubsection{Immediate Feedback}
 \label{sec:immediate:feedback}
-One of the ways to understand the program is to understand the relationship between its inputs and outputs, that is, understanding how each input affects the output model.
-To do this, the architect needs to change the inputs, run the program, see the output, and repeat until he understands the relationship.
-This is a tedious process that will bore must architects.
+One of the ways to understand the program is to understand the relationship between its inputs and outputs, that is, understanding how each input affects the generated model.
+To do this, the architect needs to change the inputs, run the program, see the results, and repeat until he understands the relationship.
+This is a tedious process that will bore most architects.
 The environment can help them by making this process more immediate.
 It must provide quick ways of changing inputs and it must rerun the program when inputs change, so the architect can see the effects of his changes immediately.
 This immediacy allows the architect to quickly understand the relationship, which means he is ready to start exploring the design sooner.
-Afterwards, he can used the same immediacy to explore the design more efficiently.
+Afterwards, he can use the same immediacy to explore the design more efficiently.
+To this end, we developed and implemented two different features, namely, the ability to run programs while the architect is writing them, and the ability to efficiently adjust literals.
 
 \paragraph{Adjusting literals}
 When a value, such as a number, is typed directly into a program's source code, it is called a literal value, or simply a literal.
 When experimenting with a \gls{gd} program, architects find themselves repeatedly adjusting literals that were hardcoded into the program.
-This is usually done by retyping parts of the literal's text and then re-running the program to see the effect.
+This is usually done by retyping parts of the literal's text and, then, re-running the program to see the effect.
 Unfortunately, this is annoying and, worse, it makes it difficult to fine-tune the literal.
-One possible way to improving this behavior is to automatically re-run the program on every change.
+One possible way to improve this behavior is to automatically re-run the program on every change.
 This has the advantage of allowing immediate feedback to changes in literals.
 
 However, editing literals this way often leads to errors, since it is easy to mistype characters.
 The architect can increase the literal's value by an order of magnitude if, by mistake, he inserts one character without removing another.
-Furthermore, when increasing the literal in steps, different hand movements are required when the increment results in a carry over, yet again increasing both the likelihood of mistyping and the time it takes to make the changes.
+Furthermore, when increasing the literal in steps, different hand movements are required when the increment results in a carry over, e.g. when going from ninety-nine to one hundred, yet again increasing both the likelihood of mistyping and the time it takes to make the changes.
 These errors get amplified when the programming environment provides real time feedback and, like so, begins rerunning the program before the error is corrected, leading to annoyance and to reduced \gls{ui} responsiveness.
 
-To make this interaction more user friendly and less prone to errors, we decided to simplify the task.
-Instead of retyping the literal, it would be easier to perform a simpler task, like moving the mouse or pressing a specific key on the keyboard.
-
-\paragraph{Alternative ways of adjusting literals}
 There are several ways we can extend the user interface to make adjusting literals more user friendly that do not involve manually replacing digits.
 They have a simpler mapping to the user's intent.
 The following list describes some of them:
@@ -128,15 +128,15 @@ Finally, we convert it back to text and re-add the decimal point.
 
 \begin{figure}
   \centering
-  \begin{subfigure}[b]{0.3\linewidth}
+  \begin{subfigure}[b]{0.32\linewidth}
     \includegraphics[width=1.0\linewidth]{./images/literal_adjustment/start_crop}
     \caption{Right after clicking.}
   \end{subfigure}
-  \begin{subfigure}[b]{0.3\linewidth}
+  \begin{subfigure}[b]{0.32\linewidth}
     \includegraphics[width=1.0\linewidth]{./images/literal_adjustment/middle_crop}
     \caption{After dragging a little.}
   \end{subfigure}
-  \begin{subfigure}[b]{0.3\linewidth}
+  \begin{subfigure}[b]{0.32\linewidth}
     \includegraphics[width=1.0\linewidth]{./images/literal_adjustment/end_crop}
     \caption{After dragging a little more.}
   \end{subfigure}
@@ -153,19 +153,15 @@ Another way to understand the program is to understand the relationship between 
 This helps the architect build an understanding of the program from the parts to the whole, and identify both causes of errors and parts that need to be changed to accommodate new design requirements.
 This is especially true when he is dealing with programs that generate complex models, where it is much harder to simply look at the program and results and mentally infer the relationship.
 
-If the programming environment takes care of tracking the relation between program and results, the architect only needs to ask for the relation instead of having to track it by himself, freeing his mind to think about the problem.
+If the programming environment takes care of tracking the relation between program and results, the architect only needs to ask for that relation instead of having to track it by himself, freeing his mind to think about the problem.
 
-There needs to be a way to give the architect quick access to the relation being tracked by the environment.
-This is done by showing him a graphical representation that emphasizes the relation.
-
-\paragraph{Alternative ways of showing traceability}
 There are several ways that the environment can use to graphically show the relationship between program and results.
 We will describe some of them next:
 
 \begin{itemize}
-  \item {\bf Highlighting expressions and results} Every object that is part of the results of a program has been created by one expression of that program.
-  On the other hand, every expression of the program may have created one or more objects of the results.
-  The environment can make this relationships visible by changing the appearance of expressions and results when the user points either at an expression or at an object.
+  \item {\bf Highlighting expressions and results} Every object that is part of the results of a program was created by one expression of that program.
+  On the other hand, every expression of the program creates one or more objects of the results.
+  The environment can make these relationships visible by changing the appearance of expressions and results when the user points either at an expression or at an object.
 
   \item {\bf Timetable} As described in Learnable Programming\cite{victor2012learnable}, making things visible makes them more real to the programmer.
   Timetables were proposed as a way to visualize the control flow of programs.
@@ -209,10 +205,9 @@ Afterwards, it highlights both.
 It highlights expressions by changing the program editor's background behind them to a different color.
 To highlight 3D objects, it changes their material to a transparent and emissive one, and overlays them on top of the remaining objects.
 
-When working on a larger design, the user may find that his program is running so slowly that he has to wait to see the effects of his changes.
-Collecting traceability is in part responsible for the slowdown.
-Like so, we also made traceability data collection optional to the user.
-This way, he can decide to turn it off when he wants his program to run faster.
+When working on a larger design, the user may find that the data collection needed to support traceability has a performance impact that he might not want to accept.
+In order to solve this problem, we made traceability data collection optional to the user.
+This way, he can decide to turn it on when he wants to debug his program or to turn it off when he wants his program to run faster.
 
 \begin{figure}
   \centering
@@ -248,7 +243,7 @@ However, if they do not use a concrete and unambiguous language that can be tran
 The environment has to use a programming language that fits the architect's needs.
 It can either be an existing language with slight adaptations or a new one specially tailored for their needs.
 
-Still, creating a new programming language is not realistic since it would require a great implementation effort to get a working version.
+Still, creating a new programming language is not a realistic option since it would require a great implementation effort to get a working version.
 Moreover, since we want programs to run as fast as possible to be able to give architects immediate feedback, further effort would be needed to make it perform fast.
 
 Furthermore, existing programming languages have had time to gather communities that can help the architect when he does not know how to do something or when he is having difficulties correcting a bug.
@@ -268,19 +263,17 @@ Using JavaScript as the environment's language would spare us from a translation
 This lead us to choose JavaScript as the programming language supported by the environment.
 
 After having a programming language, there still needs to be a concrete \gls{api} that supports the creation of \gls{gd} programs.
-There are things that are essential to support, like the creation of geometry such as coordinates, lines, surfaces and solids.
-Without the \gls{api} supporting it, the architect would need to implement these concepts even before tackling his design problem.
-Furthermore, there are things that must not be done, like having side-effects.
-If the \gls{api} includes operations that produce side-effects apart from creating new values, such as mutating arguments or changing global variables, the architect will have a harder time reasoning about the outcomes of programs.
-These two things are essential to having an \gls{api} that supports \gls{gd}.
-The \gls{api} provided by the environment adheres to these restrictions.
+There are things that are essential to support like the creation of geometry, such as coordinates, lines, surfaces, and solids.
+Without the \gls{api} supporting these, the architect would need to implement these concepts even before tackling his design problem.
+Furthermore, since architects are not trained programmers, it should be easy to create programs that are easy to understand.
+Because of that, operations should remain mostly purely functional, i.e. without side-effects.
+This way, each operation does only one thing, without modifying the value of any variable, and as a result it is easy to compare its arguments and results.
+It behaves more like a mathematical expression.
 
 With a programming language and an \gls{api}, there is still one thing that needs to be decided for the environment to be able to display results to the architect:
 how to collect results from programs?
 
-\paragraph{Alternatives for getting results}
-We considered various alternatives for collecting the results of programs.
-They are described in the following list:
+We considered various alternatives:
 \begin{itemize}
   \item {\bf Special entry point} Like in OpenJSCAD, we could require that every program must define a function with a special name (e.g. ``main'').
   The environment would then call this function and use its return value as the results of the program.
@@ -342,21 +335,10 @@ column(6.00, 0.8, 0.7);
 \end{listing}
 
 
-%\subsubsection{Providing primitives / Runtime library / Primitive Library}
-%\label{sub:provide:predefs}
-%{\bf(what is the purpose of this subsubsection? I already talk about providing primitives in the next subsubsection...)}\\
-%Any program needs to based upon functionality already provided by its host environment.
-%It is this functionality that enables the program to produce results.
-%
-%But how does our solution do this for programs written by architects?
-%We do this by defining all predefined functionality in a JavaScript module and then providing it to the function that represents the program as a parameter.
-%Afterwards, we also add some code to the beginning of the program that will declare each primitive and extract the corresponding functionality from that parameter.
-
-
 \subsubsection{Running Process}
 When the environment runs a program, it needs to do two things: (1) collect the results of the program; and (2) collect traceability data.
 It does these two by instrumenting the program with additional calls to special functions that record the desired information, then running the program, and afterwards collecting the results from the instrumentation.
-As stated in \ref{sec:traceability}, the collection of traceability data is optional since it adds a significant overhead to program execution, which may be undesired when programs start to take too much time to run.
+As stated in \ref{sec:traceability}, the collection of traceability data is optional since it adds some overhead to program execution, which may be undesired when programs start to take too much time to run.
 
 To be able to perform the instrumentation, the environment parses the program using Esprima, a JavaScript parser,\footnote{\url{https://github.com/jquery/esprima} (last accessed on 10/10/2016)} to get its \gls{ast}.%
 \footnote{The \gls{ast} conforms to a community standard. It can be found at \url{https://github.com/estree/estree} (last accessed on 10/10/2016).}
@@ -415,12 +397,40 @@ The environment's \gls{api}, on the other hand, does not impose this rule.
 To cover the difference, we use two steps:
 (1) we run the program using the functional \gls{api}, creating intermediary results;
 and (2) we convert those results to objects from THREE.js's \gls{api}, cloning them when necessary.
-Figure~\ref{fig:display:results} shows the overall process from having a program to displaying its results, while Figure~\ref{fig:results:vs:three} shows an example of the transformation that occurs between intermediary results and THREE.js objects.
 
+Consider the program in Listing~\ref{lst:display:example}, which creates spheres on the vertices of a cube of width {\tt w}.
+Figure~\ref{fig:display:results} shows the overall process from having a program to displaying its results.
+After running the program, results are in the form shown in \ref{sub:fig:prog:res}, where the variable {\tt g} holds several translations ({\tt +xyz}) of the same sphere ({\tt sph}).
+The next stage converts these results to a THREE.js scenegraph, creating a mesh for {\tt sph}, then copying it for each translation, resulting in the ``{\tt sph~:~Mesh}'' objects seen in \ref{sub:fig:three:res}. Afterwards, these object are grouped as children of the ``{\tt g : Object3D}'' object. 
 After having results converted to THREE.js objects, the environment issues their rendering repeatably as the architect interacts with the 3D view.
 
 The environment also keeps record of the correspondence between intermediary results and THREE.js objects.
 Together with the correspondence between program nodes and intermediary results, this information is used to enable support for showing traceability.
+
+
+\begin{listing}
+\begin{minted}[linenos,frame=lines]{js}
+function sphereCube(w, sphR) {
+  let sph = sphere.byRadius(sphR);
+  return [
+    translate(sph).byXYZ(0, 0, 0),
+    translate(sph).byXYZ(w, 0, 0),
+    translate(sph).byXYZ(w, w, 0),
+    translate(sph).byXYZ(0, w, 0),
+    translate(sph).byXYZ(0, 0, w),
+    translate(sph).byXYZ(w, 0, w),
+    translate(sph).byXYZ(w, w, w),
+    translate(sph).byXYZ(0, w, w)
+  ];
+}
+
+let g = sphereCube(10, 1);
+g;
+\end{minted}
+\caption{An program creates spheres on the vertices of a cube.}
+\label{lst:display:example}
+\end{listing}
+
 
 \begin{figure}
   \centering
@@ -431,41 +441,41 @@ Together with the correspondence between program nodes and intermediary results,
 
 \begin{figure}
   \centering
-  \begin{subfigure}[b]{0.45\textwidth}
+  \begin{subfigure}[b]{0.49\textwidth}
     \includegraphics[width=1.0\textwidth]{./images/display_results/results}
     \caption{Program results}
+    \label{sub:fig:prog:res}
   \end{subfigure}
-  \begin{subfigure}[b]{0.45\textwidth}
+  \begin{subfigure}[b]{0.49\textwidth}
     \includegraphics[width=1.0\textwidth]{./images/display_results/three}
     \caption{THREE scenegraph}
+    \label{sub:fig:three:res}
   \end{subfigure}
-  \caption{Comparison of program results structure and THREE.js scenegraph.}
+  \caption[Comparison of program results structure and THREE.js scenegraph.]{Comparison of program results structure and THREE.js scenegraph. Arrows indicate that the object at their root has a reference to the object they point to.}
   \label{fig:results:vs:three}
 \end{figure}
 
 
 \section{Remote CAD Service / Exporting to CAD}
 \label{sec:sol:remote}
-The last task that the environment needs to support is exporting to \gls{cad} applications.
+The last task that the environment needs to support is exporting to the most used commercial \gls{cad} applications.
 
 As opposed to the other tasks, exporting to a \gls{cad} application requires the environment to communicate with other applications.
 To do so, the environment must locate the \gls{cad} application and connect to it.
-In addition, there must be a well-defined interface of operations that can be performed in the \gls{cad}, which needs to cover the operations that can be performed in the web page, as well as operations for managing the \gls{cad}'s document.
+In addition, there must be a well-defined interface of operations that can be performed in the \gls{cad}, which needs to cover the operations that can be performed in programs, as well as operations for managing the \gls{cad}'s document.
 
 To make communication possible, we have implemented an application that the architect must install and run in his computer.
-This application serves as a bridge between \gls{cad} applications installed in the computer and the environment running in the web page.
-After being started, the application detects which \gls{cad} applications are installed in the computer and connects to the ``environment directory'' so it can be discovered by the web page.
-When the architect needs to export a program to his \gls{cad} application, the web page connects to the application in his computer through the ``environment directory'' and starts to send requests to it, in order to create shapes in the \gls{cad} application.
+This application serves as a bridge between \gls{cad} applications installed in the computer and the environment running in the web application.
+After being started, the application detects which \gls{cad} applications are installed in the computer and connects to the ``environment directory'' so it can be discovered by the web application.
+When the architect needs to export a program to his \gls{cad} application, the environment connects to the application in his computer through the ``environment directory'' and starts to send requests to it, in order to create shapes in the \gls{cad} application.
 The architecture for this part of the solution is illustrated in Figure~\ref{fig:remote:cad:archi}.
-As long as these components can communicate with each other, the system can work.
-In the extreme, each can be running in a distinct computer, as long as all computers are connected to the same network.
 
 Figure~\ref{fig:remote:cad:example} shows an example of the export to \gls{cad} functionality.
-The architect has created a program using the web page environment.
+The architect has created a program using the web application environment.
 After selecting AutoCAD and SketchUp as export destinations, he starts the export process and, afterwards, the model resulting from running the program is available in both \gls{cad} applications.
 
-Note that it is only needed to install the application when the architect is finally ready to get the program's results on a \gls{cad} application.
-Furthermore, the application only needs to be installed in the computer that actually has the \gls{cad} application installed, while the rest only accesses the web page.
+Note that it is only needed to install the application if and when the architect wants to get the program's results on a \gls{cad} application.
+Furthermore, the application only needs to be installed in the computer that actually has the \gls{cad} application installed.
 
 
 \subsection{Implementation}
@@ -474,15 +484,15 @@ It expects to receive HTTP requests for operations like adding shapes to the cur
 It also expects requests for specifying what \gls{cad} applications are selected.
 %{\bf(appendix has remote CAD service API?)}
 
-Apart from the connection between the remote CAD application and the web page, there also needs to be a connection between the remote CAD application and the \gls{cad} applications.
+Apart from the connection between the remote CAD application and the web application, there also needs to be a connection between the remote CAD application and the \gls{cad} applications themselves.
 Different \glspl{cad} have different \glspl{api} so the application needs to know how to interact with each one.
 
-Instead of implementing the connection with \gls{cad} applications itself, the application uses Rosetta as an intermediate.
+Instead of implementing the connection with \gls{cad} applications, the server uses Rosetta as an intermediate.
 This way, it only has to cover the semantic differences between Rosetta's \gls{api} and the remote CAD service's \gls{api}.
 
 In reality, when the architect wants to export to \gls{cad}, it is likely that he is using the web environment in the same computer where he has the \gls{cad} application installed.
 Like so, the web page, the remote CAD application and the \gls{cad} applications run in the same computer.
-With this in mind, we chose to temporarily host the web page containing the \gls{ide} in the remote CAD application's server.
+With this in mind, we chose to temporarily host the web application containing the \gls{ide} in the remote CAD application's server.
 Using this setup, it is easier to test the communication between the page and the application.
 This setup also avoids dealing with cross-origin restrictions imposed by web browsers for \gls{ajax} requests.
 

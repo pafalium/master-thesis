@@ -2,11 +2,11 @@
 
 \chapter{Background}
 \label{chapter:background}
-In order to develop a programming environment for \gls{gd} that works in the cloud, we first need to study the currently available \gls{gd} environments.
+In order to develop a programming environment for \gls{gd} that works as a web application, we first need to study the currently available \gls{gd} environments.
 
 Not all presented solutions are used exclusively for \gls{gd}.
 \gls{gd} encompasses both 3D modeling and programming, so it makes sense to not only look at systems that explore both aspects, but also systems that explore just one of them.
-Furthermore, the presented solutions include both desktop-based and cloud-based applications to allow the understanding of what is currently possible in the cloud and how it compares to what is available on the desktop.
+Furthermore, the presented solutions include both desktop-based and web-based applications to allow the understanding of what is currently possible in the cloud and how it compares to what is available on the desktop.
 
 %{\bf(Criteria for what makes a related work.)}
 
@@ -44,7 +44,8 @@ There is, however, a major difference between composing music and architecture.
 As sound is an ephemeral phenomenon, music's complexity comes from how sounds are organized in time as opposed to architecture's complexity, which comes from how shapes are organized in space.
 Like so, the instantaneous feedback must be adapted to meet architecture's needs.
 
-Impromptu is in the process of being replaced by Extempore\footnote{\url{http://extempore.moso.com.au/} (last accessed on 10/10/2016)}.
+Impromptu is in the process of being replaced by Extempore.%
+\footnote{\url{http://extempore.moso.com.au/} (last accessed on 10/10/2016)}
 Instead of having its own editor, Extempore's runtime exposes its \gls{api} publicly and has plug-ins for several popular code editors.
 Extempore also includes a second programming language for programming \glspl{dsp}, which have stricter real-time constraints.
 
@@ -56,7 +57,7 @@ LightTable\footnote{\url{http://lighttable.com/} (last accessed 10/10/2016)} is 
 More specifically, it uses nw.js\footnote{\url{http://nwjs.io} (last accessed on 10/10/2016)} as its runtime, allowing it to be implemented using JavaScript, HTML markup and CSS.
 LightTable is written in ClojureScript\cite{10.1109/MIC.2011.148}, a subset of Clojure that compiles to Javascript.
 
-Although not related to \gls{gd}, LightTable has proposed some interesting features and concepts for \glspl{ide}.
+Although not related to \gls{gd}, LightTable proposed some interesting features and concepts for \glspl{ide}.
 %Why is LightTable relevant?
 One of these is the use of the drafting table as a metaphor.%
 \footnote{\url{http://www.chris-granger.com/2012/04/12/light-table-a-new-ide-concept/} (last accessed on 10/10/2016)}
@@ -68,7 +69,7 @@ Figure~\ref{fig:lt:draft:table} shows an example of this metaphor, which has som
 
 \begin{figure}
   \centering
-  \includegraphics[width=12cm]{./images/lt_game_example}
+  \includegraphics[width=1.0\textwidth]{./images/lt_game_example}
   \caption[LightTable's drafting table showing a game.]{LightTable's drafting table. A game is being run inside it while some of its code is displayed in separate editors.}
   \label{fig:lt:draft:table}
 \end{figure}
@@ -82,7 +83,7 @@ Figure~\ref{fig:lt:clojure:table} shows an experiment where these two are used.
 
 \begin{figure}
   \centering
-  \includegraphics[width=12cm]{./images/lt_clojure_table}
+  \includegraphics[width=1.0\textwidth]{./images/lt_clojure_table}
   \caption{An experiment showing a \emph{code document} on the left and a \emph{namespace browser} on the top right.}
   \label{fig:lt:clojure:table}
 \end{figure}
@@ -100,12 +101,12 @@ Moreover, this problem extends to any part of the code that runs more than once.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=12cm]{./images/lt_val_overlay}
-	\caption{An example of LightTable's value overlaying. The occurrences of the variables \emph{a}, \emph{b} and \emph{ab} were replaced with their values while evaluating the expression \emph{(x 3 7)}; the result of this expression is also overlaid.}
+	\includegraphics[width=1.0\textwidth]{./images/lt_val_overlay}
+	\caption[An example of LightTable's value overlaying.]{An example of LightTable's value overlaying. The occurrences of the variables \emph{a}, \emph{b} and \emph{ab} were replaced with their values while evaluating the expression \emph{(x 3 7)}, where function \emph{x} is applied to arguments \emph{3} and \emph{7}; the result of this expression is also overlaid.}
 	\label{fig:lt:val:overlay}
 \end{figure}
 
-Finally, the way LightTable is structured is also relevant as it makes possible to modify its behavior at runtime.
+Finally, the way LightTable is structured is also relevant as it makes it possible to modify its behavior at runtime.
 The main design pattern used in LightTable is the \gls{bot} pattern. %{\bf(, similar to the Component Entity System (CES) pattern used in videogames)}
 As illustrated by one of its developers,\footnote{\url{http://www.chris-granger.com/2013/01/24/the-ide-as-data/} (last accessed on 01/11/2015)} LightTable can be described as a set of \emph{Objects}, each having a set of \emph{Behaviors} and being tagged with a set of \emph{Tags}.
 The \emph{Behaviors} describe how an \emph{Object} reacts when events are raised on it, and \emph{Tags} are groups of \emph{Behaviors}.
@@ -123,15 +124,15 @@ The notebooks are displayed using an interactive web page.
 
 The style of producing notebooks in IPython is one that mixes programming, writing and exploring.
 Interestingly, this style is also part of a designer's processes.
-Like a scientist, the designer also has to do exploration of ideas (design ideas in his case), reach conclusions (finished designs) and share his work with others (fellow designers, clients, friends, blog readers).
+Like a scientist, the designer also has to do an exploration of ideas (design ideas in his case), reach conclusions (finished designs) and share his work with others (fellow designers, clients, friends, blog readers).
 Unfortunately, although IPython notebooks are natural tools for exploration, they do not provide domain specific functionality for architecture.
 
 As its name suggests, IPython's main programming language is Python\cite{rossum2003python}.
-Nevertheless, other popular programming languages can be used in IPython, particularly those popular in the scientific community like R, or Julia.%
+Nevertheless, other programming languages can be used in IPython, particularly those popular in the scientific community like R, or Julia.%
 \footnote{More language kernels can be found in IPython's github page: \url{https://github.com/ipython/ipython/wiki/IPython-kernels-for-other-languages} (last accessed on 10/10/2016)}
 
 One trend in its community, supported by IPython notebooks, is to make results in publications more reproducible.
-Typically, the code used to compute the results showed in publications is not made available to the public, so it is harder for a stranger to check them.
+Typically, the code used to compute the results showed in publications is not made available to the public, so it is difficult to verify them.
 Instead of just publishing a PDF or making a blog post, authors also publish their IPython notebooks, thus allowing everyone to run their source code.
 Having access to a working copy of the notebook, one can also experiment with it to better understand it, form own conclusions, and find potential errors.
 
@@ -142,7 +143,7 @@ The communication protocol defines how communication between execution kernels a
 With this, it is possible to implement new execution kernels for running code from a programming language not yet implemented or an alternative front-end different from IPython notebooks.
 Moreover, the communication protocol also allows execution kernels and front-ends to run on different computers\cite{PER-GRA:2007}.
 
-IPython has given rise to the Jupyter project\footnote{\url{https://jupyter.org/} (last accessed on 10/10/2016)}, which aims to make IPython's model of interaction ready for the cloud.
+IPython has given rise to the Jupyter project,\footnote{\url{https://jupyter.org/} (last accessed on 10/10/2016)} which aims to make IPython's model of interaction ready for the cloud.
 In the context of Jupyter, IPython is only concerned with providing an interactive Python experience.
 
 \begin{figure}
@@ -162,7 +163,7 @@ Similarly to the \gls{gd} approach, to actually model in OpenJSCAD, one has to w
 
 Being an environment for modeling 3D printed objects, OpenJSCAD supports importing and exporting 3D models from/to STL and AMF files, which are commonly used as 3D printing formats.
 
-OpenJSCAD provides two user interfaces, one \acrfull{cli} and one \acrfull{gui}, the latter implemented as a web page (Figure~\ref{fig:openjscad:page}).%
+OpenJSCAD provides two user interfaces, one \acrfull{cli} and one \acrfull{gui}, the latter implemented as a web application (Figure~\ref{fig:openjscad:page}).%
 \footnote{\url{https://github.com/Spiritdude/OpenJSCAD.org} (last accessed on 10/10/2016)}
 Moreover, the first is used for batch processing, while the second integrates an editor for editing programs and a 3D view for viewing the corresponding results.
 By providing the \gls{gui} in a web page, OpenJSCAD can be used without requiring the programmer to install anything more than a web browser, which is almost always already installed.
@@ -225,7 +226,7 @@ Processing is sometimes used by architects for exploring design ideas.
 However, since most of its functionality revolves around graphics for the visual arts, its use is normally restricted to 2D designs and cannot be used as a full-fledged tool for \gls{gd}.
 
 Several projects have stemmed from Processing to extend its functionality to different programming languages.
-These include Processing.py\footnote{\url{http://py.processing.org/} (last accessed on 10/10/2016)}, that extends the \gls{pde} to support Python, and p5.js\footnote{\url{http://p5js.org/} (last accessed on 10/10/2016)}, that provides JavaScript libraries to create interactive web pages.
+These include Processing.py,\footnote{\url{http://py.processing.org/} (last accessed on 10/10/2016)} that extends the \gls{pde} to support Python, and p5.js,\footnote{\url{http://p5js.org/} (last accessed on 10/10/2016)} that provides JavaScript libraries to create interactive web pages.
 
 
 \subsection{DesignScript}
@@ -259,21 +260,21 @@ Both DesignScript Studio and Dynamo use graph based program editing.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.8\textwidth]{images/ds_autocad}
+	\includegraphics[width=0.9\textwidth]{images/ds_autocad}
 	\caption[A DesignScript program being edited in a special text editor inside AutoCAD.]{A DesignScript program being edited in a special text editor inside AutoCAD. This text editor provides auto-complete and a debugger.}
 	\label{fig:ds:autocad}
 \end{figure}
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.8\textwidth]{images/ds_dsstudio}
+	\includegraphics[width=0.9\textwidth]{images/ds_dsstudio}
 	\caption[A DesignScript program as a graph in DesignScript Studio.]{A DesignScript program as a graph in DesignScript Studio. Each node can display a preview of its results. To the bottom left corner is a preview of the whole program results and a folded library tab. The library tab contains everything that can be used in the program.}
 	\label{fig:ds:dsstudio}
 \end{figure}
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.8\textwidth]{images/ds_dynamo}
+	\includegraphics[width=0.9\textwidth]{images/ds_dynamo}
 	\caption[Another DesignScript program as a graph in Dynamo. Like in DesignScript Studio, a preview of the result of the program is displayed.]{Another DesignScript program as a graph in Dynamo. Like in DesignScript Studio, a preview of the result of the program is displayed. A difference is that there is only one preview ``canvas''; the preview from selected nodes is highlighted.}
 	\label{fig:ds:dynamo}
 \end{figure}
@@ -289,8 +290,7 @@ Both the textual and the graph-based environments provide a preview of program r
 Rosetta\cite{de2012modern,lopes2011portable}, shown in Figure~\ref{fig:rosetta:ex}, is an environment for \gls{gd}.
 
 Most \gls{cad} applications used by architects allow them to make \gls{gd} programs.
-Unfortunately, as each of these applications has specific primitive operations, programs written for one \gls{cad} application will only work in that application.
-A phenomenon called vendor lock-in.
+Unfortunately, as each of these applications has specific primitive operations, programs written for one \gls{cad} application will only work in that application, a phenomenon called vendor lock-in.
 As an example, if the architect writes a program for AutoCAD, he cannot use it in Rhinoceros3D and, as a result, if he really wants to use it in Rhinoceros3D, he has to rewrite the program taking into account the differences between primitive operations of both \gls{cad} applications.
 
 Rosetta aims to overcome the vendor lock-in phenomenon by allowing architects to write portable \gls{gd} programs that generate equivalent models in any \gls{cad} application.
@@ -306,14 +306,15 @@ This makes it possible for architects to share programs written in different pro
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.8\textwidth]{images/rosetta_js_autocad}
+	\includegraphics[width=1.0\textwidth]{images/rosetta_js_autocad}
 	\caption{A Rosetta program (left) and AutoCAD displaying its results (right). The program is written in Javascript.}
 	\label{fig:rosetta:ex}
 \end{figure}
 
 
 \subsection{Clara.io}
-Clara.io\footnote{\url{https://clara.io/} (last accessed on 10/10/2016)}\cite{houston2013clara} is a cloud application for 3D modeling and animation, similar to desktop software like Blender\footnote{\url{https://www.blender.org/} (last accessed on 17/12/2016)} and 3ds Max\footnote{\url{http://www.autodesk.com/products/3ds-max/overview} (last accessed on 17/12/2016)}.
+Clara.io\footnote{\url{https://clara.io/} (last accessed on 10/10/2016)}\cite{houston2013clara} is a cloud application for 3D modeling and animation, similar to desktop software like Blender\footnote{\url{https://www.blender.org/} (last accessed on 17/12/2016)} and 3ds Max.%
+\footnote{\url{http://www.autodesk.com/products/3ds-max/overview} (last accessed on 17/12/2016)}
 Being in this category, Clara.io is more suitable for artistic work as opposed to technical work.
 Nonetheless, it can be used in architecture projects to make architectural visualizations.
 
@@ -337,7 +338,8 @@ It is possible to use Clara.io's scripting to do \gls{gd}, however, if a user wi
 
 \subsection{OnShape}
 OnShape\footnote{\url{https://www.onshape.com/} (last accessed on 10/10/2016)} is a cloud based \gls{cad} application that can be accessed using either a web browser or its mobile app.
-As opposed to the previous systems, OnShape is a \gls{cad} application for mechanical modeling and, as such, its users are familiar with \gls{cad} applications like SolidWorks\footnote{\url{http://www.solidworks.com/} (last accessed on 17/12/2016)} and Autodesk Inventor\footnote{\url{http://www.autodesk.com/products/inventor/overview} (last accessed on 17/12/2016)}.
+As opposed to the previous systems, OnShape is a \gls{cad} application for mechanical modeling and, as such, its users are familiar with \gls{cad} applications like SolidWorks\footnote{\url{http://www.solidworks.com/} (last accessed on 17/12/2016)} and Autodesk Inventor.%
+\footnote{\url{http://www.autodesk.com/products/inventor/overview} (last accessed on 17/12/2016)}
 Being a mechanical modeling tool means that the focus is directed towards assembling individual objects instead of buildings, so the working scales are smaller and there is more information on how parts relate to each other.
 
 OnShape has version control of project documents (drawings, 3D models, text documents) and supports real time collaboration.
@@ -347,7 +349,7 @@ As users can edit the same copy of a file at the same time, OnShape shows each u
 It is also possible to create {\it branches} of the document when it is necessary to work on different design options or to work on changes in isolation.
 Later, changes made in a branch can be merged back into the main branch.
 
-OnShape also includes a dedicated programming language, FeatureScript\footnote{\url{https://www.onshape.com/featurescript} (last accessed on 10/10/2016)}, for defining features for its models.
+OnShape also includes a dedicated programming language, FeatureScript,\footnote{\url{https://www.onshape.com/featurescript} (last accessed on 10/10/2016)} for defining features for its models.
 OnShape includes an \gls{ide} for FeatureScript, but the language does not aim to replace OnShape's modeling approach based on interactively manipulating the model's feature list, which makes it impossible to use for \gls{gd}.
 
 
@@ -367,7 +369,7 @@ To support higher-order functions, Mobius adds an output to every node that cont
 This way, the node can be passed to other nodes as an input.
 Nodes receiving the function can then use it to, for example, generate an element of a grid parameterized by its coordinates or to generate the shape of a balcony.
 
-Finally, Mobius is implemented as a web page, and like so is available to any computer connected to the Internet, not requiring any installation.
+Finally, Mobius is implemented as a web application, and like so is available to any computer connected to the Internet, not requiring any installation.
 
 
 %\subsection{RepoCad}
@@ -393,7 +395,7 @@ As Antimony uses \glspl{sdf} as its representation of solids, shapes are defined
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.8\textwidth]{images/antimony_ui_handles}
+	\includegraphics[width=1.0\textwidth]{images/antimony_ui_handles}
 	\caption{Antimony allows the user to adjust parameters using handles in the 3D view.}
 	\label{fig:antimony:handles}
 \end{figure}
@@ -403,7 +405,7 @@ As Antimony uses \glspl{sdf} as its representation of solids, shapes are defined
 %##############################################################################
 \section{Comparison}
 Not all of the presented environments are directly related to \gls{gd}.
-We looked at this diverse set of environments to get the broader picture of domain-specific programming environments, 3D modeling/\gls{cad} applications, and some of their cloud counterparts.
+We looked at this diverse set of environments to get the broader picture of domain-specific programming environments, 3D modeling and \gls{cad} applications, and some of their cloud counterparts.
 
 In terms of application domain, the environments presented in this chapter cover a variety of fields that use programming for automating tasks.
 Table~\ref{table:general:comp} shows a comparison of the application domain of each of them, as well as the purpose that programming takes in them.
@@ -441,7 +443,7 @@ The type of editing paradigm each environment supports is shown in Table~\ref{ta
 Environments with textual editing provide different levels of {\it ``editing power''}, starting with basic text editing with syntax highlighting ({\it ``text''} in Table~\ref{table:edit:prog:paradigms}) and adding features like code completion, showing documentation, helping navigation, and expression evaluation ({\it ``++text''} in Table~\ref{table:edit:prog:paradigms}).
 
 Table~\ref{table:edit:prog:paradigms} also shows the programming paradigms supported by each environment's language.
-They include imperative, functional, and associative / data-flow programming.%
+They include imperative, functional, associative, and data-flow programming.%
 \footnote{Associative and data-flow programming are similar. The difference is that associative programs build a dependency graph during their execution, propagating changes as needed, while data-flow programs have a static dependency graph and the data just flows from data sources to the connected nodes.}
 Visual environments use associative and data-flow programming languages, while textual environments use imperative and functional programming languages.
 
@@ -471,11 +473,11 @@ Visual environments use associative and data-flow programming languages, while t
 	\label{table:edit:prog:paradigms}
 \end{table}
 
-Some environments have been implemented as desktop applications, while others have been implemented as web pages, as shown in Table~\ref{table:cloud:comp}.
-Implementing an application as a web page has the advantage of becoming accessible to any computer connected to the Internet, without requiring users to install it.
+Some environments have been implemented as desktop applications, while others have been implemented as web applications, as shown in Table~\ref{table:cloud:comp}.
+Implementing an application as a web page has the advantage of becoming accessible to any computer connected to the Internet, without requiring users to install or updated it.
 %However, {\bf performance penalty? privacy concerns?}
 
-In Table~\ref{table:cloud:comp} we can also see that all web page applications, except Mobius, support remote storage directly.
+In Table~\ref{table:cloud:comp} we can also see that all web applications, except Mobius, support remote storage directly.
 By supporting remote storage directly, it becomes easier to use the application regardless of the computer being used.
 Without this, users have to use either a physical storage device or a separate remote storage system.
 
@@ -493,13 +495,13 @@ For the rest of the environments, collaboration is the user's responsibility.
 		Impromptu			& desktop + local server							& ---												& shared runtime															\\
 		LightTable		& desktop															& ---												& ---																					\\
 		IPython				& web page (UI) + server(computation)	& on server									& ---																					\\
-		OpenJSCAD			& web page, command-line							& ---												& ---																					\\
+		OpenJSCAD			& web app., command-line							& ---												& ---																					\\
 		Processing		& desktop															& ---												& ---																					\\
 		DesignScript	& desktop															& ---												& ---																					\\
 		Rosetta				& desktop															& ---												& ---																					\\
-		Clara.io			& cloud(web page)											& cloud, version controlled	& share scenes, scene real-time collaboration	\\
-		OnShape				& cloud(web page, mobile)							& cloud, version controlled	& share documents, real-time collaboration		\\
-		Mobius				& web page														& ---												& ---																					\\
+		Clara.io			& cloud(web app.)											& cloud, version controlled	& share scenes, scene real-time collaboration	\\
+		OnShape				& cloud(web app., mobile)							& cloud, version controlled	& share documents, real-time collaboration		\\
+		Mobius				& web app.														& ---												& ---																					\\
 		Antimony			& desktop															& ---												& ---																					\\
 		\bottomrule
 	\end{tabulary}
@@ -543,15 +545,16 @@ Table~\ref{table:features:comp} presents a non-exhaustive list of features provi
 %{\bf(review text)}\\
 In this chapter, we have presented environments that support activities related to programming, modeling and \gls{gd}.
 
-The environments supporting \gls{gd} directly --- namely Rosetta, DesignScript, OpenJSCAD, Mobius and, to some extent, Processing and Antimony --- follow either visual editing, which is easier to learn and use, or textual editing, which, although less intuitive, supports languages with mechanisms to keep the complexity down in bigger problems.
+The environments supporting \gls{gd} directly --- namely Rosetta, DesignScript, OpenJSCAD, Mobius and, to some extent, Processing and Antimony --- follow either visual editing, which is easier to learn and use, or textual editing, which, although less intuitive, supports languages with mechanisms to keep the complexity manageable for bigger problems.
+Given that we want to support the generation of complex building models, we will focus on textual editing.
 
-Moreover, the platforms in which the environments were implemented were either the desktop or web pages.
-While desktop applications need to be installed in computers to be used, web pages only require a web browser.
-Unfortunately, the existing web pages supporting \gls{gd}, namely OpenJSCAD and Mobius, lack editing features and maturity that desktop applications like Rosetta and DesignScript have.
+Moreover, the platforms in which the environments were implemented were either the desktop or the web applications.
+While desktop applications need to be installed in computers to be used, and have complex update procedures, web applications only require a web browser.
+Unfortunately, the existing web applications that support \gls{gd}, namely OpenJSCAD and Mobius, lack editing features and maturity that desktop applications like Rosetta and DesignScript have.
 They do not provide the traceability present in both Rosetta and DesignScript, and they also do not provide the interoperability that Rosetta has.
 
-Although there are capable \gls{gd} environments available to architects, they are only available as desktop applications.
-There is no capable \gls{gd} environment in the web that is also capable of providing interoperability and intuitive editing features.
+As a result, there is no capable \gls{gd} environment in the web that is also capable of providing traceability, interoperability, and intuitive editing features.
+This is the main problem we want to address.
 
 With this in mind, we will be presenting our own solution in the next chapters.
 
