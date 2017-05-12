@@ -14,7 +14,7 @@ It needs to:
 (4) make it easy to understand programs;
 and (5) export results to the most used commercial \gls{cad} applications.
 
-To accomplish these tasks, there are two separate components, as seen in Figure~\ref{fig:archi:sol}: (1) the web application that support the \gls{ui} for creating programs; and (2) the remote CAD service, that offers an \gls{api} for running programs in \gls{cad} applications.
+To accomplish these tasks, there are two separate components, as seen in Figure~\ref{fig:archi:sol}: (1) the web application that supports the \gls{ui} for creating programs; and (2) the remote CAD application, that offers an \gls{api} for running programs in \gls{cad} applications.
 The first four tasks described above can be handled by the web application alone since there is no need to interact with \gls{cad} applications running in the user's computer.
 The fifth task requires both the web application and the remote CAD service.
 As also seen in Figure~\ref{fig:archi:sol}, apart from using the web application programming environment \gls{ui}, the architect also needs to install the remote CAD application if and when he wants to export results to \gls{cad} applications.
@@ -35,7 +35,7 @@ Section~\ref{sec:sol:remote} describe the remote CAD service and the export proc
 
 \section{Web Application}
 \label{sec:sol:page}
-To handle the tasks of letting the architect develop programs, running programs, supporting program understanding, and displaying results, the web application's \gls{ui} has the layout shown in Figure~\ref{fig:page:view}.
+To handle the tasks of letting the architect develop programs, running programs, supporting program understanding, and displaying results, the \gls{ui} of the web application has the layout shown in Figure~\ref{fig:page:view}.
 Taking up most of the screen space are a text editor (C) and a 3D view (D) that allow the architect to edit a program and view its results.
 On top of the text editor and the 3D view are controls for the running process (B), including whether to run automatically and whether to collect data to display traceability.
 On the left are hidden panels for actions like selecting a program and exporting to \gls{cad} applications (A).
@@ -49,7 +49,7 @@ To help with the implementation, we have used the THREE.js library\footnote{\url
 \begin{figure}
   \centering
   \includegraphics[width=1.0\textwidth]{./images/webpage_view/webpage_view}
-  \caption{An example view of the web application's \gls{ui}.}
+  \caption{Layout of the \gls{ui} of the web application.}
   \label{fig:page:view}
 \end{figure}
 
@@ -59,7 +59,7 @@ In \gls{gd}, the architect interacts with the program that creates the model ins
 This allows him to automate tasks that normally take too much time and, therefore, also allows him to explore a design space with much more complexity.
 However, since he is not directly interacting with the model, he needs to understand the relationship between the program and its results in order to know how to change the program to get the model he wants.
 The process of understanding the program and how it relates to its results is called program comprehension\cite{rugaber1995program}.
-Our environment enables him to do this by providing immediate feedback to changes and by showing traceability.
+Luna Moth enables him to do this by providing immediate feedback to changes and by showing traceability.
 
 
 \subsubsection{Immediate Feedback}
@@ -67,7 +67,7 @@ Our environment enables him to do this by providing immediate feedback to change
 One of the ways to understand the program is to understand the relationship between its inputs and outputs, that is, understanding how each input affects the generated model.
 To do this, the architect needs to change the inputs, run the program, see the results, and repeat until he understands the relationship.
 This is a tedious process that will bore most architects.
-The environment can help them by making this process more immediate.
+Luna Moth can help them by making this process more immediate.
 It must provide quick ways of changing inputs and it must rerun the program when inputs change, so the architect can see the effects of his changes immediately.
 This immediacy allows the architect to quickly understand the relationship, which means he is ready to start exploring the design sooner.
 Afterwards, he can use the same immediacy to explore the design more efficiently.
@@ -192,14 +192,14 @@ The implementation of traceability by highlighting expressions and results requi
 (2) detecting that the user is pointing at either an object from the results or an expression of the program;
 and (3) highlighting both the pointed object and the corresponding creator expression, or, in the opposite direction, both the pointed expression and the corresponding created results, as exemplified in Figure~\ref{fig:trace:example}.
 
-To get the traceability data it needs to show the program-results relationship, the environment instruments the program.
+To get the traceability data it needs to show the program-results relationship, Luna Moth instruments the program.
 We will go into more detail on this matter in Subsection~\ref{sec:run:progs}.
 
 In regard to detecting what the user is pointing at, we follow two approaches depending on the pointer being over the program or over the 3D view.
 When the pointer is over the program, we use the program's \gls{ast} annotated with source code locations and the pointer position to find the deepest expression that has recorded traceability data.
 When the pointer is over the 3D view, we use ray-casting to detect which of the result objects is below the pointer and closest to the camera.
 
-After detecting that something is being pointed at, the environment needs to highlight it and the corresponding part in the program editor or the 3D view.
+After detecting that something is being pointed at, Luna Moth needs to highlight it and the corresponding part in the program editor or the 3D view.
 To do that, it first uses the traceability data to find the corresponding created objects for an expression, or the first expression that created the pointed object.
 Afterwards, it highlights both.
 It highlights expressions by changing the program editor's background behind them to a different color.
@@ -240,7 +240,7 @@ After knowing these, the environment must implement a process to run the program
 Everyone can write a text or draw a diagram of what they want the computer to do.
 However, if they do not use a concrete and unambiguous language that can be translated automatically by the computer, it will not be possible to get the computer to do what they want.
 
-The environment has to use a programming language that fits the architect's needs.
+Luna Moth has to use a programming language that fits the architect's needs.
 It can either be an existing language with slight adaptations or a new one specially tailored for their needs.
 
 Still, creating a new programming language is not a realistic option since it would require a great implementation effort to get a working version.
@@ -251,7 +251,7 @@ A new programming language would have a severely limited community.
 This suggests that we should use a programming language that already exists.
 
 Architects' experience with programming can vary, however, we can assume that there are more novices than experts.
-Like so, the environment needs to have a programming language that is easy to learn and use.
+Like so, Luna Moth needs to have a programming language that is easy to learn and use.
 We can consider programming languages that are commonly regarded as good introductory languages such as Python, Racket, and Processing as possible candidates.
 Additionally, we can also consider DesignScript, since it was made specifically with computational design in mind\cite{aish2013designscript}, and also JavaScript, since it is readily available in web browsers and was originally made for web designers.
 
@@ -259,7 +259,7 @@ Programming languages have to be translated into the host's language.
 For example, to run programs on a typical computer processor, they need to be translated into the {\tt x86} instruction set; to run programs on a virtual machine like the JVM, they need to be translated to its bytecode.
 The same is true to run programs on a web browser.
 In this case, instead of translating programs into an instruction set or a bytecode, they need to be translated into JavaScript.
-Using JavaScript as the environment's language would spare us from a translation step as it is already the target language.
+Using JavaScript as Luna Moth's language would spare us from a translation step as it is already the target language.
 This lead us to choose JavaScript as the programming language supported by the environment.
 
 After having a programming language, there still needs to be a concrete \gls{api} that supports the creation of \gls{gd} programs.
@@ -270,7 +270,7 @@ Because of that, operations should remain mostly purely functional, i.e. without
 This way, each operation does only one thing, without modifying the value of any variable, and as a result it is easy to compare its arguments and results.
 It behaves more like a mathematical expression.
 
-With a programming language and an \gls{api}, there is still one thing that needs to be decided for the environment to be able to display results to the architect:
+With a programming language and an \gls{api}, there is still one thing that needs to be decided for Luna Moth to be able to display results to the architect:
 how to collect results from programs?
 
 We considered various alternatives:
@@ -297,12 +297,12 @@ Therefore, we did not allow primitives to have side-effects and, like so, we hav
 
 Having a {\it Special entry point} is similar to collecting the results of {\it Top-level expressions}, however, it requires the programmer to define a function that returns the results of the program.
 When the programmer wants his program to have several results, he will have to aggregate them into a value to provide it as a return value.
-This fact lead us to exclude using a {\it Special entry point} as the way the environment uses to collect results.
+This fact lead us to exclude using a {\it Special entry point} as the way Luna Moth uses to collect results.
 
 With all this in mind, we chose to collect the results of {\it Top-level expressions} as the way to collect program results.
 Like this, it is easy for the programmer to specify the results of programs since he only has to write the expression at the program's top-level.
 Moreover, this approach still encourages him to follow a functional programming approach.
-Finally, Listing~\ref{lst:program:example} gives an example of what a program looks like in our environment.
+Finally, Listing~\ref{lst:program:example} gives an example of what a program looks like in Luna Moth.
 
 \begin{listing}
 \begin{minted}[linenos,frame=lines]{js}
@@ -330,24 +330,24 @@ function column(height, side, neckSide) {
 
 column(6.00, 0.8, 0.7);
 \end{minted}
-\caption{An example of a program written in our environment.}
+\caption{An example of a program written in Luna Moth.}
 \label{lst:program:example}
 \end{listing}
 
 
 \subsubsection{Running Process}
-When the environment runs a program, it needs to do two things: (1) collect the results of the program; and (2) collect traceability data.
+When Luna Moth runs a program, it needs to do two things: (1) collect the results of the program; and (2) collect traceability data.
 It does these two by instrumenting the program with additional calls to special functions that record the desired information, then running the program, and afterwards collecting the results from the instrumentation.
 As stated in \ref{sec:traceability}, the collection of traceability data is optional since it adds some overhead to program execution, which may be undesired when programs start to take too much time to run.
 
-To be able to perform the instrumentation, the environment parses the program using Esprima, a JavaScript parser,\footnote{\url{https://github.com/jquery/esprima} (last accessed on 10/10/2016)} to get its \gls{ast}.%
+To be able to perform the instrumentation, Luna Moth parses the program using Esprima, a JavaScript parser,\footnote{\url{https://github.com/jquery/esprima} (last accessed on 10/10/2016)} to get its \gls{ast}.%
 \footnote{The \gls{ast} conforms to a community standard. It can be found at \url{https://github.com/estree/estree} (last accessed on 10/10/2016).}
 
 Afterwards, the \gls{ast} is transformed by adding a recording call to (1) all top-level expression statements and (2) all function call expressions.
 Figure~\ref{fig:instrument:example} exemplifies the transformation.
 To let the recording functions know what top-level expression or function call is producing a result, we also provide them with identifiers for those expressions.
 
-After this step, the environment creates a new function with the instrumented program as its body.
+After this step, Luna Moth creates a new function with the instrumented program as its body.
 The primitives and recording functions are provided as parameters to this new function.
 
 Finally, the newly created function is called and, afterwards, the recorded information is made available to the rest of the system.
@@ -383,17 +383,17 @@ recordTopLevelResult(
 
 
 \subsubsection{Displaying Results}
-After running the program, the environment needs to display a rendering of the results to the architect.
+After running the program, Luna Moth needs to display a rendering of the results to the architect.
 Displaying results is deeply tied to what programs can produce since their results must be converted to a representation that can be rendered.
 The \gls{api} used by those programs is what determines which results can be produced.
-The environment uses THREE.js for 3D rendering.
+Luna Moth uses THREE.js for 3D rendering.
 By using THREE.js, the implementation effort is reduced since, on top of implementing rendering, THREE.js also implements several geometric primitives useful for \gls{gd} and implements ray-casting.
-However, since the environment provides a functional \gls{api} and THREE.js's \gls{api} is imperative, it needs to cover the differences between these two \glspl{api}.
+However, since Luna Moth provides a functional \gls{api} and THREE.js's \gls{api} is imperative, it needs to cover the differences between these two \glspl{api}.
 
 The main difference between them lies in how they support reuse.
 THREE.js's \gls{api} makes it difficult to reuse objects since it only allows scenegraph objects to have one parent.
 If the programmer wants to reuse one object, he has to clone it.
-The environment's \gls{api}, on the other hand, does not impose this rule.
+Luna Moth's \gls{api}, on the other hand, does not impose this rule.
 To cover the difference, we use two steps:
 (1) we run the program using the functional \gls{api}, creating intermediary results;
 and (2) we convert those results to objects from THREE.js's \gls{api}, cloning them when necessary.
@@ -401,10 +401,10 @@ and (2) we convert those results to objects from THREE.js's \gls{api}, cloning t
 Consider the program in Listing~\ref{lst:display:example}, which creates spheres on the vertices of a cube of width {\tt w}.
 Figure~\ref{fig:display:results} shows the overall process from having a program to displaying its results.
 After running the program, results are in the form shown in \ref{sub:fig:prog:res}, where the variable {\tt g} holds several translations ({\tt +xyz}) of the same sphere ({\tt sph}).
-The next stage converts these results to a THREE.js scenegraph, creating a mesh for {\tt sph}, then copying it for each translation, resulting in the ``{\tt sph~:~Mesh}'' objects seen in \ref{sub:fig:three:res}. Afterwards, these object are grouped as children of the ``{\tt g : Object3D}'' object. 
-After having results converted to THREE.js objects, the environment issues their rendering repeatably as the architect interacts with the 3D view.
+The next stage converts these results to a THREE.js scenegraph, creating a mesh for {\tt sph}, then copying it for each translation, resulting in the ``{\tt sph~:~Mesh}'' objects seen in \ref{sub:fig:three:res}. Afterwards, these object are grouped as children of the ``{\tt g : Object3D}'' object.
+After having results converted to THREE.js objects, Luna Moth issues their rendering repeatably as the architect interacts with the 3D view.
 
-The environment also keeps record of the correspondence between intermediary results and THREE.js objects.
+Luna Moth also keeps record of the correspondence between intermediary results and THREE.js objects.
 Together with the correspondence between program nodes and intermediary results, this information is used to enable support for showing traceability.
 
 
@@ -427,7 +427,7 @@ function sphereCube(w, sphR) {
 let g = sphereCube(10, 1);
 g;
 \end{minted}
-\caption{An program creates spheres on the vertices of a cube.}
+\caption{A program creates spheres on the vertices of a cube.}
 \label{lst:display:example}
 \end{listing}
 
@@ -458,43 +458,42 @@ g;
 
 \section{Remote CAD Service / Exporting to CAD}
 \label{sec:sol:remote}
-The last task that the environment needs to support is exporting to the most used commercial \gls{cad} applications.
+The last task that Luna Moth needs to support is exporting to the most used commercial \gls{cad} applications.
 
-As opposed to the other tasks, exporting to a \gls{cad} application requires the environment to communicate with other applications.
-To do so, the environment must locate the \gls{cad} application and connect to it.
+As opposed to the other tasks, exporting to a \gls{cad} application requires the web page to communicate with other applications.
+To do so, it must locate the \gls{cad} application and connect to it.
 In addition, there must be a well-defined interface of operations that can be performed in the \gls{cad}, which needs to cover the operations that can be performed in programs, as well as operations for managing the \gls{cad}'s document.
 
-To make communication possible, we have implemented an application that the architect must install and run in his computer.
-This application serves as a bridge between \gls{cad} applications installed in the computer and the environment running in the web application.
-After being started, the application detects which \gls{cad} applications are installed in the computer and connects to the ``environment directory'' so it can be discovered by the web application.
-When the architect needs to export a program to his \gls{cad} application, the environment connects to the application in his computer through the ``environment directory'' and starts to send requests to it, in order to create shapes in the \gls{cad} application.
-The architecture for this part of the solution is illustrated in Figure~\ref{fig:remote:cad:archi}.
+To make communication possible, Luna Moth includes an application, the \textit{remote CAD app}, that the architect must install and run in his computer when he wants to export results.
+This application serves as a bridge between \gls{cad} applications installed in the computer and the environment running in the web page.
+After being started, the application detects which \gls{cad} applications are installed in the computer and connects to the \textit{environment directory} so it can be discovered by the web application.
+When the architect needs to export a program to his \gls{cad} application, the environment connects to the application in his computer through the \textit{environment directory} and starts to send requests to it, in order to create shapes in the \gls{cad} application.
+The architecture for this part of Luna Moth is illustrated in Figure~\ref{fig:remote:cad:archi}.
 
 Figure~\ref{fig:remote:cad:example} shows an example of the export to \gls{cad} functionality.
-The architect has created a program using the web application environment.
+The architect has created a program using Luna Moth.
 After selecting AutoCAD and SketchUp as export destinations, he starts the export process and, afterwards, the model resulting from running the program is available in both \gls{cad} applications.
 
-Note that it is only needed to install the application if and when the architect wants to get the program's results on a \gls{cad} application.
+Note that it is only needed to install the \textit{remote CAD app} if and when the architect wants to get the program's results on a \gls{cad} application.
 Furthermore, the application only needs to be installed in the computer that actually has the \gls{cad} application installed.
 
 
 \subsection{Implementation}
-We implemented the remote CAD application as a small Racket server.
+We implemented the \textit{remote CAD app} as a small Racket server.
 It expects to receive HTTP requests for operations like adding shapes to the currently selected \gls{cad} applications or deleting all shapes they may have.
 It also expects requests for specifying what \gls{cad} applications are selected.
-%{\bf(appendix has remote CAD service API?)}
 
 Apart from the connection between the remote CAD application and the web application, there also needs to be a connection between the remote CAD application and the \gls{cad} applications themselves.
 Different \glspl{cad} have different \glspl{api} so the application needs to know how to interact with each one.
 
-Instead of implementing the connection with \gls{cad} applications, the server uses Rosetta as an intermediate.
+Instead of implementing the connection with \gls{cad} applications, the \textit{remote CAD app} uses Rosetta as an intermediate.
 This way, it only has to cover the semantic differences between Rosetta's \gls{api} and the remote CAD service's \gls{api}.
 
 In reality, when the architect wants to export to \gls{cad}, it is likely that he is using the web environment in the same computer where he has the \gls{cad} application installed.
-Like so, the web page, the remote CAD application and the \gls{cad} applications run in the same computer.
-With this in mind, we chose to temporarily host the web application containing the \gls{ide} in the remote CAD application's server.
+Like so, the web page, the remote CAD application and the \gls{cad} applications are running in the same computer.
+With this in mind, we chose to temporarily host the web application containing the \gls{ide} in the \textit{remote CAD app}'s server.
 Using this setup, it is easier to test the communication between the page and the application.
-This setup also avoids dealing with cross-origin restrictions imposed by web browsers for \gls{ajax} requests.
+Moreover, this setup also avoids dealing with cross-origin restrictions imposed by web browsers for \gls{ajax} requests.
 
 \begin{figure}
   \centering

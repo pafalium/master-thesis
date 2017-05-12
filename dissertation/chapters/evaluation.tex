@@ -4,8 +4,8 @@
 \label{chapter:evaluation}
 The goal of our work was to bring \gls{gd} to the web browser so it can be deployed and used anywhere easily.
 In this chapter, we assess how our solution accomplishes this goal.
-We start by looking at examples that were implemented in the programming environment in Section~\ref{sec:eval:gd:capable}.
-Afterwards, we measure the environment's performance and compare it to other environments in Section~\ref{sec:eval:performance}.
+We start by looking at examples that were implemented in Luna Moth in Section~\ref{sec:eval:gd:capable}.
+Afterwards, we measure Luna Moth's performance and compare it to other environments in Section~\ref{sec:eval:performance}.
 
 
 \section{GD Capability / Usage Examples}
@@ -13,10 +13,6 @@ Afterwards, we measure the environment's performance and compare it to other env
 A programming environment needs to allow the creation of a wide variety of programs.
 We need to test its ability to be used for \gls{gd}, or, more specifically, to produce diverse 3D models.
 To show this variety, we present several examples that make use of some primitives that were implemented and also some programming techniques that they use.
-
-%(illustrate main results of the implementation?)\\
-%(show that environment is able to produce GD models?)\\
-%(show techniques that can be used in the environment?)
 
 
 \subsection{Example: Atomium}
@@ -30,7 +26,7 @@ It consists of nine metallic spheres connected by sixteen tubes forming its shap
   \label{fig:atomium:photo}
 \end{figure}
 
-To create it in the environment, we can start by deciding which primitives to use for the elements of the Atomium, that is the metallic spheres and the tubes.
+To create it in Luna Moth, we can start by deciding which primitives to use for the elements of the Atomium, that is the metallic spheres and the tubes.
 The spheres can be created using the {\tt sphere} primitive.
 
 \begin{minted}{js}
@@ -287,7 +283,7 @@ function moebiusTruss(r, u1, u2, m,
 Computer programs allow highly repetitive designs to be generated quickly.
 However, architects may want to introduce some variation to make designs look more natural.
 They can do this by introducing randomness into parts of their designs.
-The environment supports this by providing functions that generate random numbers.
+Luna Moth supports this by providing functions that generate random numbers.
 
 Randomness can be used to randomize the control-flow and other discrete aspects of the program.
 Suppose that we want to create a simplistic city where approximately one third of buildings are cylindrical while the rest are parallelepipedic.
@@ -326,14 +322,7 @@ function city(p) {
 \end{minipage}
 
 The function {\tt building} uses {\tt random.real} to decide whether to create a cylinder or a box.
-Calling {\tt city} with a point creates a grid of boxes and cylinders where approximately one third are cylinders. %Figure~\ref{fig:box:cyl:city}.
-
-%\begin{figure}
-%  \centering
-%  \includegraphics[width=0.5\textwidth]{./images/detail_examples/box_cyl_city_crop}
-%  \caption{City of cylinders and boxes.}
-%  \label{fig:box:cyl:city}
-%\end{figure}
+Calling {\tt city} with a point creates a grid of boxes and cylinders where approximately one third are cylinders.
 
 Random numbers can also be used to control continuous quantities like heights or distances.
 For example, we can modify function {\tt building} to also pick a random height for the buildings it produces.
@@ -446,7 +435,7 @@ Now we can call {\tt city} with these building creation functions, as seen in Fi
 
 
 \subsection{Completeness}
-Apart from the previous examples, some additional programs were made using the environment.
+Apart from the previous examples, some additional programs were made using Luna Moth.
 Figure~\ref{fig:all:examples} shows their results.
 As shown, the environment can produce interesting results with varying degrees of complexity.
 
@@ -491,15 +480,15 @@ These operations should be addressed in future work.
 \section{Performance}
 \label{sec:eval:performance}
 We evaluated our solution's performance from different perspectives:
-(1) how running performance in the web application compares with other \gls{gd} environments;
+(1) how running performance in Luna Moth compares with other \gls{gd} environments;
 (2) how running performance compares to export performance;
 (3) how traceability data collection affects running performance;
 (4) how export performance compares with exporting in other IDEs, like Rosetta and Grasshopper.
 
 To make this evaluation possible, we measured times of several situations:
-(1) running in the web application, with traceability enabled;
-(2) running in the web application, with traceability disabled;
-(3) exporting from the web application to AutoCAD;
+(1) running in Luna Moth, with traceability enabled;
+(2) running in Luna Moth, with traceability disabled;
+(3) exporting from Luna Moth to AutoCAD;
 (4) running in Rosetta connected to AutoCAD;
 (5) running in OpenJSCAD;
 (6) running in Grasshopper, while generating previews in Rhinoceros;
@@ -532,10 +521,10 @@ It is important to compare the performance of our solution to the performance of
 To see how the performance of our web-based \gls{gd} environment compares to the existing environments, we compared the time each takes to generate identical models.
 First, we implemented a version of each program using each environment's programming language and, then, measured the time each took to complete.
 These times are shown in the chart on Figure~\ref{fig:run:export:rosetta:chart}.
-As can be seen, the relationship between running times varies from program to program, although the web application is consistently faster than Rosetta (connected to AutoCAD), OpenJSCAD and Grasshopper (\textit{Grasshopper + Rhino}).
-More specifically, Rosetta's running times range from being around seven times to eleven hundred times the running times of the web application (\textit{Luna Moth}).
-In the case of OpenJSCAD, its running times range from being around two times to two hundred times the running times of the web application.
-Finally, Grasshopper's running times range from being two times to thirty times the running time of the web application.
+As can be seen, the relationship between running times varies from program to program, although Luna Moth is consistently faster than Rosetta (connected to AutoCAD), OpenJSCAD and Grasshopper (\textit{Grasshopper + Rhino}).
+More specifically, Rosetta's running times range from being around seven times to eleven hundred times the running times of Luna Moth (\textit{Luna Moth}).
+In the case of OpenJSCAD, its running times range from being around two times to two hundred times the running times of Luna Moth.
+Finally, Grasshopper's running times range from being two times to thirty times the running time of Luna Moth.
 
 With this in mind, we can say that our solution can provide much better feedback than the other \glspl{ide}.
 
@@ -546,7 +535,7 @@ When time comes to pass on the building design to other people using different t
 This has been covered in our solution by letting the program generating the design run in a \gls{cad} application.
 
 The next step was to evaluate how the execution time differs between the normal running process and the remote \gls{cad} running process.
-To measure the difference, we ran the previous programs using the web application's export process and measured the time each took to complete.
+To measure the difference, we ran the previous programs using Luna Moth's export process and measured the time each took to complete.
 These times are also shown in Figure~\ref{fig:run:export:rosetta:chart}.
 As seen in the chart, comparing export times (\textit{Luna Moth + AutoCAD}) to normal running times (\textit{Luna Moth}), export times range from being around twelve times to eighteen hundred times the normal running times.
 
@@ -560,13 +549,13 @@ As shown in \cite{Leitao2014illustrated}, \gls{cad} applications are not well su
 
 
 \subsection{Export vs Other IDEs}
-Another comparison that we have to make is one between the export process from our solution and similar processes in other IDEs, namely, Rosetta and Grasshopper.
+Another comparison that we have to make is one between Luna Moth's export process and similar processes in other IDEs, namely, Rosetta and Grasshopper.
 For this comparison, we took the times from our export process, Rosetta connected to AutoCAD, and Grasshopper baking geometry to Rhinoceros.%
 \footnote{Grasshopper only displays previews of results in Rhinoceros while programs are being developed. To export results to Rhinoceros, Grasshopper has a feature called "Bake Geometry".}
 These correspond, respectively, to \textit{Luna Moth + AutoCAD}, \textit{Rosetta + AutoCAD}, and \textit{Grasshopper + Rhino (Bake)} in Figure~\ref{fig:run:export:rosetta:chart}.
-As can be seen, export times of our solution range from $\approx$1x to $\approx$24x the times of running in Rosetta and range from $\approx$0.9x to $\approx$104x the times of running and baking in Grasshopper.
+As can be seen, Luna Moth's export times range from $\approx$1x to $\approx$24x the times of running in Rosetta and range from $\approx$0.9x to $\approx$104x the times of running and baking in Grasshopper.
 
-As shown in Chapter~\ref{chapter:solution}, Rosetta plays an important part in the process that our environment uses to send results to \gls{cad} applications.
+As shown in Chapter~\ref{chapter:solution}, Rosetta plays an important part in the process that Luna Moth uses to send results to \gls{cad} applications.
 Rosetta acts as an interface to communicate with \gls{cad} applications, while the remote CAD service makes that interface available to the web application as a web service.
 As with the export time evaluation in Subsection~\ref{sec:eval:export}, the increase in running times comes from the overhead in communication between the web application and the remote CAD service.
 Moreover, although during export programs are run in the web application and Rosetta's role is reduced to make them happen in the \gls{cad} application, results are still sent one by one to the remote CAD service, meaning that a lot of time is spent transmitting data.
@@ -576,7 +565,7 @@ Unlike with the export time evaluation, this comparison lets us distinguish the 
 \subsection{Traceability Performance}
 Collecting traceability data requires that additional work must be done when a program is being executed.
 The additional work will inevitably increase the time it takes to finish executing the program.
-This can make the environment less capable of giving immediate feedback, therefore having a negative impact in its the usage experience.
+This can make the programming environment less capable of giving immediate feedback, therefore having a negative impact in its the usage experience.
 
 To measure the impact that traceability data collection has on program running time, we have selected a small set of programs, ran them with and without data collection, and measured the time each took to execute.
 The chart in Figure~\ref{fig:traceability:timing} shows a comparison of their times.
