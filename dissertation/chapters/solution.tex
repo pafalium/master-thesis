@@ -41,7 +41,7 @@ On top of the text editor and the 3D view are controls for the running process (
 On the left are hidden panels for actions like selecting a program and exporting to \gls{cad} applications (A).
 %{\bf(pictures of panels)}
 
-To help with the implementation, we have used the THREE.js library\footnote{\url{https://threejs.org/} (last accessed on 10/10/2016)} to interact with WebGL\cite{marrin2011webgl} and the Ace Editor library,\footnote{\url{https://ace.c9.io} (last accessed on 10/10/2016)} to provide a syntax highlighted text editor.
+To help with the implementation, we have used the THREE.js library\footnote{\url{https://threejs.org/} (last accessed on 10/05/2017)} to interact with WebGL\cite{marrin2011webgl} and the Ace Editor library,\footnote{\url{https://ace.c9.io} (last accessed on 10/05/2017)} to provide a syntax highlighted text editor.
 %{\bf(React, escodegen, esprima, estraverse, redux)}
 
 %{\bf(describe high-level view of the inner workings of the page)}
@@ -340,8 +340,8 @@ When Luna Moth runs a program, it needs to do two things: (1) collect the result
 It does these two by instrumenting the program with additional calls to special functions that record the desired information, then running the program, and afterwards collecting the results from the instrumentation.
 As stated in \ref{sec:traceability}, the collection of traceability data is optional since it adds some overhead to program execution, which may be undesired when programs start to take too much time to run.
 
-To be able to perform the instrumentation, Luna Moth parses the program using Esprima, a JavaScript parser,\footnote{\url{https://github.com/jquery/esprima} (last accessed on 10/10/2016)} to get its \gls{ast}.%
-\footnote{The \gls{ast} conforms to a community standard. It can be found at \url{https://github.com/estree/estree} (last accessed on 10/10/2016).}
+To be able to perform the instrumentation, Luna Moth parses the program using Esprima, a JavaScript parser,\footnote{\url{https://github.com/jquery/esprima} (last accessed on 10/05/2017)} to get its \gls{ast}.%
+\footnote{The \gls{ast} conforms to a community standard. It can be found at \url{https://github.com/estree/estree} (last accessed on 10/05/2017).}
 
 Afterwards, the \gls{ast} is transformed by adding a recording call to (1) all top-level expression statements and (2) all function call expressions.
 Figure~\ref{fig:instrument:example} exemplifies the transformation.

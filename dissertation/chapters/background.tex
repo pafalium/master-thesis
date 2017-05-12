@@ -45,7 +45,7 @@ As sound is an ephemeral phenomenon, music's complexity comes from how sounds ar
 Like so, the instantaneous feedback must be adapted to meet architecture's needs.
 
 Impromptu is in the process of being replaced by Extempore.%
-\footnote{\url{http://extempore.moso.com.au/} (last accessed on 10/10/2016)}
+\footnote{\url{http://extempore.moso.com.au/} (last accessed on 10/05/2017)}
 Instead of having its own editor, Extempore's runtime exposes its \gls{api} publicly and has plug-ins for several popular code editors.
 Extempore also includes a second programming language for programming \glspl{dsp}, which have stricter real-time constraints.
 
@@ -53,14 +53,14 @@ Extempore also includes a second programming language for programming \glspl{dsp
 
 \subsection{LightTable}
 \label{lighttable:related}
-LightTable\footnote{\url{http://lighttable.com/} (last accessed 10/10/2016)} is a code editor for the Clojure programming language\cite{hickey2008clojure} and is an example of a desktop application that uses web technologies for its implementation.
-More specifically, it uses nw.js\footnote{\url{http://nwjs.io} (last accessed on 10/10/2016)} as its runtime, allowing it to be implemented using JavaScript, HTML markup and CSS.
+LightTable\footnote{\url{http://lighttable.com/} (last accessed 10/05/2017)} is a code editor for the Clojure programming language\cite{hickey2008clojure} and is an example of a desktop application that uses web technologies for its implementation.
+More specifically, it uses nw.js\footnote{\url{http://nwjs.io} (last accessed on 10/05/2017)} as its runtime, allowing it to be implemented using JavaScript, HTML markup and CSS.
 LightTable is written in ClojureScript\cite{10.1109/MIC.2011.148}, a subset of Clojure that compiles to Javascript.
 
 Although not related to \gls{gd}, LightTable proposed some interesting features and concepts for \glspl{ide}.
 %Why is LightTable relevant?
 One of these is the use of the drafting table as a metaphor.%
-\footnote{\url{http://www.chris-granger.com/2012/04/12/light-table-a-new-ide-concept/} (last accessed on 10/10/2016)}
+\footnote{\url{http://www.chris-granger.com/2012/04/12/light-table-a-new-ide-concept/} (last accessed on 10/05/2017)}
 The metaphor comes from looking at the way work is done in other fields of engineering, where engineers spread all materials relevant to their work over large tables, from tools to reference information.
 Instead of displaying the contents of entire files, LightTable divides the code into meaningful units and displays them as small editors spread over the table's surface.
 In one of its experimental versions, LightTable also supported displaying running programs in the table.
@@ -129,7 +129,7 @@ Unfortunately, although IPython notebooks are natural tools for exploration, the
 
 As its name suggests, IPython's main programming language is Python\cite{rossum2003python}.
 Nevertheless, other programming languages can be used in IPython, particularly those popular in the scientific community like R, or Julia.%
-\footnote{More language kernels can be found in IPython's github page: \url{https://github.com/ipython/ipython/wiki/IPython-kernels-for-other-languages} (last accessed on 10/10/2016)}
+\footnote{More language kernels can be found in IPython's github page: \url{https://github.com/ipython/ipython/wiki/IPython-kernels-for-other-languages} (last accessed on 10/05/2017)}
 
 One trend in its community, supported by IPython notebooks, is to make results in publications more reproducible.
 Typically, the code used to compute the results showed in publications is not made available to the public, so it is difficult to verify them.
@@ -143,7 +143,7 @@ The communication protocol defines how communication between execution kernels a
 With this, it is possible to implement new execution kernels for running code from a programming language not yet implemented or an alternative front-end different from IPython notebooks.
 Moreover, the communication protocol also allows execution kernels and front-ends to run on different computers\cite{PER-GRA:2007}.
 
-IPython has given rise to the Jupyter project,\footnote{\url{https://jupyter.org/} (last accessed on 10/10/2016)} which aims to make IPython's model of interaction ready for the cloud.
+IPython has given rise to the Jupyter project,\footnote{\url{https://jupyter.org/} (last accessed on 10/05/2017)} which aims to make IPython's model of interaction ready for the cloud.
 In the context of Jupyter, IPython is only concerned with providing an interactive Python experience.
 
 \begin{figure}
@@ -155,7 +155,7 @@ In the context of Jupyter, IPython is only concerned with providing an interacti
 
 
 \subsection{OpenJSCAD}
-OpenJSCAD\footnote{\url{http://openjscad.org/} (last accessed 10/10/2016)} is a project aiming to implement OpenSCAD\footnote{\url{http://www.openscad.org/} (last accessed 10/10/2016)} using web technologies.
+OpenJSCAD\footnote{\url{http://openjscad.org/} (last accessed 10/05/2017)} is a project aiming to implement OpenSCAD\footnote{\url{http://www.openscad.org/} (last accessed 10/05/2017)} using web technologies.
 Instead of using OpenSCAD's language, OpenJSCAD uses JavaScript as its programming language.
 Most of OpenSCAD functionality is implemented in OpenJSCAD.
 
@@ -164,7 +164,7 @@ Similarly to the \gls{gd} approach, to actually model in OpenJSCAD, one has to w
 Being an environment for modeling 3D printed objects, OpenJSCAD supports importing and exporting 3D models from/to STL and AMF files, which are commonly used as 3D printing formats.
 
 OpenJSCAD provides two user interfaces, one \acrfull{cli} and one \acrfull{gui}, the latter implemented as a web application (Figure~\ref{fig:openjscad:page}).%
-\footnote{\url{https://github.com/Spiritdude/OpenJSCAD.org} (last accessed on 10/10/2016)}
+\footnote{\url{https://github.com/Spiritdude/OpenJSCAD.org} (last accessed on 10/05/2017)}
 Moreover, the first is used for batch processing, while the second integrates an editor for editing programs and a 3D view for viewing the corresponding results.
 By providing the \gls{gui} in a web page, OpenJSCAD can be used without requiring the programmer to install anything more than a web browser, which is almost always already installed.
 
@@ -226,7 +226,7 @@ Processing is sometimes used by architects for exploring design ideas.
 However, since most of its functionality revolves around graphics for the visual arts, its use is normally restricted to 2D designs and cannot be used as a full-fledged tool for \gls{gd}.
 
 Several projects have stemmed from Processing to extend its functionality to different programming languages.
-These include Processing.py,\footnote{\url{http://py.processing.org/} (last accessed on 10/10/2016)} that extends the \gls{pde} to support Python, and p5.js,\footnote{\url{http://p5js.org/} (last accessed on 10/10/2016)} that provides JavaScript libraries to create interactive web pages.
+These include Processing.py,\footnote{\url{http://py.processing.org/} (last accessed on 10/05/2017)} that extends the \gls{pde} to support Python, and p5.js,\footnote{\url{http://p5js.org/} (last accessed on 10/05/2017)} that provides JavaScript libraries to create interactive web pages.
 
 
 \subsection{DesignScript}
@@ -313,8 +313,8 @@ This makes it possible for architects to share programs written in different pro
 
 
 \subsection{Clara.io}
-Clara.io\footnote{\url{https://clara.io/} (last accessed on 10/10/2016)}\cite{houston2013clara} is a cloud application for 3D modeling and animation, similar to desktop software like Blender\footnote{\url{https://www.blender.org/} (last accessed on 17/12/2016)} and 3ds Max.%
-\footnote{\url{http://www.autodesk.com/products/3ds-max/overview} (last accessed on 17/12/2016)}
+Clara.io\footnote{\url{https://clara.io/} (last accessed on 10/05/2017)}\cite{houston2013clara} is a cloud application for 3D modeling and animation, similar to desktop software like Blender\footnote{\url{https://www.blender.org/} (last accessed on 10/05/2017)} and 3ds Max.%
+\footnote{\url{http://www.autodesk.com/products/3ds-max/overview} (last accessed on 10/05/2017)}
 Being in this category, Clara.io is more suitable for artistic work as opposed to technical work.
 Nonetheless, it can be used in architecture projects to make architectural visualizations.
 
@@ -332,14 +332,14 @@ Clara.io's real-time collaboration lets users do just simultaneous edition.
 Moreover, it also has the benefit of each user always seeing the most up to date version of the scene.
 
 When it comes to programming, Clara.io has support for scripting and allows the creation of plug-ins to extend its functionality.%
-\footnote{\url{https://clara.io/learn/sdk} (last accessed on 10/10/2016)}
+\footnote{\url{https://clara.io/learn/sdk} (last accessed on 10/05/2017)}
 It is possible to use Clara.io's scripting to do \gls{gd}, however, if a user wishes to do so, he needs to learn the scene's data model and how to use the scripting \gls{api} to manipulate it, which poses a considerable barrier when compared with existing \gls{gd} environments.
 
 
 \subsection{OnShape}
-OnShape\footnote{\url{https://www.onshape.com/} (last accessed on 10/10/2016)} is a cloud based \gls{cad} application that can be accessed using either a web browser or its mobile app.
-As opposed to the previous systems, OnShape is a \gls{cad} application for mechanical modeling and, as such, its users are familiar with \gls{cad} applications like SolidWorks\footnote{\url{http://www.solidworks.com/} (last accessed on 17/12/2016)} and Autodesk Inventor.%
-\footnote{\url{http://www.autodesk.com/products/inventor/overview} (last accessed on 17/12/2016)}
+OnShape\footnote{\url{https://www.onshape.com/} (last accessed on 10/05/2017)} is a cloud based \gls{cad} application that can be accessed using either a web browser or its mobile app.
+As opposed to the previous systems, OnShape is a \gls{cad} application for mechanical modeling and, as such, its users are familiar with \gls{cad} applications like SolidWorks\footnote{\url{http://www.solidworks.com/} (last accessed on 10/05/2017)} and Autodesk Inventor.%
+\footnote{\url{http://www.autodesk.com/products/inventor/overview} (last accessed on 10/05/2017)}
 Being a mechanical modeling tool means that the focus is directed towards assembling individual objects instead of buildings, so the working scales are smaller and there is more information on how parts relate to each other.
 
 OnShape has version control of project documents (drawings, 3D models, text documents) and supports real time collaboration.
@@ -349,7 +349,7 @@ As users can edit the same copy of a file at the same time, OnShape shows each u
 It is also possible to create {\it branches} of the document when it is necessary to work on different design options or to work on changes in isolation.
 Later, changes made in a branch can be merged back into the main branch.
 
-OnShape also includes a dedicated programming language, FeatureScript,\footnote{\url{https://www.onshape.com/featurescript} (last accessed on 10/10/2016)} for defining features for its models.
+OnShape also includes a dedicated programming language, FeatureScript,\footnote{\url{https://www.onshape.com/featurescript} (last accessed on 10/05/2017)} for defining features for its models.
 OnShape includes an \gls{ide} for FeatureScript, but the language does not aim to replace OnShape's modeling approach based on interactively manipulating the model's feature list, which makes it impossible to use for \gls{gd}.
 
 
@@ -383,7 +383,7 @@ Finally, Mobius is implemented as a web application, and like so is available to
 %Design to fabrication pipeline?\\
 %http://www.mattkeeter.com/projects/antimony/3/
 
-Antimony\footnote{\url{https://github.com/mkeeter/antimony} (last accessed on 10/10/2016)} is a desktop application for solid modeling where models are described by data-flow programs.
+Antimony\footnote{\url{https://github.com/mkeeter/antimony} (last accessed on 10/05/2017)} is a desktop application for solid modeling where models are described by data-flow programs.
 Programs are edited using a node-based representation like in visual programming environments.
 When editing a program, Antimony also displays handles in the 3D view that can be dragged with the mouse to change free node inputs, as shown in Figure~\ref{fig:antimony:handles}.
 
