@@ -567,7 +567,7 @@ Collecting traceability data requires that additional work must be done when a p
 The additional work will inevitably increase the time it takes to finish executing the program.
 This can make the programming environment less capable of giving immediate feedback, therefore having a negative impact in its the usage experience.
 
-To measure the impact that traceability data collection has on program running time, we have selected a small set of programs, ran them with and without data collection, and measured the time each took to execute.
+To measure the impact that traceability data collection has on program running time, we also ran programs with and without data collection, and measured the time each took to execute.
 The chart in Figure~\ref{fig:traceability:timing} shows a comparison of their times.
 
 We can observe that running with traceability impacts the running time, increasing it by 10--50\% which, depending on the example, can be considered between a small impact and a large impact.
@@ -578,7 +578,7 @@ However, the impact is worth taking when the user needs to debug the program.
 \begin{figure}
   \centering
   \includegraphics[width=1.0\textwidth]{./images/traceability_timing}
-  \caption{Running while collecting traceability data and while not collecting traceability data.}
+  \caption[Running while collecting traceability data and while not collecting traceability data.]{Running while collecting traceability data and while not collecting traceability data. Note that times are in logarithmic scale.}
   \label{fig:traceability:timing}
 \end{figure}
 
