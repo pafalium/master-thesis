@@ -8,114 +8,42 @@
 The current trend in architecture practice revolves around using programming as a way to automate repetitive tasks and to explore new design possibilities.
 These activities are often put under the umbrella of \acrfull{gd}.
 
-Tools used to do this in architecture are limited to desktop applications.
-However, applications used by architects to model their projects cannot be limited to desktop applications.
-Architects use several computers throughout the day.
+Tools used to support this design approach are mostly desktop applications but this is a leftover from a past that, in many other fields, is already being changed so that applications become web-based.
+This change has the significant advantage that applications can be much more easily updated and can be used with whatever machine it is available at that moment.
 Moreover, with teams becoming more dispersed geographically, the need arises for using a distributed solution in which team members can still collaborate.
 Web applications have the advantage of being platform-independent, requiring only a web browser to be used.
 
 Architects need both 3D modeling and programming capabilities to have an environment where they can do \gls{gd}.
 To have a better idea of the features necessary for such environment, Section~\ref{sec:background} explored programming environments for various domains, including \gls{gd}, and also 3D modeling applications.
-%These included desktop applications like Processing, a programming environment for the visual arts, and Rosetta, a programming environment giving architects program portability for both programming language and \gls{cad} software, and also included web applications like IPython, a programming environment for scientific computing with a web page \gls{ui}, and OpenJSCAD, an online programming environment for solid modeling.
-We compared these applications first by application domain and by the purpose they give to programming.
-Afterwards, we also compared them according to editing and programming paradigm, persistence and collaboration support and code editing features.
 
-Following the presentation and comparison of the environments, we described our solution, Luna Moth, in Section~\ref{sec:solution}.
-Luna Moth is composed of two components:
-(1) a web page, used by the architect to create programs;
-and (2) a desktop application that, when run, allows the web page to export results of programs to \gls{cad} applications.
-To help programming, the web page runs programs when they change, allows literals to be adjusted by clicking and dragging, and highlights the relationship between program and results in both directions.
+Firstly, we compared these applications according to their application domain and the purpose they give to programming.
+Afterwards, we also compared them according to the editing and the programming paradigm, the persistence and the collaboration support and code editing features.
 
-After implementing Luna Moth, we evaluated it in several ways.
+Following the introduction and comparison of those environments, we described the problem we would address and we proposed our solution in Chapter~\ref{chapter:solution}, which is composed of two components:
+(1) a web application, used by the architect to create programs;
+and (2) a desktop application that, when run, allows the web application to export results of those programs to \gls{cad} applications.
+
+After defining the architecture, we created a test implementation called Luna Moth.
+To help the programming task, Luna Moth runs programs when they change, allows literals to be adjusted by clicking and dragging, and highlights the relationship between program and results in both directions.
+
 In Section~\ref{sec:evaluation}, we presented some examples of programs that were created using the solution.
-Additionally, we tested the solution's performance by measuring program running times and export times on the web page and comparing them to running times on Rosetta.
-Taking those measurements into consideration, we concluded that running programs in the web page is at least as fast as other \gls{gd} \glspl{ide}.
+Additionally, we tested Luna Moth's performance by measuring the program running and export times and comparing them to running times on Rosetta, OpenJSCAD and Grasshopper.
+Taking those measurements into consideration, we concluded that running programs in Luna Moth is faster than running these \glspl{ide}.
 However, exporting from the web page is slower than running in Rosetta.
 We also measured the effect that keeping track of traceability data has on program running times.
-As a result, we concluded that collecting traceability data makes programs around 10-50\% slower.
+As a result, we concluded that collecting traceability data makes programs around 10--50\% slower, which is a great achievement considering that every function call is being recorded.
 
-%In conclusion, with our solution architects are able to explore \gls{gd} using any of their computers, without being required to install the programming environment.
-%Programs are not tied to a particular environment or \gls{cad} application, since it is possible to export their results to \gls{cad} when needed.
+In conclusion, with Luna Moth, architects are able to explore \gls{gd} without needing to install and update the programming environment and avoiding the installation and use of heavy-weight \gls{cad} applications, which become slow for \gls{gd} exploration.
 
+Due to the achieved performance, we are convinced that web browsers can be seen as serious candidates for the next generations of design tools.
+We are also convinced that architects need tools dedicated to \gls{gd} that avoid the complexity of current \gls{cad} applications to enhance the interactivity of the programming environment.
 
 \subsection{Future Work}
 Our solution can support the \gls{gd} approach to architecture, however, there are still areas that can be improved.
 
-
-%\subsubsection{Programming Environment}
-%There are many opportunities for improvement of the solution as a programming environment.
-%The following paragraphs describe some of these and speculate on possible solutions.
-
 There is room for improvement in the programming environment.
-Some possible future work includes improving the programming experience by performing static analysis and code completion, supporting addition of illustrations to programs as in \cite{Leitao2014illustrated} and IPython, supporting multiple programming languages, improving the debugging experience, improving the environments traceability, and supporting common modeling primitives.
-User testing should also begin to help improve the overall usability of the \gls{ui}.
+Some future work includes improving the programming experience by performing static analysis and code completion, supporting addition of illustrations to programs as in \cite{Leitao2014illustrated} and IPython, supporting multiple programming languages, improving the debugging experience, improving the environments traceability, and supporting common modeling primitives.
+User testing should also begin to help steer the environment development according to the needs and difficulties of the users and, therefore, make sure it remains both useful and easy to use.
 
-%\paragraph{Writing aids / Code completion}
-%The environment does syntax highlighting, runs programs on change, has traceability, and helps adjusting literals, but it does not include help to find the available primitives and how to use them.
-%This can be improved by providing extensive documentation on the primitive library.
-%However, this is not extensible to functions and variables that the user introduces in his program.
-%We can improve this by analyzing the current state of programs and using the resulting information to provide code completion.
-
-%\paragraph{Illustrated Programming}
-%There could also be other ways of implementing traceability that would also enable users to document their programs.
-%We could transform programs into something like IPython's notebooks or the examples given in Illustrated Programming\cite{Leitao2014illustrated}.
-
-%\paragraph{Multiple programming languages}
-%We can also follow Rosetta's lead and start supporting more than one programming language commonly used by architects, so there is one less barrier for those who already know one language and want to avoid learning a new one.
-%This would also attract people from the communities around the added languages.
-
-%\paragraph{Error reporting and debugging}
-%The environment currently does not support any form of error reporting or debugging, meaning that there is no feedback when the program fails during its execution.
-%Right now, the user must use the web browser's developer tools to be able to debug his program.
-%This exposes him to the implementation details of the environment which can be confusing and distract him from his program.
-%One possibility to solve this problem is to try to show incomplete results up to the point where the program reached the error.
-%On top of this, the environment can show and highlight the parameters of the call that produced the error in the 3D view and also highlight the corresponding call expression in the source code.
-
-%\paragraph{Timetable traceability}
-%We can also improve the environment's traceability.
-%One way it can be done is by implementing the timetables presented in Learnable Programming\cite{victor2012learnable}.
-%This would worsen the performance of the running process if implemented naively.
-%It is nonetheless a good challenge.
-
-%\paragraph{Camera controls}
-%There are also some improvements that can be made to the way the user visualizes the results.
-%Currently, the 3D view only lets the user navigate the 3D space as if moving around a turntable.
-%It would be good to give him other ways of navigating, like flying or walking through the model.
-%Furthermore, it would also be important to let him define predefined views so he could quickly switch between them to get a better grasp of results.
-
-%\paragraph{Improve code navigation}
-%Depending on the size of a project, it may be easier or harder to find a particular function or variable definition.
-%If \gls{gd} projects get big enough, it will be advantageous to support navigation.
-%Navigation support can take inspiration from LightTable's code document and namespace view.
-%Other alternative would be the goto definition functionality present in most software development \glspl{ide}.
-
-%\paragraph{Adjustment of literals}
-%An extension to helping adjust literals could also be done.
-%We could implement something like the handles in the 3D view supported by Antimony.
-
-%\paragraph{Primitives}
-%Further work must also be done to implement common primitives in architecture, such as, \gls{csg} operators, control-point based surfaces and lines, or sweep and loft operators, to name a few.
-
-%\paragraph{User testing}
-%Finally, one task currently lacking to be used is user testing.
-%By doing it, we can start steering the environment development according to the needs and difficulties of the users and, therefore, make sure the environment remains both useful and easy to use.
-
-%\subsubsection{Cloud-related Improvements}
-Apart from opportunities in the programming environment, there are also some opportunities for improvement in areas that require communication between components.
-%As before, the following paragraphs describe some of these and speculate on possible solutions.
-On this side, future work includes implementation of security of communications and isolation of user programs, implementation of remote persistence and collaboration, and improvement of the export process's performance.
-
-%\paragraph{Security}
-%Other area that needs to be improved is security.
-%Some of the pertinent points where it must be in place are the communications with remote CAD services, that must be private, authenticated and authorized, and the program running process, that must be sandboxed to stop them from changing the environment's web page for malicious purposes.
-
-%\paragraph{Persistence and collaboration}
-%We presented persistence and collaboration as advantages of cloud applications, however, we did not implement them in our solution.
-%It would be interesting to implement these features in the future.
-%Moreover, it would also be of interest to integrate the solution with cloud version control services like GitHub or cloud storage services like Google Drive (as happened to IPython notebooks with the coLaboratory\footnote{http://colaboratory.jupyter.org/welcome/ (last accessed on 10/10/2016)} and Jupyter Drive\footnote{https://github.com/jupyter/jupyter-drive (last accessed on 10/10/2016)} projects).
-
-%\paragraph{Export performance}
-%The performance of the export process can also be improved.
-%Instead of using HTTP requests to communicate with the application running in the user's computer, a WebSockets connection\cite{rfc6455} could be used to avoid the overhead of HTTP.
-%Alternatively, the environment could send the entirety of the results on a single HTTP request, therefore, decreasing the time spent waiting for data traversing the network.
-%Another option would be to run the user's program in the application instead of the web page.
+Apart from opportunities in the programming environment, there are also some opportunities for improvement in security and communication between components.
+On this side, future work includes sandboxing of user programs, implementation of remote persistence and collaboration, and improvement of the export process's performance.

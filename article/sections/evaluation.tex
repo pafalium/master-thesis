@@ -45,135 +45,82 @@ The results of these programs are shown in Figure~\ref{fig:all:examples}.
   \label{fig:all:examples}
 \end{figure}
 
-As shown, Luna Moth can produce interesting results with varying degrees of complexity.
-The range of results is still limited by the primitives currently implemented.
-None of these examples make use of \gls{csg} operations like union, intersection and difference as these were not implemented.
-Nevertheless, it is possible to add support for these since there are already JavaScript implementations of \gls{csg}, like the case of OpenJSCAD's.
-Moreover, the support for randomness and programming techniques like higher-order functions keeps the ability to create complex models.
-
-
-%\subsection{Real Use}
-%{\it This is where I give the prototype to an architect, ask him to do a building, get his feedback, and tell it to the world.}
+Still, the range of results is limited by the primitives currently implemented.
+For example, none of these programs make use of \gls{csg} operations like union, intersection and difference as they are not implemented.
+Nonetheless, it is possible to support them since there are JavaScript libraries that already implement \gls{csg}, like the case of OpenJSCAD's.
+These operations should be addressed in future work.
+In addition, the support for randomness and programming techniques like higher-order functions keeps the ability to create complex models.
 
 
 \subsection{Performance}
-There are several areas where performance plays an important part when using the environment.
-
 We evaluated our solution's performance from different perspectives:
-(1) how running performance in the web page compares with other \gls{gd} environments;
+(1) how running performance in Luna Moth compares with other \gls{gd} environments;
 (2) how running performance compares to export performance;
 (3) how traceability data collection affects running performance;
-(4) how export performance compares with running in Rosetta.
+(4) how export performance compares with exporting in other IDEs, like Rosetta and Grasshopper.
 
 To make this evaluation possible, we measured times of several situations:
-(1) running in the web page, with traceability enabled;
-(2) running in the web page, with traceability disabled;
-(3) exporting from the web page to AutoCAD;
+(1) running in Luna Moth, with traceability enabled;
+(2) running in Luna Moth, with traceability disabled;
+(3) exporting from Luna Moth to AutoCAD;
 (4) running in Rosetta connected to AutoCAD;
 (5) running in OpenJSCAD;
-(6) running in Grasshopper and Rhinoceros.
+(6) running in Grasshopper, while generating previews in Rhinoceros;
+(7) running in Grasshopper, followed by baking geometry to Rhinoceros.
+
+The next sections presents the evaluation from the previous perspectives.
 
 \paragraph{Setup}
 All tests were performed on a Microsoft Surface Pro 4 with in Intel Core i5 processor and 4GB of RAM.
-
 The web page and the remote CAD service were hosted at the same computer.
-
-%The source code of each program used in the tests can be found in Appendix~\ref{appendix:test:source:code}. %{\bf(either here, appendix or github)}
 
 \begin{figure}
   \centering
   \includegraphics[width=\linewidth]{./\figurePath/run_export_rosetta_times}
-  \caption[Running times for completing the generation of the test models.]{Running times for completing the generation of the test models. Please note that the vertical axis uses a logarithmic scale.}
+  \caption[Comparison of running times for our \gls{ide}, its export process, Rosetta, OpenJSCAD, and Grasshopper.]{Comparison of running times for our \gls{ide}, its export process, Rosetta, OpenJSCAD, and Grasshopper. Note that the time is in logarithmic scale.}
   \label{fig:run:export:rosetta:chart}
 \end{figure}
 
 
 \subsubsection{Running Performance}
-%Running performance is a prevalent part of programming in \gls{gd} since it dictates the complexity of the programs that can be explored interactively.
-%After a program as become too complex, hence too slow, it can no longer be tested as a whole.
-%So, it needs to be split into smaller parts that are still fast enough to be explored interactively.
-
 To see how the performance of our web-based \gls{gd} environment compares to the existing environments, we compared the time each takes to generate identical models.
-First, we implemented a version of the program using each environment's programming language and, then, measured the time each took to complete.
-The times can be seen in Figure~\ref{fig:run:export:rosetta:chart}.
-As can be seen, the relationship between running times varies from program to program, although the web page is consistently faster than Rosetta, OpenJSCAD and Grasshopper.
+First, we implemented a version of each program using each environment's programming language and, then, measured the time each took to complete.
+These times are shown in the chart on Figure~\ref{fig:run:export:rosetta:chart}.
+As can be seen, the relationship between running times varies from program to program, although Luna Moth is consistently faster than Rosetta (connected to AutoCAD), OpenJSCAD and Grasshopper (\textit{Grasshopper + Rhino}).
 In some instances, we can see a difference of at least an order of magnitude.
 
 With this in mind, we can say that our solution can provide better feedback than Rosetta.
 
-%We compared our environment with Rosetta (using the OpenGL backend), OpenJSCAD and Rhino+Grasshopper.
 
-%\begin{figure}
-%  \centering
-%  \includegraphics[width=\linewidth]{./\figurePath/run_timing_chart}
-%  \caption{Running times for completing the generation of the test model.}
-%  \label{fig:run:timing:chart}
-%\end{figure}
-
-
-\subsubsection{Export Performance}
-%When time comes to pass on the building design to other people that use different tools --- like mechanical, electric, plumbing services or even other architects --- the architect must provide it in a format compatible with their tools.
-%This has been covered in our solution by letting the program that generates the building model run in a \gls{cad} tool.
-
+\subsubsection{Run vs Export}
 The next step was to evaluate how the execution time differs between the normal running process and the remote \gls{cad} running process.
-To measure the difference, we ran two example programs using both processes and measured the time each took to complete.
-The chart in Figure~\ref{fig:run:export:rosetta:chart} shows the running times for these two processes in ``web-GD-IDE (w/o trace)'' and ``web-GD-IDE + AutoCAD''.
-As seen in the chart, comparing export times to normal running times, export times range from 12x to 1800x the running times on the web page.
+To measure the difference, we ran the previous programs using Luna Moth's export process and measured the time each took to complete.
+These times are also shown in Figure~\ref{fig:run:export:rosetta:chart}.
+As seen in the chart, comparing export times (\textit{Luna Moth + AutoCAD}) to normal running times (\textit{Luna Moth}), export times range from being around twelve times to eighteen hundred times the normal running times.
 
-Given the difference of two orders of magnitude, it is highly preferable to get feedback using the web page instead of using the export process.
-The export process should be reserved to actually export to \gls{cad}.
-
-%One may need some clarification on how this difference appears.
-%The difference comes from the amount of overhead needed for communication between the web page and the remote CAD service and between Rosetta and the \gls{cad}.
-%For each primitive call a program does, data has to be converted, sent over an HTTP connection to the remote CAD service, passed to Rosetta to perform the primitive in the \gls{cad}, and finally the result must be sent back to the web page.
-%All these steps take time, specially the ones where data is in transit between applications.
-
-%\begin{figure}
-%  \centering
-%  \includegraphics[width=\linewidth]{./\figurePath/local_remote_timing}
-%  \caption{Running in the web page compared to exporting to a \gls{cad}.}
-%  \label{fig:local:remote:timing}
-%\end{figure}
+Given that the difference can grow to three orders of magnitude, it is highly preferable to get feedback using the web application instead of using the export process.
+The export process should be reserved to when the architect is satisfied with the obtained solution.
 
 
-\subsubsection{Export vs Rosetta}
-Due to the fact that our solution uses Rosetta as an intermediate to export to \glspl{cad}, it is interesting to assess how export times compare to running directly in Rosetta.
-
-To measure the difference, we selected two programs and measured the time taken to export and to run in Rosetta.
-The two systems use different programming languages, therefore, each program had two versions, one for our solution and one for Rosetta.
-Figure~\ref{fig:run:export:rosetta:chart} shows the running times for each system, grouped by program.
-
-Looking at the graph, we see that export times (``web-GD-IDE + AutoCAD'') range from 1x to 24x the times for Rosetta (``Rosetta + AutoCAD'').
-
-%As with the export time evaluation, the increase in running times comes from the overhead in communication between the web page and the remote CAD service.
-%Moreover, although during export programs are first run in the web page and Rosetta's role is reduced to make them happen in the CAD, results are still sent one by one to the remote CAD service meaning that a lot of time is spent transmitting data.
-
-Unlike with the export time evaluation, this comparison lets us distinguish the time of transmitting data from the time taken by Rosetta to apply operations.
-
-%\begin{figure}
-%  \centering
-%  \includegraphics[width=\linewidth]{./\figurePath/export_vs_rosetta_chart}
-%  \caption{Exporting from the web page compared with running directly in Rosetta.}
-%  \label{fig:export:vs:rosetta}
-%\end{figure}
+\subsubsection{Export vs Other IDEs}
+Another comparison that we have to make is one between Luna Moth's export process and similar processes in other IDEs, namely, Rosetta and Grasshopper.
+For this comparison, we took the times from our export process, Rosetta connected to AutoCAD, and Grasshopper baking geometry to Rhinoceros.%
+\footnote{Grasshopper only displays previews of results in Rhinoceros while programs are being developed. To export results to Rhinoceros, Grasshopper has a feature called "Bake Geometry".}
+These correspond, respectively, to \textit{Luna Moth + AutoCAD}, \textit{Rosetta + AutoCAD}, and \textit{Grasshopper + Rhino (Bake)} in Figure~\ref{fig:run:export:rosetta:chart}.
+As can be seen, Luna Moth's export times range from $\approx$1x to $\approx$24x the times of running in Rosetta and range from $\approx$0.9x to $\approx$104x the times of running and baking in Grasshopper.
 
 
 \subsubsection{Traceability Performance}
-%Collecting traceability data requires that additional work must be done when a program is being executed.
-%The additional work will inevitably increase the time it takes to finish executing the program.
-%This can make the environment less capable of giving feedback, therefore having a negative impact in its the usage experience.
-
 To measure the impact that traceability data collection has on program running time we also ran programs with data collection enabled and disabled and measured the time each took to execute.
-The chart in Figure~\ref{fig:traceability:timing} shows a comparison of their times, grouped by program.
+The chart in Figure~\ref{fig:traceability:timing} shows a comparison of their times.
 
-We can observe that running with traceability impacts the running time, increasing it by 10--50\%.
-The impact is indeed significant.
+We can observe that running with traceability impacts the running time, increasing it by 10--50\% which, depending on the example, can be considered between a small impact and a large impact.
 Like so, traceability data collection may need to be disabled to increase feedback when running complex programs.
-However, the impact is worth taking when the user wants to get a better understanding of the program.
+However, the impact is worth taking when the user needs to debug the program.
 
 \begin{figure}
   \centering
   \includegraphics[width=\linewidth]{./\figurePath/traceability_timing}
-  \caption{Running while collecting traceability data and while not collecting traceability data.}
+  \caption{Running while collecting traceability data and while not collecting traceability data. Note that times are in logarithmic scale.}
   \label{fig:traceability:timing}
 \end{figure}
