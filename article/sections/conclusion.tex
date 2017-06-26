@@ -19,17 +19,17 @@ To have a better idea of the features necessary for such environment, Section~\r
 Firstly, we compared these applications according to their application domain and the purpose they give to programming.
 Afterwards, we also compared them according to the editing and the programming paradigm, the persistence and the collaboration support and code editing features.
 
-Following the introduction and comparison of those environments, we described the problem we would address and we proposed our solution in Chapter~\ref{chapter:solution}, which is composed of two components:
+Following the introduction and comparison of those environments, we described the problem we would address and we proposed our solution in Section~\ref{sec:solution}, which is composed of two components:
 (1) a web application, used by the architect to create programs;
 and (2) a desktop application that, when run, allows the web application to export results of those programs to \gls{cad} applications.
 
 After defining the architecture, we created a test implementation called Luna Moth.
 To help the programming task, Luna Moth runs programs when they change, allows literals to be adjusted by clicking and dragging, and highlights the relationship between program and results in both directions.
 
-In Section~\ref{sec:evaluation}, we presented some examples of programs that were created using the solution.
+In Section~\ref{sec:evaluation}, we presented some examples of programs that were created using Luna Moth.
 Additionally, we tested Luna Moth's performance by measuring the program running and export times and comparing them to running times on Rosetta, OpenJSCAD and Grasshopper.
 Taking those measurements into consideration, we concluded that running programs in Luna Moth is faster than running these \glspl{ide}.
-However, exporting from the web page is slower than running in Rosetta.
+However, exporting from Luna Moth is slower than running in Rosetta.
 We also measured the effect that keeping track of traceability data has on program running times.
 As a result, we concluded that collecting traceability data makes programs around 10--50\% slower, which is a great achievement considering that every function call is being recorded.
 

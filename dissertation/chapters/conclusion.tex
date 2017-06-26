@@ -15,7 +15,7 @@ To have a better idea of the features necessary for such environment, Chapter~\r
 These included desktop applications like Processing, a programming environment for the visual arts, and Rosetta, a programming environment giving architects program portability for both programming language and \gls{cad} application, and also included web applications like IPython, a programming environment for scientific computing with a web page based \gls{ui}, and OpenJSCAD, an online programming environment for solid modeling.
 
 Firstly, we compared these applications according to their application domain and the purpose they give to programming.
-Afterwards, we also compared them according to the editing and the programming paradigm, the persistence and the collaboration support and code editing features.
+Afterward, we also compared them according to the editing and the programming paradigm, the persistence and the collaboration support and code editing features.
 
 Following the introduction and comparison of those environments, we described the problem we would address and we proposed our solution in Chapter~\ref{chapter:solution}, which is composed of two components:
 (1) a web application, used by the architect to create programs;
@@ -23,18 +23,18 @@ and (2) a desktop application that, when run, allows the web application to expo
 
 After defining the architecture, we created a test implementation called Luna Moth.
 To help the programming task, Luna Moth runs programs when they change, allows literals to be adjusted by clicking and dragging, and highlights the relationship between program and results in both directions.
-In addition, to allow for adjusting literals and highlighting the relationship between program and results, Luna Moth analyzes the program's structure to know where literals are and to instrument it for collection of both results and traceability data.
+In addition, to allow for adjusting literals and highlighting the relationship between program and results, Luna Moth analyzes the program's structure to know where literals are and to instrument it for the collection of both results and traceability data.
 
 This allows architects to create programs incrementally.
 Instead of having to go through the edit-compile-run cycle to see the results of the changes they made, they make the changes and see the effects immediately.
-Afterwards, if they have any doubt on how a certain part of the results came to be, they can use the traceability mechanisms, pointing at that part, to see the part of the program that created them.
+Afterward, if they have any doubt on how a certain part of the results came to be, they can use the traceability mechanisms, pointing at that part, to see the part of the program that created them.
 
 After implementing the solution, we evaluated it in different ways.
 In Chapter~\ref{chapter:evaluation}, we presented some examples of programs that were created using Luna Moth.
-Additionally, we tested Luna Moth's performance by measuring the program running and export times and comparing them to running times on Rosetta, OpenJSCAD and Grasshopper.
+Additionally, we tested Luna Moth's performance by measuring the program running and export times and comparing them to running times on Rosetta, OpenJSCAD, and Grasshopper.
 Taking those measurements into consideration, we concluded that running programs in Luna Moth is faster than running these \glspl{ide}.
 In fact, we were surprised by the difference of at least an order of magnitude from Rosetta and Grasshopper, which shows that \gls{cad} applications are indeed too slow to be used in \gls{gd} exploration.
-Regarding export times, we saw that exporting from Luna Moth is slower than running in Rosetta.
+Regarding export times, we saw that exporting from Luna Moth is slower than running on Rosetta.
 This was to be expected since, although we run the program in the web application, we have to wait for network communications.
 Nonetheless, the ability to export to \gls{cad} applications remains a great advantage for architects since they only need to do it once: when they reached a final solution.
 We also measured the effect that keeping track of traceability data has on program running times.
@@ -54,19 +54,19 @@ As a result, we consider Luna Moth as a good step in the direction \gls{gd} \gls
 The source code for Luna Moth, along with the source code of the example programs, is available on GitHub at \url{https://github.com/pafalium/gd-web-env}.
 It requires a modern web browser, like Google Chrome or Mozilla Firefox, to run the web application, requires Racket version 6.4 or above to run the \textit{remote CAD app}, and requires node.js version 5.10.1 or above to be compiled.
 It has been tested both on Google Chrome and Mozilla Firefox, running on Windows 7.
-Nonetheless, since these web browsers and Racket are also available for Mac OS, Linux and other versions of Windows, the web environment and the \textit{remote CAD app} are also available for these Operating Systems.
+Nonetheless, since these web browsers and Racket are also available for Mac OS, Linux, and other versions of Windows, the web environment and the \textit{remote CAD app} are also available for these Operating Systems.
 
 
 \section{Future Work}
-Our solution can support the \gls{gd} approach to architecture, however, there are still areas that can be improved.
+Luna Moth can support the \gls{gd} approach to architecture, however, there are still areas that can be improved.
 
 
 \subsection{Programming Environment}
-There are many opportunities for improvement of the solution as a programming environment.
+There are many opportunities for improvement of Luna Moth as a programming environment.
 The following paragraphs describe some of these and speculate on possible solutions.
 
 \paragraph{Writing aids / Code completion}
-The environment does syntax highlighting, runs programs on change, has traceability, and helps adjusting literals, but it does not include help to find the available primitives and how to use them.
+Luna Moth does syntax highlighting, runs programs on change, has traceability, and helps to adjust literals, but it does not include help to find the available primitives and how to use them.
 This can be improved by providing extensive documentation on the primitive library.
 However, this is not extensible to functions and variables that the user introduces in his program.
 Alternatively, we can improve this by analyzing the current state of programs and using the resulting information to provide code completion.
@@ -87,7 +87,7 @@ One possible functionality for this debugging tool would be to try to show incom
 On top of this, the tool could show and highlight the parameters of the call that produced the error in the 3D view and also highlight the corresponding call expression in the source code.
 
 \paragraph{Timetable traceability}
-We can also improve the environment's traceability.
+We can also improve Luna Moth's traceability.
 One way it can be done is by implementing the timetables presented in Learnable Programming\cite{victor2012learnable}.
 This would worsen the performance of the running process if implemented naively.
 It would nonetheless help architects understand how their programs ran.
@@ -102,20 +102,20 @@ Furthermore, it would also be important to let him define different viewpoints t
 Depending on the size of a project, it may be easier or harder to find a particular function or variable definition.
 If \gls{gd} projects get big enough, it will be advantageous to support navigation.
 Navigation support can take inspiration from LightTable's code document and namespace view.
-Other alternative would be the ``go to definition'' functionality present in most software development \glspl{ide}.
+Another alternative would be the ``go to definition'' functionality present in most software development \glspl{ide}.
 
 \paragraph{Adjustment of literals}
 An extension to helping adjust literals could also be done.
-Instead of just allowing the architect to change the parameters of his programs by adjusting literals in source code, we could provide something like the 3D view handles from Antimony.
-Like so, when the environment detected the definition of positions or vectors from literals, it would display distinct handles in the 3D view that the architect could interact with and, consequently, change the respective definitions in the source code.
+Instead of just allowing the architect to change the parameters of his programs by adjusting literals in the source code, we could provide something like the 3D view handles from Antimony.
+Like so, when Luna Moth detected the definition of positions or vectors from literals, it would display distinct handles in the 3D view that the architect could interact with and, consequently, change the respective definitions in the source code.
 This would make the adjustment of parameters representing 3D values more intuitive, helping the architect understand more clearly the purpose of those parameters.
 
 \paragraph{Primitives}
-Further work must also be done to implement common primitives in architecture, such as, \gls{csg} operators, control-point based surfaces and lines, or sweep and loft operators, to name a few.
+Further work must also be done to implement common primitives in architecture, such as \gls{csg} operators, control-point based surfaces and lines, or sweep and loft operators, to name a few.
 
 \paragraph{User testing}
 Finally, it would be important to have more user testing.
-By doing it, we can start steering the environment development according to the needs and difficulties of the users and, therefore, make sure the environment remains both useful and easy to use.
+By doing it, we can start steering Luna Moth's development according to the needs and difficulties of the users and, therefore, make sure it remains both useful and easy to use.
 
 
 \subsection{Cloud-related Improvements}
@@ -124,18 +124,23 @@ As before, the following paragraphs describe some of these and speculate on poss
 
 \paragraph{Security}
 One area that needs to be improved is security.
-Some of the pertinent points where it must be in place are the communication with remote CAD services, that must be private, authenticated and authorized, and the program running process, that must be sandboxed to stop them from changing the environment's web page for malicious purposes.
+Some of the pertinent points where it must be in place are the communication with remote CAD services, that must be private, authenticated and authorized, and the program running process, that must be sandboxed to stop them from changing Luna Moth's web page for malicious purposes.
 
 \paragraph{Persistence and collaboration}
-We presented persistence and collaboration as advantages of cloud applications, however, we did not implement them in our solution.
+We presented persistence and collaboration as advantages of cloud applications, however, we did not implement them in Luna Moth.
 It would be interesting to investigate these features in the future.
-Moreover, it would also be of interest to integrate the solution with cloud version control services like GitHub or cloud storage services like Google Drive (as happened to IPython notebooks with the coLaboratory\footnote{\url{http://colaboratory.jupyter.org/welcome/} (last accessed on 10/05/2017)} and Jupyter Drive.\footnote{\url{https://github.com/jupyter/jupyter-drive} (last accessed on 10/05/2017)} projects)
+Moreover, it would also be of interest to integrate Luna Moth with cloud version control services like GitHub or cloud storage services like Google Drive (as happened to IPython notebooks with the coLaboratory\footnote{\url{http://colaboratory.jupyter.org/welcome/} (last accessed on 10/05/2017)} and Jupyter Drive.\footnote{\url{https://github.com/jupyter/jupyter-drive} (last accessed on 10/05/2017)} projects)
 
 \paragraph{Export performance}
 The performance of the export process can also be improved.
-Instead of using HTTP requests to communicate with the application running in the user's computer, a WebSockets connection\cite{rfc6455} could be used to avoid the overhead of HTTP.
-Alternatively, the environment could send the entirety of the results on a single HTTP request, therefore, decreasing the time spent waiting for data traversing the network and receiving a response.
+Instead of using HTTP requests to communicate with the application running on the user's computer, a WebSockets connection\cite{rfc6455} could be used to avoid the overhead of HTTP.
+Alternatively, Luna Moth could send the entirety of the results on a single HTTP request, therefore, decreasing the time spent waiting for data traversing the network and receiving a response.
 Another option would be to run the user's program in the \textit{remote CAD app} instead of the web page.
+
+\paragraph{Workflow Integration}
+As seen in Chapter~\ref{chapter:solution}, Luna Moth uses Rosetta to connect to \gls{cad} applications installed in the architect's computer.
+As of recently\cite{branco2017algoanalysis}, Rosetta has been extended with backends for lighting analysis tools, such as Radiance\footnote{\url{https://www.radiance-online.org/} (last accessed on 10/05/2017)} and DAYSIM,\footnote{\url{http://daysim.ning.com/} (last accessed on 10/05/2017)} with planned support for acoustic and structural analysis tools.
+We could take advantage these capabilities and also add support for these analysis tools to Luna Moth.
 
 
 %Intro/related+solution+evaluation descr+solutions details

@@ -15,7 +15,7 @@ It needs to:
 and (5) export results to the most used commercial \gls{cad} applications.
 
 To accomplish these tasks, there are two separate components, as seen in Figure~\ref{fig:archi:sol}: (1) the web application that supports the \gls{ui} for creating programs; and (2) the remote CAD application, that offers an \gls{api} for running programs in \gls{cad} applications.
-The first four tasks described above can be handled by the web application alone since there is no need to interact with \gls{cad} applications running in the user's computer.
+The first four tasks described above can be handled by the web application alone since there is no need to interact with \gls{cad} applications running on the user's computer.
 The fifth task requires both the web application and the remote CAD service.
 As also seen in Figure~\ref{fig:archi:sol}, apart from using the web application programming environment \gls{ui}, the architect also needs to install the remote CAD application if and when he wants to export results to \gls{cad} applications.
 
@@ -23,7 +23,7 @@ We made a test implementation of this architecture which we will call Luna Moth 
 
 In the rest of the chapter, we describe these two components and how each of the tasks is implemented in Luna Moth.
 Section~\ref{sec:sol:page} describes the web application and its tasks.
-Section~\ref{sec:sol:remote} describe the remote CAD service and the export process.
+Section~\ref{sec:sol:remote} describes the remote CAD service and the export process.
 
 \begin{figure}
   \centering
@@ -70,7 +70,7 @@ This is a tedious process that will bore most architects.
 Luna Moth can help them by making this process more immediate.
 It must provide quick ways of changing inputs and it must rerun the program when inputs change, so the architect can see the effects of his changes immediately.
 This immediacy allows the architect to quickly understand the relationship, which means he is ready to start exploring the design sooner.
-Afterwards, he can use the same immediacy to explore the design more efficiently.
+Afterward, he can use the same immediacy to explore the design more efficiently.
 To this end, we developed and implemented two different features, namely, the ability to run programs while the architect is writing them, and the ability to efficiently adjust literals.
 
 \paragraph{Adjusting literals}
@@ -123,7 +123,7 @@ We also keep the starting pointer position as a reference for calculating the ne
 We update the literal by changing the portion of the source code that it represents to the digits representing the new value.
 The new value has the same number of fractional digits as the original literal.
 To get the new value, we first extract the number of fractional digits and an integer containing the literal's digits and sign (ignoring the decimal point) from the literal's source text.
-Afterwards, we add the horizontal distance between the starting point and the current pointer position to the number.
+Afterward, we add the horizontal distance between the starting point and the current pointer position to the number.
 Finally, we convert it back to text and re-add the decimal point.
 
 \begin{figure}
@@ -201,7 +201,7 @@ When the pointer is over the 3D view, we use ray-casting to detect which of the 
 
 After detecting that something is being pointed at, Luna Moth needs to highlight it and the corresponding part in the program editor or the 3D view.
 To do that, it first uses the traceability data to find the corresponding created objects for an expression, or the first expression that created the pointed object.
-Afterwards, it highlights both.
+Afterward, it highlights both.
 It highlights expressions by changing the program editor's background behind them to a different color.
 To highlight 3D objects, it changes their material to a transparent and emissive one, and overlays them on top of the remaining objects.
 
@@ -337,20 +337,20 @@ column(6.00, 0.8, 0.7);
 
 \subsubsection{Running Process}
 When Luna Moth runs a program, it needs to do two things: (1) collect the results of the program; and (2) collect traceability data.
-It does these two by instrumenting the program with additional calls to special functions that record the desired information, then running the program, and afterwards collecting the results from the instrumentation.
+It does these two by instrumenting the program with additional calls to special functions that record the desired information, then running the program, and afterward collecting the results from the instrumentation.
 As stated in \ref{sec:traceability}, the collection of traceability data is optional since it adds some overhead to program execution, which may be undesired when programs start to take too much time to run.
 
 To be able to perform the instrumentation, Luna Moth parses the program using Esprima, a JavaScript parser,\footnote{\url{https://github.com/jquery/esprima} (last accessed on 10/05/2017)} to get its \gls{ast}.%
 \footnote{The \gls{ast} conforms to a community standard. It can be found at \url{https://github.com/estree/estree} (last accessed on 10/05/2017).}
 
-Afterwards, the \gls{ast} is transformed by adding a recording call to (1) all top-level expression statements and (2) all function call expressions.
+Afterward, the \gls{ast} is transformed by adding a recording call to (1) all top-level expression statements and (2) all function call expressions.
 Figure~\ref{fig:instrument:example} exemplifies the transformation.
 To let the recording functions know what top-level expression or function call is producing a result, we also provide them with identifiers for those expressions.
 
 After this step, Luna Moth creates a new function with the instrumented program as its body.
 The primitives and recording functions are provided as parameters to this new function.
 
-Finally, the newly created function is called and, afterwards, the recorded information is made available to the rest of the system.
+Finally, the newly created function is called and, afterward, the recorded information is made available to the rest of the system.
 
 \begin{figure}
   \centering
@@ -401,7 +401,7 @@ and (2) we convert those results to objects from THREE.js's \gls{api}, cloning t
 Consider the program in Listing~\ref{lst:display:example}, which creates spheres on the vertices of a cube of width {\tt w}.
 Figure~\ref{fig:display:results} shows the overall process from having a program to displaying its results.
 After running the program, results are in the form shown in \ref{sub:fig:prog:res}, where the variable {\tt g} holds several translations ({\tt +xyz}) of the same sphere ({\tt sph}).
-The next stage converts these results to a THREE.js scenegraph, creating a mesh for {\tt sph}, then copying it for each translation, resulting in the ``{\tt sph~:~Mesh}'' objects seen in \ref{sub:fig:three:res}. Afterwards, these object are grouped as children of the ``{\tt g : Object3D}'' object.
+The next stage converts these results to a THREE.js scenegraph, creating a mesh for {\tt sph}, then copying it for each translation, resulting in the ``{\tt sph~:~Mesh}'' objects seen in \ref{sub:fig:three:res}. Afterward, these object are grouped as children of the ``{\tt g : Object3D}'' object.
 After having results converted to THREE.js objects, Luna Moth issues their rendering repeatably as the architect interacts with the 3D view.
 
 Luna Moth also keeps record of the correspondence between intermediary results and THREE.js objects.
@@ -465,14 +465,14 @@ To do so, it must locate the \gls{cad} application and connect to it.
 In addition, there must be a well-defined interface of operations that can be performed in the \gls{cad}, which needs to cover the operations that can be performed in programs, as well as operations for managing the \gls{cad}'s document.
 
 To make communication possible, Luna Moth includes an application, the \textit{remote CAD app}, that the architect must install and run in his computer when he wants to export results.
-This application serves as a bridge between \gls{cad} applications installed in the computer and the environment running in the web page.
+This application serves as a bridge between \gls{cad} applications installed in the computer and the environment running on the web page.
 After being started, the application detects which \gls{cad} applications are installed in the computer and connects to the \textit{environment directory} so it can be discovered by the web application.
 When the architect needs to export a program to his \gls{cad} application, the environment connects to the application in his computer through the \textit{environment directory} and starts to send requests to it, in order to create shapes in the \gls{cad} application.
 The architecture for this part of Luna Moth is illustrated in Figure~\ref{fig:remote:cad:archi}.
 
 Figure~\ref{fig:remote:cad:example} shows an example of the export to \gls{cad} functionality.
 The architect has created a program using Luna Moth.
-After selecting AutoCAD and SketchUp as export destinations, he starts the export process and, afterwards, the model resulting from running the program is available in both \gls{cad} applications.
+After selecting AutoCAD and SketchUp as export destinations, he starts the export process and, afterward, the model resulting from running the program is available in both \gls{cad} applications.
 
 Note that it is only needed to install the \textit{remote CAD app} if and when the architect wants to get the program's results on a \gls{cad} application.
 Furthermore, the application only needs to be installed in the computer that actually has the \gls{cad} application installed.
@@ -490,7 +490,7 @@ Instead of implementing the connection with \gls{cad} applications, the \textit{
 This way, it only has to cover the semantic differences between Rosetta's \gls{api} and the remote CAD service's \gls{api}.
 
 In reality, when the architect wants to export to \gls{cad}, it is likely that he is using the web environment in the same computer where he has the \gls{cad} application installed.
-Like so, the web page, the remote CAD application and the \gls{cad} applications are running in the same computer.
+Like so, the web page, the remote CAD application and the \gls{cad} applications are running on the same computer.
 With this in mind, we chose to temporarily host the web application containing the \gls{ide} in the \textit{remote CAD app}'s server.
 Using this setup, it is easier to test the communication between the page and the application.
 Moreover, this setup also avoids dealing with cross-origin restrictions imposed by web browsers for \gls{ajax} requests.

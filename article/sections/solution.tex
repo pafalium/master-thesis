@@ -6,7 +6,7 @@
 
 
 \subsection{Overview}
-We set out to create, Luna Moth, an \gls{ide} for \gls{gd} programming that is available as a web application.
+We set out to create an \gls{ide} for \gls{gd} programming that is available as a web application.
 To do that, we identified several tasks that the programming environment needs to support in order to be useful for the architect.
 It needs to:
 (1) let the architect develop programs;
@@ -15,14 +15,21 @@ It needs to:
 (4) make it easy to understand programs;
 and (5) export results to the most used commercial \gls{cad} applications.
 
-To accomplish these tasks, there are two separate components: (1) the web application, that supports the \gls{ui} for creating programs;  and (2) the remote CAD application, that offers an \gls{api} for running programs in \gls{cad} applications.
+To accomplish these tasks, there are two separate components, as seen in Figure~\ref{fig:archi:sol}: (1) the web application, that supports the \gls{ui} for creating programs;  and (2) the remote CAD application, that offers an \gls{api} for running programs in \gls{cad} applications.
 The first four tasks can be handled by the web application alone since there is no need to interact with the \gls{cad} applications running in the user's computer.
 The forth task requires both the web application and the remote CAD service.
 
 We made a test implementation of this architecture which we will call Luna Moth from here on.
-In the rest of the section we describe these two components and how each of the tasks is implemented in Luna Moth.
+In the rest of the section, we describe these two components and how each of the tasks is implemented in Luna Moth.
 
 We start by looking at the web application.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=1.0\linewidth]{./\figurePath/architecture_overview/architecture_overview}
+  \caption{Architecture of the solution.}
+  \label{fig:archi:sol}
+\end{figure}
 
 
 \subsection{Web application}
@@ -85,7 +92,7 @@ More specifically, when the pointer is over a part of the program, it highlights
 when the pointer is over a part of the results, it highlights the part of the program where it was created.
 Figure~\ref{fig:trace:example} shows an example for both of this cases.
 
-Currently Luna Moth only tracks the results produced by calls to functions.
+Currently, Luna Moth only tracks the results produced by calls to functions.
 This was a compromise to balance performance, since keeping track of traceability is an additional task that needs to be performed while running the program.
 
 \begin{figure}
@@ -115,7 +122,7 @@ After knowing these, the environment must implement a process to run the program
 
 \paragraph{Program Structure}
 Before a program can be run, the programming language has to be defined.
-In our solution, we decided that it would be best to use JavaScript, as it was thought for designers and also because of its current performance in modern web browsers.
+In Luna Moth, we decided that it would be best to use JavaScript, as it was thought for designers and also because of its current performance in modern web browsers.
 
 In addition to the programming language, the environment also needs to get results from programs.
 Luna Moth uses the values of the top-level expression statements of the program as its results.
@@ -125,7 +132,7 @@ Luna Moth uses the values of the top-level expression statements of the program 
 When Luna Moth runs a program, it needs to do two things: (1) collect the results of the program; and (2) collect traceability data.
 It does these two by instrumenting the program with additional calls to special functions that record the desired information.
 
-To be able to perform the instrumentation, Luna Moth parses the program using Esprima, a JavaScript parser\footnote{https://github.com/jquery/esprima (last accessed on 10/05/2017)}, to get its \gls{ast}.%
+To be able to perform the instrumentation, Luna Moth parses the program using Esprima, a JavaScript parser,\footnote{https://github.com/jquery/esprima (last accessed on 10/05/2017)} to get its \gls{ast}.%
 \footnote{The \gls{ast} conforms to a community standard. It can be found at https://github.com/estree/estree (last accessed on 10/05/2017).}
 
 Afterwards, the \gls{ast} is transformed by adding a recording call to (1) all top-level expression statements and (2) all function call expressions.
@@ -174,7 +181,7 @@ As opposed to the other tasks, exporting to a \gls{cad} application requires the
 Unfortunately, web pages are not allowed to communicate with applications running in the computer displaying them.
 
 To make communication possible, Luna Moth includes an application, the \textit{remote CAD app}, that the architect must install and run in his computer when he wants to export results.
-This application serves as a bridge between \gls{cad} applications installed in the computer and the environment running on the web page.
+This application serves as a bridge between \gls{cad} applications installed in the computer and the environment running on the web browser.
 After being started, the application detects which \gls{cad} applications are installed in the computer and connects to the \textit{environment directory} so it can be discovered by the web application.
 When the architect needs to export a program to his \gls{cad} application, the environment connects to the application in his computer through the \textit{environment directory} and starts to send requests to it, in order to create shapes in the \gls{cad} application.
 
